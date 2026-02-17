@@ -2,113 +2,113 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Golden Claw · premium poultry</title>
-    <!-- Font Awesome icons (v6 free) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Golden Nest · premium poultry</title>
+    <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Font: warm, clean sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Google Font: Outfit (modern, warm) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Outfit', sans-serif;
         }
 
         body {
-            background-color: #f3f1ea;  /* warm off-white base */
+            background: #1e1b1b;  /* warm dark base */
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
+            background-image: radial-gradient(circle at 10% 20%, #3a2e2a 0%, #1a1515 90%);
         }
 
-        /* mobile-first container – mimics premium device card */
-        #app {
-            max-width: 420px;
+        /* phone frame */
+        .phone-frame {
             width: 100%;
-            background-color: #ffffff;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            border-radius: 32px 32px 0 0;
-            height: 700px;            /* fixed for prototype, but scroll inside */
+            max-width: 420px;
+            height: 780px;
+            background: #231f1f;  /* deep warm charcoal */
+            border-radius: 36px;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.9), 0 0 0 2px #4a3f38 inset;
+            overflow: hidden;
+            position: relative;
             display: flex;
             flex-direction: column;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(220, 180, 120, 0.2);
+            margin: 16px;
         }
 
-        /* soft farm gradient header */
-        .app-header {
-            background: linear-gradient(145deg, #2e4a2c 0%, #3f6b3a 100%); /* deep green */
-            padding: 20px 18px 14px 18px;
-            color: white;
+        /* main scrollable area */
+        .screen-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 16px 12px 16px;
+            scrollbar-width: thin;
+            scrollbar-color: #D4AF37 #2a2420;
+        }
+
+        .screen-content::-webkit-scrollbar {
+            width: 4px;
+        }
+        .screen-content::-webkit-scrollbar-track {
+            background: #2a2420;
+        }
+        .screen-content::-webkit-scrollbar-thumb {
+            background-color: #D4AF37;
+            border-radius: 8px;
+        }
+
+        /* glass card – premium farm style */
+        .glass-card {
+            background: rgba(40, 33, 30, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 28px;
+            padding: 20px 18px;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,215,120,0.1) inset;
+            margin-bottom: 18px;
+            color: #f5efe8;
+        }
+
+        /* accent colours */
+        .gold {
+            color: #D4AF37;
+        }
+        .green {
+            color: #7cb342;
+        }
+        .bg-gold-soft {
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 40px;
+            padding: 4px 12px;
+            display: inline-block;
+        }
+        .stat-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #e9c27c; /* gold accent */
+            margin-bottom: 12px;
         }
-        .app-header h1 {
-            font-weight: 600;
-            font-size: 1.6rem;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .app-header h1 i {
-            color: #f5d742;
-            font-size: 1.8rem;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-        }
-        .wallet-badge {
-            background: rgba(255,255,240,0.15);
-            backdrop-filter: blur(8px);
-            padding: 8px 14px;
-            border-radius: 60px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid rgba(255,215,120,0.6);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .wallet-badge i {
-            color: #f8d25c;
+        .divider {
+            height: 1px;
+            background: rgba(212, 175, 55, 0.2);
+            margin: 16px 0;
         }
 
-        /* main view – tabs content scrolls */
-        .view-container {
-            flex: 1;
-            overflow-y: auto;
-            padding: 16px 14px 80px 14px; /* bottom space for nav */
-            background: #faf8f2;  /* warm white */
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* hide all tabs by default, active shown */
-        .tab-page {
-            display: none;
-        }
-        .tab-page.active-page {
-            display: block;
-        }
-
-        /* ----- bottom navigation (premium glass) ----- */
+        /* bottom navigation */
         .bottom-nav {
-            background: rgba(40, 38, 30, 0.96); /* warm dark */
-            backdrop-filter: blur(10px);
-            border-top: 1px solid #dbbc6c;
+            background: rgba(26, 21, 19, 0.95);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
             display: flex;
             justify-content: space-around;
             align-items: center;
-            padding: 8px 6px 14px 6px;
-            position: relative;
-            color: #efe6d2;
-            box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+            padding: 8px 4px 12px 4px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.8);
         }
         .nav-item {
             display: flex;
@@ -116,401 +116,352 @@
             align-items: center;
             justify-content: center;
             gap: 4px;
-            font-size: 0.7rem;
+            color: #9e8f87;
+            font-size: 12px;
             font-weight: 500;
-            color: #b9aa88;
-            transition: all 0.1s ease;
+            transition: all 0.15s ease;
             flex: 1;
-            border-radius: 30px;
+            border-radius: 28px;
             padding: 6px 0;
+            background: transparent;
+            border: none;
             cursor: pointer;
         }
         .nav-item i {
-            font-size: 1.5rem;
-            color: #b9aa88;
+            font-size: 22px;
+            margin-bottom: 2px;
         }
-        .nav-item.active-nav {
-            color: #fae26b;
-            background: rgba(250, 220, 120, 0.1);
-        }
-        .nav-item.active-nav i {
-            color: #fad65c;
-            text-shadow: 0 0 8px #f9b81b;
+        .nav-item.active {
+            color: #D4AF37;
+            background: rgba(212, 175, 55, 0.1);
         }
 
-        /* ----- TikTok style vertical cards ----- */
-        .card-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .premium-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(2px);
-            border-radius: 28px;
-            padding: 18px 16px 18px 16px;
-            box-shadow: 0 8px 22px -6px rgba(90, 60, 20, 0.12), 0 0 0 1px rgba(230, 190, 120, 0.3) inset;
-            border: 1px solid rgba(255, 245, 210, 0.7);
-            transition: transform 0.15s ease;
-        }
-        .premium-card:active {
-            transform: scale(0.99);
-        }
-        .card-media {
-            width: 100%;
-            height: 160px;
-            background-color: #c9bc9b;
-            border-radius: 18px;
-            background-size: cover;
-            background-position: center;
-            margin-bottom: 14px;
-            position: relative;
-            box-shadow: inset 0 0 0 1px rgba(255,215,140,0.6);
-        }
-        .card-tag {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: #2e4a2c; /* deep green */
-            color: #fbeaa0;
-            padding: 6px 14px;
-            border-radius: 60px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            border: 1px solid gold;
-        }
-        .card-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #2a3e1f;
-            margin-bottom: 6px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .card-sub {
-            color: #785e34;
-            font-weight: 500;
-            font-size: 0.95rem;
-            margin-bottom: 10px;
-            display: flex;
-            gap: 12px;
-        }
-        .gold-accent {
-            color: #b57c1a;
-            font-weight: 600;
-        }
-        .progress-row {
-            background: #ebe1cf;
+        /* TikTok style cards */
+        .story-card {
+            background: rgba(30, 25, 22, 0.8);
             border-radius: 30px;
-            height: 12px;
-            width: 100%;
-            margin: 12px 0 8px;
+            padding: 18px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 20px -8px black;
         }
-        .progress-fill {
-            height: 12px;
-            background: linear-gradient(90deg, #c59b3c, #eec16a);
-            border-radius: 30px;
-            width: 65%; /* example */
-        }
-        .card-footer {
+        .card-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            margin-top: 16px;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .card-header i {
+            font-size: 32px;
+            color: #D4AF37;
+        }
+        .badge-countdown {
+            background: #2f2a27;
+            border-radius: 40px;
+            padding: 6px 16px;
+            font-weight: 600;
+            color: #D4AF37;
         }
         .btn-order {
-            background: #2f4d2e;
+            background: #D4AF37;
             border: none;
-            color: white;
-            font-weight: 600;
-            padding: 12px 26px;
             border-radius: 60px;
-            font-size: 1rem;
-            box-shadow: 0 4px 8px rgba(60, 40, 10, 0.2);
+            padding: 14px 20px;
+            font-weight: 700;
+            font-size: 16px;
+            color: #1e1b1b;
+            width: 100%;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            border: 1px solid #ebc473;
-            transition: all 0.1s;
-        }
-        .btn-order i {
-            color: #ffdc80;
-        }
-        .btn-order:active {
-            background: #1f3a1e;
-        }
-        .price {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #3c5e2b;
-        }
-
-        /* placeholders for other tabs */
-        .bulk-option, .profile-section, .order-item {
-            background: white;
-            border-radius: 20px;
-            padding: 18px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 12px rgba(100,70,20,0.08);
-            border: 1px solid #efdec2;
-        }
-        .badge-gold {
-            background: #dbb153;
-            color: #1f2f0e;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 60px;
-            font-size: 0.8rem;
-        }
-
-        /* simple order modal simulation (inline demo) */
-        .quick-order-demo {
-            background: #e8dcc8;
-            border-radius: 32px;
-            padding: 20px;
-            margin: 10px 0;
-        }
-        /* hide for prototype – we show by default in home card click? we use mock */
-
-        /* all touch friendly */
-        button, .nav-item, .premium-card {
+            margin-top: 14px;
+            box-shadow: 0 6px 12px rgba(212,175,55,0.2);
             cursor: pointer;
-            touch-action: manipulation;
         }
-        .fa-regular, .fa-solid, .fas, .far {
-            pointer-events: none;
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #2a2420;
+            border-radius: 60px;
+            padding: 8px 12px;
+            margin: 12px 0;
+        }
+        .quantity-selector button {
+            background: #4a3f38;
+            border: none;
+            color: #D4AF37;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            font-size: 22px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* tabs content */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active-content {
+            display: block;
+        }
+
+        /* image placeholders (simulate farm visuals) */
+        .image-placeholder {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(145deg, #5e4b3a, #3a2e26);
+            border-radius: 24px;
+            margin: 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D4AF37;
+            font-size: 40px;
+            border: 1px solid #D4AF37;
+            box-shadow: inset 0 0 20px #221d19;
+        }
+        .flex-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .loyalty-badge {
+            background: #7cb34230;
+            border-radius: 50px;
+            padding: 8px 16px;
+            border: 1px solid #7cb342;
         }
     </style>
 </head>
 <body>
-<div id="app">
-    <!-- header with premium farm identity -->
-    <div class="app-header">
-        <h1><i class="fas fa-feather-alt"></i> Golden Claw</h1>
-        <div class="wallet-badge"><i class="fas fa-coins"></i> 1,280 pts</div>
-    </div>
+<div class="phone-frame">
+    <!-- main content area (scrollable) -->
+    <div class="screen-content" id="screenContent">
+        <!-- HOME TAB (default active) -->
+        <div id="homeTab" class="tab-content active-content">
+            <!-- TikTok-style vertical cards -->
+            <div class="story-card">
+                <div class="card-header">
+                    <i class="fas fa-drumstick-bite green"></i>
+                    <div>
+                        <div style="font-weight:700; font-size:20px;">Fresh ready stock</div>
+                        <div class="green">200 chickens available now</div>
+                    </div>
+                </div>
+                <div class="image-placeholder"><i class="fas fa-chicken"></i></div>
+                <div class="stat-row"><span>Price per bird</span><span class="gold">$12.50</span></div>
+                <div class="stat-row"><span>Whole sale (50+)</span><span class="gold">$11.20</span></div>
+                <button class="btn-order"><i class="fas fa-cart-shopping"></i> Order now</button>
+            </div>
 
-    <!-- main content area – pages -->
-    <div class="view-container" id="mainView">
-        <!-- HOME PAGE (active by default) -->
-        <div id="homePage" class="tab-page active-page">
-            <div class="card-stack">
-                <!-- card 1: available now -->
-                <div class="premium-card" onclick="alert('🔔 Mock: start order for Cornish Cross')">
-                    <div class="card-media" style="background-image: url('https://images.pexels.com/photos/1284803/pexels-photo-1284803.jpeg?auto=compress&cs=tinysrgb&w=400');">
-                        <span class="card-tag"><i class="fas fa-clock"></i> READY NOW</span>
-                    </div>
-                    <div class="card-title">Cornish Cross <span class="price">$4.2</span></div>
-                    <div class="card-sub"><i class="fas fa-map-pin gold-accent"></i> 3km from you · 45 birds left</div>
-                    <div class="progress-row"><div class="progress-fill" style="width: 88%"></div></div>
-                    <div class="card-footer">
-                        <span class="badge-gold"><i class="fas fa-star"></i> premium</span>
-                        <button class="btn-order" onclick="event.stopPropagation(); alert('📦 Add to cart')"><i class="fas fa-cart-plus"></i> Order now</button>
+            <div class="story-card">
+                <div class="card-header">
+                    <i class="fas fa-seedling green"></i>
+                    <div>
+                        <div style="font-weight:700; font-size:20px;">Pre‑book growing batch</div>
+                        <div>B245 · ready in 12 days</div>
                     </div>
                 </div>
-                <!-- card 2: growing batch (pre-book) -->
-                <div class="premium-card" onclick="alert('🔔 Pre‑book this batch')">
-                    <div class="card-media" style="background-image: url('https://images.pexels.com/photos/48604/chicken-animals-hens-feathers-48604.jpeg?auto=compress&cs=tinysrgb&w=400');">
-                        <span class="card-tag" style="background:#b8860b;"><i class="fas fa-seedling"></i> READY IN 12 DAYS</span>
-                    </div>
-                    <div class="card-title">Red Ranger <span class="price">$4.8</span></div>
-                    <div class="card-sub"><i class="fas fa-chart-line gold-accent"></i> 128 reserved · 72 remaining</div>
-                    <div class="progress-row"><div class="progress-fill" style="width: 42%"></div></div>
-                    <div class="card-footer">
-                        <span><i class="fas fa-calendar-check gold-accent"></i> Est. Mar 1</span>
-                        <button class="btn-order" onclick="event.stopPropagation(); alert('✅ Reserve with 30% deposit')"><i class="fas fa-hand-holding-heart"></i> Pre‑book</button>
-                    </div>
+                <div class="badge-countdown" style="margin-bottom:12px;">🔥 only 150 left</div>
+                <div class="progress-bg" style="background:#3a2e26; height:8px; border-radius:10px; width:100%; margin:8px 0;"><div style="background:#D4AF37; width:70%; height:8px; border-radius:10px;"></div></div>
+                <div class="flex-row" style="justify-content:space-between; margin-top:8px;">
+                    <span>reserve with 20% deposit</span>
+                    <span class="gold">$2.50/bird</span>
                 </div>
-                <!-- card 3: promotion / family bundle -->
-                <div class="premium-card" onclick="alert('🎁 family bundle details')">
-                    <div class="card-media" style="background-image: url('https://images.pexels.com/photos/699540/pexels-photo-699540.jpeg?auto=compress&cs=tinysrgb&w=400');">
-                        <span class="card-tag" style="background:#a1662f;">🔥 -15% BUNDLE</span>
-                    </div>
-                    <div class="card-title">Family feast (6 birds) <span class="price">$23.9</span></div>
-                    <div class="card-sub"><i class="fas fa-users gold-accent"></i> serves 12-15 · save $4</div>
-                    <div class="card-footer">
-                        <span class="badge-gold">popular</span>
-                        <button class="btn-order" onclick="event.stopPropagation(); alert('➕ Add bundle to cart')">Order bundle</button>
-                    </div>
+                <button class="btn-order" style="background:#5e4b3a; color:#f0e0d0;"><i class="fas fa-calendar-check"></i> Reserve now</button>
+            </div>
+
+            <div class="story-card">
+                <div class="card-header">
+                    <i class="fas fa-gift gold"></i>
+                    <span style="font-weight:700;">Special offer</span>
                 </div>
-                <!-- card 4: testimonial / trust -->
-                <div class="premium-card" style="background: #faf3e2;">
-                    <div style="display: flex; gap: 14px; align-items: center;">
-                        <i class="fas fa-quote-right" style="font-size: 3rem; color: #b19764;"></i>
-                        <div>
-                            <p style="font-weight: 500;">“Booking here is easier than finding them in town. Always ready!”</p>
-                            <span style="color: #7d6236;">— Rina, caterer ⭐⭐⭐⭐⭐</span>
+                <div class="image-placeholder"><i class="fas fa-percent"></i></div>
+                <div style="font-size:18px; margin:10px 0;">Buy 50 chickens → get 5 free</div>
+                <div class="small-stat" style="color:#ccc;">valid until Sunday</div>
+                <button class="btn-order" style="background:#7cb342; color:#1e1b1b;">Grab offer</button>
+            </div>
+
+            <div class="story-card">
+                <div class="card-header">
+                    <i class="fas fa-tractor green"></i>
+                    <span style="font-weight:700;">Farm update</span>
+                </div>
+                <div class="image-placeholder"><i class="fas fa-chick"></i></div>
+                <div>🐣 600 new chicks arrived! Ready for pre‑booking in 3 weeks.</div>
+                <button class="btn-order" style="background:#2f2a27; color:#D4AF37;">Notify me</button>
+            </div>
+
+            <div class="story-card">
+                <div class="card-header">
+                    <i class="fas fa-star gold"></i>
+                    <span style="font-weight:700;">Happy customer</span>
+                </div>
+                <div style="font-style:italic;">“Golden Nest always has fresh chickens. Booking is so easy, I order every week.” – Mariam, restaurant owner</div>
+                <div class="flex-row" style="margin-top:12px;"><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i><i class="fas fa-star gold"></i></div>
+            </div>
+        </div>
+
+        <!-- BOOK CHICKENS TAB -->
+        <div id="bookTab" class="tab-content">
+            <div class="glass-card">
+                <h2 style="display:flex; gap:8px;"><i class="fas fa-calendar-plus gold"></i> Pre‑book growing</h2>
+                <!-- batch list -->
+                <div style="margin-bottom:24px;">
+                    <div class="batch-item" style="background:#2a2420; border-radius:24px; padding:16px; margin-bottom:12px;">
+                        <div><span style="font-weight:700;">Batch B245</span><br><span class="green">ready in 12 days</span></div>
+                        <div><span class="badge-countdown">145 left</span></div>
+                        <div class="quantity-selector" style="margin-top:8px;">
+                            <button>-</button><span style="font-weight:600;">10</span><button>+</button>
                         </div>
+                        <button class="btn-order" style="padding:10px;">Reserve with 20%</button>
+                    </div>
+                    <div class="batch-item" style="background:#2a2420; border-radius:24px; padding:16px; margin-bottom:12px;">
+                        <div><span style="font-weight:700;">Batch C102</span><br><span class="green">ready in 24 days</span></div>
+                        <div><span class="badge-countdown">280 left</span></div>
+                        <div class="quantity-selector" style="margin-top:8px;">
+                            <button>-</button><span style="font-weight:600;">5</span><button>+</button>
+                        </div>
+                        <button class="btn-order" style="padding:10px;">Reserve</button>
                     </div>
                 </div>
-                <!-- card 5: farm update -->
-                <div class="premium-card" style="background: #e8e0cf;">
-                    <div class="card-title" style="font-size: 1.2rem;"><i class="fas fa-tractor gold-accent"></i> New pasture-raised batch</div>
-                    <p>Our spring chickens are now on pre-book. Limited supply.<br> <span style="font-weight:600;">First 50 get free herbs!</span></p>
+                <div class="divider"></div>
+                <div style="text-align:center; color:#aaa;">🔔 you'll get a reminder 3 days before pickup</div>
+            </div>
+        </div>
+
+        <!-- BULK ORDERS TAB -->
+        <div id="bulkTab" class="tab-content">
+            <div class="glass-card">
+                <h2><i class="fas fa-cubes gold"></i> Bulk / wholesale</h2>
+                <div class="story-card" style="background:#2f2a27;">
+                    <div><span class="gold">🎉 Wedding special</span> – 100+ birds</div>
+                    <div class="stat-row"><span>Standard price</span><span>$12.50</span></div>
+                    <div class="stat-row"><span>Bulk price (100+)</span><span class="green">$9.95</span></div>
+                    <button class="btn-order" style="background:#7cb342;">Order for event</button>
+                </div>
+                <div class="story-card" style="background:#2f2a27;">
+                    <div><span class="gold">🏪 Restaurant supply</span></div>
+                    <div>weekly subscription ready</div>
+                    <div class="stat-row"><span>200 birds/week</span><span class="gold">$8.85 each</span></div>
+                    <button class="btn-order">Inquire</button>
+                </div>
+                <div class="story-card" style="background:#2f2a27;">
+                    <div><span class="gold">📦 Family pack (monthly)</span></div>
+                    <div>25 birds every month · 10% discount</div>
+                    <button class="btn-order">Set up subscription</button>
                 </div>
             </div>
         </div>
 
-        <!-- BOOK CHICKENS (growing batches) -->
-        <div id="bookPage" class="tab-page">
-            <h2 style="margin-bottom: 20px; font-weight: 600; color: #3f582b;">📆 pre‑book growing</h2>
-            <div class="premium-card">
-                <div class="card-title">Red Ranger <span class="price">$4.5</span></div>
-                <div class="card-sub">ready: Mar 12 · 88 left</div>
-                <div class="progress-row"><div class="progress-fill" style="width: 60%"></div></div>
-                <div class="card-footer">
-                    <span><i class="fas fa-egg gold-accent"></i> deposit $1.3</span>
-                    <button class="btn-order" onclick="alert('reserve 10 birds')">reserve</button>
+        <!-- MY ORDERS TAB -->
+        <div id="ordersTab" class="tab-content">
+            <div class="glass-card">
+                <h2><i class="fas fa-box-open gold"></i> My orders</h2>
+                <div class="batch-item" style="background:#2a2420; border-radius:24px; padding:16px; margin-bottom:12px;">
+                    <div><span style="font-weight:700;">Order #GN1024</span><br>12 chickens · pickup tomorrow</div>
+                    <div><span class="badge-countdown" style="background:#7cb34230; color:#7cb342;">Ready</span></div>
                 </div>
-            </div>
-            <div class="premium-card">
-                <div class="card-title">Freedom Ranger <span class="price">$5.2</span></div>
-                <div class="card-sub">ready: Mar 28 · 42 left</div>
-                <div class="progress-row"><div class="progress-fill" style="width: 30%"></div></div>
-                <div class="card-footer">
-                    <span><i class="fas fa-leaf gold-accent"></i> organic</span>
-                    <button class="btn-order" onclick="alert('reserve organic')">reserve</button>
+                <div class="batch-item" style="background:#2a2420; border-radius:24px; padding:16px; margin-bottom:12px;">
+                    <div><span style="font-weight:700;">Order #GN1122</span><br>30 chickens (bulk) · 20 May</div>
+                    <div><span class="badge-countdown">Deposit paid</span></div>
                 </div>
-            </div>
-            <div class="bulk-option" style="background:#e9dbc0;">
-                <p><i class="fas fa-bell gold-accent"></i> Get notified when new batch starts</p>
-                <button class="btn-order" style="background: #b68d4c;" onclick="alert('🔔 reminder set')">remind me</button>
+                <div class="batch-item" style="background:#2a2420; border-radius:24px; padding:16px; margin-bottom:12px;">
+                    <div><span style="font-weight:700;">Pre‑book #B245</span><br>10 chickens · ready in 12d</div>
+                    <div><span class="badge-countdown">reserved</span></div>
+                </div>
+                <button class="btn-order" style="background:#2f2a27; color:#D4AF37;"><i class="fas fa-rotate-left"></i> Reorder previous</button>
             </div>
         </div>
 
-        <!-- BULK ORDERS PAGE -->
-        <div id="bulkPage" class="tab-page">
-            <h2 style="margin-bottom: 16px; color: #3f582b;">📦 bulk & wholesale</h2>
-            <div class="bulk-option">
-                <div style="display: flex; justify-content: space-between;">
-                    <span style="font-weight:700; font-size:1.3rem;">Wedding pack</span>
-                    <span class="badge-gold">20 birds</span>
+        <!-- PROFILE TAB -->
+        <div id="profileTab" class="tab-content">
+            <div class="glass-card">
+                <h2><i class="fas fa-user-circle gold"></i> Profile</h2>
+                <div class="flex-row" style="gap:16px;">
+                    <i class="fas fa-user-circle" style="font-size:60px; color:#D4AF37;"></i>
+                    <div>
+                        <div style="font-weight:700; font-size:20px;">Ahmed Hassan</div>
+                        <div>+20 123 456 789</div>
+                        <div>ahmed@example.com</div>
+                    </div>
                 </div>
-                <p style="margin: 8px 0;">whole chickens · discount 12%</p>
-                <div style="display: flex; gap: 8px;">
-                    <button class="btn-order" style="flex:1;" onclick="alert('quote for wedding')">inquire</button>
-                    <button class="btn-order" style="flex:1; background:#a9792e;" onclick="alert('schedule delivery')">schedule</button>
-                </div>
-            </div>
-            <div class="bulk-option">
-                <span style="font-weight:700; font-size:1.3rem;">Restaurant supply</span>
-                <p>weekly subscription (min. 30 birds)</p>
-                <button class="btn-order" style="background:#5e7a43;" onclick="alert('B2B contract demo')">contact sales</button>
-            </div>
-            <div class="bulk-option">
-                <span style="font-weight:700;">Funeral/memorial</span>
-                <p>special rates · dignity pack</p>
-                <button class="btn-order" onclick="alert('community support team')">express need</button>
-            </div>
-        </div>
-
-        <!-- MY ORDERS PAGE -->
-        <div id="ordersPage" class="tab-page">
-            <h2 style="color:#3f582b;">📋 my orders</h2>
-            <div class="order-item">
-                <span><i class="fas fa-check-circle" style="color:#2b8c2b;"></i> #C202- ready 02/20</span>
-                <span>6 Cornish Cross · pickup Tue</span>
-                <button style="background:none; border:1px solid #c9a655; border-radius:40px; padding:6px 20px;" onclick="alert('repeat order')">repeat</button>
-            </div>
-            <div class="order-item">
-                <span><i class="fas fa-clock" style="color:#c98500;"></i> #R114- pre-book</span>
-                <span>10 Red Ranger · ready Mar 12</span>
-                <button style="background:none; border:1px solid #c9a655; border-radius:40px; padding:6px 20px;" onclick="alert('change date')">reschedule</button>
-            </div>
-            <div class="order-item">
-                <span><i class="fas fa-credit-card" style="color:#4f7d32;"></i> paid: $128.40</span>
-                <span>bulk wedding · 20 birds</span>
-                <button style="background:none; border:1px solid #c9a655; border-radius:40px; padding:6px 20px;" onclick="alert('view details')">details</button>
-            </div>
-        </div>
-
-        <!-- PROFILE PAGE -->
-        <div id="profilePage" class="tab-page">
-            <div class="profile-section">
-                <div style="display: flex; align-items: center; gap: 20px;">
-                    <i class="fas fa-user-circle" style="font-size: 4rem; color:#836e42;"></i>
-                    <div><h3>Mina Lawson</h3><span>loyal member since 2024</span></div>
-                </div>
-                <div style="display: flex; gap: 10px; margin-top: 16px;">
-                    <span class="badge-gold"><i class="fas fa-gift"></i> 5 referrals</span>
-                    <span class="badge-gold"><i class="fas fa-heart"></i> 1,280 pts</span>
-                </div>
-            </div>
-            <div class="profile-section">
-                <p><i class="fas fa-location-dot gold-accent"></i> 123 Farm Road, delivery zone</p>
-                <p><i class="fas fa-credit-card gold-accent"></i> **** 4242</p>
-                <p><i class="fas fa-bell gold-accent"></i> notifications on</p>
-                <button class="btn-order" style="width:100%;" onclick="alert('loyalty & rewards')">rewards & perks</button>
+                <div class="divider"></div>
+                <div class="stat-row"><span>Loyalty points</span><span class="gold">1,240 ★</span></div>
+                <div class="stat-row"><span>Member since</span><span>2024</span></div>
+                <div class="loyalty-badge" style="margin:12px 0;">🎁 Gold member – 5% extra discount</div>
+                <button class="btn-order" style="background:#2f2a27;">Refer a friend</button>
             </div>
         </div>
     </div>
 
-    <!-- bottom navigation (five items) -->
+    <!-- BOTTOM NAVIGATION (5 items) -->
     <div class="bottom-nav">
-        <div class="nav-item active-nav" data-tab="homePage"><i class="fas fa-home"></i><span>Home</span></div>
-        <div class="nav-item" data-tab="bookPage"><i class="fas fa-calendar-plus"></i><span>Book</span></div>
-        <div class="nav-item" data-tab="bulkPage"><i class="fas fa-cubes"></i><span>Bulk</span></div>
-        <div class="nav-item" data-tab="ordersPage"><i class="fas fa-clipboard-list"></i><span>Orders</span></div>
-        <div class="nav-item" data-tab="profilePage"><i class="fas fa-user"></i><span>Profile</span></div>
+        <button class="nav-item active" data-tab="homeTab"><i class="fas fa-home"></i><span>Home</span></button>
+        <button class="nav-item" data-tab="bookTab"><i class="fas fa-calendar-check"></i><span>Book</span></button>
+        <button class="nav-item" data-tab="bulkTab"><i class="fas fa-cubes"></i><span>Bulk</span></button>
+        <button class="nav-item" data-tab="ordersTab"><i class="fas fa-truck"></i><span>Orders</span></button>
+        <button class="nav-item" data-tab="profileTab"><i class="fas fa-user"></i><span>Profile</span></button>
     </div>
 </div>
 
 <script>
     (function() {
-        // TAB SWITCHING (bottom nav)
+        // tab switching
         const navItems = document.querySelectorAll('.nav-item');
-        const pages = {
-            homePage: document.getElementById('homePage'),
-            bookPage: document.getElementById('bookPage'),
-            bulkPage: document.getElementById('bulkPage'),
-            ordersPage: document.getElementById('ordersPage'),
-            profilePage: document.getElementById('profilePage')
+        const tabs = {
+            homeTab: document.getElementById('homeTab'),
+            bookTab: document.getElementById('bookTab'),
+            bulkTab: document.getElementById('bulkTab'),
+            ordersTab: document.getElementById('ordersTab'),
+            profileTab: document.getElementById('profileTab')
         };
 
-        // set active nav and page
-        function setActiveTab(tabId) {
-            // remove active class from all pages
-            Object.values(pages).forEach(page => page.classList.remove('active-page'));
-            // add active to selected page
-            if (pages[tabId]) pages[tabId].classList.add('active-page');
+        function activateTab(tabId) {
+            // hide all content
+            Object.values(tabs).forEach(tab => {
+                if (tab) tab.classList.remove('active-content');
+            });
+            // show selected
+            if (tabs[tabId]) tabs[tabId].classList.add('active-content');
 
-            // update nav items active class
-            navItems.forEach(item => {
-                const itemTab = item.getAttribute('data-tab');
-                if (itemTab === tabId) {
-                    item.classList.add('active-nav');
-                } else {
-                    item.classList.remove('active-nav');
+            // update nav active class
+            navItems.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.tab === tabId) {
+                    btn.classList.add('active');
                 }
             });
         }
 
-        // attach click listeners to nav items
-        navItems.forEach(item => {
-            item.addEventListener('click', function(e) {
+        navItems.forEach(btn => {
+            btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                const tabId = this.getAttribute('data-tab');
-                if (tabId) setActiveTab(tabId);
+                const tabId = btn.dataset.tab;
+                if (tabId) activateTab(tabId);
             });
         });
 
-        // ensure home active on load (already active)
-        // but also if someone clicks, it's fine
+        // ensure home active on load
+        activateTab('homeTab');
 
-        // extra: simulate order flow when clicking "Order now" etc – we already have inline alerts
-        // simulate pre‑book / card clicks
-
-        // optional: add small effect to show we are interactive
-        console.log('✅ Golden Claw mobile poultry platform ready');
+        // simple quantity button simulation (no actual functionality)
+        document.querySelectorAll('.quantity-selector button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const span = btn.parentElement.querySelector('span');
+                let val = parseInt(span.innerText);
+                if (btn.innerText === '+') val++;
+                else if (btn.innerText === '-' && val > 1) val--;
+                span.innerText = val;
+            });
+        });
     })();
 </script>
 
-<!-- tiny extra style for better tap highlights -->
-<style>
-    .nav-item:active { background: rgba(220,180,80,0.2); }
-    .btn-order:active { opacity: 0.8; }
-    .premium-card:hover { filter: brightness(0.98); } /* desktop friendly */
-</style>
+<!-- backend notes: connects to inventory batches, orders, payments, customers (Supabase) -->
 </body>
-  </html>
+                    </html>
