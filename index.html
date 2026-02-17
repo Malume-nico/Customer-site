@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>The Golden Feather · it just tastes right</title>
     <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ----- RESET & FULL SCREEN BASE ----- */
         * {
             margin: 0;
             padding: 0;
@@ -15,51 +16,67 @@
         }
 
         body {
-            background: #f7f3eb;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            background: #f7f3eb;   /* warm background, matches app background */
+            margin: 0;
+            padding: 0;
+            display: block;         /* remove any centering */
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;       /* prevent body scroll – everything inside .app */
         }
 
+        /* app fills entire viewport, edge to edge, no rounded container corners */
         .app {
             width: 100%;
-            max-width: 420px;
+            height: 100vh;           /* full screen real estate */
             background-color: #fefcf7;
-            box-shadow: 0 0 30px rgba(0,0,0,0.05);
-            height: 700px;
             display: flex;
             flex-direction: column;
             position: relative;
-            border-radius: 32px 32px 0 0;
-            overflow: hidden;
-            border: 1px solid #e8dccd;
+            overflow: hidden;         /* keeps children in check */
+            border: none;             /* no outer border */
+            box-shadow: none;         /* flat fullscreen */
         }
 
-        /* HEADER — now flush with top (minimal top padding) */
+        /* ----- TOP BAR (floating card feel, curved bottom, stuck to top) ----- */
         .header {
-            padding: 0.2rem 1.2rem 0.5rem 1.2rem;  /* top padding reduced to almost zero */
+            /* removes all top gap – sits exactly at the top edge */
+            padding: 0.6rem 1.2rem 0.6rem 1.2rem;   /* compact, like DeepSeek input bar */
             background: #fefcf7;
-            border-bottom: 1px solid #efe5d5;
+            /* bottom corners only – curve from corner to corner */
+            border-radius: 0 0 28px 28px;
+            /* subtle shadow to lift it (floating illusion) */
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0,0,0,0.05);
+            /* keep it above content but part of flow (sticky by being outside scroll) */
             flex-shrink: 0;
             position: relative;
-            z-index: 10;
+            z-index: 20;
+            /* no border – clean bar look */
+            border-bottom: none;
+            /* ensure no extra spacing leaks */
+            margin: 0;
+            width: 100%;
+            /* inner spacing fine-tuning */
+            line-height: 1.2;
         }
 
-        /* moving gradient shine on the logo */
+        /* DeepSeek typing bar is typically around 56–60px height.
+           Our header height = 1.4rem title + 0.9rem tagline + vertical padding */
         .header h1 {
-            font-size: 1.8rem;
+            font-size: 1.4rem;          /* balanced for compact bar */
             font-weight: 600;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.3px;
             color: #2c4532;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             position: relative;
-            overflow: hidden;
-            margin: 0;               /* ensure no default margin */
+            overflow: hidden;            /* for shine */
+            margin: 0;
+            line-height: 1.3;
         }
 
+        /* golden shine animation (kept) */
         .header h1::after {
             content: '';
             position: absolute;
@@ -67,8 +84,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 240, 160, 0.7), transparent);
-            animation: shine 3.5s infinite linear;
+            background: linear-gradient(90deg, transparent, rgba(255, 240, 160, 0.5), transparent);
+            animation: shine 3.8s infinite ease-in-out;
             pointer-events: none;
             z-index: 2;
         }
@@ -79,58 +96,65 @@
             100% { left: 100%; }
         }
 
-        /* main feather and tiny feather styling */
         .main-feather {
             color: #c9a43b;
-            font-size: 2rem;
+            font-size: 1.8rem;      /* slightly smaller to fit bar */
         }
 
         .tiny-feather {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #dbb042;
-            margin-left: 2px;
+            margin-left: 0px;
             animation: floatFall 3s ease-in-out infinite;
             display: inline-block;
             transform-origin: center center;
         }
 
-        /* flying / falling esthetic for the tiny feather */
         @keyframes floatFall {
             0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
-            25% { transform: translateY(-6px) rotate(-12deg); opacity: 1; }
-            60% { transform: translateY(4px) rotate(8deg); opacity: 0.8; }
+            25% { transform: translateY(-4px) rotate(-8deg); opacity: 1; }
+            60% { transform: translateY(3px) rotate(6deg); opacity: 0.8; }
             100% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
         }
 
+        /* tagline integrated inside bar – small, inline */
         .header .tagline {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #7e6b4b;
-            margin-top: 2px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            margin-top: 2px;
+            flex-wrap: wrap;
         }
         .header .tagline span {
             background: #e9dbc9;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
+            padding: 0.15rem 0.7rem;
+            border-radius: 40px;
             font-weight: 500;
             color: #3a2e1f;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
+            white-space: nowrap;
         }
 
-        /* main content = vertical tiktok feed style */
+        /* header is now compact, no extra gaps. total height ≈ 68–72px (ideal) */
+
+        /* ----- MAIN SCROLLABLE CONTENT (starts immediately below the bar) ----- */
         .main-content {
             flex: 1;
             overflow-y: auto;
-            padding: 1rem 1rem 0.8rem 1rem;
+            padding: 1rem 1rem 0.5rem 1rem;
             scroll-behavior: smooth;
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            /* no top padding – header already flush */
+            background: #fefcf7;
+            /* smooth scrolling */
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* hide all sections by default, show active via JS */
+        /* rest of the cards remain exactly the same style – no changes needed */
         .content-section {
             display: none;
             flex-direction: column;
@@ -140,11 +164,10 @@
             display: flex;
         }
 
-        /* CARD — tiktok style vertical block */
         .card {
             background: white;
             border-radius: 24px;
-            box-shadow: 0 8px 16px -6px rgba(45, 40, 30, 0.1), 0 2px 4px rgba(0,0,0,0.03);
+            box-shadow: 0 8px 16px -6px rgba(45, 40, 30, 0.08), 0 2px 4px rgba(0,0,0,0.02);
             padding: 1.2rem;
             border: 1px solid #f0e7da;
             transition: all 0.1s ease;
@@ -246,7 +269,6 @@
             color: #3f6e4c;
         }
 
-        /* bulk calculator */
         .bulk-calc {
             background: #f2ebe0;
             border-radius: 18px;
@@ -280,7 +302,7 @@
             background: white;
         }
 
-        /* bottom navigation */
+        /* bottom navigation unchanged but we ensure it's flush */
         .bottom-nav {
             background: #fefcf7;
             border-top: 1px solid #e8dccd;
@@ -313,7 +335,6 @@
             background: #ede7dc;
         }
 
-        /* my orders list */
         .order-item {
             background: #f9f3ea;
             border-radius: 18px;
@@ -321,30 +342,40 @@
             border-left: 6px solid #c9a43b;
         }
 
-        /* marketing banner */
         .promo-banner {
             background: linear-gradient(135deg, #3f6e4c 0%, #2c4532 100%);
             color: white;
             border-radius: 22px;
             padding: 1rem;
         }
+
+        /* ensure no gap at very top on any device */
+        body, .app {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* small screens: just in case any UA style sneaks in */
+        .header {
+            margin-top: 0;
+        }
     </style>
 </head>
 <body>
 <div class="app">
-    <!-- header with golden feather branding & moving shine (now flush with top) -->
+    <!-- TOP BAR — now flush with top edge, curved bottom only, floating appearance, fixed during scroll -->
     <div class="header">
         <h1>
-            <i class="fas fa-feather main-feather"></i> The Golden Feather
+            <i class="fas fa-feather main-feather"></i> Golden Feather
             <i class="fas fa-feather tiny-feather"></i>
         </h1>
         <div class="tagline">
-            <i class="fas fa-seedling" style="color:#4e7f5a;"></i> quality from growth to table
+            <i class="fas fa-seedling" style="color:#4e7f5a;"></i> growth to table
             <span><i class="far fa-star"></i> ethically raised</span>
         </div>
     </div>
 
-    <!-- main dynamic content (5 sections) -->
+    <!-- main dynamic content (5 sections) – scrolls under the floating top bar -->
     <main class="main-content" id="mainContent">
         <!-- HOME section (active by default) -->
         <section id="homeSection" class="content-section active">
@@ -391,7 +422,7 @@
                 <p style="font-size:0.8rem; color:#927f63;"><i class="fas fa-truck"></i> wedding / event orders welcome</p>
             </div>
 
-            <!-- card 4: testimonial / marketing -->
+            <!-- card 4: testimonial -->
             <div class="card promo-banner">
                 <i class="fas fa-quote-right" style="font-size:2rem; opacity:0.5;"></i>
                 <p style="font-weight:500;">“Golden Feather always has chickens ready. Booking here is easier than finding in town.”</p>
@@ -408,7 +439,7 @@
             </div>
         </section>
 
-        <!-- BOOK CHICKENS (growing batches) -->
+        <!-- BOOK CHICKENS -->
         <section id="bookSection" class="content-section">
             <div class="card">
                 <div class="card-header"><span class="badge green"><i class="fas fa-seedling"></i> growing</span></div>
@@ -429,7 +460,7 @@
             </div>
         </section>
 
-        <!-- BULK ORDERS (with dynamic pricing) -->
+        <!-- BULK ORDERS -->
         <section id="bulkSection" class="content-section">
             <div class="card">
                 <div class="card-title">Bulk poultry pricing</div>
@@ -503,6 +534,7 @@
 
 <script>
     (function() {
+        // bottom navigation: switch sections
         const navItems = document.querySelectorAll('.nav-item');
         const sections = {
             homeSection: document.getElementById('homeSection'),
