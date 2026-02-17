@@ -15,7 +15,7 @@
         }
 
         body {
-            background: #f7f3eb;  /* warm natural base */
+            background: #f7f3eb;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,7 +24,7 @@
 
         .app {
             width: 100%;
-            max-width: 420px;  /* mobile-first, comfortable */
+            max-width: 420px;
             background-color: #fefcf7;
             box-shadow: 0 0 30px rgba(0,0,0,0.05);
             height: 700px;
@@ -36,12 +36,12 @@
             border: 1px solid #e8dccd;
         }
 
-        /* sticky header — always on top, even if content scrolls (header is outside scroll area) */
+        /* HEADER — now flush with top (minimal top padding) */
         .header {
-            padding: 1rem 1.2rem 0.5rem 1.2rem;
+            padding: 0.2rem 1.2rem 0.5rem 1.2rem;  /* top padding reduced to almost zero */
             background: #fefcf7;
             border-bottom: 1px solid #efe5d5;
-            flex-shrink: 0;   /* ensures header stays fixed in flex column */
+            flex-shrink: 0;
             position: relative;
             z-index: 10;
         }
@@ -51,12 +51,13 @@
             font-size: 1.8rem;
             font-weight: 600;
             letter-spacing: -0.5px;
-            color: #2c4532;  /* deep green */
+            color: #2c4532;
             display: flex;
             align-items: center;
             gap: 8px;
             position: relative;
-            overflow: hidden;   /* clips the shine effect while moving */
+            overflow: hidden;
+            margin: 0;               /* ensure no default margin */
         }
 
         .header h1::after {
@@ -66,7 +67,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 240, 160, 0.7), transparent); /* golden shimmer */
+            background: linear-gradient(90deg, transparent, rgba(255, 240, 160, 0.7), transparent);
             animation: shine 3.5s infinite linear;
             pointer-events: none;
             z-index: 2;
@@ -80,7 +81,7 @@
 
         /* main feather and tiny feather styling */
         .main-feather {
-            color: #c9a43b;  /* soft gold */
+            color: #c9a43b;
             font-size: 2rem;
         }
 
@@ -157,7 +158,7 @@
             align-items: center;
         }
         .badge {
-            background: #dabf8e;  /* gold hue */
+            background: #dabf8e;
             color: #2d3f2a;
             font-size: 0.7rem;
             font-weight: 600;
@@ -331,11 +332,11 @@
 </head>
 <body>
 <div class="app">
-    <!-- header with golden feather branding & moving shine -->
+    <!-- header with golden feather branding & moving shine (now flush with top) -->
     <div class="header">
         <h1>
             <i class="fas fa-feather main-feather"></i> The Golden Feather
-            <i class="fas fa-feather tiny-feather"></i> <!-- tiny feather for flying/falling effect -->
+            <i class="fas fa-feather tiny-feather"></i>
         </h1>
         <div class="tagline">
             <i class="fas fa-seedling" style="color:#4e7f5a;"></i> quality from growth to table
@@ -390,14 +391,14 @@
                 <p style="font-size:0.8rem; color:#927f63;"><i class="fas fa-truck"></i> wedding / event orders welcome</p>
             </div>
 
-            <!-- card 4: testimonial / marketing (updated to Golden Feather) -->
+            <!-- card 4: testimonial / marketing -->
             <div class="card promo-banner">
                 <i class="fas fa-quote-right" style="font-size:2rem; opacity:0.5;"></i>
                 <p style="font-weight:500;">“Golden Feather always has chickens ready. Booking here is easier than finding in town.”</p>
                 <p style="margin-top:0.3rem;">— Rita, repeat customer</p>
             </div>
 
-            <!-- card 5: referral + loyalty (updated to feather) -->
+            <!-- card 5: referral + loyalty -->
             <div class="card" style="background:#fff6e9;">
                 <div class="row">
                     <i class="fas fa-gem" style="color:#c9a43b; font-size:2rem;"></i>
@@ -502,7 +503,6 @@
 
 <script>
     (function() {
-        // bottom navigation: switch sections
         const navItems = document.querySelectorAll('.nav-item');
         const sections = {
             homeSection: document.getElementById('homeSection'),
@@ -513,11 +513,8 @@
         };
 
         function activateSection(sectionId) {
-            // hide all sections
             Object.values(sections).forEach(s => s.classList.remove('active'));
-            // show selected
             if (sections[sectionId]) sections[sectionId].classList.add('active');
-            // update nav active class
             navItems.forEach(item => {
                 const data = item.getAttribute('data-section');
                 if (data === sectionId) {
@@ -535,7 +532,7 @@
             });
         });
 
-        // bulk calculator logic (for Bulk section)
+        // bulk calculator
         const bulkQty = document.getElementById('bulkQty');
         const bulkTotal = document.getElementById('bulkTotal');
         const pricePerUnitSpan = document.getElementById('pricePerUnit');
@@ -566,7 +563,7 @@
                 updateBulkPrice();
             });
             bulkQty.addEventListener('input', updateBulkPrice);
-            updateBulkPrice(); // initial
+            updateBulkPrice();
         }
     })();
 </script>
