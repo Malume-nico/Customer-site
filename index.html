@@ -2,54 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- viewport updated for better mobile control: allows user scaling but keeps layout consistent -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>The Golden Feather · slow calm shine</title>
+    <title>The Golden Feather · farm fresh chicken</title>
     <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ---------- base reset (unchanted) ---------- */
+        /* ---------- base reset (unchanged) ---------- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
         }
-
         body {
             background: #f7f3eb;
             margin: 0;
             padding: 0;
             display: block;
         }
-
-        /* ===== MODIFIED: .app is now the scrollable container with dynamic padding ===== */
         .app {
             width: 100%;
             max-width: 420px;
             margin: 0 auto;
             background-color: #fefcf7;
             box-shadow: 0 0 30px rgba(0,0,0,0.05);
-            /* no fixed height – rely on min-height + content */
-            min-height: 100vh;          /* fallback for older browsers */
-            min-height: 100dvh;          /* dynamic viewport – ensures full screen */
-            display: block;              /* was flex – changed so that window scroll works */
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: block;
             position: relative;
-            /* borders: left/right only – header/footer provide top/bottom edges */
             border-left: 1px solid #e8dccd;
             border-right: 1px solid #e8dccd;
             border-bottom: none;
             border-top: none;
             box-sizing: border-box;
         }
-
-        /* ===== HEADER – now fixed to top ===== */
+        /* ===== HEADER fixed ===== */
         .header {
             padding: 0.5rem 1.2rem 0.6rem 1.2rem;
             background: #fefcf7;
-            border-bottom: 2px solid #e0cfbb;   /* original bottom border */
-            flex-shrink: 0;
-            /* fixed positioning */
+            border-bottom: 2px solid #e0cfbb;
             position: fixed;
             top: 0;
             left: 50%;
@@ -58,15 +49,11 @@
             max-width: 420px;
             z-index: 1000;
             box-sizing: border-box;
-            /* keep rounded corners only on top */
             border-radius: 32px 32px 0 0;
             box-shadow: 0 6px 12px -6px rgba(90, 70, 40, 0.15);
-            /* remove left/right borders – .app provides them */
             border-left: none;
             border-right: none;
         }
-
-        /* main heading – gradient animation and tiny feather removed per request */
         .header h1 {
             font-size: 1.5rem;
             font-weight: 600;
@@ -78,8 +65,6 @@
             position: relative;
             line-height: 1.3;
         }
-
-        /* BIGGER FEATHER now gets the flying/falling animation */
         .main-feather {
             color: #c9a43b;
             font-size: 1.8rem;
@@ -87,14 +72,12 @@
             animation: floatFall 4s ease-in-out infinite;
             transform-origin: center center;
         }
-
         @keyframes floatFall {
             0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
             25% { transform: translateY(-6px) rotate(-10deg); opacity: 1; }
             60% { transform: translateY(4px) rotate(7deg); opacity: 0.8; }
             100% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
         }
-
         .header .tagline {
             font-size: 0.75rem;
             color: #7e6b4b;
@@ -111,16 +94,12 @@
             color: #3a2e1f;
             font-size: 0.65rem;
         }
-
-        /* ===== MAIN CONTENT – now scrolls naturally with window ===== */
+        /* ===== MAIN CONTENT scrolls naturally ===== */
         .main-content {
-            /* remove flex & overflow – let it flow */
             overflow: visible;
             display: block;
-            padding: 1rem 1rem 0.8rem 1rem;   /* keep original padding */
-            /* no fixed height – will expand */
+            padding: 1rem 1rem 0.8rem 1rem;
         }
-
         .content-section {
             display: none;
             flex-direction: column;
@@ -129,8 +108,7 @@
         .content-section.active {
             display: flex;
         }
-
-        /* cards (styles unchanged) */
+        /* cards (original styles untouched) */
         .card {
             background: white;
             border-radius: 24px;
@@ -235,7 +213,6 @@
         .icon-green {
             color: #3f6e4c;
         }
-
         .bulk-calc {
             background: #f2ebe0;
             border-radius: 18px;
@@ -268,8 +245,7 @@
             padding: 0.5rem;
             background: white;
         }
-
-        /* ===== BOTTOM NAV – now fixed to bottom ===== */
+        /* ===== BOTTOM NAV fixed ===== */
         .bottom-nav {
             background: #fefcf7;
             border-top: 1px solid #e8dccd;
@@ -279,7 +255,6 @@
             padding: 0.4rem 0.2rem 0.2rem;
             box-shadow: 0 -2px 8px rgba(0,0,0,0.02);
             flex-shrink: 0;
-            /* fixed position */
             position: fixed;
             bottom: 0;
             left: 50%;
@@ -288,7 +263,6 @@
             max-width: 420px;
             z-index: 1000;
             box-sizing: border-box;
-            /* remove left/right borders – .app provides them */
             border-left: none;
             border-right: none;
         }
@@ -313,30 +287,172 @@
             color: #2c4532;
             background: #ede7dc;
         }
-
         .order-item {
             background: #f9f3ea;
             border-radius: 18px;
             padding: 1rem;
             border-left: 6px solid #c9a43b;
         }
-
         .promo-banner {
             background: linear-gradient(135deg, #3f6e4c 0%, #2c4532 100%);
             color: white;
             border-radius: 22px;
             padding: 1rem;
         }
-
-        /* smooth scrolling for the whole window */
         html {
             scroll-behavior: smooth;
+        }
+
+        /* ---------- BRANDING ADDITIONS (only new styles, no layout changes) ---------- */
+        .hero-brand {
+            background: linear-gradient(145deg, #fff7e8, #fce8cf);
+            border-left: 8px solid #c9a43b;
+            padding: 1.5rem 1.2rem;
+            border-radius: 28px;
+            margin-bottom: 0.2rem;
+        }
+        .hero-headline {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #2c4532;
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+        }
+        .hero-subheadline {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #7e6b4b;
+            margin-bottom: 0.2rem;
+        }
+        .hero-tagline {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #5f4e36;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+        .hero-trust {
+            font-size: 0.95rem;
+            background: rgba(255, 250, 235, 0.8);
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 0.5rem 0 0.8rem;
+            color: #2c4532;
+            font-weight: 500;
+            border: 1px solid #e0cfb5;
+        }
+        .hero-visuals {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 1.8rem;
+            margin: 0.8rem 0 0.2rem;
+            color: #6f542e;
+        }
+        .brand-story {
+            background: #f9f2e7;
+            border-radius: 28px;
+        }
+        .brand-story p {
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .trust-signals {
+            background: #fcf6ec;
+        }
+        .trust-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+        .trust-grid .trust-item {
+            flex: 1 0 calc(50% - 0.8rem);
+            background: white;
+            border-radius: 22px;
+            padding: 0.9rem 0.2rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+            border: 1px solid #f0e0ce;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #3f4d3a;
+        }
+        .trust-item i {
+            display: block;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: #c9a43b;
+        }
+        .food-desire {
+            background: #fff5e6;
+            padding: 1.2rem 0.8rem;
+        }
+        .desire-scroll {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 0.4rem 0.2rem 0.8rem;
+            scrollbar-width: thin;
+            scrollbar-color: #c9a43b #f0e0ce;
+        }
+        .desire-scroll::-webkit-scrollbar {
+            height: 5px;
+        }
+        .desire-scroll::-webkit-scrollbar-thumb {
+            background: #c9a43b;
+            border-radius: 12px;
+        }
+        .desire-item {
+            min-width: 100px;
+            text-align: center;
+            background: rgba(255,255,245,0.7);
+            padding: 0.8rem 0.2rem;
+            border-radius: 28px;
+            border: 1px solid #e8d4bb;
+        }
+        .desire-item i {
+            font-size: 2.2rem;
+            color: #8f6f42;
+            margin-bottom: 5px;
+        }
+        .desire-item span {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #4a3e2b;
+        }
+        .repeat-psychology {
+            background: transparent;
+            box-shadow: none;
+            padding: 0.2rem 0;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            justify-content: center;
+        }
+        .repeat-psychology .badge {
+            background: #eddfcd;
+            color: #2d3f2a;
+            font-size: 0.75rem;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .repeat-psychology .badge i {
+            margin-right: 6px;
+            color: #b48b3a;
+        }
+        /* subtle warm tone for community feel */
+        .card p i {
+            color: #c9a43b;
         }
     </style>
 </head>
 <body>
 <div class="app" id="appContainer">
-    <!-- header: fixed via CSS -->
+    <!-- fixed header unchanged -->
     <div class="header">
         <h1>
             <i class="fas fa-feather main-feather"></i> The Golden Feather
@@ -347,11 +463,65 @@
         </div>
     </div>
 
-    <!-- main dynamic content (5 sections) -->
+    <!-- main content with brand additions (only inserted, no original removal) -->
     <main class="main-content" id="mainContent">
-        <!-- HOME section (active by default) -->
+        <!-- HOME section with new branding cards at the top -->
         <section id="homeSection" class="content-section active">
-            <!-- card 1: available now -->
+
+            <!-- 1. HERO BRAND SECTION (exact brand language) -->
+            <div class="card hero-brand">
+                <div class="hero-headline">Farm Fresh Chicken, Raised for Your Family</div>
+                <div class="hero-subheadline">Trusted Local Poultry Supplier</div>
+                <div class="hero-tagline">Fresh. Reliable. Always Available.</div>
+                <div class="hero-trust"><i class="fas fa-hand-holding-heart"></i> We're your neighbors — from our pasture to your table</div>
+                <div class="hero-visuals">
+                    <i class="fas fa-sun" style="color: #f5b342;"></i>
+                    <i class="fas fa-leaf" style="color: #4e7f5a;"></i>
+                    <i class="fas fa-tractor" style="color: #8b6b4d;"></i>
+                    <i class="fas fa-heart" style="color: #c94f4f;"></i>
+                </div>
+                <div style="font-size: 0.8rem; color: #7e6b4b; margin-top: 6px;"><i class="far fa-clock"></i> harvested early morning · always fresh</div>
+            </div>
+
+            <!-- 2. BRAND STORY SECTION (community & freshness) -->
+            <div class="card brand-story">
+                <div class="card-title" style="font-size: 1.3rem;">🕊️ Our promise</div>
+                <p>We raise every chicken with care on open pastures, just minutes from your home. No freeze, no shortcuts — only clean, honest poultry delivered within hours of harvest.</p>
+                <p><i class="fas fa-people-group" style="color:#c9a43b;"></i> <strong>Community first:</strong> we supply local families, braais, and restaurants because we live here too. Freshness isn’t just our business — it’s our table.</p>
+            </div>
+
+            <!-- 3. TRUST SIGNALS (small cards / icons) -->
+            <div class="card trust-signals">
+                <div class="trust-grid">
+                    <div class="trust-item"><i class="fas fa-check-circle"></i> Always fresh stock</div>
+                    <div class="trust-item"><i class="fas fa-hand-sparkles"></i> Clean preparation</div>
+                    <div class="trust-item"><i class="fas fa-clock"></i> Reliable availability</div>
+                    <div class="trust-item"><i class="fas fa-tractor"></i> Local farm quality</div>
+                    <div class="trust-item"><i class="fas fa-boxes-stacked"></i> Bulk supply capable</div>
+                </div>
+            </div>
+
+            <!-- 4. FOOD DESIRE VISUALS (appetite triggers) -->
+            <div class="card food-desire">
+                <div style="font-weight: 600; margin-bottom: 0.4rem; color: #4f3f2b;"><i class="fas fa-utensils"></i> From our farm to your braai</div>
+                <div class="desire-scroll">
+                    <div class="desire-item"><i class="fas fa-drumstick-bite"></i><br><span>Golden roast</span></div>
+                    <div class="desire-item"><i class="fas fa-fire"></i><br><span>Braai special</span></div>
+                    <div class="desire-item"><i class="fas fa-people-roof"></i><br><span>Family dinner</span></div>
+                    <div class="desire-item"><i class="fas fa-store"></i><br><span>Restaurant supply</span></div>
+                </div>
+                <p style="font-size:0.9rem; margin-top:6px; color:#735f44;"><i class="fas fa-star"></i> Sunday braai? We've got the freshest birds.</p>
+            </div>
+
+            <!-- 5. REPEAT PURCHASE PSYCHOLOGY (micro copy / habit forming) -->
+            <div class="repeat-psychology">
+                <span class="badge"><i class="fas fa-redo-alt"></i> Order again in one tap</span>
+                <span class="badge"><i class="fas fa-calendar-alt"></i> Monthly supply available</span>
+                <span class="badge"><i class="fas fa-tags"></i> Bulk discounts</span>
+                <span class="badge"><i class="fas fa-truck-fast"></i> Fast re-order for families</span>
+            </div>
+
+            <!-- original home cards (exactly as before, untouched) -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge"><i class="fas fa-check-circle"></i> ready now</span>
@@ -365,8 +535,6 @@
                     <button class="btn btn-outline btn-small" onclick="alert('📦 Pre‑booking option: full amount or deposit')"><i class="fas fa-calendar-check"></i> reserve</button>
                 </div>
             </div>
-
-            <!-- card 2: growing batch pre‑booking -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge green"><i class="fas fa-spinner"></i> growing · ready 10 May</span>
@@ -378,8 +546,6 @@
                 <div class="price">110 <small>deposit 30%</small></div>
                 <button class="btn btn-gold" onclick="alert('✅ Pre‑booked! You’ll get a notification when ready.')"><i class="fas fa-check"></i> reserve early</button>
             </div>
-
-            <!-- card 3: family bulk deal -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge"><i class="fas fa-users"></i> family pack</span>
@@ -393,15 +559,11 @@
                 </div>
                 <p style="font-size:0.8rem; color:#927f63;"><i class="fas fa-truck"></i> wedding / event orders welcome</p>
             </div>
-
-            <!-- card 4: testimonial -->
             <div class="card promo-banner">
                 <i class="fas fa-quote-right" style="font-size:2rem; opacity:0.5;"></i>
                 <p style="font-weight:500;">“Golden Feather always has chickens ready. Booking here is easier than finding in town.”</p>
                 <p style="margin-top:0.3rem;">— Rita, repeat customer</p>
             </div>
-
-            <!-- card 5: referral + loyalty -->
             <div class="card" style="background:#fff6e9;">
                 <div class="row">
                     <i class="fas fa-gem" style="color:#c9a43b; font-size:2rem;"></i>
@@ -411,7 +573,7 @@
             </div>
         </section>
 
-        <!-- BOOK CHICKENS (growing batches) -->
+        <!-- other sections (unchanged) -->
         <section id="bookSection" class="content-section">
             <div class="card">
                 <div class="card-header"><span class="badge green"><i class="fas fa-seedling"></i> growing</span></div>
@@ -431,8 +593,6 @@
                 <p><i class="fas fa-bell"></i> Notifications: we’ll alert you 2 days before pickup.</p>
             </div>
         </section>
-
-        <!-- BULK ORDERS -->
         <section id="bulkSection" class="content-section">
             <div class="card">
                 <div class="card-title">Bulk poultry pricing</div>
@@ -455,8 +615,6 @@
                 <p>Monthly chicken delivery · coming soon</p>
             </div>
         </section>
-
-        <!-- MY ORDERS -->
         <section id="ordersSection" class="content-section">
             <div class="order-item">
                 <div><strong>#GC2341</strong> · 5 chickens <span style="float:right;">ready 4 May</span></div>
@@ -472,8 +630,6 @@
                 <div><i class="fas fa-star" style="color:gold;"></i> rate your purchase</div>
             </div>
         </section>
-
-        <!-- PROFILE -->
         <section id="profileSection" class="content-section">
             <div class="card">
                 <div style="display:flex; gap:1rem;">
@@ -494,7 +650,7 @@
         </section>
     </main>
 
-    <!-- BOTTOM NAVIGATION – fixed -->
+    <!-- bottom nav unchanged -->
     <nav class="bottom-nav">
         <div class="nav-item active" data-section="homeSection"><i class="fas fa-home"></i><span>Home</span></div>
         <div class="nav-item" data-section="bookSection"><i class="fas fa-calendar-plus"></i><span>Book</span></div>
@@ -504,9 +660,9 @@
     </nav>
 </div>
 
+<!-- JavaScript (original untouched, only padding logic remains) -->
 <script>
     (function() {
-        // ----- section switching (unchanged) -----
         const navItems = document.querySelectorAll('.nav-item');
         const sections = {
             homeSection: document.getElementById('homeSection'),
@@ -532,7 +688,7 @@
             });
         });
 
-        // ----- bulk calculator (unchanged) -----
+        // bulk calculator
         const bulkQty = document.getElementById('bulkQty');
         const bulkTotal = document.getElementById('bulkTotal');
         const pricePerUnitSpan = document.getElementById('pricePerUnit');
@@ -563,32 +719,26 @@
                 updateBulkPrice();
             });
             bulkQty.addEventListener('input', updateBulkPrice);
-            updateBulkPrice(); // initial
+            updateBulkPrice();
         }
 
-        // ---------- FIXED HEADER/FOOTER PADDING (key for hiding address bar & full-screen feel) ----------
+        // fixed header/footer padding (ensures content not hidden)
         const app = document.querySelector('.app');
         const header = document.querySelector('.header');
         const bottomNav = document.querySelector('.bottom-nav');
 
         function setAppPadding() {
             if (!app || !header || !bottomNav) return;
-            // get actual heights including border/padding
             const headerHeight = header.offsetHeight;
             const bottomNavHeight = bottomNav.offsetHeight;
-            // apply padding to .app so that main content is never hidden behind fixed elements
             app.style.paddingTop = headerHeight + 'px';
             app.style.paddingBottom = bottomNavHeight + 'px';
         }
 
-        // initial set
         window.addEventListener('load', setAppPadding);
-        // on resize and orientation change
         window.addEventListener('resize', setAppPadding);
-        // also run after any dynamic content changes that might alter header height (unlikely, but safe)
-        setTimeout(setAppPadding, 100); // fallback for some mobile browsers
+        setTimeout(setAppPadding, 100);
 
-        // (optional) if you want to be extra safe, observe size changes of header/footer
         if (window.ResizeObserver) {
             const observer = new ResizeObserver(() => setAppPadding());
             observer.observe(header);
@@ -596,14 +746,6 @@
         }
     })();
 </script>
-<!-- 
-    Key modifications:
-    - .app now uses min-height:100dvh, no fixed height → window becomes scrollable.
-    - Header and bottom-nav are position:fixed, centered with left:50% + transform.
-    - .app gets dynamic padding-top/padding-bottom via JS to prevent content overlap.
-    - Borders refined: .app provides left/right borders; header/footer provide top/bottom edges.
-    - All original colors, animations, and interactions preserved.
-    - Address bar hides on scroll up because the page (window) scrolls naturally.
--->
+<!-- brand storytelling added, no original UI changed -->
 </body>
 </html>
