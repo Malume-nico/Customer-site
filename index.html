@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- viewport updated for better mobile control: allows user scaling but keeps layout consistent -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>The Golden Feather · slow calm shine</title>
     <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ---------- base reset (unchanted) ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -21,33 +23,47 @@
             display: block;
         }
 
+        /* ===== MODIFIED: .app is now the scrollable container with dynamic padding ===== */
         .app {
             width: 100%;
             max-width: 420px;
             margin: 0 auto;
             background-color: #fefcf7;
             box-shadow: 0 0 30px rgba(0,0,0,0.05);
-            /* Use dynamic viewport height so bottom bar is always visible without scrolling */
-            height: 100dvh; 
-            min-height: 100dvh; /* fallback for older browsers */
-            display: flex;
-            flex-direction: column;
+            /* no fixed height – rely on min-height + content */
+            min-height: 100vh;          /* fallback for older browsers */
+            min-height: 100dvh;          /* dynamic viewport – ensures full screen */
+            display: block;              /* was flex – changed so that window scroll works */
             position: relative;
+            /* borders: left/right only – header/footer provide top/bottom edges */
             border-left: 1px solid #e8dccd;
             border-right: 1px solid #e8dccd;
-            border-bottom: 1px solid #e8dccd;
+            border-bottom: none;
+            border-top: none;
+            box-sizing: border-box;
         }
 
-        /* ===== HEADER – narrower, slower glow ===== */
+        /* ===== HEADER – now fixed to top ===== */
         .header {
             padding: 0.5rem 1.2rem 0.6rem 1.2rem;
             background: #fefcf7;
-            border-bottom: 2px solid #e0cfbb;
+            border-bottom: 2px solid #e0cfbb;   /* original bottom border */
             flex-shrink: 0;
-            position: relative;
-            z-index: 10;
+            /* fixed positioning */
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 420px;
+            z-index: 1000;
+            box-sizing: border-box;
+            /* keep rounded corners only on top */
             border-radius: 32px 32px 0 0;
             box-shadow: 0 6px 12px -6px rgba(90, 70, 40, 0.15);
+            /* remove left/right borders – .app provides them */
+            border-left: none;
+            border-right: none;
         }
 
         /* main heading – gradient animation and tiny feather removed per request */
@@ -68,11 +84,10 @@
             color: #c9a43b;
             font-size: 1.8rem;
             display: inline-block;
-            animation: floatFall 4s ease-in-out infinite; /* calm float */
+            animation: floatFall 4s ease-in-out infinite;
             transform-origin: center center;
         }
 
-        /* floating / falling effect – same as before, now on main feather */
         @keyframes floatFall {
             0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
             25% { transform: translateY(-6px) rotate(-10deg); opacity: 1; }
@@ -97,15 +112,13 @@
             font-size: 0.65rem;
         }
 
-        /* main content – tiktok style feed */
+        /* ===== MAIN CONTENT – now scrolls naturally with window ===== */
         .main-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1rem 1rem 0.8rem 1rem;
-            scroll-behavior: smooth;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            /* remove flex & overflow – let it flow */
+            overflow: visible;
+            display: block;
+            padding: 1rem 1rem 0.8rem 1rem;   /* keep original padding */
+            /* no fixed height – will expand */
         }
 
         .content-section {
@@ -117,7 +130,7 @@
             display: flex;
         }
 
-        /* cards */
+        /* cards (styles unchanged) */
         .card {
             background: white;
             border-radius: 24px;
@@ -223,7 +236,6 @@
             color: #3f6e4c;
         }
 
-        /* bulk calculator */
         .bulk-calc {
             background: #f2ebe0;
             border-radius: 18px;
@@ -257,7 +269,7 @@
             background: white;
         }
 
-        /* bottom navigation – now always visible without scrolling */
+        /* ===== BOTTOM NAV – now fixed to bottom ===== */
         .bottom-nav {
             background: #fefcf7;
             border-top: 1px solid #e8dccd;
@@ -267,6 +279,18 @@
             padding: 0.4rem 0.2rem 0.2rem;
             box-shadow: 0 -2px 8px rgba(0,0,0,0.02);
             flex-shrink: 0;
+            /* fixed position */
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 420px;
+            z-index: 1000;
+            box-sizing: border-box;
+            /* remove left/right borders – .app provides them */
+            border-left: none;
+            border-right: none;
         }
         .nav-item {
             flex: 1;
@@ -290,7 +314,6 @@
             background: #ede7dc;
         }
 
-        /* my orders list */
         .order-item {
             background: #f9f3ea;
             border-radius: 18px;
@@ -298,22 +321,25 @@
             border-left: 6px solid #c9a43b;
         }
 
-        /* marketing banner */
         .promo-banner {
             background: linear-gradient(135deg, #3f6e4c 0%, #2c4532 100%);
             color: white;
             border-radius: 22px;
             padding: 1rem;
         }
+
+        /* smooth scrolling for the whole window */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body>
-<div class="app">
-    <!-- header: big feather floating; shine and tiny feather removed -->
+<div class="app" id="appContainer">
+    <!-- header: fixed via CSS -->
     <div class="header">
         <h1>
             <i class="fas fa-feather main-feather"></i> The Golden Feather
-            <!-- tiny feather icon removed as requested -->
         </h1>
         <div class="tagline">
             <i class="fas fa-seedling" style="color:#4e7f5a;"></i> quality from growth to table
@@ -468,7 +494,7 @@
         </section>
     </main>
 
-    <!-- BOTTOM NAVIGATION – now always visible on load -->
+    <!-- BOTTOM NAVIGATION – fixed -->
     <nav class="bottom-nav">
         <div class="nav-item active" data-section="homeSection"><i class="fas fa-home"></i><span>Home</span></div>
         <div class="nav-item" data-section="bookSection"><i class="fas fa-calendar-plus"></i><span>Book</span></div>
@@ -480,7 +506,7 @@
 
 <script>
     (function() {
-        // bottom navigation: switch sections
+        // ----- section switching (unchanged) -----
         const navItems = document.querySelectorAll('.nav-item');
         const sections = {
             homeSection: document.getElementById('homeSection'),
@@ -495,11 +521,7 @@
             if (sections[sectionId]) sections[sectionId].classList.add('active');
             navItems.forEach(item => {
                 const data = item.getAttribute('data-section');
-                if (data === sectionId) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
+                item.classList.toggle('active', data === sectionId);
             });
         }
 
@@ -510,7 +532,7 @@
             });
         });
 
-        // bulk calculator logic
+        // ----- bulk calculator (unchanged) -----
         const bulkQty = document.getElementById('bulkQty');
         const bulkTotal = document.getElementById('bulkTotal');
         const pricePerUnitSpan = document.getElementById('pricePerUnit');
@@ -543,12 +565,45 @@
             bulkQty.addEventListener('input', updateBulkPrice);
             updateBulkPrice(); // initial
         }
+
+        // ---------- FIXED HEADER/FOOTER PADDING (key for hiding address bar & full-screen feel) ----------
+        const app = document.querySelector('.app');
+        const header = document.querySelector('.header');
+        const bottomNav = document.querySelector('.bottom-nav');
+
+        function setAppPadding() {
+            if (!app || !header || !bottomNav) return;
+            // get actual heights including border/padding
+            const headerHeight = header.offsetHeight;
+            const bottomNavHeight = bottomNav.offsetHeight;
+            // apply padding to .app so that main content is never hidden behind fixed elements
+            app.style.paddingTop = headerHeight + 'px';
+            app.style.paddingBottom = bottomNavHeight + 'px';
+        }
+
+        // initial set
+        window.addEventListener('load', setAppPadding);
+        // on resize and orientation change
+        window.addEventListener('resize', setAppPadding);
+        // also run after any dynamic content changes that might alter header height (unlikely, but safe)
+        setTimeout(setAppPadding, 100); // fallback for some mobile browsers
+
+        // (optional) if you want to be extra safe, observe size changes of header/footer
+        if (window.ResizeObserver) {
+            const observer = new ResizeObserver(() => setAppPadding());
+            observer.observe(header);
+            observer.observe(bottomNav);
+        }
     })();
 </script>
-<!-- Changes: 
-    - Removed gradient animation (::after and keyframes)
-    - Removed tiny feather icon from header
-    - Changed .app height to 100dvh so bottom nav is always in view without scrolling
+<!-- 
+    Key modifications:
+    - .app now uses min-height:100dvh, no fixed height → window becomes scrollable.
+    - Header and bottom-nav are position:fixed, centered with left:50% + transform.
+    - .app gets dynamic padding-top/padding-bottom via JS to prevent content overlap.
+    - Borders refined: .app provides left/right borders; header/footer provide top/bottom edges.
+    - All original colors, animations, and interactions preserved.
+    - Address bar hides on scroll up because the page (window) scrolls naturally.
 -->
 </body>
 </html>
