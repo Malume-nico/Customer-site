@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>The Golden Feather · it just tastes right</title>
+    <title>The Golden Feather · slow calm shine</title>
     <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -15,100 +15,101 @@
         }
 
         body {
-            background: #f7f3eb;  /* warm natural base */
+            background: #f7f3eb;
             margin: 0;
             padding: 0;
-            display: block;           /* removed vertical centering – app now sits at top */
+            display: block;
         }
 
         .app {
             width: 100%;
-            max-width: 420px;          /* mobile frame */
-            margin: 0 auto;            /* horizontally centered */
+            max-width: 420px;
+            margin: 0 auto;
             background-color: #fefcf7;
             box-shadow: 0 0 30px rgba(0,0,0,0.05);
-            height: 100vh;              /* full viewport height, covers top gap */
+            height: 100vh;
             display: flex;
             flex-direction: column;
             position: relative;
-            border-radius: 0;            /* flat edges – top radius moved to header */
             border-left: 1px solid #e8dccd;
             border-right: 1px solid #e8dccd;
             border-bottom: 1px solid #e8dccd;
         }
 
-        /* ===== TOP BAR – redesigned with DeepSeek typing bar feel ===== */
+        /* ===== HEADER – narrower, slower glow ===== */
         .header {
-            padding: 0.5rem 1.2rem 0.6rem 1.2rem;   /* reduced top padding to close gap, height kept compact */
+            padding: 0.5rem 1.2rem 0.6rem 1.2rem;
             background: #fefcf7;
-            border-bottom: 2px solid #e0cfbb;        /* stronger separation from main content */
+            border-bottom: 2px solid #e0cfbb;
             flex-shrink: 0;
             position: relative;
             z-index: 10;
-            /* corner‑to‑corner curve – like DeepSeek typing bar */
             border-radius: 32px 32px 0 0;
-            /* floating effect with subtle shadow */
             box-shadow: 0 6px 12px -6px rgba(90, 70, 40, 0.15);
         }
 
-        /* moving gradient shine on the logo */
+        /* main heading – relative for shine pseudo */
         .header h1 {
-            font-size: 1.5rem;           /* slightly reduced to match compact bar scale */
+            font-size: 1.5rem;
             font-weight: 600;
             letter-spacing: -0.5px;
-            color: #2c4532;  /* deep green */
+            color: #2c4532;
             display: flex;
             align-items: center;
             gap: 8px;
             position: relative;
-            overflow: hidden;   /* clips the shine effect while moving */
+            overflow: hidden;   /* clips the moving glow */
             line-height: 1.3;
         }
 
+        /* THE NEW GRADIENT: size = quarter width, slow animation (8s) */
         .header h1::after {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 240, 160, 0.7), transparent); /* golden shimmer */
-            animation: shine 3.5s infinite linear;
+            background: linear-gradient(90deg, transparent, rgba(255, 240, 150, 0.65), transparent) no-repeat;
+            background-size: 25% 100%;          /* exactly 1/4 width – smaller glow */
+            animation: shine 8s infinite linear; /* slower, calm feeling */
             pointer-events: none;
             z-index: 2;
         }
 
         @keyframes shine {
-            0% { left: -100%; }
-            20% { left: 100%; }
-            100% { left: 100%; }
+            0% { background-position: -25% 0; }  /* start off left edge */
+            100% { background-position: 125% 0; } /* finish off right edge */
         }
 
-        /* main feather and tiny feather styling */
+        /* BIGGER FEATHER now gets the flying/falling animation (moved from tiny) */
         .main-feather {
-            color: #c9a43b;  /* soft gold */
+            color: #c9a43b;
             font-size: 1.8rem;
+            display: inline-block;
+            animation: floatFall 4s ease-in-out infinite; /* calm float */
+            transform-origin: center center;
         }
 
+        /* TINY FEATHER: static, no animation, just subtle color */
         .tiny-feather {
             font-size: 0.9rem;
             color: #dbb042;
             margin-left: 2px;
-            animation: floatFall 3s ease-in-out infinite;
-            display: inline-block;
-            transform-origin: center center;
+            /* animation removed – now still */
+            opacity: 0.9;
         }
 
-        /* flying / falling esthetic for the tiny feather */
+        /* floating / falling effect – same as before, now on main feather */
         @keyframes floatFall {
             0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
-            25% { transform: translateY(-6px) rotate(-12deg); opacity: 1; }
-            60% { transform: translateY(4px) rotate(8deg); opacity: 0.8; }
+            25% { transform: translateY(-6px) rotate(-10deg); opacity: 1; }
+            60% { transform: translateY(4px) rotate(7deg); opacity: 0.8; }
             100% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
         }
 
         .header .tagline {
-            font-size: 0.75rem;          /* adjusted to fit compact bar */
+            font-size: 0.75rem;
             color: #7e6b4b;
             margin-top: 2px;
             display: flex;
@@ -124,7 +125,7 @@
             font-size: 0.65rem;
         }
 
-        /* main content = vertical tiktok feed style */
+        /* main content – tiktok style feed */
         .main-content {
             flex: 1;
             overflow-y: auto;
@@ -135,7 +136,6 @@
             gap: 1rem;
         }
 
-        /* hide all sections by default, show active via JS */
         .content-section {
             display: none;
             flex-direction: column;
@@ -145,7 +145,7 @@
             display: flex;
         }
 
-        /* CARD — tiktok style vertical block */
+        /* cards */
         .card {
             background: white;
             border-radius: 24px;
@@ -163,7 +163,7 @@
             align-items: center;
         }
         .badge {
-            background: #dabf8e;  /* gold hue */
+            background: #dabf8e;
             color: #2d3f2a;
             font-size: 0.7rem;
             font-weight: 600;
@@ -285,7 +285,7 @@
             background: white;
         }
 
-        /* bottom navigation – used as reference for top bar height (equal visual mass) */
+        /* bottom navigation */
         .bottom-nav {
             background: #fefcf7;
             border-top: 1px solid #e8dccd;
@@ -337,7 +337,7 @@
 </head>
 <body>
 <div class="app">
-    <!-- header with golden feather branding & moving shine – now flush top, curved corner to corner -->
+    <!-- header: big feather now floating, glow slower and quarter width -->
     <div class="header">
         <h1>
             <i class="fas fa-feather main-feather"></i> The Golden Feather
@@ -396,14 +396,14 @@
                 <p style="font-size:0.8rem; color:#927f63;"><i class="fas fa-truck"></i> wedding / event orders welcome</p>
             </div>
 
-            <!-- card 4: testimonial / marketing (updated to Golden Feather) -->
+            <!-- card 4: testimonial -->
             <div class="card promo-banner">
                 <i class="fas fa-quote-right" style="font-size:2rem; opacity:0.5;"></i>
                 <p style="font-weight:500;">“Golden Feather always has chickens ready. Booking here is easier than finding in town.”</p>
                 <p style="margin-top:0.3rem;">— Rita, repeat customer</p>
             </div>
 
-            <!-- card 5: referral + loyalty (updated to feather) -->
+            <!-- card 5: referral + loyalty -->
             <div class="card" style="background:#fff6e9;">
                 <div class="row">
                     <i class="fas fa-gem" style="color:#c9a43b; font-size:2rem;"></i>
@@ -434,7 +434,7 @@
             </div>
         </section>
 
-        <!-- BULK ORDERS (with dynamic pricing) -->
+        <!-- BULK ORDERS -->
         <section id="bulkSection" class="content-section">
             <div class="card">
                 <div class="card-title">Bulk poultry pricing</div>
@@ -496,7 +496,7 @@
         </section>
     </main>
 
-    <!-- BOTTOM NAVIGATION (5 items) – reference for top bar height (equal visual mass) -->
+    <!-- BOTTOM NAVIGATION -->
     <nav class="bottom-nav">
         <div class="nav-item active" data-section="homeSection"><i class="fas fa-home"></i><span>Home</span></div>
         <div class="nav-item" data-section="bookSection"><i class="fas fa-calendar-plus"></i><span>Book</span></div>
@@ -519,11 +519,8 @@
         };
 
         function activateSection(sectionId) {
-            // hide all sections
             Object.values(sections).forEach(s => s.classList.remove('active'));
-            // show selected
             if (sections[sectionId]) sections[sectionId].classList.add('active');
-            // update nav active class
             navItems.forEach(item => {
                 const data = item.getAttribute('data-section');
                 if (data === sectionId) {
@@ -541,7 +538,7 @@
             });
         });
 
-        // bulk calculator logic (for Bulk section)
+        // bulk calculator logic
         const bulkQty = document.getElementById('bulkQty');
         const bulkTotal = document.getElementById('bulkTotal');
         const pricePerUnitSpan = document.getElementById('pricePerUnit');
@@ -576,5 +573,6 @@
         }
     })();
 </script>
+<!-- small note: main feather now floats, tiny feather still, glow slowed (8s) and narrowed to 25% width -->
 </body>
 </html>
