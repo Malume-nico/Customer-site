@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>The Golden Feather· it just tastes right </title>
+    <title>The Golden Feather · it just tastes right</title>
     <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -36,12 +36,17 @@
             border: 1px solid #e8dccd;
         }
 
-        /* sticky header */
+        /* sticky header — always on top, even if content scrolls (header is outside scroll area) */
         .header {
             padding: 1rem 1.2rem 0.5rem 1.2rem;
             background: #fefcf7;
             border-bottom: 1px solid #efe5d5;
+            flex-shrink: 0;   /* ensures header stays fixed in flex column */
+            position: relative;
+            z-index: 10;
         }
+
+        /* moving gradient shine on the logo */
         .header h1 {
             font-size: 1.8rem;
             font-weight: 600;
@@ -49,12 +54,53 @@
             color: #2c4532;  /* deep green */
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;   /* clips the shine effect while moving */
         }
-        .header h1 i {
+
+        .header h1::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 240, 160, 0.7), transparent); /* golden shimmer */
+            animation: shine 3.5s infinite linear;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        /* main feather and tiny feather styling */
+        .main-feather {
             color: #c9a43b;  /* soft gold */
             font-size: 2rem;
         }
+
+        .tiny-feather {
+            font-size: 1rem;
+            color: #dbb042;
+            margin-left: 2px;
+            animation: floatFall 3s ease-in-out infinite;
+            display: inline-block;
+            transform-origin: center center;
+        }
+
+        /* flying / falling esthetic for the tiny feather */
+        @keyframes floatFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+            25% { transform: translateY(-6px) rotate(-12deg); opacity: 1; }
+            60% { transform: translateY(4px) rotate(8deg); opacity: 0.8; }
+            100% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+        }
+
         .header .tagline {
             font-size: 0.8rem;
             color: #7e6b4b;
@@ -242,6 +288,7 @@
             align-items: center;
             padding: 0.4rem 0.2rem 0.2rem;
             box-shadow: 0 -2px 8px rgba(0,0,0,0.02);
+            flex-shrink: 0;
         }
         .nav-item {
             flex: 1;
@@ -284,10 +331,11 @@
 </head>
 <body>
 <div class="app">
-    <!-- header with golden claws branding -->
+    <!-- header with golden feather branding & moving shine -->
     <div class="header">
         <h1>
-            <i class="fas fa-paw"></i> GOLDEN CLAWS
+            <i class="fas fa-feather main-feather"></i> The Golden Feather
+            <i class="fas fa-feather tiny-feather"></i> <!-- tiny feather for flying/falling effect -->
         </h1>
         <div class="tagline">
             <i class="fas fa-seedling" style="color:#4e7f5a;"></i> quality from growth to table
@@ -342,18 +390,18 @@
                 <p style="font-size:0.8rem; color:#927f63;"><i class="fas fa-truck"></i> wedding / event orders welcome</p>
             </div>
 
-            <!-- card 4: testimonial / marketing -->
+            <!-- card 4: testimonial / marketing (updated to Golden Feather) -->
             <div class="card promo-banner">
                 <i class="fas fa-quote-right" style="font-size:2rem; opacity:0.5;"></i>
-                <p style="font-weight:500;">“Golden Claws always has chickens ready. Booking here is easier than finding in town.”</p>
+                <p style="font-weight:500;">“Golden Feather always has chickens ready. Booking here is easier than finding in town.”</p>
                 <p style="margin-top:0.3rem;">— Rita, repeat customer</p>
             </div>
 
-            <!-- card 5: referral + loyalty -->
+            <!-- card 5: referral + loyalty (updated to feather) -->
             <div class="card" style="background:#fff6e9;">
                 <div class="row">
                     <i class="fas fa-gem" style="color:#c9a43b; font-size:2rem;"></i>
-                    <span><strong>Loyalty claw</strong> · refer a friend, get 50 off</span>
+                    <span><strong>Loyalty feather</strong> · refer a friend, get 50 off</span>
                 </div>
                 <button class="btn-outline btn-small" style="width:100%;" onclick="alert('🔗 share referral link')"><i class="fas fa-share-alt"></i> invite & earn</button>
             </div>
@@ -431,7 +479,7 @@
             </div>
             <div class="card">
                 <p><i class="fas fa-gift"></i> Loyalty points: 340 (next reward 500)</p>
-                <p><i class="fas fa-ticket-alt"></i> Referral code: CLAW-ALEX</p>
+                <p><i class="fas fa-ticket-alt"></i> Referral code: FEATHER-ALEX</p>
             </div>
             <div class="card">
                 <button class="btn-outline" style="width:100%;" onclick="alert('view order history')">my order history</button>
@@ -520,12 +568,7 @@
             bulkQty.addEventListener('input', updateBulkPrice);
             updateBulkPrice(); // initial
         }
-
-        // Also any reserve buttons already have alerts; we keep them for demo.
-        // Pre-book messaging shows quality process (already embedded in cards)
     })();
 </script>
-
-<!-- subtle extra: always show that growing process matters -->
 </body>
-                                                  </html>
+</html>
