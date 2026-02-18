@@ -448,6 +448,56 @@
         .card p i {
             color: #c9a43b;
         }
+
+        /* by‑products grid (new, but uses existing card styles) */
+        .byproducts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            margin: 0.4rem 0;
+        }
+        .byproduct-item {
+            background: #f9f2e7;
+            border-radius: 20px;
+            padding: 0.8rem 0.4rem;
+            text-align: center;
+            border: 1px solid #e2d2bc;
+        }
+        .byproduct-item i {
+            font-size: 1.8rem;
+            color: #a8862c;
+            margin-bottom: 4px;
+        }
+        .byproduct-item .byproduct-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #2d3f2a;
+        }
+        .byproduct-item .byproduct-price {
+            font-weight: 700;
+            color: #3f5c3a;
+            margin: 4px 0;
+        }
+        .byproduct-item button {
+            background: white;
+            border: 1px solid #c9a43b;
+            border-radius: 30px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #2c4532;
+            width: 100%;
+            cursor: pointer;
+        }
+        .freezer-badge {
+            background: #aac7b2;
+            color: #1d3b22;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -463,12 +513,12 @@
         </div>
     </div>
 
-    <!-- main content with brand additions (only inserted, no original removal) -->
+    <!-- main content: brand elements + new purchase options (old product cards removed) -->
     <main class="main-content" id="mainContent">
-        <!-- HOME section with new branding cards at the top -->
+        <!-- HOME section with brand cards + new chicken options + by‑products -->
         <section id="homeSection" class="content-section active">
 
-            <!-- 1. HERO BRAND SECTION (exact brand language) -->
+            <!-- 1. HERO BRAND SECTION (exact brand language) - unchanged -->
             <div class="card hero-brand">
                 <div class="hero-headline">Farm Fresh Chicken, Raised for Your Family</div>
                 <div class="hero-subheadline">Trusted Local Poultry Supplier</div>
@@ -483,14 +533,14 @@
                 <div style="font-size: 0.8rem; color: #7e6b4b; margin-top: 6px;"><i class="far fa-clock"></i> harvested early morning · always fresh</div>
             </div>
 
-            <!-- 2. BRAND STORY SECTION (community & freshness) -->
+            <!-- 2. BRAND STORY SECTION - unchanged -->
             <div class="card brand-story">
                 <div class="card-title" style="font-size: 1.3rem;">🕊️ Our promise</div>
                 <p>We raise every chicken with care on open pastures, just minutes from your home. No freeze, no shortcuts — only clean, honest poultry delivered within hours of harvest.</p>
                 <p><i class="fas fa-people-group" style="color:#c9a43b;"></i> <strong>Community first:</strong> we supply local families, braais, and restaurants because we live here too. Freshness isn’t just our business — it’s our table.</p>
             </div>
 
-            <!-- 3. TRUST SIGNALS (small cards / icons) -->
+            <!-- 3. TRUST SIGNALS - unchanged -->
             <div class="card trust-signals">
                 <div class="trust-grid">
                     <div class="trust-item"><i class="fas fa-check-circle"></i> Always fresh stock</div>
@@ -501,7 +551,7 @@
                 </div>
             </div>
 
-            <!-- 4. FOOD DESIRE VISUALS (appetite triggers) -->
+            <!-- 4. FOOD DESIRE VISUALS - unchanged -->
             <div class="card food-desire">
                 <div style="font-weight: 600; margin-bottom: 0.4rem; color: #4f3f2b;"><i class="fas fa-utensils"></i> From our farm to your braai</div>
                 <div class="desire-scroll">
@@ -513,7 +563,7 @@
                 <p style="font-size:0.9rem; margin-top:6px; color:#735f44;"><i class="fas fa-star"></i> Sunday braai? We've got the freshest birds.</p>
             </div>
 
-            <!-- 5. REPEAT PURCHASE PSYCHOLOGY (micro copy / habit forming) -->
+            <!-- 5. REPEAT PURCHASE PSYCHOLOGY - unchanged -->
             <div class="repeat-psychology">
                 <span class="badge"><i class="fas fa-redo-alt"></i> Order again in one tap</span>
                 <span class="badge"><i class="fas fa-calendar-alt"></i> Monthly supply available</span>
@@ -521,59 +571,147 @@
                 <span class="badge"><i class="fas fa-truck-fast"></i> Fast re-order for families</span>
             </div>
 
-            <!-- original home cards (exactly as before, untouched) -->
+            <!-- ========== NEW CHICKEN OPTIONS ========== -->
+
+            <!-- Option 1: Whole Live Chicken -->
             <div class="card">
                 <div class="card-header">
-                    <span class="badge"><i class="fas fa-check-circle"></i> ready now</span>
+                    <span class="badge"><i class="fas fa-egg"></i> live bird</span>
                     <i class="fas fa-leaf" style="color:#6f8f6d;"></i>
                 </div>
-                <div class="card-title">Free‑Range Broilers</div>
-                <div class="card-desc"><i class="fas fa-clock"></i> harvested today, limited stock</div>
-                <div class="price">110 <small>per chicken</small></div>
+                <div class="card-title">🐔 Whole Live Chicken</div>
+                <div class="card-desc"><i class="fas fa-clock"></i> you receive live chicken · no by‑products</div>
+                <div class="price">R100 <small>per chicken</small></div>
                 <div class="row">
-                    <button class="btn btn-small" onclick="alert('🛒 Added 1 chicken (110)')"><i class="fas fa-cart-plus"></i> buy now</button>
-                    <button class="btn btn-outline btn-small" onclick="alert('📦 Pre‑booking option: full amount or deposit')"><i class="fas fa-calendar-check"></i> reserve</button>
+                    <button class="btn btn-small" onclick="alert('🛒 Whole live chicken (R100) added to cart. Arrange pickup.')"><i class="fas fa-cart-plus"></i> quick buy</button>
+                    <button class="btn btn-outline btn-small" onclick="alert('⭐ One‑tap reorder: whole live chicken')"><i class="fas fa-redo-alt"></i> reorder</button>
                 </div>
             </div>
+
+            <!-- Option 2: Standard Prepared Chicken (by‑products retained) -->
             <div class="card">
                 <div class="card-header">
-                    <span class="badge green"><i class="fas fa-spinner"></i> growing · ready 10 May</span>
-                    <span class="badge">15 left</span>
+                    <span class="badge green"><i class="fas fa-kitchen-set"></i> standard prep</span>
+                    <span class="badge">by‑products kept</span>
                 </div>
-                <div class="card-title">🌽 Corn‑Fed Special</div>
-                <div class="growing-progress"><div class="progress-fill" style="width:65%"></div></div>
-                <div class="card-desc">batch #GC2404 · expected 10 May, reserve now</div>
-                <div class="price">110 <small>deposit 30%</small></div>
-                <button class="btn btn-gold" onclick="alert('✅ Pre‑booked! You’ll get a notification when ready.')"><i class="fas fa-check"></i> reserve early</button>
+                <div class="card-title">🔪 Standard Prepared Chicken</div>
+                <div class="card-desc"><i class="fas fa-utensils"></i> cleaned & ready‑to‑cook</div>
+                <div class="price">R100 <small>per chicken</small></div>
+                <p style="font-size:0.85rem; background:#f6ede1; padding:0.4rem; border-radius:30px; color:#5f4e36;">
+                    <i class="fas fa-separator"></i> Farm retains: feet, head/neck, gizzards, liver, heart, intestines — sold separately below.
+                </p>
+                <div class="row">
+                    <button class="btn btn-small" onclick="alert('🛒 Standard prepared chicken (R100) added. By‑products not included.')"><i class="fas fa-cart-plus"></i> buy</button>
+                    <button class="btn btn-outline btn-small" onclick="alert('⭐ Reorder: standard prepared chicken')"><i class="fas fa-redo-alt"></i> reorder</button>
+                </div>
             </div>
+
+            <!-- Option 3: Premium Fully Prepared Chicken (all parts included) -->
             <div class="card">
                 <div class="card-header">
-                    <span class="badge"><i class="fas fa-users"></i> family pack</span>
+                    <span class="badge" style="background:#c9a43b; color:#1e2b1a;"><i class="fas fa-crown"></i> premium</span>
                 </div>
-                <div class="card-title">10 chickens · bulk discount</div>
-                <div class="card-desc"><i class="fas fa-tag icon-green"></i> 75 each · total 750 (you save 350)</div>
-                <div class="price">750 <small>for 10</small></div>
+                <div class="card-title">🍗 Premium Fully Prepared</div>
+                <div class="card-desc"><i class="fas fa-check-circle"></i> includes all parts (feet, gizzards, liver, heart, etc.)</div>
+                <div class="price">R115 <small>per chicken · everything included</small></div>
                 <div class="row">
-                    <button class="btn btn-small" onclick="alert('Bulk order 10 pcs (750) added')"><i class="fas fa-gift"></i> order pack</button>
-                    <button class="btn btn-outline btn-small" onclick="alert('Schedule pickup / delivery')">schedule</button>
+                    <button class="btn btn-gold btn-small" onclick="alert('🛒 Premium prepared chicken (R115) – you get everything.')"><i class="fas fa-cart-plus"></i> buy premium</button>
+                    <button class="btn btn-outline btn-small" onclick="alert('⭐ Reorder: premium chicken')"><i class="fas fa-redo-alt"></i> reorder</button>
                 </div>
-                <p style="font-size:0.8rem; color:#927f63;"><i class="fas fa-truck"></i> wedding / event orders welcome</p>
             </div>
-            <div class="card promo-banner">
-                <i class="fas fa-quote-right" style="font-size:2rem; opacity:0.5;"></i>
-                <p style="font-weight:500;">“Golden Feather always has chickens ready. Booking here is easier than finding in town.”</p>
-                <p style="margin-top:0.3rem;">— Rita, repeat customer</p>
+
+            <!-- Option 4: Bulk Buyer Option (min 10, R75 each, by‑products retained) -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge green"><i class="fas fa-users"></i> bulk 10+</span>
+                    <span class="badge">restaurants / resellers</span>
+                </div>
+                <div class="card-title">📦 Bulk Buyer (minimum 10)</div>
+                <div class="card-desc"><i class="fas fa-tag icon-green"></i> R75 per chicken · farm keeps all by‑products</div>
+                <div class="bulk-calc" style="margin-top:0;">
+                    <label>Quantity (min. 10 for bulk rate)</label>
+                    <div class="quantity-selector">
+                        <button class="bulkOptionDec">−</button>
+                        <input type="number" class="bulkOptionQty" value="10" min="10" max="200" step="1">
+                        <button class="bulkOptionInc">+</button>
+                    </div>
+                    <p style="font-size:1.2rem; font-weight:600;">Total: R<span class="bulkOptionTotal">750</span></p>
+                    <p><span class="bulkOptionUnit">R75 / chicken</span></p>
+                </div>
+                <div class="row">
+                    <button class="btn btn-small" onclick="let q=this.closest('.card')?.querySelector('.bulkOptionQty')?.value||10; alert(`Bulk order for ${q} chickens – total R${q*75} (by‑products retained by farm)`);"><i class="fas fa-truck"></i> order bulk</button>
+                    <button class="btn btn-outline btn-small" onclick="alert('⭐ Quick reorder: bulk 10 chickens')"><i class="fas fa-redo-alt"></i> reorder</button>
+                </div>
             </div>
+
+            <!-- ========== BY‑PRODUCTS SALES (separate, packaged, frozen available) ========== -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge" style="background:#3f6e4c; color:white;"><i class="fas fa-boxes-stacked"></i> farm by‑products</span>
+                    <span class="freezer-badge"><i class="fas fa-snowflake"></i> frozen storage</span>
+                </div>
+                <div class="card-title">🍗 Feet · Gizzards · Liver & more</div>
+                <p class="card-desc">Packaged separately from our standard prep chickens. Always available frozen or fresh.</p>
+                
+                <div class="byproducts-grid">
+                    <!-- feet -->
+                    <div class="byproduct-item">
+                        <i class="fas fa-paw"></i>
+                        <div class="byproduct-name">Chicken feet</div>
+                        <div class="byproduct-price">R15 / pack</div>
+                        <button onclick="alert('🛒 Added chicken feet pack (R15)')"><i class="fas fa-cart-plus"></i> add</button>
+                    </div>
+                    <!-- heads & necks -->
+                    <div class="byproduct-item">
+                        <i class="fas fa-drumstick-bite"></i>
+                        <div class="byproduct-name">Heads & necks</div>
+                        <div class="byproduct-price">R10 / pack</div>
+                        <button onclick="alert('🛒 Added heads & necks pack (R10)')"><i class="fas fa-cart-plus"></i> add</button>
+                    </div>
+                    <!-- gizzards -->
+                    <div class="byproduct-item">
+                        <i class="fas fa-utensils"></i>
+                        <div class="byproduct-name">Gizzards</div>
+                        <div class="byproduct-price">R20 / pack</div>
+                        <button onclick="alert('🛒 Added gizzards pack (R20)')"><i class="fas fa-cart-plus"></i> add</button>
+                    </div>
+                    <!-- liver -->
+                    <div class="byproduct-item">
+                        <i class="fas fa-heart"></i>
+                        <div class="byproduct-name">Liver</div>
+                        <div class="byproduct-price">R15 / pack</div>
+                        <button onclick="alert('🛒 Added liver pack (R15)')"><i class="fas fa-cart-plus"></i> add</button>
+                    </div>
+                    <!-- heart -->
+                    <div class="byproduct-item">
+                        <i class="fas fa-heartbeat"></i>
+                        <div class="byproduct-name">Heart</div>
+                        <div class="byproduct-price">R15 / pack</div>
+                        <button onclick="alert('🛒 Added heart pack (R15)')"><i class="fas fa-cart-plus"></i> add</button>
+                    </div>
+                    <!-- intestines -->
+                    <div class="byproduct-item">
+                        <i class="fas fa-circle"></i>
+                        <div class="byproduct-name">Intestines</div>
+                        <div class="byproduct-price">R10 / pack</div>
+                        <button onclick="alert('🛒 Added intestines pack (R10)')"><i class="fas fa-cart-plus"></i> add</button>
+                    </div>
+                </div>
+                <p style="font-size:0.8rem; color:#735f44; margin-top:6px;"><i class="fas fa-snowflake"></i> All by‑products available frozen — select at checkout.</p>
+                <button class="btn-outline btn-small" style="width:100%;" onclick="alert('🛒 View all by‑products in cart')">go to by‑products cart</button>
+            </div>
+
+            <!-- small reminder / loyalty (keeping one original element to maintain vibe) -->
             <div class="card" style="background:#fff6e9;">
                 <div class="row">
                     <i class="fas fa-gem" style="color:#c9a43b; font-size:2rem;"></i>
-                    <span><strong>Loyalty feather</strong> · refer a friend, get 50 off</span>
+                    <span><strong>Loyalty feather</strong> · refer a friend, get R50 off</span>
                 </div>
                 <button class="btn-outline btn-small" style="width:100%;" onclick="alert('🔗 share referral link')"><i class="fas fa-share-alt"></i> invite & earn</button>
             </div>
         </section>
 
-        <!-- other sections (unchanged) -->
+        <!-- other sections (book, bulk, orders, profile) – bulkSection updated to new pricing -->
         <section id="bookSection" class="content-section">
             <div class="card">
                 <div class="card-header"><span class="badge green"><i class="fas fa-seedling"></i> growing</span></div>
@@ -593,10 +731,12 @@
                 <p><i class="fas fa-bell"></i> Notifications: we’ll alert you 2 days before pickup.</p>
             </div>
         </section>
+
+        <!-- bulk section updated to reflect new R75/R100 pricing -->
         <section id="bulkSection" class="content-section">
             <div class="card">
-                <div class="card-title">Bulk poultry pricing</div>
-                <p>1 chicken = 110 | 10+ chickens = 75 each</p>
+                <div class="card-title">Bulk poultry pricing (updated)</div>
+                <p>1‑9 chickens = R100 each | 10+ chickens = R75 each (farm retains by‑products)</p>
                 <div class="bulk-calc">
                     <label>Quantity (min. 10 for bulk rate)</label>
                     <div class="quantity-selector">
@@ -604,9 +744,9 @@
                         <input type="number" id="bulkQty" value="10" min="1" max="200" step="1">
                         <button id="bulkInc">+</button>
                     </div>
-                    <p style="font-size:1.2rem; font-weight:600;">Total: <span id="bulkTotal">750</span> </p>
-                    <p><span id="pricePerUnit" style="color:#2c4532;">75 / chicken</span></p>
-                    <button class="btn" onclick="let qty = document.getElementById('bulkQty').value; alert(`Bulk order for ${qty} chickens - total ${qty>=10?qty*75:qty*110}`)"><i class="fas fa-truck"></i> order bulk</button>
+                    <p style="font-size:1.2rem; font-weight:600;">Total: R<span id="bulkTotal">750</span> </p>
+                    <p><span id="pricePerUnit" style="color:#2c4532;">R75 / chicken</span> (by‑products kept by farm)</p>
+                    <button class="btn" onclick="let qty = document.getElementById('bulkQty').value; alert(`Bulk order for ${qty} chickens – total R${qty>=10?qty*75:qty*100}. By‑products retained.`)"><i class="fas fa-truck"></i> order bulk</button>
                 </div>
                 <p><i class="fas fa-store"></i> Restaurant / wedding? Contact for contract pricing.</p>
             </div>
@@ -615,6 +755,7 @@
                 <p>Monthly chicken delivery · coming soon</p>
             </div>
         </section>
+
         <section id="ordersSection" class="content-section">
             <div class="order-item">
                 <div><strong>#GC2341</strong> · 5 chickens <span style="float:right;">ready 4 May</span></div>
@@ -660,7 +801,7 @@
     </nav>
 </div>
 
-<!-- JavaScript (original untouched, only padding logic remains) -->
+<!-- JavaScript (original untouched + new bulk option handlers) -->
 <script>
     (function() {
         const navItems = document.querySelectorAll('.nav-item');
@@ -688,7 +829,7 @@
             });
         });
 
-        // bulk calculator
+        // bulk calculator (main bulk section)
         const bulkQty = document.getElementById('bulkQty');
         const bulkTotal = document.getElementById('bulkTotal');
         const pricePerUnitSpan = document.getElementById('pricePerUnit');
@@ -701,10 +842,10 @@
             if (qty > 200) qty = 200;
             bulkQty.value = qty;
 
-            let unitPrice = (qty >= 10) ? 75 : 110;
+            let unitPrice = (qty >= 10) ? 75 : 100;
             let total = qty * unitPrice;
             bulkTotal.innerText = total;
-            pricePerUnitSpan.innerText = `${unitPrice} / chicken`;
+            pricePerUnitSpan.innerText = `R${unitPrice} / chicken`;
         }
 
         if (bulkDec && bulkInc && bulkQty) {
@@ -722,7 +863,47 @@
             updateBulkPrice();
         }
 
-        // fixed header/footer padding (ensures content not hidden)
+        // bulk option card handlers (multiple possible)
+        document.querySelectorAll('.bulkOptionDec').forEach(btn => {
+            btn.addEventListener('click', e => {
+                const card = e.target.closest('.card');
+                const input = card.querySelector('.bulkOptionQty');
+                let val = parseInt(input.value, 10) || 10;
+                if (val > 10) input.value = val - 1;
+                updateBulkOptionCard(card);
+            });
+        });
+        document.querySelectorAll('.bulkOptionInc').forEach(btn => {
+            btn.addEventListener('click', e => {
+                const card = e.target.closest('.card');
+                const input = card.querySelector('.bulkOptionQty');
+                let val = parseInt(input.value, 10) || 10;
+                if (val < 200) input.value = val + 1;
+                updateBulkOptionCard(card);
+            });
+        });
+        document.querySelectorAll('.bulkOptionQty').forEach(input => {
+            input.addEventListener('input', e => {
+                const card = e.target.closest('.card');
+                updateBulkOptionCard(card);
+            });
+        });
+
+        function updateBulkOptionCard(card) {
+            if (!card) return;
+            const input = card.querySelector('.bulkOptionQty');
+            const totalSpan = card.querySelector('.bulkOptionTotal');
+            const unitSpan = card.querySelector('.bulkOptionUnit');
+            let qty = parseInt(input.value, 10);
+            if (isNaN(qty) || qty < 10) qty = 10;
+            if (qty > 200) qty = 200;
+            input.value = qty;
+            let unit = 75; // bulk card always at 75
+            totalSpan.innerText = qty * unit;
+            unitSpan.innerText = `R${unit} / chicken`;
+        }
+
+        // fixed header/footer padding
         const app = document.querySelector('.app');
         const header = document.querySelector('.header');
         const bottomNav = document.querySelector('.bottom-nav');
@@ -746,6 +927,5 @@
         }
     })();
 </script>
-<!-- brand storytelling added, no original UI changed -->
 </body>
 </html>
