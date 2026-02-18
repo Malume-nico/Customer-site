@@ -571,8 +571,7 @@
                 <span class="badge"><i class="fas fa-truck-fast"></i> Fast re-order for families</span>
             </div>
 
-            <!-- ========== NEW FLEXIBLE SUBSCRIPTION TIERS (added without breaking existing flow) ========== -->
-            <!-- intro card with microcopy -->
+            <!-- intro card with microcopy (unchanged) -->
             <div class="card" style="background: #f2ebe0;">
                 <div class="card-header">
                     <span class="badge" style="background:#c9a43b; color:#1e2b1a;"><i class="fas fa-calendar-check"></i> monthly subscription</span>
@@ -587,7 +586,54 @@
                 <p style="font-size:0.9rem; margin-top:6px;"><i class="fas fa-info-circle"></i> Minimum 3 chickens per subscription · billed monthly · cancel or modify with one tap</p>
             </div>
 
-            <!-- TIER 1: Live Chicken Subscription -->
+            <!-- ===== NEW TIER 1 BULK/BUNCH SUBSCRIPTION ===== -->
+            <!-- Fixed price R75/chicken, no discount, min 3, flexible monthly & daily quantity -->
+            <div class="card" id="tier1BulkCard">
+                <div class="card-header">
+                    <span class="badge" style="background:#2c4532; color:white;"><i class="fas fa-warehouse"></i> Tier 1 · Bulk/Bunch</span>
+                    <span class="badge" style="background:#c9a43b;">R75 / chicken · no discount</span>
+                </div>
+                <div class="card-title">🥩 Bulk subscription for restaurants & Chisanyamas</div>
+                <div class="row" style="justify-content: flex-start; gap: 0.3rem; flex-wrap: wrap; margin-bottom: 0.3rem;">
+                    <span class="badge" style="background:#eddfcd;"><i class="fas fa-box"></i> Keep your daily stock ready</span>
+                    <span class="badge" style="background:#eddfcd;"><i class="fas fa-sliders-h"></i> Adjust your daily delivery anytime</span>
+                    <span class="badge" style="background:#eddfcd;"><i class="fas fa-calendar-alt"></i> Plan your month, get fresh chickens every day</span>
+                </div>
+
+                <!-- Monthly quantity selector -->
+                <label style="font-weight:600; margin-top:6px;">📆 Monthly total (minimum 3)</label>
+                <div class="quantity-selector">
+                    <button id="tier1MonthlyDec">−</button>
+                    <input type="number" id="tier1MonthlyQty" value="30" min="3" max="200" step="1">
+                    <button id="tier1MonthlyInc">+</button>
+                </div>
+
+                <!-- Daily delivery quantity selector -->
+                <label style="font-weight:600; margin-top:6px;">🚚 Daily delivery quantity (minimum 3)</label>
+                <div class="quantity-selector">
+                    <button id="tier1DailyDec">−</button>
+                    <input type="number" id="tier1DailyQty" value="3" min="3" max="200" step="1">
+                    <button id="tier1DailyInc">+</button>
+                </div>
+
+                <!-- Info & price -->
+                <p style="font-size:0.9rem; background:#f2ebe0; padding:0.5rem; border-radius:30px;">
+                    <i class="fas fa-truck"></i> Approx. <span id="deliveriesPerMonth">10</span> deliveries this month · billed monthly
+                </p>
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <span class="price" style="font-size:1.2rem;">Monthly total:</span>
+                    <span class="price" style="font-size:1.8rem;">R<span id="tier1MonthlyPrice">2250.00</span></span>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="row" style="margin-top:6px;">
+                    <button class="btn btn-gold" id="tier1SubscribeBtn"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
+                    <button class="btn btn-outline btn-small" id="tier1ExtraBtn"><i class="fas fa-plus-circle"></i> request extra chickens</button>
+                </div>
+                <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-redo-alt"></i> Next billing: 30 days · cancel/modify anytime · min. 3 per delivery</p>
+            </div>
+
+            <!-- TIER 1: Live Chicken Subscription (existing) -->
             <div class="card" id="subLiveCard">
                 <div class="card-header">
                     <span class="badge"><i class="fas-regular fa-egg"></i> live · subscription</span>
@@ -613,7 +659,7 @@
                 <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-redo-alt"></i> Next billing: 30 days · easy cancellation</p>
             </div>
 
-            <!-- TIER 2: Prepared Chicken (farm keeps by‑products) -->
+            <!-- TIER 2: Prepared Chicken (farm keeps by‑products) (existing) -->
             <div class="card" id="subStdCard">
                 <div class="card-header">
                     <span class="badge green"><i class="fas fa-kitchen-set"></i> standard prep · subscription</span>
@@ -639,7 +685,7 @@
                 <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-sliders-h"></i> Adjust quantity or cancel in one tap</p>
             </div>
 
-            <!-- TIER 3: Premium Prepared with all by‑products -->
+            <!-- TIER 3: Premium Prepared with all by‑products (existing) -->
             <div class="card" id="subPremCard">
                 <div class="card-header">
                     <span class="badge" style="background:#c9a43b; color:#1e2b1a;"><i class="fas fa-crown"></i> premium · subscription</span>
@@ -664,7 +710,7 @@
                 <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-calendar-alt"></i> Billed monthly · upgrade/downgrade anytime</p>
             </div>
 
-            <!-- easy management card (one‑tap upgrade/downgrade/cancel) -->
+            <!-- easy management card (one‑tap upgrade/downgrade/cancel) unchanged -->
             <div class="card" style="background:#faf3e8; border:2px dashed #c9a43b;">
                 <div class="card-header">
                     <span class="badge" style="background:#2c4532; color:white;"><i class="fas fa-credit-card"></i> your subscription</span>
@@ -679,7 +725,7 @@
                 <p style="font-size:0.8rem; margin-top:6px;"><i class="fas fa-clock"></i> Changes take effect next billing cycle.</p>
             </div>
 
-            <!-- ========== EXISTING CHICKEN OPTIONS (untouched, just copied below) ========== -->
+            <!-- ========== EXISTING CHICKEN OPTIONS (untouched) ========== -->
 
             <!-- Option 1: Whole Live Chicken (existing) -->
             <div class="card">
@@ -1011,7 +1057,7 @@
             unitSpan.innerText = `R${unit} / chicken`;
         }
 
-        // ========== NEW SUBSCRIPTION QUANTITY HANDLERS ==========
+        // ========== EXISTING SUBSCRIPTION QUANTITY HANDLERS ==========
         // Tier 1: Live
         const subLiveQty = document.getElementById('subLiveQty');
         const subLiveTotal = document.getElementById('subLiveTotal');
@@ -1098,6 +1144,85 @@
             subPremQty.addEventListener('input', updatePremSub);
             updatePremSub();
         }
+
+        // ========== NEW TIER 1 BULK SUBSCRIPTION HANDLERS ==========
+        const tier1MonthlyQty = document.getElementById('tier1MonthlyQty');
+        const tier1DailyQty = document.getElementById('tier1DailyQty');
+        const tier1MonthlyPrice = document.getElementById('tier1MonthlyPrice');
+        const deliveriesSpan = document.getElementById('deliveriesPerMonth');
+        const tier1MonthlyDec = document.getElementById('tier1MonthlyDec');
+        const tier1MonthlyInc = document.getElementById('tier1MonthlyInc');
+        const tier1DailyDec = document.getElementById('tier1DailyDec');
+        const tier1DailyInc = document.getElementById('tier1DailyInc');
+        const TIER1_PRICE = 75;
+
+        function updateTier1() {
+            let monthly = parseInt(tier1MonthlyQty.value, 10);
+            let daily = parseInt(tier1DailyQty.value, 10);
+
+            if (isNaN(monthly) || monthly < 3) monthly = 3;
+            if (isNaN(daily) || daily < 3) daily = 3;
+            if (monthly > 200) monthly = 200;
+            if (daily > 200) daily = 200;
+
+            // Daily cannot exceed monthly total
+            if (daily > monthly) daily = monthly;
+
+            tier1MonthlyQty.value = monthly;
+            tier1DailyQty.value = daily;
+
+            // Calculate total price
+            tier1MonthlyPrice.innerText = (monthly * TIER1_PRICE).toFixed(2);
+
+            // Approximate deliveries this month (based on 30-day month, integer floor)
+            let deliveries = Math.floor(monthly / daily);
+            if (deliveries < 1) deliveries = 1;
+            deliveriesSpan.innerText = deliveries;
+        }
+
+        if (tier1MonthlyDec && tier1MonthlyInc && tier1MonthlyQty) {
+            tier1MonthlyDec.addEventListener('click', () => {
+                let val = parseInt(tier1MonthlyQty.value, 10) || 3;
+                if (val > 3) tier1MonthlyQty.value = val - 1;
+                updateTier1();
+            });
+            tier1MonthlyInc.addEventListener('click', () => {
+                let val = parseInt(tier1MonthlyQty.value, 10) || 3;
+                if (val < 200) tier1MonthlyQty.value = val + 1;
+                updateTier1();
+            });
+            tier1MonthlyQty.addEventListener('input', updateTier1);
+        }
+
+        if (tier1DailyDec && tier1DailyInc && tier1DailyQty) {
+            tier1DailyDec.addEventListener('click', () => {
+                let val = parseInt(tier1DailyQty.value, 10) || 3;
+                if (val > 3) tier1DailyQty.value = val - 1;
+                updateTier1();
+            });
+            tier1DailyInc.addEventListener('click', () => {
+                let val = parseInt(tier1DailyQty.value, 10) || 3;
+                if (val < 200) tier1DailyQty.value = val + 1;
+                updateTier1();
+            });
+            tier1DailyQty.addEventListener('input', updateTier1);
+        }
+
+        // Subscribe button
+        document.getElementById('tier1SubscribeBtn')?.addEventListener('click', () => {
+            let monthly = tier1MonthlyQty.value;
+            let daily = tier1DailyQty.value;
+            let total = (monthly * TIER1_PRICE).toFixed(2);
+            alert(`✅ Subscribed to Tier 1 Bulk plan · ${monthly} chickens per month · R${total}/month · Delivered approx. ${deliveriesSpan.innerText} times this month (${daily} per delivery). You can adjust daily quantity anytime.`);
+        });
+
+        // Extra chickens button
+        document.getElementById('tier1ExtraBtn')?.addEventListener('click', () => {
+            alert('🆕 Request additional fresh chickens for this week. Our team will contact you to confirm quantity and delivery.');
+        });
+
+        // Initialize
+        updateTier1();
 
         // fixed header/footer padding
         const app = document.querySelector('.app');
