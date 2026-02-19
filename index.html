@@ -36,7 +36,7 @@
             border-top: none;
             box-sizing: border-box;
         }
-        /* ===== HEADER fixed ===== */
+        /* ===== HEADER fixed with user dropdown ===== */
         .header {
             padding: 0.5rem 1.2rem 0.6rem 1.2rem;
             background: #fefcf7;
@@ -53,6 +53,9 @@
             box-shadow: 0 6px 12px -6px rgba(90, 70, 40, 0.15);
             border-left: none;
             border-right: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         .header h1 {
             font-size: 1.5rem;
@@ -62,15 +65,14 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            position: relative;
             line-height: 1.3;
+            margin:0;
         }
         .main-feather {
             color: #c9a43b;
             font-size: 1.8rem;
             display: inline-block;
             animation: floatFall 4s ease-in-out infinite;
-            transform-origin: center center;
         }
         @keyframes floatFall {
             0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
@@ -78,23 +80,55 @@
             60% { transform: translateY(4px) rotate(7deg); opacity: 0.8; }
             100% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
         }
-        .header .tagline {
-            font-size: 0.75rem;
-            color: #7e6b4b;
-            margin-top: 2px;
+        .user-menu {
+            position: relative;
+            cursor: pointer;
+        }
+        .user-icon {
+            background: #2c4532;
+            color: #f5e7d3;
+            width: 42px;
+            height: 42px;
+            border-radius: 30px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            font-size: 1.4rem;
+            border: 2px solid #c9a43b;
         }
-        .header .tagline span {
-            background: #e9dbc9;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            font-weight: 500;
-            color: #3a2e1f;
-            font-size: 0.65rem;
+        .user-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: white;
+            border: 1px solid #e0cfbb;
+            border-radius: 24px;
+            width: 260px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            display: none;
+            z-index: 1100;
+            padding: 1rem;
         }
-        /* ===== MAIN CONTENT scrolls naturally ===== */
+        .user-menu.active .user-dropdown {
+            display: block;
+        }
+        .dropdown-item {
+            padding: 0.7rem 0.5rem;
+            border-bottom: 1px solid #f0e0ce;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+        .tagline {
+            font-size: 0.7rem;
+            color: #7e6b4b;
+            margin-top: 2px;
+        }
+        /* ===== MAIN CONTENT ===== */
         .main-content {
             overflow: visible;
             display: block;
@@ -108,7 +142,7 @@
         .content-section.active {
             display: flex;
         }
-        /* cards (original styles untouched) */
+        /* cards (original styles) */
         .card {
             background: white;
             border-radius: 24px;
@@ -156,29 +190,10 @@
             font-size: 1.5rem;
             color: #3f5c3a;
         }
-        .price small {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: #7a6850;
-        }
-        .growing-progress {
-            background: #eee6d9;
-            height: 8px;
-            border-radius: 20px;
-            margin: 6px 0 2px;
-        }
-        .progress-fill {
-            width: 70%;
-            height: 8px;
-            background: #c9a43b;
-            border-radius: 20px;
-        }
-        .row {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
+        .price small { font-size: 0.9rem; font-weight: 400; color: #7a6850; }
+        .growing-progress { background: #eee6d9; height: 8px; border-radius: 20px; margin: 6px 0 2px; }
+        .progress-fill { width: 70%; height: 8px; background: #c9a43b; border-radius: 20px; }
+        .row { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; }
         .btn {
             background: #2c4532;
             border: none;
@@ -196,29 +211,11 @@
             border: 1px solid #1f311f;
             flex: 1 1 auto;
         }
-        .btn-gold {
-            background: #c9a43b;
-            border-color: #a8862c;
-            color: #1e2b1a;
-        }
-        .btn-outline {
-            background: transparent;
-            border: 1.5px solid #c9a43b;
-            color: #4a3e2b;
-        }
-        .btn-small {
-            padding: 0.5rem 1.2rem;
-            font-size: 0.9rem;
-        }
-        .icon-green {
-            color: #3f6e4c;
-        }
-        .bulk-calc {
-            background: #f2ebe0;
-            border-radius: 18px;
-            padding: 1rem;
-            margin-top: 0.5rem;
-        }
+        .btn-gold { background: #c9a43b; border-color: #a8862c; color: #1e2b1a; }
+        .btn-outline { background: transparent; border: 1.5px solid #c9a43b; color: #4a3e2b; }
+        .btn-small { padding: 0.5rem 1.2rem; font-size: 0.9rem; }
+        .icon-green { color: #3f6e4c; }
+        .bulk-calc { background: #f2ebe0; border-radius: 18px; padding: 1rem; margin-top: 0.5rem; }
         .quantity-selector {
             display: flex;
             align-items: center;
@@ -226,26 +223,14 @@
             margin: 0.8rem 0;
         }
         .quantity-selector button {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 1px solid #c0aa83;
-            background: white;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #3f5c3a;
-            cursor: pointer;
+            width: 44px; height: 44px; border-radius: 50%; border: 1px solid #c0aa83; background: white;
+            font-size: 1.4rem; font-weight: 600; color: #3f5c3a; cursor: pointer;
         }
         .quantity-selector input {
-            width: 70px;
-            text-align: center;
-            font-size: 1.2rem;
-            border: 1px solid #d4c0a3;
-            border-radius: 30px;
-            padding: 0.5rem;
-            background: white;
+            width: 70px; text-align: center; font-size: 1.2rem; border: 1px solid #d4c0a3;
+            border-radius: 30px; padding: 0.5rem; background: white;
         }
-        /* ===== BOTTOM NAV fixed ===== */
+        /* bottom nav */
         .bottom-nav {
             background: #fefcf7;
             border-top: 1px solid #e8dccd;
@@ -253,8 +238,6 @@
             justify-content: space-around;
             align-items: center;
             padding: 0.4rem 0.2rem 0.2rem;
-            box-shadow: 0 -2px 8px rgba(0,0,0,0.02);
-            flex-shrink: 0;
             position: fixed;
             bottom: 0;
             left: 50%;
@@ -263,8 +246,6 @@
             max-width: 420px;
             z-index: 1000;
             box-sizing: border-box;
-            border-left: none;
-            border-right: none;
         }
         .nav-item {
             flex: 1;
@@ -274,357 +255,119 @@
             color: #a28d70;
             font-size: 0.7rem;
             font-weight: 500;
-            transition: 0.1s;
             padding: 0.3rem 0;
             border-radius: 20px;
             cursor: pointer;
+            position: relative;
         }
-        .nav-item i {
-            font-size: 1.5rem;
-            margin-bottom: 2px;
+        .nav-item i { font-size: 1.5rem; margin-bottom: 2px; }
+        .nav-item.active { color: #2c4532; background: #ede7dc; }
+        .badge-notify {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            background: #c94f4f;
+            color: white;
+            font-size: 0.6rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
         }
-        .nav-item.active {
-            color: #2c4532;
-            background: #ede7dc;
+        /* new styles for messages & support */
+        .chat-bubble {
+            background: #f0e7da;
+            border-radius: 22px;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            max-width: 85%;
         }
-        .order-item {
-            background: #f9f3ea;
+        .chat-bubble.admin {
+            background: #d4e3d0;
+            margin-left: auto;
+        }
+        .chat-input-area {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .chat-input-area input {
+            flex: 1;
+            border: 1px solid #d4c0a3;
+            border-radius: 40px;
+            padding: 0.8rem 1rem;
+        }
+        .support-request {
+            background: #faf3e8;
             border-radius: 18px;
             padding: 1rem;
-            border-left: 6px solid #c9a43b;
-        }
-        .promo-banner {
-            background: linear-gradient(135deg, #3f6e4c 0%, #2c4532 100%);
-            color: white;
-            border-radius: 22px;
-            padding: 1rem;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* ---------- BRANDING ADDITIONS (only new styles, no layout changes) ---------- */
-        .hero-brand {
-            background: linear-gradient(145deg, #fff7e8, #fce8cf);
-            border-left: 8px solid #c9a43b;
-            padding: 1.5rem 1.2rem;
-            border-radius: 28px;
-            margin-bottom: 0.2rem;
-        }
-        .hero-headline {
-            font-size: 1.7rem;
-            font-weight: 700;
-            color: #2c4532;
-            line-height: 1.2;
-            margin-bottom: 0.3rem;
-        }
-        .hero-subheadline {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: #7e6b4b;
-            margin-bottom: 0.2rem;
-        }
-        .hero-tagline {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: #5f4e36;
-            margin-bottom: 0.8rem;
-            font-style: italic;
-        }
-        .hero-trust {
-            font-size: 0.95rem;
-            background: rgba(255, 250, 235, 0.8);
-            padding: 0.6rem 1.2rem;
-            border-radius: 40px;
-            display: inline-block;
-            margin: 0.5rem 0 0.8rem;
-            color: #2c4532;
-            font-weight: 500;
-            border: 1px solid #e0cfb5;
-        }
-        .hero-visuals {
-            display: flex;
-            gap: 1.5rem;
-            font-size: 1.8rem;
-            margin: 0.8rem 0 0.2rem;
-            color: #6f542e;
-        }
-        .brand-story {
-            background: #f9f2e7;
-            border-radius: 28px;
-        }
-        .brand-story p {
-            margin-bottom: 0.4rem;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-        .trust-signals {
-            background: #fcf6ec;
-        }
-        .trust-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            justify-content: center;
-        }
-        .trust-grid .trust-item {
-            flex: 1 0 calc(50% - 0.8rem);
-            background: white;
-            border-radius: 22px;
-            padding: 0.9rem 0.2rem;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
-            border: 1px solid #f0e0ce;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #3f4d3a;
-        }
-        .trust-item i {
-            display: block;
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-            color: #c9a43b;
-        }
-        .food-desire {
-            background: #fff5e6;
-            padding: 1.2rem 0.8rem;
-        }
-        .desire-scroll {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            padding: 0.4rem 0.2rem 0.8rem;
-            scrollbar-width: thin;
-            scrollbar-color: #c9a43b #f0e0ce;
-        }
-        .desire-scroll::-webkit-scrollbar {
-            height: 5px;
-        }
-        .desire-scroll::-webkit-scrollbar-thumb {
-            background: #c9a43b;
-            border-radius: 12px;
-        }
-        .desire-item {
-            min-width: 100px;
-            text-align: center;
-            background: rgba(255,255,245,0.7);
-            padding: 0.8rem 0.2rem;
-            border-radius: 28px;
-            border: 1px solid #e8d4bb;
-        }
-        .desire-item i {
-            font-size: 2.2rem;
-            color: #8f6f42;
-            margin-bottom: 5px;
-        }
-        .desire-item span {
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #4a3e2b;
-        }
-        .repeat-psychology {
-            background: transparent;
-            box-shadow: none;
-            padding: 0.2rem 0;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            justify-content: center;
-        }
-        .repeat-psychology .badge {
-            background: #eddfcd;
-            color: #2d3f2a;
-            font-size: 0.75rem;
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        .repeat-psychology .badge i {
-            margin-right: 6px;
-            color: #b48b3a;
-        }
-        /* subtle warm tone for community feel */
-        .card p i {
-            color: #c9a43b;
-        }
-
-        /* by‑products grid (new, but uses existing card styles) */
-        .byproducts-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.8rem;
-            margin: 0.4rem 0;
-        }
-        .byproduct-item {
-            background: #f9f2e7;
-            border-radius: 20px;
-            padding: 0.8rem 0.4rem;
-            text-align: center;
-            border: 1px solid #e2d2bc;
-        }
-        .byproduct-item i {
-            font-size: 1.8rem;
-            color: #a8862c;
-            margin-bottom: 4px;
-        }
-        .byproduct-item .byproduct-name {
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: #2d3f2a;
-        }
-        .byproduct-item .byproduct-price {
-            font-weight: 700;
-            color: #3f5c3a;
-            margin: 4px 0;
-        }
-        .byproduct-item button {
-            background: white;
-            border: 1px solid #c9a43b;
-            border-radius: 30px;
-            padding: 0.3rem 0.8rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #2c4532;
-            width: 100%;
-            cursor: pointer;
-        }
-        .freezer-badge {
-            background: #aac7b2;
-            color: #1d3b22;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            display: inline-block;
-        }
-
-        /* ========== REWARDS PAGE SPECIFIC STYLES ========== */
-        .rewards-header {
-            background: linear-gradient(145deg, #fef3e0, #fae1b0);
-            border-radius: 28px;
-            padding: 1.2rem;
-        }
-        .gold-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #a96f2c;
-            text-shadow: 0 2px 4px rgba(201,164,59,0.2);
-        }
-        .countdown-badge {
-            background: #2c4532;
-            color: #ffd966;
-            padding: 0.3rem 0.8rem;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-        .progress-container {
-            background: #e6d9c0;
-            border-radius: 30px;
-            height: 16px;
-            margin: 0.8rem 0 0.3rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .progress-fill-reward {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #dbb42c, #f5d742);
-            border-radius: 30px;
-            transition: width 0.3s ease;
-            box-shadow: 0 0 10px #f5b342;
-        }
-        .glow-effect {
-            animation: glowPulse 1s 2;
-        }
-        @keyframes glowPulse {
-            0% { box-shadow: 0 0 0 0 #f5d742; }
-            50% { box-shadow: 0 0 20px 8px #f5b342; }
-            100% { box-shadow: 0 0 0 0 #f5d742; }
-        }
-        .flame-active i {
-            color: #ff7b00;
-            animation: flicker 0.8s infinite;
-        }
-        @keyframes flicker {
-            0% { opacity: 1; text-shadow: 0 0 5px #ffaa33; }
-            50% { opacity: 0.8; text-shadow: 0 0 15px #ff5500; }
-            100% { opacity: 1; text-shadow: 0 0 5px #ffaa33; }
-        }
-        .tier-cards-scroll {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-            padding: 0.5rem 0.2rem 1rem;
-            scroll-snap-type: x mandatory;
-        }
-        .tier-card {
-            min-width: 140px;
-            background: #f9f0e2;
-            border-radius: 30px;
-            padding: 1rem;
-            scroll-snap-align: start;
             border-left: 6px solid;
         }
-        .tier-card.bronze { border-color: #b87333; }
-        .tier-card.silver { border-color: #c0c0c0; }
-        .tier-card.gold { border-color: #ffd700; }
-        .tier-card.platinum { border-color: #e5e4e2; }
-        .admin-toggle {
-            background: #2a3b2a;
-            color: #eee;
-            border-radius: 30px;
-            padding: 1rem;
+        .status-open { border-left-color: #d4a017; }
+        .status-progress { border-left-color: #2c4532; }
+        .status-resolved { border-left-color: #7e9f7e; }
+        .star-rating i {
+            color: #c9a43b;
+            font-size: 1.6rem;
+            cursor: pointer;
         }
-        .admin-toggle input, .admin-toggle select {
-            background: #3b543b;
-            color: white;
-            border: 1px solid #7e9f7e;
-            border-radius: 20px;
-            padding: 0.3rem 0.8rem;
-        }
-        .confetti-canvas {
+        .modal-overlay {
+            display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
         }
-        .wallet-credit {
-            background: #d4edc9;
-            color: #1f4f1f;
+        .modal-card {
+            background: white;
+            max-width: 350px;
+            padding: 2rem;
             border-radius: 40px;
-            padding: 0.5rem 1rem;
         }
+        .show-modal { display: flex; }
+        .byproducts-grid { display: grid; grid-template-columns: repeat(2,1fr); gap:0.8rem; }
+        .byproduct-item { background: #f9f2e7; border-radius:20px; padding:0.8rem; text-align: center; }
+        .hero-brand { background: linear-gradient(145deg, #fff7e8, #fce8cf); border-left: 8px solid #c9a43b; padding: 1.5rem 1.2rem; border-radius: 28px; }
+        /* rewards extras */
+        .gold-title { font-size:1.8rem; font-weight:700; color:#a96f2c; }
+        .progress-container { background:#e6d9c0; border-radius:30px; height:16px; margin:0.8rem 0; }
+        .progress-fill-reward { height:100%; background: linear-gradient(90deg, #dbb42c, #f5d742); border-radius:30px; width:0%; }
+        .tier-cards-scroll { display:flex; gap:1rem; overflow-x:auto; padding:0.5rem 0.2rem; }
+        .tier-card { min-width:140px; background:#f9f0e2; border-radius:30px; padding:1rem; border-left:6px solid; }
+        .tier-card.bronze { border-color:#b87333; }
+        .wallet-credit { background:#d4edc9; color:#1f4f1f; border-radius:40px; padding:0.5rem 1rem; }
+        .flame-active i { color:#ff7b00; animation: flicker 0.8s infinite; }
+        @keyframes flicker { 0% { opacity:1; } 50% { opacity:0.8; } 100% { opacity:1; } }
     </style>
 </head>
 <body>
 <div class="app" id="appContainer">
-    <!-- fixed header unchanged -->
+    <!-- HEADER with user dropdown -->
     <div class="header">
-        <h1>
-            <i class="fas fa-feather main-feather"></i> The Golden Feather
-        </h1>
-        <div class="tagline">
-            <i class="fas fa-seedling" style="color:#4e7f5a;"></i> quality from growth to table
-            <span><i class="far fa-star"></i> ethically raised</span>
+        <h1><i class="fas fa-feather main-feather"></i> The Golden Feather</h1>
+        <div class="user-menu" id="userMenu">
+            <div class="user-icon" id="userMenuToggle"><i class="fas fa-user"></i></div>
+            <div class="user-dropdown" id="userDropdown">
+                <div class="dropdown-item"><i class="fas fa-circle-user" style="color:#2c4532;"></i> <strong>Alex Chen</strong> (member since 2024)</div>
+                <div class="dropdown-item"><i class="fas fa-ticket-alt"></i> Loyalty points: <span id="loyaltyPointsDisplay">340</span></div>
+                <div class="dropdown-item"><i class="fas fa-gift"></i> Voucher: <span id="voucherStatus">none</span></div>
+                <div class="dropdown-item"><i class="fas fa-clock-rotate-left"></i> <a href="#" onclick="activateSection('ordersSection'); return false;">Purchase history →</a></div>
+                <div class="dropdown-item"><i class="fas fa-arrow-right-from-bracket"></i> Logout (simulated)</div>
+            </div>
         </div>
     </div>
 
-    <!-- main content -->
+    <!-- MAIN CONTENT (sections) -->
     <main class="main-content" id="mainContent">
-        <!-- HOME section (unchanged except we keep bulk purchase option) -->
+        <!-- HOME section (contains all original purchase cards + book cards) -->
         <section id="homeSection" class="content-section active">
-            <!-- (all existing home cards exactly as they were, including bulk buyer option and bulk subscription) -->
+            <!-- Hero / brand card -->
             <div class="card hero-brand">
                 <div class="hero-headline">Farm Fresh Chicken, Raised for Your Family</div>
                 <div class="hero-subheadline">Trusted Local Poultry Supplier</div>
                 <div class="hero-tagline">Fresh. Reliable. Always Available.</div>
                 <div class="hero-trust"><i class="fas fa-hand-holding-heart"></i> We're your neighbors — from our pasture to your table</div>
-                <div class="hero-visuals">
+                <div class="hero-visuals" style="display:flex; gap:1.5rem; font-size:1.8rem; margin:0.8rem 0 0.2rem; color:#6f542e;">
                     <i class="fas fa-sun" style="color: #f5b342;"></i>
                     <i class="fas fa-leaf" style="color: #4e7f5a;"></i>
                     <i class="fas fa-tractor" style="color: #8b6b4d;"></i>
@@ -632,36 +375,48 @@
                 </div>
                 <div style="font-size: 0.8rem; color: #7e6b4b; margin-top: 6px;"><i class="far fa-clock"></i> harvested early morning · always fresh</div>
             </div>
+            <!-- Our promise card -->
             <div class="card brand-story">
                 <div class="card-title" style="font-size: 1.3rem;">🕊️ Our promise</div>
                 <p>We raise every chicken with care on open pastures, just minutes from your home. No freeze, no shortcuts — only clean, honest poultry delivered within hours of harvest.</p>
                 <p><i class="fas fa-people-group" style="color:#c9a43b;"></i> <strong>Community first:</strong> we supply local families, braais, and restaurants because we live here too. Freshness isn’t just our business — it’s our table.</p>
             </div>
+            <!-- Trust signals card -->
             <div class="card trust-signals">
-                <div class="trust-grid">
-                    <div class="trust-item"><i class="fas fa-check-circle"></i> Always fresh stock</div>
-                    <div class="trust-item"><i class="fas fa-hand-sparkles"></i> Clean preparation</div>
-                    <div class="trust-item"><i class="fas fa-clock"></i> Reliable availability</div>
-                    <div class="trust-item"><i class="fas fa-tractor"></i> Local farm quality</div>
-                    <div class="trust-item"><i class="fas fa-boxes-stacked"></i> Bulk supply capable</div>
+                <div class="trust-grid" style="display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center;">
+                    <div class="trust-item" style="flex:1 0 calc(50% - 0.8rem); background: white; border-radius: 22px; padding: 0.9rem 0.2rem; text-align: center; border:1px solid #f0e0ce;"><i class="fas fa-check-circle"></i> Always fresh</div>
+                    <div class="trust-item" style="flex:1 0 calc(50% - 0.8rem); background: white; border-radius: 22px; padding: 0.9rem 0.2rem; text-align: center; border:1px solid #f0e0ce;"><i class="fas fa-hand-sparkles"></i> Clean preparation</div>
+                    <div class="trust-item" style="flex:1 0 calc(50% - 0.8rem); background: white; border-radius: 22px; padding: 0.9rem 0.2rem; text-align: center; border:1px solid #f0e0ce;"><i class="fas fa-clock"></i> Reliable availability</div>
+                    <div class="trust-item" style="flex:1 0 calc(50% - 0.8rem); background: white; border-radius: 22px; padding: 0.9rem 0.2rem; text-align: center; border:1px solid #f0e0ce;"><i class="fas fa-tractor"></i> Local farm quality</div>
                 </div>
             </div>
+            <!-- Book cards (growing batches) integrated -->
+            <div class="card">
+                <div class="card-header"><span class="badge green"><i class="fas fa-seedling"></i> growing · batch GC2405</span></div>
+                <div class="card-title">🌿 Herb infused · 22 left</div>
+                <div class="growing-progress"><div class="progress-fill" style="width:30%"></div></div>
+                <div>ready 25 May · deposit R33</div>
+                <button class="btn btn-gold btn-small" onclick="alert('Reserved with 30% deposit')">reserve now</button>
+            </div>
+            <div class="card">
+                <div class="card-header"><span class="badge green">organic · batch GC2402</span></div>
+                <div class="card-title">🌾 Ancient grains · 8 left</div>
+                <div class="growing-progress"><div class="progress-fill" style="width:90%"></div></div>
+                <div>ready 3 days · pre-order R110</div>
+                <button class="btn btn-small" onclick="alert('Pre-order full amount 110')"><i class="fas fa-lock"></i> reserve now</button>
+            </div>
+            <!-- Food desire card -->
             <div class="card food-desire">
                 <div style="font-weight: 600; margin-bottom: 0.4rem; color: #4f3f2b;"><i class="fas fa-utensils"></i> From our farm to your braai</div>
-                <div class="desire-scroll">
-                    <div class="desire-item"><i class="fas fa-drumstick-bite"></i><br><span>Golden roast</span></div>
-                    <div class="desire-item"><i class="fas fa-fire"></i><br><span>Braai special</span></div>
-                    <div class="desire-item"><i class="fas fa-people-roof"></i><br><span>Family dinner</span></div>
-                    <div class="desire-item"><i class="fas fa-store"></i><br><span>Restaurant supply</span></div>
+                <div class="desire-scroll" style="display: flex; gap: 1rem; overflow-x: auto; padding: 0.4rem 0.2rem 0.8rem;">
+                    <div class="desire-item" style="min-width:100px; text-align:center;"><i class="fas fa-drumstick-bite"></i><br><span>Golden roast</span></div>
+                    <div class="desire-item" style="min-width:100px; text-align:center;"><i class="fas fa-fire"></i><br><span>Braai special</span></div>
+                    <div class="desire-item" style="min-width:100px; text-align:center;"><i class="fas fa-people-roof"></i><br><span>Family dinner</span></div>
+                    <div class="desire-item" style="min-width:100px; text-align:center;"><i class="fas fa-store"></i><br><span>Restaurant supply</span></div>
                 </div>
                 <p style="font-size:0.9rem; margin-top:6px; color:#735f44;"><i class="fas fa-star"></i> Sunday braai? We've got the freshest birds.</p>
             </div>
-            <div class="repeat-psychology">
-                <span class="badge"><i class="fas fa-redo-alt"></i> Order again in one tap</span>
-                <span class="badge"><i class="fas fa-calendar-alt"></i> Monthly supply available</span>
-                <span class="badge"><i class="fas fa-tags"></i> Bulk discounts</span>
-                <span class="badge"><i class="fas fa-truck-fast"></i> Fast re-order for families</span>
-            </div>
+            <!-- Monthly subscription teaser -->
             <div class="card" style="background: #f2ebe0;">
                 <div class="card-header">
                     <span class="badge" style="background:#c9a43b; color:#1e2b1a;"><i class="fas fa-calendar-check"></i> monthly subscription</span>
@@ -675,7 +430,7 @@
                 </div>
                 <p style="font-size:0.9rem; margin-top:6px;"><i class="fas fa-info-circle"></i> Minimum 3 chickens per subscription · billed monthly · cancel or modify with one tap</p>
             </div>
-            <!-- TIER 1 BULK/BUNCH SUBSCRIPTION -->
+            <!-- TIER 1 BULK/BUNCH SUBSCRIPTION (original) -->
             <div class="card" id="tier1BulkCard">
                 <div class="card-header">
                     <span class="badge" style="background:#2c4532; color:white;"><i class="fas fa-warehouse"></i> Tier 1 · Bulk/Bunch</span>
@@ -786,21 +541,7 @@
                 <button class="btn btn-gold" onclick="handleSubscription()"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
                 <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-calendar-alt"></i> Billed monthly · upgrade/downgrade anytime</p>
             </div>
-            <!-- easy management card -->
-            <div class="card" style="background:#faf3e8; border:2px dashed #c9a43b;">
-                <div class="card-header">
-                    <span class="badge" style="background:#2c4532; color:white;"><i class="fas fa-credit-card"></i> your subscription</span>
-                </div>
-                <div class="card-title">⚙️ Manage monthly plan</div>
-                <p style="font-size:0.9rem;">Upgrade, downgrade or cancel with one tap — no questions asked.</p>
-                <div class="row" style="justify-content: center;">
-                    <button class="btn-small btn-outline" onclick="alert('🔁 Upgrade to more chickens or a different tier. New price will apply next billing.')"><i class="fas fa-arrow-up"></i> upgrade</button>
-                    <button class="btn-small btn-outline" onclick="alert('🔁 Downgrade to fewer chickens or switch tier. Changes reflect next cycle.')"><i class="fas fa-arrow-down"></i> downgrade</button>
-                    <button class="btn-small btn-outline" style="border-color:#b65151; color:#b65151;" onclick="if(confirm('Cancel your monthly subscription? You can resubscribe anytime.')) alert('Subscription cancelled. We’re sorry to see you go!')"><i class="fas fa-times"></i> cancel</button>
-                </div>
-                <p style="font-size:0.8rem; margin-top:6px;"><i class="fas fa-clock"></i> Changes take effect next billing cycle.</p>
-            </div>
-            <!-- Whole Live Chicken (one-time) -->
+            <!-- One-time purchase cards (live, standard, premium) -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge"><i class="fas fa-egg"></i> live bird</span>
@@ -814,7 +555,6 @@
                     <button class="btn btn-outline btn-small one-time-purchase" data-quantity="1" data-type="live"><i class="fas fa-redo-alt"></i> reorder</button>
                 </div>
             </div>
-            <!-- Standard Prepared Chicken (one-time) -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge green"><i class="fas fa-kitchen-set"></i> standard prep</span>
@@ -831,7 +571,6 @@
                     <button class="btn btn-outline btn-small one-time-purchase" data-quantity="1" data-type="standard"><i class="fas fa-redo-alt"></i> reorder</button>
                 </div>
             </div>
-            <!-- Premium Fully Prepared (one-time) -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge" style="background:#c9a43b; color:#1e2b1a;"><i class="fas fa-crown"></i> premium</span>
@@ -844,7 +583,7 @@
                     <button class="btn btn-outline btn-small one-time-purchase" data-quantity="1" data-type="premium"><i class="fas fa-redo-alt"></i> reorder</button>
                 </div>
             </div>
-            <!-- Bulk Buyer Option (min 10, R75 each) - this counts as bulk, NOT one-time for challenge -->
+            <!-- Bulk Buyer Option (min 10, R75 each) -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge green"><i class="fas fa-users"></i> bulk 10+</span>
@@ -916,6 +655,7 @@
                 <p style="font-size:0.8rem; color:#735f44; margin-top:6px;"><i class="fas fa-snowflake"></i> All by‑products available frozen — select at checkout.</p>
                 <button class="btn-outline btn-small" style="width:100%;" onclick="alert('🛒 View all by‑products in cart')">go to by‑products cart</button>
             </div>
+            <!-- Loyalty feather card -->
             <div class="card" style="background:#fff6e9;">
                 <div class="row">
                     <i class="fas fa-gem" style="color:#c9a43b; font-size:2rem;"></i>
@@ -923,487 +663,406 @@
                 </div>
                 <button class="btn-outline btn-small" style="width:100%;" onclick="alert('🔗 share referral link')"><i class="fas fa-share-alt"></i> invite & earn</button>
             </div>
-        </section>
-
-        <!-- BOOK section (unchanged) -->
-        <section id="bookSection" class="content-section">
-            <div class="card">
-                <div class="card-header"><span class="badge green"><i class="fas fa-seedling"></i> growing</span></div>
-                <div class="card-title">Batch GC2405 · herb infused</div>
-                <div class="growing-progress"><div class="progress-fill" style="width:30%"></div></div>
-                <div>ready 25 May · 22 chickens left</div>
-                <button class="btn btn-gold" onclick="alert('Reserved with 30% deposit')">reserve · deposit 33</button>
-            </div>
-            <div class="card">
-                <div class="card-header"><span class="badge green">organic</span></div>
-                <div class="card-title">Batch GC2402 · ancient grains</div>
-                <div class="growing-progress"><div class="progress-fill" style="width:90%"></div></div>
-                <div>ready 3 days · 8 left (almost sold out)</div>
-                <button class="btn" onclick="alert('Pre-order full amount 110')"><i class="fas fa-lock"></i> reserve now</button>
-            </div>
-            <div class="card">
-                <p><i class="fas fa-bell"></i> Notifications: we’ll alert you 2 days before pickup.</p>
+            <!-- Subscription management card -->
+            <div class="card" style="background:#faf3e8; border:2px dashed #c9a43b;">
+                <div class="card-header">
+                    <span class="badge" style="background:#2c4532; color:white;"><i class="fas fa-credit-card"></i> your subscription</span>
+                </div>
+                <div class="card-title">⚙️ Manage monthly plan</div>
+                <p style="font-size:0.9rem;">Upgrade, downgrade or cancel with one tap — no questions asked.</p>
+                <div class="row" style="justify-content: center;">
+                    <button class="btn-small btn-outline" onclick="alert('🔁 Upgrade to more chickens or a different tier. New price will apply next billing.')"><i class="fas fa-arrow-up"></i> upgrade</button>
+                    <button class="btn-small btn-outline" onclick="alert('🔁 Downgrade to fewer chickens or switch tier. Changes reflect next cycle.')"><i class="fas fa-arrow-down"></i> downgrade</button>
+                    <button class="btn-small btn-outline" style="border-color:#b65151; color:#b65151;" onclick="if(confirm('Cancel your monthly subscription? You can resubscribe anytime.')) alert('Subscription cancelled. We’re sorry to see you go!')"><i class="fas fa-times"></i> cancel</button>
+                </div>
+                <p style="font-size:0.8rem; margin-top:6px;"><i class="fas fa-clock"></i> Changes take effect next billing cycle.</p>
             </div>
         </section>
 
-        <!-- NEW REWARDS SECTION (admin panel removed) -->
+        <!-- ORDERS section (with rating buttons) -->
+        <section id="ordersSection" class="content-section">
+            <div class="order-item" style="background:#f9f3ea; border-radius:18px; padding:1rem; border-left:6px solid #c9a43b;">
+                <div><strong>#GC2341</strong> · 5 chickens <span style="float:right;">ready 4 May</span></div>
+                <div style="color:#8b764f;">paid · pickup scheduled</div>
+                <button class="btn-small btn-outline rate-order-btn" data-order="GC2341" style="margin-top:6px;"><i class="fas fa-star"></i> rate delivery</button>
+            </div>
+            <div class="order-item" style="background:#f9f3ea; border-radius:18px; padding:1rem; border-left:6px solid #c9a43b;">
+                <div><strong>#GC2388</strong> · 12 chickens (bulk) <span style="float:right;">8 May</span></div>
+                <div style="color:#8b764f;">deposit paid · growing</div>
+            </div>
+            <div class="order-item" style="background:#f9f3ea; border-radius:18px; padding:1rem; border-left:6px solid #c9a43b;">
+                <div><strong>#GC2250</strong> · 2 chickens <span style="float:right;">delivered 20 Apr</span></div>
+                <div><i class="fas fa-star" style="color:gold;"></i> rate your purchase</div>
+                <button class="btn-small btn-outline rate-order-btn" data-order="GC2250"><i class="fas fa-star"></i> rate</button>
+            </div>
+        </section>
+
+        <!-- REWARDS section (enhanced) -->
         <section id="rewardsSection" class="content-section">
-            <!-- Header Section -->
             <div class="card rewards-header">
                 <div class="gold-title">Golden Rewards</div>
-                <div style="font-size: 0.95rem; color: #6b4f2a;">Earn more every time you buy</div>
-                <div class="row" style="justify-content: space-between;">
-                    <span><i class="fas fa-chicken"></i> <span id="oneTimeCountDisplay">0</span>/10 chickens</span>
-                    <span class="countdown-badge"><i class="far fa-clock"></i> <span id="countdownTimer">45d</span> left</span>
+                <div style="font-size:0.95rem; color:#6b4f2a;">Earn more every time you buy</div>
+                <div class="row" style="justify-content:space-between;">
+                    <span><i class="fas fa-chicken"></i> <span id="oneTimeCountDisplay">3</span>/10 chickens</span>
+                    <span class="countdown-badge"><i class="far fa-clock"></i> 45d left</span>
                 </div>
                 <div class="progress-container">
-                    <div id="challengeProgress" class="progress-fill-reward" style="width:0%;"></div>
+                    <div id="challengeProgress" class="progress-fill-reward" style="width:30%;"></div>
                 </div>
-                <div id="claimRewardBlock" style="display: none; margin-top: 0.5rem;">
+                <div id="claimRewardBlock" style="display:none; margin-top:0.5rem;">
                     <button class="btn btn-gold" id="claimRewardBtn" style="width:100%;"><i class="fas fa-gift"></i> Claim 10% voucher</button>
                 </div>
             </div>
-
-            <!-- Tier Status Section -->
+            <div class="card">
+                <div><i class="fas fa-piggy-bank"></i> Loyalty points: <span id="totalPoints">340</span> (R3.40 value)</div>
+                <div>Next purchase discount: <span id="projectedDiscount">5%</span></div>
+            </div>
             <div class="card">
                 <div class="card-header">
-                    <span class="badge green">Lifetime Tier</span>
+                    <span class="badge green">Lifetime tier</span>
                     <span id="currentTierBadge">Bronze</span>
                 </div>
-                <div class="card-title">🐔 Your status</div>
-                <p><span id="lifetimeChickens">0</span> lifetime chickens · <span id="chickensToNextTier">20</span> to next tier</p>
+                <p><span id="lifetimeChickens">12</span> lifetime chickens · <span id="chickensToNextTier">8</span> to silver</p>
                 <div class="tier-cards-scroll">
-                    <div class="tier-card bronze">
-                        <strong>Bronze</strong> 0-19
-                    </div>
-                    <div class="tier-card silver">
-                        <strong>Silver</strong> 20-49
-                    </div>
-                    <div class="tier-card gold">
-                        <strong>Gold</strong> 50-99
-                    </div>
-                    <div class="tier-card platinum">
-                        <strong>Platinum</strong> 100+
-                    </div>
+                    <div class="tier-card bronze"><strong>Bronze</strong> 0-19</div>
+                    <div class="tier-card silver"><strong>Silver</strong> 20-49</div>
+                    <div class="tier-card gold"><strong>Gold</strong> 50-99</div>
+                    <div class="tier-card platinum"><strong>Platinum</strong> 100+</div>
                 </div>
             </div>
-
-            <!-- Weekly Streak Tracker -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge"><i class="fas fa-fire"></i> Streak</span>
-                    <span id="streakFlame" class="flame-active"><i class="fas fa-fire"></i> <span id="streakCount">0</span> weeks</span>
+                    <span class="flame-active"><i class="fas fa-fire"></i> <span id="streakCount">2</span> weeks</span>
                 </div>
                 <p>Buy at least 1 chicken per week to maintain streak. 4 weeks = small reward.</p>
-                <div id="streakRewardBlock" style="display: none;">
-                    <button class="btn-small btn-outline" id="claimStreakReward">Claim free by-product or 5% off</button>
-                </div>
+                <div id="streakRewardBlock" style="display:none;"><button class="btn-small btn-outline">Claim free by-product</button></div>
             </div>
-
-            <!-- By-Product Boost Section -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="badge" style="background:#a8862c;">⚡ Double reward days</span>
-                </div>
-                <p>Today: <span id="doubleRewardStatus">active (2x progress)</span></p>
-                <p>If active, buying 1 chicken + 2 by‑products gives double progress toward 10‑chicken challenge.</p>
-            </div>
-
-            <!-- Referral Logic -->
             <div class="card wallet-credit">
                 <div><i class="fas fa-user-plus"></i> Referral program</div>
-                <p>You've referred <span id="referralCount">0</span> friends · 5% credit in wallet: R<span id="walletCredit">0.00</span></p>
+                <p>You've referred <span id="referralCount">1</span> friends · 5% credit in wallet: R<span id="walletCredit">5.00</span></p>
                 <button class="btn-small btn-outline" onclick="alert('Share your referral link')"><i class="fas fa-share"></i> invite</button>
             </div>
         </section>
 
-        <!-- ORDERS section (unchanged) -->
-        <section id="ordersSection" class="content-section">
-            <div class="order-item">
-                <div><strong>#GC2341</strong> · 5 chickens <span style="float:right;">ready 4 May</span></div>
-                <div style="color:#8b764f;">paid · pickup scheduled</div>
-                <button class="btn-small btn-outline" style="margin-top:6px;" onclick="alert('reorder 5 chickens?')"><i class="fas fa-redo-alt"></i> repeat</button>
-            </div>
-            <div class="order-item">
-                <div><strong>#GC2388</strong> · 12 chickens (bulk) <span style="float:right;">8 May</span></div>
-                <div style="color:#8b764f;">deposit paid · growing</div>
-            </div>
-            <div class="order-item">
-                <div><strong>#GC2250</strong> · 2 chickens <span style="float:right;">delivered 20 Apr</span></div>
-                <div><i class="fas fa-star" style="color:gold;"></i> rate your purchase</div>
+        <!-- MESSAGES section (chat) -->
+        <section id="messagesSection" class="content-section">
+            <div class="card">
+                <div class="card-header"><span class="badge"><i class="fas fa-comment"></i> Chat with farmer</span> <span class="badge green" id="unreadBadge" style="display:none;">new</span></div>
+                <div id="chatMessages" style="max-height:300px; overflow-y:auto; display:flex; flex-direction:column; gap:6px;">
+                    <div class="chat-bubble admin">Hi Alex! Your order #GC2388 is growing well 🌱</div>
+                    <div class="chat-bubble">Thanks for the update!</div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="Type a message...">
+                    <button class="btn-small btn-gold" id="sendChatBtn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <p style="font-size:0.75rem;"><i class="fas fa-circle-info"></i> Admin typically replies within 2 hours</p>
             </div>
         </section>
 
-        <!-- PROFILE section (unchanged) -->
-        <section id="profileSection" class="content-section">
+        <!-- SUPPORT section (tickets & requests) -->
+        <section id="supportSection" class="content-section">
             <div class="card">
-                <div style="display:flex; gap:1rem;">
-                    <i class="fas fa-user-circle" style="font-size:3rem; color:#5f7e5a;"></i>
-                    <div><strong>Alex Chen</strong><br>member since 2024</div>
+                <div class="card-header"><span class="badge">📋 open a request</span></div>
+                <select id="requestType" style="padding:0.5rem; border-radius:30px; border:1px solid #d4c0a3; margin-bottom:0.5rem;">
+                    <option>Complaint</option><option>Refund</option><option>Query</option>
+                </select>
+                <select id="relatedPurchase" style="padding:0.5rem; border-radius:30px; border:1px solid #d4c0a3; margin-bottom:0.5rem;">
+                    <option>#GC2341 (5 chickens)</option><option>#GC2388 (12 bulk)</option>
+                </select>
+                <textarea id="requestDesc" placeholder="Describe your issue..." rows="2" style="border:1px solid #d4c0a3; border-radius:20px; padding:0.7rem;"></textarea>
+                <button class="btn btn-small" id="submitRequestBtn" style="margin-top:0.5rem;">submit</button>
+            </div>
+            <div class="card">
+                <div class="card-header"><span class="badge">📌 my requests</span></div>
+                <div id="requestsList">
+                    <div class="support-request status-progress">#TKT001 · Refund request · In progress · 2 messages</div>
                 </div>
             </div>
+            <!-- ratings summary (private) -->
             <div class="card">
-                <p><i class="fas fa-gift"></i> Loyalty points: 340 (next reward 500)</p>
-                <p><i class="fas fa-ticket-alt"></i> Referral code: FEATHER-ALEX</p>
-            </div>
-            <div class="card">
-                <button class="btn-outline" style="width:100%;" onclick="alert('view order history')">my order history</button>
-            </div>
-            <div class="card promo-banner" style="background: #a8862c;">
-                <p style="color:white;">🎁 10% off your next bulk order</p>
+                <div class="card-header"><span class="badge">⭐ my ratings & admin feedback</span></div>
+                <div>Order #GC2250: 5 stars · “Great chicken!” · Admin: thank you!</div>
             </div>
         </section>
     </main>
 
-    <!-- bottom nav with rewards replacing bulk -->
+    <!-- BOTTOM NAV: Home, Orders, Rewards, Messages, Support -->
     <nav class="bottom-nav">
         <div class="nav-item active" data-section="homeSection"><i class="fas fa-home"></i><span>Home</span></div>
-        <div class="nav-item" data-section="bookSection"><i class="fas fa-calendar-plus"></i><span>Book</span></div>
-        <div class="nav-item" data-section="rewardsSection"><i class="fas fa-gift"></i><span>Rewards</span></div>
         <div class="nav-item" data-section="ordersSection"><i class="fas fa-clipboard-list"></i><span>Orders</span></div>
-        <div class="nav-item" data-section="profileSection"><i class="fas fa-user"></i><span>Profile</span></div>
+        <div class="nav-item" data-section="rewardsSection"><i class="fas fa-gift"></i><span>Rewards</span></div>
+        <div class="nav-item" data-section="messagesSection"><i class="fas fa-comment"></i><span>Messages</span><span class="badge-notify" id="messagesNotify" style="display:none;">1</span></div>
+        <div class="nav-item" data-section="supportSection"><i class="fas fa-headset"></i><span>Support</span><span class="badge-notify" id="supportNotify" style="display:none;">1</span></div>
     </nav>
 
-    <!-- Confetti canvas -->
-    <canvas id="confettiCanvas" class="confetti-canvas" style="display:none;"></canvas>
+    <!-- Rating modal -->
+    <div class="modal-overlay" id="ratingModal">
+        <div class="modal-card">
+            <h3>Rate your order</h3>
+            <div class="star-rating" id="starRatingWidget">
+                <i class="far fa-star" data-star="1"></i><i class="far fa-star" data-star="2"></i><i class="far fa-star" data-star="3"></i><i class="far fa-star" data-star="4"></i><i class="far fa-star" data-star="5"></i>
+            </div>
+            <textarea id="privateFeedback" placeholder="Private feedback (only visible to admin)" rows="3" style="width:100%; border:1px solid #d4c0a3; border-radius:20px; padding:0.5rem;"></textarea>
+            <button class="btn-small btn-gold" id="submitRatingBtn" style="margin-top:0.5rem;">submit</button>
+            <button class="btn-small btn-outline" onclick="document.getElementById('ratingModal').classList.remove('show-modal')">close</button>
+        </div>
+    </div>
 </div>
 
-<!-- JavaScript (updated with rewards logic, admin panel removed) -->
 <script>
     (function() {
         // ---------- navigation ----------
         const navItems = document.querySelectorAll('.nav-item');
         const sections = {
             homeSection: document.getElementById('homeSection'),
-            bookSection: document.getElementById('bookSection'),
-            rewardsSection: document.getElementById('rewardsSection'),
             ordersSection: document.getElementById('ordersSection'),
-            profileSection: document.getElementById('profileSection')
+            rewardsSection: document.getElementById('rewardsSection'),
+            messagesSection: document.getElementById('messagesSection'),
+            supportSection: document.getElementById('supportSection')
         };
-
         function activateSection(sectionId) {
             Object.values(sections).forEach(s => s?.classList.remove('active'));
             if (sections[sectionId]) sections[sectionId].classList.add('active');
-            navItems.forEach(item => {
-                const data = item.getAttribute('data-section');
-                item.classList.toggle('active', data === sectionId);
-            });
+            navItems.forEach(item => item.classList.toggle('active', item.dataset.section === sectionId));
         }
+        navItems.forEach(item => item.addEventListener('click', () => activateSection(item.dataset.section)));
+        window.activateSection = activateSection; // for header link
 
-        navItems.forEach(item => {
-            item.addEventListener('click', (e) => {
-                const sectionId = item.getAttribute('data-section');
-                if (sectionId) activateSection(sectionId);
-            });
+        // ---------- user dropdown ----------
+        const userMenu = document.getElementById('userMenu');
+        document.getElementById('userMenuToggle').addEventListener('click', (e) => {
+            e.stopPropagation();
+            userMenu.classList.toggle('active');
         });
+        document.addEventListener('click', () => userMenu.classList.remove('active'));
 
-        // ---------- rewards state (fixed, no admin controls) ----------
-        let oneTimePurchases = 3;      // demo start 3/10
-        let lifetimePurchases = 12;    // demo start (some lifetime)
-        let weeklyStreak = 2;          // weeks
-        let lastPurchaseDate = Date.now() - 3*24*60*60*1000; // 3 days ago
+        // ---------- rewards state (unified counters) ----------
+        let challengeCount = 3;          // 10-chicken challenge progress
+        let lifetimeCount = 12;
+        let loyaltyPoints = 340;
         let referralCount = 1;
         let walletCredit = 5.00;
-        let voucherActive = false;
-        let voucherExpiry = null;
-        // Double reward days is always active for customers (or could be set by business logic, here static true)
-        let doubleRewardDays = true;
-        // Fixed tier thresholds
-        const tierThresholds = [20, 50, 100]; // silver, gold, platinum
+        let weeklyStreak = 2;
+        let messagesUnread = 1;
+        let supportUnread = 1;
 
-        // DOM elements
-        const oneTimeSpan = document.getElementById('oneTimeCountDisplay');
-        const progressFill = document.getElementById('challengeProgress');
-        const claimBlock = document.getElementById('claimRewardBlock');
-        const countdownSpan = document.getElementById('countdownTimer');
-        const lifetimeSpan = document.getElementById('lifetimeChickens');
-        const currentTierBadge = document.getElementById('currentTierBadge');
-        const toNextTierSpan = document.getElementById('chickensToNextTier');
-        const streakSpan = document.getElementById('streakCount');
-        const streakFlame = document.getElementById('streakFlame');
-        const streakRewardBlock = document.getElementById('streakRewardBlock');
-        const doubleRewardStatus = document.getElementById('doubleRewardStatus');
-        const referralSpan = document.getElementById('referralCount');
-        const walletSpan = document.getElementById('walletCredit');
-
-        // Helper: confetti
-        function startConfetti() {
-            const canvas = document.getElementById('confettiCanvas');
-            canvas.style.display = 'block';
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            let particles = [];
-            for (let i = 0; i < 100; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height * 0.5,
-                    r: Math.random() * 6 + 2,
-                    d: Math.random() * 100,
-                    color: `hsl(${Math.random() * 60 + 30}, 80%, 60%)`,
-                    tilt: Math.random() * 10 - 5
-                });
-            }
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => {
-                    ctx.beginPath();
-                    ctx.fillStyle = p.color;
-                    ctx.fillRect(p.x, p.y, p.r, p.r*1.5);
-                    p.y += 2;
-                    if (p.y > canvas.height) p.y = -10;
-                });
-                requestAnimationFrame(draw);
-            }
-            draw();
-            setTimeout(() => { canvas.style.display = 'none'; }, 3000);
-        }
-
-        // Update all rewards UI
         function updateRewardsUI() {
-            // 10-chicken challenge
-            oneTimeSpan.textContent = oneTimePurchases;
-            let progressPercent = (oneTimePurchases / 10) * 100;
-            if (progressPercent > 100) progressPercent = 100;
-            progressFill.style.width = progressPercent + '%';
-
-            if (oneTimePurchases >= 10 && !voucherActive) {
-                claimBlock.style.display = 'block';
-                progressFill.classList.add('glow-effect');
-            } else {
-                claimBlock.style.display = 'none';
-                progressFill.classList.remove('glow-effect');
-            }
-
-            // countdown (45-day reset window mock)
-            let daysLeft = 45 - Math.floor((Date.now() % (45*24*60*60*1000)) / (24*60*60*1000));
-            countdownSpan.textContent = daysLeft + 'd';
-
-            // lifetime tier
-            lifetimeSpan.textContent = lifetimePurchases;
-            let tier = 'Bronze';
-            let next = tierThresholds[0] - lifetimePurchases;
-            if (lifetimePurchases >= tierThresholds[2]) { tier = 'Platinum'; next = 0; }
-            else if (lifetimePurchases >= tierThresholds[1]) { tier = 'Gold'; next = tierThresholds[2] - lifetimePurchases; }
-            else if (lifetimePurchases >= tierThresholds[0]) { tier = 'Silver'; next = tierThresholds[1] - lifetimePurchases; }
-            else { next = tierThresholds[0] - lifetimePurchases; }
-            currentTierBadge.textContent = tier;
-            toNextTierSpan.textContent = next > 0 ? next : 0;
-
-            // weekly streak
-            streakSpan.textContent = weeklyStreak;
-            if (weeklyStreak >= 4) {
-                streakRewardBlock.style.display = 'block';
-            } else {
-                streakRewardBlock.style.display = 'none';
-            }
-
-            // double reward status (fixed active)
-            doubleRewardStatus.textContent = doubleRewardDays ? 'active (2x progress)' : 'off';
-
-            // referral
-            referralSpan.textContent = referralCount;
-            walletSpan.textContent = walletCredit.toFixed(2);
+            document.getElementById('oneTimeCountDisplay').innerText = challengeCount;
+            let pct = Math.min(100, (challengeCount/10)*100);
+            document.getElementById('challengeProgress').style.width = pct+'%';
+            document.getElementById('claimRewardBlock').style.display = challengeCount>=10 ? 'block' : 'none';
+            document.getElementById('totalPoints').innerText = loyaltyPoints;
+            document.getElementById('lifetimeChickens').innerText = lifetimeCount;
+            // tier logic
+            let tier = 'Bronze', next = 20 - lifetimeCount;
+            if (lifetimeCount >= 100) { tier='Platinum'; next=0; }
+            else if (lifetimeCount >= 50) { tier='Gold'; next=100-lifetimeCount; }
+            else if (lifetimeCount >= 20) { tier='Silver'; next=50-lifetimeCount; }
+            document.getElementById('currentTierBadge').innerText = tier;
+            document.getElementById('chickensToNextTier').innerText = next>0?next:0;
+            document.getElementById('referralCount').innerText = referralCount;
+            document.getElementById('walletCredit').innerText = walletCredit.toFixed(2);
+            document.getElementById('streakCount').innerText = weeklyStreak;
+            // notifications
+            document.getElementById('messagesNotify').style.display = messagesUnread ? 'inline-block' : 'none';
+            document.getElementById('supportNotify').style.display = supportUnread ? 'inline-block' : 'none';
+            // loyalty points in header dropdown
+            document.getElementById('loyaltyPointsDisplay').innerText = loyaltyPoints;
+            document.getElementById('voucherStatus').innerText = challengeCount>=10 ? '10% ready' : 'none';
         }
+        updateRewardsUI();
 
-        // Claim reward
-        document.getElementById('claimRewardBtn')?.addEventListener('click', () => {
-            if (oneTimePurchases >= 10) {
-                voucherActive = true;
-                voucherExpiry = Date.now() + 60*24*60*60*1000; // 60 days
-                alert('🎉 10% discount voucher claimed! Valid for 60 days.');
-                startConfetti();
-                // reset counter
-                oneTimePurchases = 0;
-                updateRewardsUI();
-            }
-        });
-
-        // Claim streak reward
-        document.getElementById('claimStreakReward')?.addEventListener('click', () => {
-            if (weeklyStreak >= 4) {
-                alert('✅ You claimed a free by‑product or 5% voucher!');
-                weeklyStreak = 0; // reset after claim
-                updateRewardsUI();
-            }
-        });
-
-        // Handle one-time purchase (excludes bulk & subscriptions)
-        function handleOneTimePurchase(quantity = 1) {
-            oneTimePurchases += quantity;
-            lifetimePurchases += quantity;
-            // update streak: if purchased within last 7 days, increment, else reset
-            let now = Date.now();
-            if (now - lastPurchaseDate < 7*24*60*60*1000) {
-                weeklyStreak += 1;
-            } else {
-                weeklyStreak = 1;
-            }
-            lastPurchaseDate = now;
+        // ---------- purchase handlers (all increment rewards) ----------
+        function handleAnyPurchase(quantity, isBulk=false) {
+            lifetimeCount += quantity;
+            challengeCount += quantity;   // for demo, every chicken counts toward challenge (including bulk)
+            loyaltyPoints += quantity * 10;
+            weeklyStreak += 1;
+            if (weeklyStreak > 4) weeklyStreak = 4; // cap
             updateRewardsUI();
-            alert(`Purchased ${quantity} chicken · rewards updated!`);
+            alert(`Purchased ${quantity} chicken(s) · rewards updated!`);
         }
 
-        // Handle bulk purchase (adds to lifetime only)
-        function handleBulkPurchase(quantity) {
-            lifetimePurchases += quantity;
-            updateRewardsUI();
-            alert(`Bulk order for ${quantity} chickens (lifetime increased, not counted for 10‑chicken challenge).`);
-        }
-
-        // Attach to one-time purchase buttons
+        // one-time purchase buttons
         document.querySelectorAll('.one-time-purchase').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 let qty = 1;
-                // if there's a quantity input in same card, use that
                 const card = btn.closest('.card');
                 const qtyInput = card?.querySelector('input[type="number"]');
                 if (qtyInput) qty = parseInt(qtyInput.value) || 1;
-                handleOneTimePurchase(qty);
+                handleAnyPurchase(qty);
             });
         });
 
-        // Attach to bulk purchase buttons (exclude from one-time)
+        // bulk purchase buttons
         document.querySelectorAll('.bulk-purchase').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const card = btn.closest('.card');
                 const qtyInput = card?.querySelector('.bulkOptionQty');
                 let qty = qtyInput ? parseInt(qtyInput.value) : 10;
-                handleBulkPurchase(qty);
+                handleAnyPurchase(qty);
             });
         });
 
-        // subscription buttons (do not count for one-time challenge)
-        window.handleSubscription = function() {
-            alert('✅ Subscribed! (not counted in 10‑chicken challenge)');
+        // subscription buttons (mock)
+        window.handleSubscription = function() { 
+            alert('Subscribed! 3 chickens added to rewards');
+            handleAnyPurchase(3);
         };
 
-        // Double reward days effect: when buying 1 chicken + 2 by‑products, progress +2
-        // We'll simulate via by‑product buttons adding a flag
-        let byProductCount = 0;
-        document.querySelectorAll('.byproduct-item button').forEach(btn => {
-            btn.addEventListener('click', () => {
-                byProductCount++;
-                if (byProductCount >= 2 && doubleRewardDays) {
-                    // assume they also bought a chicken recently (simulate)
-                    // for demo, we just show message
-                    alert('⚡ Double reward active! Next chicken counts double.');
-                }
-            });
+        // tier1 subscribe button
+        document.getElementById('tier1SubscribeBtn')?.addEventListener('click', () => {
+            let monthly = parseInt(document.getElementById('tier1MonthlyQty')?.value || 30);
+            handleAnyPurchase(monthly);
         });
 
-        // Initialize
-        updateRewardsUI();
-
-        // Tier 1 Bulk Subscription Handlers (original)
+        // Tier 1 quantity handlers (copied from original)
         const tier1MonthlyQty = document.getElementById('tier1MonthlyQty');
         const tier1DailyQty = document.getElementById('tier1DailyQty');
         const tier1MonthlyPrice = document.getElementById('tier1MonthlyPrice');
         const deliveriesSpan = document.getElementById('deliveriesPerMonth');
-        const tier1MonthlyDec = document.getElementById('tier1MonthlyDec');
-        const tier1MonthlyInc = document.getElementById('tier1MonthlyInc');
-        const tier1DailyDec = document.getElementById('tier1DailyDec');
-        const tier1DailyInc = document.getElementById('tier1DailyInc');
         const TIER1_PRICE = 75;
-
         function updateTier1() {
-            let monthly = parseInt(tier1MonthlyQty.value, 10);
-            let daily = parseInt(tier1DailyQty.value, 10);
-            if (isNaN(monthly) || monthly < 3) monthly = 3;
-            if (isNaN(daily) || daily < 3) daily = 3;
-            if (monthly > 200) monthly = 200;
-            if (daily > 200) daily = 200;
+            let monthly = parseInt(tier1MonthlyQty.value, 10) || 30;
+            let daily = parseInt(tier1DailyQty.value, 10) || 3;
+            monthly = Math.min(200, Math.max(3, monthly));
+            daily = Math.min(200, Math.max(3, daily));
             if (daily > monthly) daily = monthly;
             tier1MonthlyQty.value = monthly;
             tier1DailyQty.value = daily;
             tier1MonthlyPrice.innerText = (monthly * TIER1_PRICE).toFixed(2);
-            let deliveries = Math.floor(monthly / daily);
-            if (deliveries < 1) deliveries = 1;
+            let deliveries = Math.floor(monthly / daily) || 1;
             deliveriesSpan.innerText = deliveries;
         }
-
-        if (tier1MonthlyDec && tier1MonthlyInc) {
-            tier1MonthlyDec.addEventListener('click', () => {
-                let val = parseInt(tier1MonthlyQty.value, 10) || 3;
-                if (val > 3) tier1MonthlyQty.value = val - 1;
-                updateTier1();
-            });
-            tier1MonthlyInc.addEventListener('click', () => {
-                let val = parseInt(tier1MonthlyQty.value, 10) || 3;
-                if (val < 200) tier1MonthlyQty.value = val + 1;
-                updateTier1();
-            });
-            tier1MonthlyQty.addEventListener('input', updateTier1);
-        }
-        if (tier1DailyDec && tier1DailyInc) {
-            tier1DailyDec.addEventListener('click', () => {
-                let val = parseInt(tier1DailyQty.value, 10) || 3;
-                if (val > 3) tier1DailyQty.value = val - 1;
-                updateTier1();
-            });
-            tier1DailyInc.addEventListener('click', () => {
-                let val = parseInt(tier1DailyQty.value, 10) || 3;
-                if (val < 200) tier1DailyQty.value = val + 1;
-                updateTier1();
-            });
-            tier1DailyQty.addEventListener('input', updateTier1);
-        }
+        document.getElementById('tier1MonthlyDec')?.addEventListener('click', () => { tier1MonthlyQty.value = Math.max(3, parseInt(tier1MonthlyQty.value)-1); updateTier1(); });
+        document.getElementById('tier1MonthlyInc')?.addEventListener('click', () => { tier1MonthlyQty.value = Math.min(200, parseInt(tier1MonthlyQty.value)+1); updateTier1(); });
+        document.getElementById('tier1DailyDec')?.addEventListener('click', () => { tier1DailyQty.value = Math.max(3, parseInt(tier1DailyQty.value)-1); updateTier1(); });
+        document.getElementById('tier1DailyInc')?.addEventListener('click', () => { tier1DailyQty.value = Math.min(200, parseInt(tier1DailyQty.value)+1); updateTier1(); });
+        tier1MonthlyQty?.addEventListener('input', updateTier1);
+        tier1DailyQty?.addEventListener('input', updateTier1);
         updateTier1();
 
-        document.getElementById('tier1SubscribeBtn')?.addEventListener('click', () => {
-            let monthly = tier1MonthlyQty.value;
-            let daily = tier1DailyQty.value;
-            let total = (monthly * TIER1_PRICE).toFixed(2);
-            alert(`✅ Subscribed to Tier 1 Bulk plan · ${monthly} chickens per month · R${total}/month · Delivered approx. ${deliveriesSpan.innerText} times this month.`);
-            handleBulkPurchase(parseInt(monthly)); // add to lifetime only
-        });
-
-        document.getElementById('tier1ExtraBtn')?.addEventListener('click', () => {
-            alert('🆕 Request additional fresh chickens. Our team will contact you.');
-        });
-
         // Live subscription handlers
-        const subLiveQty = document.getElementById('subLiveQty');
-        const subLiveTotal = document.getElementById('subLiveTotal');
-        const subLiveDec = document.querySelector('.subLiveDec');
-        const subLiveInc = document.querySelector('.subLiveInc');
-        const LIVE_DISCOUNTED = 94.00;
-        function updateLiveSub() {
-            let q = parseInt(subLiveQty.value, 10);
-            if (isNaN(q) || q < 3) q = 3;
-            if (q > 50) q = 50;
-            subLiveQty.value = q;
-            subLiveTotal.innerText = (q * LIVE_DISCOUNTED).toFixed(2);
+        function setupSub(className, priceId, totalId, qtyId) {
+            const dec = document.querySelector(className+'Dec');
+            const inc = document.querySelector(className+'Inc');
+            const qty = document.getElementById(qtyId);
+            const totalSpan = document.getElementById(totalId);
+            const pricePer = parseFloat(document.getElementById(priceId)?.innerText) || 94;
+            function update() {
+                let v = parseInt(qty.value,10) || 3;
+                v = Math.min(50, Math.max(3, v));
+                qty.value = v;
+                totalSpan.innerText = (v * pricePer).toFixed(2);
+            }
+            if (dec && inc && qty) {
+                dec.addEventListener('click', () => { qty.value = Math.max(3, parseInt(qty.value)-1); update(); });
+                inc.addEventListener('click', () => { qty.value = Math.min(50, parseInt(qty.value)+1); update(); });
+                qty.addEventListener('input', update);
+                update();
+            }
         }
-        if (subLiveDec && subLiveInc) {
-            subLiveDec.addEventListener('click', () => { let val = parseInt(subLiveQty.value, 10) || 3; if (val > 3) subLiveQty.value = val - 1; updateLiveSub(); });
-            subLiveInc.addEventListener('click', () => { let val = parseInt(subLiveQty.value, 10) || 3; if (val < 50) subLiveQty.value = val + 1; updateLiveSub(); });
-            subLiveQty.addEventListener('input', updateLiveSub);
-            updateLiveSub();
-        }
+        setupSub('.subLive', 'subLivePerMonth', 'subLiveTotal', 'subLiveQty');
+        setupSub('.subStd', 'subStdPerMonth', 'subStdTotal', 'subStdQty');
+        setupSub('.subPrem', 'subPremPerMonth', 'subPremTotal', 'subPremQty');
 
-        // fixed header/footer padding
-        const app = document.querySelector('.app');
-        const header = document.querySelector('.header');
-        const bottomNav = document.querySelector('.bottom-nav');
+        // ---------- chat simulation ----------
+        const chatDiv = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        document.getElementById('sendChatBtn').addEventListener('click', () => {
+            let msg = chatInput.value.trim();
+            if (!msg) return;
+            let userBubble = document.createElement('div');
+            userBubble.className = 'chat-bubble';
+            userBubble.innerText = msg;
+            chatDiv.appendChild(userBubble);
+            chatInput.value = '';
+            messagesUnread = 0;
+            updateRewardsUI();
+            // simulate admin auto-reply after 1 sec
+            setTimeout(() => {
+                let adminBubble = document.createElement('div');
+                adminBubble.className = 'chat-bubble admin';
+                adminBubble.innerText = 'Thanks for your message, we’ll get back to you soon.';
+                chatDiv.appendChild(adminBubble);
+                messagesUnread = 1;
+                updateRewardsUI();
+            }, 1000);
+        });
 
+        // ---------- support ticket submission ----------
+        document.getElementById('submitRequestBtn').addEventListener('click', () => {
+            let type = document.getElementById('requestType').value;
+            let order = document.getElementById('relatedPurchase').value;
+            let desc = document.getElementById('requestDesc').value;
+            if (!desc) return alert('Please describe your issue');
+            alert(`Ticket submitted: ${type} for ${order}. We'll respond within 24h.`);
+            supportUnread = 1;
+            updateRewardsUI();
+            // add dummy request to list
+            let reqList = document.getElementById('requestsList');
+            let newReq = document.createElement('div');
+            newReq.className = 'support-request status-open';
+            newReq.innerText = `#TKT00${Date.now()} · ${type} · Open · 0 messages`;
+            reqList.appendChild(newReq);
+            document.getElementById('requestDesc').value = '';
+        });
+
+        // ---------- rating modal ----------
+        const modal = document.getElementById('ratingModal');
+        let currentOrder = '';
+        document.querySelectorAll('.rate-order-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                currentOrder = btn.dataset.order;
+                modal.classList.add('show-modal');
+            });
+        });
+        let selectedRating = 0;
+        document.querySelectorAll('.star-rating i').forEach(star => {
+            star.addEventListener('click', (e) => {
+                selectedRating = parseInt(star.dataset.star);
+                document.querySelectorAll('.star-rating i').forEach((s,idx) => {
+                    if (idx < selectedRating) s.classList.replace('far','fas');
+                    else s.classList.replace('fas','far');
+                });
+            });
+        });
+        document.getElementById('submitRatingBtn').addEventListener('click', () => {
+            let feedback = document.getElementById('privateFeedback').value;
+            alert(`Rating ${selectedRating} stars submitted for ${currentOrder}. Private feedback recorded.`);
+            modal.classList.remove('show-modal');
+            // reset
+            selectedRating = 0;
+            document.querySelectorAll('.star-rating i').forEach(s => s.classList.replace('fas','far'));
+            document.getElementById('privateFeedback').value = '';
+        });
+
+        // ---------- claim reward ----------
+        document.getElementById('claimRewardBtn')?.addEventListener('click', () => {
+            if (challengeCount >= 10) {
+                alert('🎉 10% voucher claimed! (valid 60 days)');
+                challengeCount = 0;
+                updateRewardsUI();
+            }
+        });
+
+        // ---------- padding adjustment ----------
         function setAppPadding() {
-            if (!app || !header || !bottomNav) return;
-            const headerHeight = header.offsetHeight;
-            const bottomNavHeight = bottomNav.offsetHeight;
-            app.style.paddingTop = headerHeight + 'px';
-            app.style.paddingBottom = bottomNavHeight + 'px';
+            const app = document.querySelector('.app');
+            const header = document.querySelector('.header');
+            const bottomNav = document.querySelector('.bottom-nav');
+            if (app && header && bottomNav) {
+                app.style.paddingTop = header.offsetHeight + 'px';
+                app.style.paddingBottom = bottomNav.offsetHeight + 'px';
+            }
         }
         window.addEventListener('load', setAppPadding);
         window.addEventListener('resize', setAppPadding);
         setTimeout(setAppPadding, 100);
-        if (window.ResizeObserver) {
-            const observer = new ResizeObserver(() => setAppPadding());
-            observer.observe(header);
-            observer.observe(bottomNav);
-        }
     })();
 </script>
 </body>
