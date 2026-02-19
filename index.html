@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>The Golden Feather · farm fresh + rewards</title>
+    <title>The Golden Feather · farm fresh chicken</title>
     <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -94,7 +94,7 @@
             color: #3a2e1f;
             font-size: 0.65rem;
         }
-        /* ===== MAIN CONTENT ===== */
+        /* ===== MAIN CONTENT scrolls naturally ===== */
         .main-content {
             overflow: visible;
             display: block;
@@ -172,7 +172,6 @@
             height: 8px;
             background: #c9a43b;
             border-radius: 20px;
-            transition: width 0.3s ease;
         }
         .row {
             display: flex;
@@ -210,6 +209,15 @@
         .btn-small {
             padding: 0.5rem 1.2rem;
             font-size: 0.9rem;
+        }
+        .icon-green {
+            color: #3f6e4c;
+        }
+        .bulk-calc {
+            background: #f2ebe0;
+            border-radius: 18px;
+            padding: 1rem;
+            margin-top: 0.5rem;
         }
         .quantity-selector {
             display: flex;
@@ -279,61 +287,216 @@
             color: #2c4532;
             background: #ede7dc;
         }
-        /* ----- rewards specific styles (gamification) ----- */
-        .progress-glow {
-            box-shadow: 0 0 10px #f3d37c;
-        }
-        .streak-flame {
-            color: #ff8c42;
-            animation: flicker 1.5s infinite;
-        }
-        @keyframes flicker {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.9; transform: scale(1.05); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-        .tier-swipe {
-            display: flex;
-            gap: 0.8rem;
-            overflow-x: auto;
-            padding: 0.4rem 0.2rem;
-            scroll-snap-type: x mandatory;
-        }
-        .tier-card {
-            min-width: 130px;
-            background: #fcf3e6;
-            border-radius: 28px;
-            padding: 0.8rem;
-            border: 1px solid #e2d2bc;
-            scroll-snap-align: start;
-            text-align: center;
-        }
-        .tier-card i {
-            font-size: 2rem;
-            color: #c9a43b;
-        }
-        .admin-toggle {
-            background: #2c4532;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            cursor: pointer;
-        }
-        .confetti-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-        }
         .order-item {
             background: #f9f3ea;
             border-radius: 18px;
             padding: 1rem;
             border-left: 6px solid #c9a43b;
+        }
+        .promo-banner {
+            background: linear-gradient(135deg, #3f6e4c 0%, #2c4532 100%);
+            color: white;
+            border-radius: 22px;
+            padding: 1rem;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ---------- BRANDING ADDITIONS (only new styles, no layout changes) ---------- */
+        .hero-brand {
+            background: linear-gradient(145deg, #fff7e8, #fce8cf);
+            border-left: 8px solid #c9a43b;
+            padding: 1.5rem 1.2rem;
+            border-radius: 28px;
+            margin-bottom: 0.2rem;
+        }
+        .hero-headline {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #2c4532;
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+        }
+        .hero-subheadline {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #7e6b4b;
+            margin-bottom: 0.2rem;
+        }
+        .hero-tagline {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #5f4e36;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+        .hero-trust {
+            font-size: 0.95rem;
+            background: rgba(255, 250, 235, 0.8);
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 0.5rem 0 0.8rem;
+            color: #2c4532;
+            font-weight: 500;
+            border: 1px solid #e0cfb5;
+        }
+        .hero-visuals {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 1.8rem;
+            margin: 0.8rem 0 0.2rem;
+            color: #6f542e;
+        }
+        .brand-story {
+            background: #f9f2e7;
+            border-radius: 28px;
+        }
+        .brand-story p {
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .trust-signals {
+            background: #fcf6ec;
+        }
+        .trust-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+        .trust-grid .trust-item {
+            flex: 1 0 calc(50% - 0.8rem);
+            background: white;
+            border-radius: 22px;
+            padding: 0.9rem 0.2rem;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+            border: 1px solid #f0e0ce;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #3f4d3a;
+        }
+        .trust-item i {
+            display: block;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            color: #c9a43b;
+        }
+        .food-desire {
+            background: #fff5e6;
+            padding: 1.2rem 0.8rem;
+        }
+        .desire-scroll {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 0.4rem 0.2rem 0.8rem;
+            scrollbar-width: thin;
+            scrollbar-color: #c9a43b #f0e0ce;
+        }
+        .desire-scroll::-webkit-scrollbar {
+            height: 5px;
+        }
+        .desire-scroll::-webkit-scrollbar-thumb {
+            background: #c9a43b;
+            border-radius: 12px;
+        }
+        .desire-item {
+            min-width: 100px;
+            text-align: center;
+            background: rgba(255,255,245,0.7);
+            padding: 0.8rem 0.2rem;
+            border-radius: 28px;
+            border: 1px solid #e8d4bb;
+        }
+        .desire-item i {
+            font-size: 2.2rem;
+            color: #8f6f42;
+            margin-bottom: 5px;
+        }
+        .desire-item span {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #4a3e2b;
+        }
+        .repeat-psychology {
+            background: transparent;
+            box-shadow: none;
+            padding: 0.2rem 0;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            justify-content: center;
+        }
+        .repeat-psychology .badge {
+            background: #eddfcd;
+            color: #2d3f2a;
+            font-size: 0.75rem;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .repeat-psychology .badge i {
+            margin-right: 6px;
+            color: #b48b3a;
+        }
+        /* subtle warm tone for community feel */
+        .card p i {
+            color: #c9a43b;
+        }
+
+        /* by‑products grid (new, but uses existing card styles) */
+        .byproducts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            margin: 0.4rem 0;
+        }
+        .byproduct-item {
+            background: #f9f2e7;
+            border-radius: 20px;
+            padding: 0.8rem 0.4rem;
+            text-align: center;
+            border: 1px solid #e2d2bc;
+        }
+        .byproduct-item i {
+            font-size: 1.8rem;
+            color: #a8862c;
+            margin-bottom: 4px;
+        }
+        .byproduct-item .byproduct-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #2d3f2a;
+        }
+        .byproduct-item .byproduct-price {
+            font-weight: 700;
+            color: #3f5c3a;
+            margin: 4px 0;
+        }
+        .byproduct-item button {
+            background: white;
+            border: 1px solid #c9a43b;
+            border-radius: 30px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #2c4532;
+            width: 100%;
+            cursor: pointer;
+        }
+        .freezer-badge {
+            background: #aac7b2;
+            color: #1d3b22;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
         }
     </style>
 </head>
@@ -350,457 +513,740 @@
         </div>
     </div>
 
-    <!-- main content: home + other sections (bulk section removed, replaced by rewards) -->
+    <!-- main content: brand elements + new purchase options (old product cards removed) -->
     <main class="main-content" id="mainContent">
-        <!-- HOME section (unchanged except added data attributes for reward tracking) -->
+        <!-- HOME section with brand cards + new chicken options + by‑products -->
         <section id="homeSection" class="content-section active">
-            <!-- hero, brand story, trust etc (unchanged, omitted for brevity but kept in final code) -->
-            <div class="card hero-brand">...</div> <!-- content preserved -->
-            <!-- we'll keep the full original home section with minor additions: give buy buttons a class "oneTimeBuy" and data-qty -->
-            <!-- but for answer length we include full code at the end -->
-        </section>
 
-        <!-- NEW REWARDS SECTION (replaces old bulk section) -->
-        <section id="rewardsSection" class="content-section">
-            <!-- Header: Golden Rewards + subtitle + animated progress + countdown -->
-            <div class="card" style="background: linear-gradient(145deg, #fcf3e6, #fae4cf);">
+            <!-- 1. HERO BRAND SECTION (exact brand language) - unchanged -->
+            <div class="card hero-brand">
+                <div class="hero-headline">Farm Fresh Chicken, Raised for Your Family</div>
+                <div class="hero-subheadline">Trusted Local Poultry Supplier</div>
+                <div class="hero-tagline">Fresh. Reliable. Always Available.</div>
+                <div class="hero-trust"><i class="fas fa-hand-holding-heart"></i> We're your neighbors — from our pasture to your table</div>
+                <div class="hero-visuals">
+                    <i class="fas fa-sun" style="color: #f5b342;"></i>
+                    <i class="fas fa-leaf" style="color: #4e7f5a;"></i>
+                    <i class="fas fa-tractor" style="color: #8b6b4d;"></i>
+                    <i class="fas fa-heart" style="color: #c94f4f;"></i>
+                </div>
+                <div style="font-size: 0.8rem; color: #7e6b4b; margin-top: 6px;"><i class="far fa-clock"></i> harvested early morning · always fresh</div>
+            </div>
+
+            <!-- 2. BRAND STORY SECTION - unchanged -->
+            <div class="card brand-story">
+                <div class="card-title" style="font-size: 1.3rem;">🕊️ Our promise</div>
+                <p>We raise every chicken with care on open pastures, just minutes from your home. No freeze, no shortcuts — only clean, honest poultry delivered within hours of harvest.</p>
+                <p><i class="fas fa-people-group" style="color:#c9a43b;"></i> <strong>Community first:</strong> we supply local families, braais, and restaurants because we live here too. Freshness isn’t just our business — it’s our table.</p>
+            </div>
+
+            <!-- 3. TRUST SIGNALS - unchanged -->
+            <div class="card trust-signals">
+                <div class="trust-grid">
+                    <div class="trust-item"><i class="fas fa-check-circle"></i> Always fresh stock</div>
+                    <div class="trust-item"><i class="fas fa-hand-sparkles"></i> Clean preparation</div>
+                    <div class="trust-item"><i class="fas fa-clock"></i> Reliable availability</div>
+                    <div class="trust-item"><i class="fas fa-tractor"></i> Local farm quality</div>
+                    <div class="trust-item"><i class="fas fa-boxes-stacked"></i> Bulk supply capable</div>
+                </div>
+            </div>
+
+            <!-- 4. FOOD DESIRE VISUALS - unchanged -->
+            <div class="card food-desire">
+                <div style="font-weight: 600; margin-bottom: 0.4rem; color: #4f3f2b;"><i class="fas fa-utensils"></i> From our farm to your braai</div>
+                <div class="desire-scroll">
+                    <div class="desire-item"><i class="fas fa-drumstick-bite"></i><br><span>Golden roast</span></div>
+                    <div class="desire-item"><i class="fas fa-fire"></i><br><span>Braai special</span></div>
+                    <div class="desire-item"><i class="fas fa-people-roof"></i><br><span>Family dinner</span></div>
+                    <div class="desire-item"><i class="fas fa-store"></i><br><span>Restaurant supply</span></div>
+                </div>
+                <p style="font-size:0.9rem; margin-top:6px; color:#735f44;"><i class="fas fa-star"></i> Sunday braai? We've got the freshest birds.</p>
+            </div>
+
+            <!-- 5. REPEAT PURCHASE PSYCHOLOGY - unchanged -->
+            <div class="repeat-psychology">
+                <span class="badge"><i class="fas fa-redo-alt"></i> Order again in one tap</span>
+                <span class="badge"><i class="fas fa-calendar-alt"></i> Monthly supply available</span>
+                <span class="badge"><i class="fas fa-tags"></i> Bulk discounts</span>
+                <span class="badge"><i class="fas fa-truck-fast"></i> Fast re-order for families</span>
+            </div>
+
+            <!-- intro card with microcopy (UPDATED: 15% → 6%) -->
+            <div class="card" style="background: #f2ebe0;">
                 <div class="card-header">
-                    <span class="badge" style="background:#c9a43b;">🎁 Golden Rewards</span>
-                    <span class="badge green"><i class="far fa-clock"></i> <span id="countdownDisplay">45d</span></span>
+                    <span class="badge" style="background:#c9a43b; color:#1e2b1a;"><i class="fas fa-calendar-check"></i> monthly subscription</span>
+                    <span class="badge green">save 6%</span>
                 </div>
-                <div class="card-title">Earn more every time you buy</div>
-                <div style="margin: 12px 0 8px;">
-                    <div style="display: flex; justify-content: space-between; font-size:0.9rem;">
-                        <span><i class="fas fa-chicken"></i> <span id="cyclePurchases">0</span>/10 chickens</span>
-                        <span>🔥 streak <span id="weeklyStreak">0</span> weeks</span>
-                    </div>
-                    <div class="growing-progress">
-                        <div class="progress-fill" id="challengeProgress" style="width:0%;"></div>
-                    </div>
+                <div class="card-title">📦 Never run out of fresh chicken</div>
+                <div class="row" style="justify-content: center; gap: 0.3rem; flex-wrap: wrap;">
+                    <span class="badge" style="background:#eddfcd;"><i class="fas fa-box"></i> Keep your chicken stock ready every month</span>
+                    <span class="badge" style="background:#eddfcd;"><i class="fas fa-sliders-h"></i> Adjust your order anytime</span>
+                    <span class="badge" style="background:#eddfcd;"><i class="fas fa-tags"></i> Save 6% with your monthly plan</span>
                 </div>
-                <!-- 10-chicken challenge voucher display -->
-                <div id="voucherClaimArea" style="display: none; background:#e7dbbc; border-radius: 30px; padding: 0.8rem; text-align: center;">
-                    <span class="badge green"><i class="fas fa-ticket-alt"></i> 10% voucher ready!</span>
-                    <button class="btn-small btn-gold" id="claimVoucherBtn" style="margin-top: 6px;"><i class="fas fa-gift"></i> Claim reward</button>
-                </div>
-                <p style="font-size:0.75rem;">one‑time purchases only · 45‑day cycle · voucher valid 60d</p>
+                <p style="font-size:0.9rem; margin-top:6px;"><i class="fas fa-info-circle"></i> Minimum 3 chickens per subscription · billed monthly · cancel or modify with one tap</p>
             </div>
 
-            <!-- Tier status section with swipe cards -->
-            <div class="card">
-                <div class="card-header"><span class="badge"><i class="fas fa-layer-group"></i> tier status</span></div>
+            <!-- ===== NEW TIER 1 BULK/BUNCH SUBSCRIPTION ===== -->
+            <!-- Fixed price R75/chicken, no discount, min 3, flexible monthly & daily quantity -->
+            <div class="card" id="tier1BulkCard">
+                <div class="card-header">
+                    <span class="badge" style="background:#2c4532; color:white;"><i class="fas fa-warehouse"></i> Tier 1 · Bulk/Bunch</span>
+                    <span class="badge" style="background:#c9a43b;">R75 / chicken · no discount</span>
+                </div>
+                <div class="card-title">🥩 Bulk subscription for restaurants & Chisanyamas</div>
+                <div class="row" style="justify-content: flex-start; gap: 0.3rem; flex-wrap: wrap; margin-bottom: 0.3rem;">
+                    <span class="badge" style="background:#eddfcd;"><i class="fas fa-box"></i> Keep your daily stock ready</span>
+                    <span class="badge" style="background:#eddfcd;"><i class="fas fa-sliders-h"></i> Adjust your daily delivery anytime</span>
+                    <span class="badge" style="background:#eddfcd;"><i class="fas fa-calendar-alt"></i> Plan your month, get fresh chickens every day</span>
+                </div>
+
+                <!-- Monthly quantity selector -->
+                <label style="font-weight:600; margin-top:6px;">📆 Monthly total (minimum 3)</label>
+                <div class="quantity-selector">
+                    <button id="tier1MonthlyDec">−</button>
+                    <input type="number" id="tier1MonthlyQty" value="30" min="3" max="200" step="1">
+                    <button id="tier1MonthlyInc">+</button>
+                </div>
+
+                <!-- Daily delivery quantity selector -->
+                <label style="font-weight:600; margin-top:6px;">🚚 Daily delivery quantity (minimum 3)</label>
+                <div class="quantity-selector">
+                    <button id="tier1DailyDec">−</button>
+                    <input type="number" id="tier1DailyQty" value="3" min="3" max="200" step="1">
+                    <button id="tier1DailyInc">+</button>
+                </div>
+
+                <!-- Info & price -->
+                <p style="font-size:0.9rem; background:#f2ebe0; padding:0.5rem; border-radius:30px;">
+                    <i class="fas fa-truck"></i> Approx. <span id="deliveriesPerMonth">10</span> deliveries this month · billed monthly
+                </p>
                 <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                    <span>Current: <strong id="currentTier">Bronze</strong></span>
-                    <span id="nextTierInfo">20 more to Silver</span>
+                    <span class="price" style="font-size:1.2rem;">Monthly total:</span>
+                    <span class="price" style="font-size:1.8rem;">R<span id="tier1MonthlyPrice">2250.00</span></span>
                 </div>
-                <div class="tier-swipe">
-                    <div class="tier-card"><i class="fas fa-egg"></i><br>Bronze<br>0-19</div>
-                    <div class="tier-card"><i class="fas fa-feather"></i><br>Silver<br>20-49</div>
-                    <div class="tier-card"><i class="fas fa-crown"></i><br>Gold<br>50-99</div>
-                    <div class="tier-card"><i class="fas fa-gem"></i><br>Platinum<br>100+</div>
+
+                <!-- Action buttons -->
+                <div class="row" style="margin-top:6px;">
+                    <button class="btn btn-gold" id="tier1SubscribeBtn"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
+                    <button class="btn btn-outline btn-small" id="tier1ExtraBtn"><i class="fas fa-plus-circle"></i> request extra chickens</button>
                 </div>
-                <p>Lifetime chickens: <span id="lifetimeCount">0</span></p>
+                <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-redo-alt"></i> Next billing: 30 days · cancel/modify anytime · min. 3 per delivery</p>
             </div>
 
-            <!-- Weekly streak tracker with flame -->
+            <!-- TIER 1: Live Chicken Subscription (UPDATED: 15% → 6%, prices to R94) -->
+            <div class="card" id="subLiveCard">
+                <div class="card-header">
+                    <span class="badge"><i class="fas-regular fa-egg"></i> live · subscription</span>
+                    <i class="fas fa-leaf" style="color:#6f8f6d;"></i>
+                </div>
+                <div class="card-title">🐔 Live Chicken · Monthly</div>
+                <div class="card-desc"><i class="fas fa-clock"></i> You receive live chickens · no by‑products</div>
+                <div style="display: flex; gap: 0.5rem; align-items: baseline;">
+                    <span class="price" style="font-size:1.3rem;">R<span id="subLivePerMonth">94.00</span> <small>/chicken</small></span>
+                    <span style="text-decoration: line-through; color:#a28d70;">R100</span>
+                    <span class="badge green">6% off</span>
+                </div>
+                <div class="quantity-selector">
+                    <button class="subLiveDec">−</button>
+                    <input type="number" id="subLiveQty" class="subQty" value="3" min="3" max="50" step="1">
+                    <button class="subLiveInc">+</button>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Total monthly:</span>
+                    <span class="price" style="font-size:1.5rem;">R<span id="subLiveTotal">282.00</span></span>
+                </div>
+                <button class="btn btn-gold" onclick="let q=document.getElementById('subLiveQty').value; alert(`✅ Subscribed to Live Chicken tier · ${q} chickens monthly · R${(q*94).toFixed(2)}/month · Billed now, you can manage or cancel anytime.`);"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
+                <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-redo-alt"></i> Next billing: 30 days · easy cancellation</p>
+            </div>
+
+            <!-- TIER 2: Prepared Chicken (farm keeps by‑products) (UPDATED: 15% → 6%, prices to R94) -->
+            <div class="card" id="subStdCard">
+                <div class="card-header">
+                    <span class="badge green"><i class="fas fa-kitchen-set"></i> standard prep · subscription</span>
+                    <span class="badge">farm keeps by‑products</span>
+                </div>
+                <div class="card-title">🔪 Standard Prep · Monthly</div>
+                <div class="card-desc"><i class="fas fa-utensils"></i> Cleaned, ready‑to‑cook · farm retains feet, head, gizzards etc.</div>
+                <div style="display: flex; gap: 0.5rem; align-items: baseline;">
+                    <span class="price" style="font-size:1.3rem;">R<span id="subStdPerMonth">94.00</span> <small>/chicken</small></span>
+                    <span style="text-decoration: line-through; color:#a28d70;">R100</span>
+                    <span class="badge green">6% off</span>
+                </div>
+                <div class="quantity-selector">
+                    <button class="subStdDec">−</button>
+                    <input type="number" id="subStdQty" class="subQty" value="3" min="3" max="50" step="1">
+                    <button class="subStdInc">+</button>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Total monthly:</span>
+                    <span class="price" style="font-size:1.5rem;">R<span id="subStdTotal">282.00</span></span>
+                </div>
+                <button class="btn btn-gold" onclick="let q=document.getElementById('subStdQty').value; alert(`✅ Subscribed to Standard Prep tier · ${q} chickens monthly · R${(q*94).toFixed(2)}/month · Farm keeps by‑products. Manage anytime.`);"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
+                <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-sliders-h"></i> Adjust quantity or cancel in one tap</p>
+            </div>
+
+            <!-- TIER 3: Premium Prepared with all by‑products (UPDATED: 15% → 6%, prices to R108.10) -->
+            <div class="card" id="subPremCard">
+                <div class="card-header">
+                    <span class="badge" style="background:#c9a43b; color:#1e2b1a;"><i class="fas fa-crown"></i> premium · subscription</span>
+                </div>
+                <div class="card-title">🍗 Premium Fully Prepared · Monthly</div>
+                <div class="card-desc"><i class="fas fa-check-circle"></i> Includes all parts (feet, gizzards, liver, heart, etc.)</div>
+                <div style="display: flex; gap: 0.5rem; align-items: baseline;">
+                    <span class="price" style="font-size:1.3rem;">R<span id="subPremPerMonth">108.10</span> <small>/chicken</small></span>
+                    <span style="text-decoration: line-through; color:#a28d70;">R115</span>
+                    <span class="badge green">6% off</span>
+                </div>
+                <div class="quantity-selector">
+                    <button class="subPremDec">−</button>
+                    <input type="number" id="subPremQty" class="subQty" value="3" min="3" max="50" step="1">
+                    <button class="subPremInc">+</button>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Total monthly:</span>
+                    <span class="price" style="font-size:1.5rem;">R<span id="subPremTotal">324.30</span></span>
+                </div>
+                <button class="btn btn-gold" onclick="let q=document.getElementById('subPremQty').value; alert(`✅ Subscribed to Premium tier · ${q} chickens monthly · R${(q*108.10).toFixed(2)}/month · All by‑products included. Manage anytime.`);"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
+                <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-calendar-alt"></i> Billed monthly · upgrade/downgrade anytime</p>
+            </div>
+
+            <!-- easy management card (one‑tap upgrade/downgrade/cancel) unchanged -->
+            <div class="card" style="background:#faf3e8; border:2px dashed #c9a43b;">
+                <div class="card-header">
+                    <span class="badge" style="background:#2c4532; color:white;"><i class="fas fa-credit-card"></i> your subscription</span>
+                </div>
+                <div class="card-title">⚙️ Manage monthly plan</div>
+                <p style="font-size:0.9rem;">Upgrade, downgrade or cancel with one tap — no questions asked.</p>
+                <div class="row" style="justify-content: center;">
+                    <button class="btn-small btn-outline" onclick="alert('🔁 Upgrade to more chickens or a different tier. New price will apply next billing.')"><i class="fas fa-arrow-up"></i> upgrade</button>
+                    <button class="btn-small btn-outline" onclick="alert('🔁 Downgrade to fewer chickens or switch tier. Changes reflect next cycle.')"><i class="fas fa-arrow-down"></i> downgrade</button>
+                    <button class="btn-small btn-outline" style="border-color:#b65151; color:#b65151;" onclick="if(confirm('Cancel your monthly subscription? You can resubscribe anytime.')) alert('Subscription cancelled. We’re sorry to see you go!')"><i class="fas fa-times"></i> cancel</button>
+                </div>
+                <p style="font-size:0.8rem; margin-top:6px;"><i class="fas fa-clock"></i> Changes take effect next billing cycle.</p>
+            </div>
+
+            <!-- ========== EXISTING CHICKEN OPTIONS (untouched) ========== -->
+
+            <!-- Option 1: Whole Live Chicken (existing) -->
             <div class="card">
-                <div class="card-header"><span class="badge"><i class="fas fa-fire streak-flame"></i> weekly streak</span></div>
-                <div style="display: flex; align-items: center; gap: 1rem;">
-                    <span style="font-size: 2rem;" id="flameIcon">🔥</span>
-                    <div>
-                        <span style="font-size: 1.4rem; font-weight: 700;" id="streakNumber">0</span> weeks in a row
+                <div class="card-header">
+                    <span class="badge"><i class="fas fa-egg"></i> live bird</span>
+                    <i class="fas fa-leaf" style="color:#6f8f6d;"></i>
+                </div>
+                <div class="card-title">🐔 Whole Live Chicken</div>
+                <div class="card-desc"><i class="fas fa-clock"></i> you receive live chicken · no by‑products</div>
+                <div class="price">R100 <small>per chicken</small></div>
+                <div class="row">
+                    <button class="btn btn-small" onclick="alert('🛒 Whole live chicken (R100) added to cart. Arrange pickup.')"><i class="fas fa-cart-plus"></i> quick buy</button>
+                    <button class="btn btn-outline btn-small" onclick="alert('⭐ One‑tap reorder: whole live chicken')"><i class="fas fa-redo-alt"></i> reorder</button>
+                </div>
+            </div>
+
+            <!-- Option 2: Standard Prepared Chicken (by‑products retained) existing -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge green"><i class="fas fa-kitchen-set"></i> standard prep</span>
+                    <span class="badge">by‑products kept</span>
+                </div>
+                <div class="card-title">🔪 Standard Prepared Chicken</div>
+                <div class="card-desc"><i class="fas fa-utensils"></i> cleaned & ready‑to‑cook</div>
+                <div class="price">R100 <small>per chicken</small></div>
+                <p style="font-size:0.85rem; background:#f6ede1; padding:0.4rem; border-radius:30px; color:#5f4e36;">
+                    <i class="fas fa-separator"></i> Farm retains: feet, head/neck, gizzards, liver, heart, intestines — sold separately below.
+                </p>
+                <div class="row">
+                    <button class="btn btn-small" onclick="alert('🛒 Standard prepared chicken (R100) added. By‑products not included.')"><i class="fas fa-cart-plus"></i> buy</button>
+                    <button class="btn btn-outline btn-small" onclick="alert('⭐ Reorder: standard prepared chicken')"><i class="fas fa-redo-alt"></i> reorder</button>
+                </div>
+            </div>
+
+            <!-- Option 3: Premium Fully Prepared Chicken (all parts included) existing -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge" style="background:#c9a43b; color:#1e2b1a;"><i class="fas fa-crown"></i> premium</span>
+                </div>
+                <div class="card-title">🍗 Premium Fully Prepared</div>
+                <div class="card-desc"><i class="fas fa-check-circle"></i> includes all parts (feet, gizzards, liver, heart, etc.)</div>
+                <div class="price">R115 <small>per chicken · everything included</small></div>
+                <div class="row">
+                    <button class="btn btn-gold btn-small" onclick="alert('🛒 Premium prepared chicken (R115) – you get everything.')"><i class="fas fa-cart-plus"></i> buy premium</button>
+                    <button class="btn btn-outline btn-small" onclick="alert('⭐ Reorder: premium chicken')"><i class="fas fa-redo-alt"></i> reorder</button>
+                </div>
+            </div>
+
+            <!-- Option 4: Bulk Buyer Option (min 10, R75 each, by‑products retained) existing -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge green"><i class="fas fa-users"></i> bulk 10+</span>
+                    <span class="badge">restaurants / resellers</span>
+                </div>
+                <div class="card-title">📦 Bulk Buyer (minimum 10)</div>
+                <div class="card-desc"><i class="fas fa-tag icon-green"></i> R75 per chicken · farm keeps all by‑products</div>
+                <div class="bulk-calc" style="margin-top:0;">
+                    <label>Quantity (min. 10 for bulk rate)</label>
+                    <div class="quantity-selector">
+                        <button class="bulkOptionDec">−</button>
+                        <input type="number" class="bulkOptionQty" value="10" min="10" max="200" step="1">
+                        <button class="bulkOptionInc">+</button>
+                    </div>
+                    <p style="font-size:1.2rem; font-weight:600;">Total: R<span class="bulkOptionTotal">750</span></p>
+                    <p><span class="bulkOptionUnit">R75 / chicken</span></p>
+                </div>
+                <div class="row">
+                    <button class="btn btn-small" onclick="let q=this.closest('.card')?.querySelector('.bulkOptionQty')?.value||10; alert(`Bulk order for ${q} chickens – total R${q*75} (by‑products retained by farm)`);"><i class="fas fa-truck"></i> order bulk</button>
+                    <button class="btn btn-outline btn-small" onclick="alert('⭐ Quick reorder: bulk 10 chickens')"><i class="fas fa-redo-alt"></i> reorder</button>
+                </div>
+            </div>
+
+            <!-- ========== BY‑PRODUCTS SALES (separate, packaged, frozen available) unchanged ========== -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge" style="background:#3f6e4c; color:white;"><i class="fas fa-boxes-stacked"></i> farm by‑products</span>
+                    <span class="freezer-badge"><i class="fas fa-snowflake"></i> frozen storage</span>
+                </div>
+                <div class="card-title">🍗 Feet · Gizzards · Liver & more</div>
+                <p class="card-desc">Packaged separately from our standard prep chickens. Always available frozen or fresh.</p>
+                
+                <div class="byproducts-grid">
+                    <!-- feet -->
+                    <div class="byproduct-item">
+                        <i class="fas fa-paw"></i>
+                        <div class="byproduct-name">Chicken feet</div>
+                        <div class="byproduct-price">R15 / pack</div>
+                        <button onclick="alert('🛒 Added chicken feet pack (R15)')"><i class="fas fa-cart-plus"></i> add</button>
+                    </div>
+                    <!-- heads & necks -->
+                    <div class="byproduct-item">
+                        <i class="fas fa-drumstick-bite"></i>
+                        <div class="byproduct-name">Heads & necks</div>
+                        <div class="byproduct-price">R10 / pack</div>
+                        <button onclick="alert('🛒 Added heads & necks pack (R10)')"><i class="fas fa-cart-plus"></i> add</button>
+                    </div>
+                    <!-- gizzards -->
+                    <div class="byproduct-item">
+                        <i class="fas fa-utensils"></i>
+                        <div class="byproduct-name">Gizzards</div>
+                        <div class="byproduct-price">R20 / pack</div>
+                        <button onclick="alert('🛒 Added gizzards pack (R20)')"><i class="fas fa-cart-plus"></i> add</button>
+                    </div>
+                    <!-- liver -->
+                    <div class="byproduct-item">
+                        <i class="fas fa-heart"></i>
+                        <div class="byproduct-name">Liver</div>
+                        <div class="byproduct-price">R15 / pack</div>
+                        <button onclick="alert('🛒 Added liver pack (R15)')"><i class="fas fa-cart-plus"></i> add</button>
+                    </div>
+                    <!-- heart -->
+                    <div class="byproduct-item">
+                        <i class="fas fa-heartbeat"></i>
+                        <div class="byproduct-name">Heart</div>
+                        <div class="byproduct-price">R15 / pack</div>
+                        <button onclick="alert('🛒 Added heart pack (R15)')"><i class="fas fa-cart-plus"></i> add</button>
+                    </div>
+                    <!-- intestines -->
+                    <div class="byproduct-item">
+                        <i class="fas fa-circle"></i>
+                        <div class="byproduct-name">Intestines</div>
+                        <div class="byproduct-price">R10 / pack</div>
+                        <button onclick="alert('🛒 Added intestines pack (R10)')"><i class="fas fa-cart-plus"></i> add</button>
                     </div>
                 </div>
-                <div id="streakRewardMsg" style="background: #f2e1c0; border-radius: 20px; padding: 0.5rem; display: none;">
-                    🎉 4‑week streak unlocked: free by‑product!
-                </div>
-                <p class="card-desc"><i class="far fa-calendar-alt"></i> buy at least 1 chicken per week</p>
+                <p style="font-size:0.8rem; color:#735f44; margin-top:6px;"><i class="fas fa-snowflake"></i> All by‑products available frozen — select at checkout.</p>
+                <button class="btn-outline btn-small" style="width:100%;" onclick="alert('🛒 View all by‑products in cart')">go to by‑products cart</button>
             </div>
 
-            <!-- By‑Product Boost & Double reward days -->
-            <div class="card">
-                <div class="card-header"><span class="badge green"><i class="fas fa-boxes"></i> by‑product boost</span></div>
-                <div style="display: flex; justify-content: space-between;">
-                    <span>Double reward days:</span>
-                    <span id="doubleRewardStatus" class="badge" style="background:#c9a43b;">active</span>
+            <!-- small reminder / loyalty (UPDATED: R50 off → 10% off) -->
+            <div class="card" style="background:#fff6e9;">
+                <div class="row">
+                    <i class="fas fa-gem" style="color:#c9a43b; font-size:2rem;"></i>
+                    <span><strong>Loyalty feather</strong> · refer a friend, get 10% off</span>
                 </div>
-                <p class="card-desc">Buy 1 standard chicken + 2 by‑products = double progress toward 10‑chicken challenge.</p>
-                <p><i class="fas fa-info-circle"></i> <span id="boostNote">Currently active</span></p>
-            </div>
-
-            <!-- Referral logic -->
-            <div class="card">
-                <div class="card-header"><span class="badge"><i class="fas fa-user-friends"></i> refer & earn</span></div>
-                <p>🔗 Your referral code: <strong>FARM10</strong></p>
-                <div style="display: flex; gap: 0.5rem;">
-                    <button class="btn-small btn-outline" id="referFriendBtn"><i class="fas fa-share"></i> invite friend</button>
-                    <span>✅ <span id="referralCount">0</span> successful</span>
-                </div>
-                <p style="font-size:0.8rem;">Friend gets 10% off · you get 5% credit</p>
-            </div>
-
-            <!-- Admin dashboard (collapsible) -->
-            <div class="card" style="background: #edebe6;">
-                <div class="card-header" id="adminToggle" style="cursor:pointer;"><span class="badge" style="background:#2c4532; color:white;"><i class="fas fa-cog"></i> admin panel</span> <i class="fas fa-chevron-down"></i></div>
-                <div id="adminPanel" style="display: none; flex-direction: column; gap:0.5rem;">
-                    <label><input type="checkbox" id="toggleDoubleReward" checked> Enable double reward days</label>
-                    <label>Bronze threshold <input type="number" id="bronzeThresh" value="20" min="1" style="width:60px;"></label>
-                    <label>Silver threshold <input type="number" id="silverThresh" value="50" min="1"></label>
-                    <label>Gold threshold <input type="number" id="goldThresh" value="100" min="1"></label>
-                    <label>Discount % <input type="number" id="discountPercent" value="10" min="0" max="100"></label>
-                    <button class="btn-small" id="saveAdmin">save</button>
-                </div>
+                <button class="btn-outline btn-small" style="width:100%;" onclick="alert('🔗 share referral link')"><i class="fas fa-share-alt"></i> invite & earn</button>
             </div>
         </section>
 
-        <!-- other sections: book, orders, profile (unchanged, for brevity we include them in final) -->
-        <section id="bookSection" class="content-section">...</section>
-        <section id="ordersSection" class="content-section">...</section>
-        <section id="profileSection" class="content-section">...</section>
+        <!-- other sections (book, bulk, orders, profile) – bulkSection updated to new pricing -->
+        <section id="bookSection" class="content-section">
+            <div class="card">
+                <div class="card-header"><span class="badge green"><i class="fas fa-seedling"></i> growing</span></div>
+                <div class="card-title">Batch GC2405 · herb infused</div>
+                <div class="growing-progress"><div class="progress-fill" style="width:30%"></div></div>
+                <div>ready 25 May · 22 chickens left</div>
+                <button class="btn btn-gold" onclick="alert('Reserved with 30% deposit')">reserve · deposit 33</button>
+            </div>
+            <div class="card">
+                <div class="card-header"><span class="badge green">organic</span></div>
+                <div class="card-title">Batch GC2402 · ancient grains</div>
+                <div class="growing-progress"><div class="progress-fill" style="width:90%"></div></div>
+                <div>ready 3 days · 8 left (almost sold out)</div>
+                <button class="btn" onclick="alert('Pre-order full amount 110')"><i class="fas fa-lock"></i> reserve now</button>
+            </div>
+            <div class="card">
+                <p><i class="fas fa-bell"></i> Notifications: we’ll alert you 2 days before pickup.</p>
+            </div>
+        </section>
+
+        <!-- bulk section updated to reflect new R75/R100 pricing -->
+        <section id="bulkSection" class="content-section">
+            <div class="card">
+                <div class="card-title">Bulk poultry pricing (updated)</div>
+                <p>1‑9 chickens = R100 each | 10+ chickens = R75 each (farm retains by‑products)</p>
+                <div class="bulk-calc">
+                    <label>Quantity (min. 10 for bulk rate)</label>
+                    <div class="quantity-selector">
+                        <button id="bulkDec">−</button>
+                        <input type="number" id="bulkQty" value="10" min="1" max="200" step="1">
+                        <button id="bulkInc">+</button>
+                    </div>
+                    <p style="font-size:1.2rem; font-weight:600;">Total: R<span id="bulkTotal">750</span> </p>
+                    <p><span id="pricePerUnit" style="color:#2c4532;">R75 / chicken</span> (by‑products kept by farm)</p>
+                    <button class="btn" onclick="let qty = document.getElementById('bulkQty').value; alert(`Bulk order for ${qty} chickens – total R${qty>=10?qty*75:qty*100}. By‑products retained.`)"><i class="fas fa-truck"></i> order bulk</button>
+                </div>
+                <p><i class="fas fa-store"></i> Restaurant / wedding? Contact for contract pricing.</p>
+            </div>
+            <div class="card">
+                <div class="card-title">📅 recurring subscription (future)</div>
+                <p>Monthly chicken delivery · coming soon</p>
+            </div>
+        </section>
+
+        <section id="ordersSection" class="content-section">
+            <div class="order-item">
+                <div><strong>#GC2341</strong> · 5 chickens <span style="float:right;">ready 4 May</span></div>
+                <div style="color:#8b764f;">paid · pickup scheduled</div>
+                <button class="btn-small btn-outline" style="margin-top:6px;" onclick="alert('reorder 5 chickens?')"><i class="fas fa-redo-alt"></i> repeat</button>
+            </div>
+            <div class="order-item">
+                <div><strong>#GC2388</strong> · 12 chickens (bulk) <span style="float:right;">8 May</span></div>
+                <div style="color:#8b764f;">deposit paid · growing</div>
+            </div>
+            <div class="order-item">
+                <div><strong>#GC2250</strong> · 2 chickens <span style="float:right;">delivered 20 Apr</span></div>
+                <div><i class="fas fa-star" style="color:gold;"></i> rate your purchase</div>
+            </div>
+        </section>
+        <section id="profileSection" class="content-section">
+            <div class="card">
+                <div style="display:flex; gap:1rem;">
+                    <i class="fas fa-user-circle" style="font-size:3rem; color:#5f7e5a;"></i>
+                    <div><strong>Alex Chen</strong><br>member since 2024</div>
+                </div>
+            </div>
+            <div class="card">
+                <p><i class="fas fa-gift"></i> Loyalty points: 340 (next reward 500)</p>
+                <p><i class="fas fa-ticket-alt"></i> Referral code: FEATHER-ALEX</p>
+            </div>
+            <div class="card">
+                <button class="btn-outline" style="width:100%;" onclick="alert('view order history')">my order history</button>
+            </div>
+            <div class="card promo-banner" style="background: #a8862c;">
+                <p style="color:white;">🎁 10% off your next bulk order</p>
+            </div>
+        </section>
     </main>
 
-    <!-- bottom nav: replaced "Bulk" with "Rewards" (🎁 icon) -->
+    <!-- bottom nav unchanged -->
     <nav class="bottom-nav">
         <div class="nav-item active" data-section="homeSection"><i class="fas fa-home"></i><span>Home</span></div>
         <div class="nav-item" data-section="bookSection"><i class="fas fa-calendar-plus"></i><span>Book</span></div>
-        <div class="nav-item" data-section="rewardsSection"><i class="fas fa-gift"></i><span>Rewards</span></div> <!-- changed -->
+        <div class="nav-item" data-section="bulkSection"><i class="fas fa-cubes"></i><span>Bulk</span></div>
         <div class="nav-item" data-section="ordersSection"><i class="fas fa-clipboard-list"></i><span>Orders</span></div>
         <div class="nav-item" data-section="profileSection"><i class="fas fa-user"></i><span>Profile</span></div>
     </nav>
 </div>
 
-<!-- confetti canvas (hidden by default) -->
-<canvas id="confettiCanvas" class="confetti-canvas" style="display: none;"></canvas>
-
+<!-- JavaScript (updated constants for 6% discount) -->
 <script>
-(function() {
-    // ----- REWARDS STATE (with localStorage persistence) -----
-    let rewards = {
-        lifetimeChickens: 0,
-        cycleStart: Date.now(), // start of current 45d cycle
-        cyclePurchases: 0,
-        lastPurchaseDate: 0,
-        weeklyStreak: 0,
-        lastStreakWeek: 0, // week number based on epoch
-        referralCount: 0,
-        voucher: null, // {type: '10%', expires: timestamp}
-        doubleRewardDays: true,
-        tierThresholds: { bronze: 20, silver: 50, gold: 100 }
-    };
+    (function() {
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = {
+            homeSection: document.getElementById('homeSection'),
+            bookSection: document.getElementById('bookSection'),
+            bulkSection: document.getElementById('bulkSection'),
+            ordersSection: document.getElementById('ordersSection'),
+            profileSection: document.getElementById('profileSection')
+        };
 
-    // load from localStorage if exists
-    try {
-        const saved = localStorage.getItem('goldenFeatherRewards');
-        if (saved) {
-            const parsed = JSON.parse(saved);
-            rewards = { ...rewards, ...parsed };
-            // ensure cycleStart is number
-            rewards.cycleStart = Number(rewards.cycleStart) || Date.now();
-        } else {
-            // initialize with demo data
-            rewards.lifetimeChickens = 12;
-            rewards.cyclePurchases = 4;
-            rewards.weeklyStreak = 2;
-            rewards.lastStreakWeek = getWeekNumber();
-        }
-    } catch (e) {}
-
-    // helper: get current week number (based on 7-day cycles from epoch)
-    function getWeekNumber(ts = Date.now()) {
-        return Math.floor(ts / (7 * 86400000));
-    }
-
-    // ----- DOM elements -----
-    const cycleSpan = document.getElementById('cyclePurchases');
-    const progressBar = document.getElementById('challengeProgress');
-    const countdownSpan = document.getElementById('countdownDisplay');
-    const voucherArea = document.getElementById('voucherClaimArea');
-    const claimBtn = document.getElementById('claimVoucherBtn');
-    const lifetimeSpan = document.getElementById('lifetimeCount');
-    const currentTierSpan = document.getElementById('currentTier');
-    const nextTierInfo = document.getElementById('nextTierInfo');
-    const streakNumberSpan = document.getElementById('streakNumber');
-    const streakRewardMsg = document.getElementById('streakRewardMsg');
-    const referralCountSpan = document.getElementById('referralCount');
-    const doubleRewardStatus = document.getElementById('doubleRewardStatus');
-    const boostNote = document.getElementById('boostNote');
-
-    // admin toggles
-    const adminToggle = document.getElementById('adminToggle');
-    const adminPanel = document.getElementById('adminPanel');
-    const toggleDoubleReward = document.getElementById('toggleDoubleReward');
-    const bronzeThresh = document.getElementById('bronzeThresh');
-    const silverThresh = document.getElementById('silverThresh');
-    const goldThresh = document.getElementById('goldThresh');
-    const discountPercent = document.getElementById('discountPercent');
-    const saveAdmin = document.getElementById('saveAdmin');
-
-    // ----- update UI -----
-    function updateRewardsUI() {
-        // cycle purchases
-        if (cycleSpan) cycleSpan.innerText = rewards.cyclePurchases;
-        const percent = Math.min(100, (rewards.cyclePurchases / 10) * 100);
-        if (progressBar) progressBar.style.width = percent + '%';
-        if (progressBar) progressBar.classList.toggle('progress-glow', percent >= 100);
-
-        // countdown timer (45 days from cycleStart)
-        const now = Date.now();
-        const elapsed = now - rewards.cycleStart;
-        const remainingMs = 45 * 86400000 - elapsed;
-        if (remainingMs <= 0) {
-            // cycle expired: reset cycle purchases
-            rewards.cyclePurchases = 0;
-            rewards.cycleStart = now;
-            saveRewards();
-        }
-        const daysLeft = Math.max(0, Math.ceil(remainingMs / 86400000));
-        countdownSpan.innerText = daysLeft + 'd left';
-
-        // voucher claim area visibility
-        if (rewards.cyclePurchases >= 10 && !rewards.voucher) {
-            voucherArea.style.display = 'block';
-        } else {
-            voucherArea.style.display = 'none';
-        }
-
-        // lifetime tier
-        if (lifetimeSpan) lifetimeSpan.innerText = rewards.lifetimeChickens;
-        const lt = rewards.lifetimeChickens;
-        let tier = 'Bronze';
-        let nextTarget = rewards.tierThresholds.bronze;
-        if (lt >= rewards.tierThresholds.gold) { tier = 'Platinum'; nextTarget = null; }
-        else if (lt >= rewards.tierThresholds.silver) { tier = 'Gold'; nextTarget = rewards.tierThresholds.gold; }
-        else if (lt >= rewards.tierThresholds.bronze) { tier = 'Silver'; nextTarget = rewards.tierThresholds.silver; }
-        else { tier = 'Bronze'; nextTarget = rewards.tierThresholds.bronze; }
-        currentTierSpan.innerText = tier;
-        if (nextTarget) nextTierInfo.innerText = `${nextTarget - lt} more to ${tier=='Bronze'?'Silver':tier=='Silver'?'Gold':'Platinum'}`;
-        else nextTierInfo.innerText = 'max tier';
-
-        // weekly streak
-        streakNumberSpan.innerText = rewards.weeklyStreak;
-        if (rewards.weeklyStreak >= 4) streakRewardMsg.style.display = 'block';
-        else streakRewardMsg.style.display = 'none';
-
-        // referral count
-        referralCountSpan.innerText = rewards.referralCount;
-
-        // double reward status
-        doubleRewardStatus.innerText = rewards.doubleRewardDays ? 'active' : 'inactive';
-        doubleRewardStatus.style.background = rewards.doubleRewardDays ? '#c9a43b' : '#a28d70';
-        boostNote.innerText = rewards.doubleRewardDays ? 'Double days active – buy combo!' : 'Double days off';
-    }
-
-    // save to localStorage
-    function saveRewards() {
-        localStorage.setItem('goldenFeatherRewards', JSON.stringify(rewards));
-    }
-
-    // record a one-time purchase (quantity = number of chickens)
-    function recordOneTimePurchase(qty, isComboBoost = false) {
-        if (qty <= 0) return;
-        // update lifetime
-        rewards.lifetimeChickens += qty;
-
-        // weekly streak logic: get current week number
-        const currentWeek = getWeekNumber();
-        if (rewards.lastStreakWeek === 0) {
-            rewards.weeklyStreak = 1;
-        } else if (currentWeek === rewards.lastStreakWeek) {
-            // same week, no change
-        } else if (currentWeek === rewards.lastStreakWeek + 1) {
-            rewards.weeklyStreak += 1;
-        } else {
-            rewards.weeklyStreak = 1; // reset
-        }
-        rewards.lastStreakWeek = currentWeek;
-
-        // cycle purchases (45-day)
-        const now = Date.now();
-        if (now - rewards.cycleStart > 45 * 86400000) {
-            // cycle expired: reset
-            rewards.cyclePurchases = qty;
-            rewards.cycleStart = now;
-        } else {
-            // apply boost if double reward days and combo condition (simulate via isComboBoost param)
-            let increment = qty;
-            if (rewards.doubleRewardDays && isComboBoost) {
-                increment *= 2; // double progress
-            }
-            rewards.cyclePurchases += increment;
-        }
-
-        // ensure voucher not auto-claimed
-        if (rewards.cyclePurchases >= 10) {
-            // voucher becomes available but not auto-claimed
-        }
-
-        saveRewards();
-        updateRewardsUI();
-    }
-
-    // claim voucher
-    function claimReward() {
-        if (rewards.cyclePurchases < 10) return;
-        // set voucher with 60-day expiry
-        rewards.voucher = { type: '10%', expires: Date.now() + 60 * 86400000 };
-        // reset cycle
-        rewards.cyclePurchases = 0;
-        rewards.cycleStart = Date.now();
-        saveRewards();
-        updateRewardsUI();
-        showConfetti();
-    }
-
-    // simple confetti
-    function showConfetti() {
-        const canvas = document.getElementById('confettiCanvas');
-        canvas.style.display = 'block';
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        const particles = [];
-        for (let i=0;i<50;i++) {
-            particles.push({ x: Math.random()*canvas.width, y: 0, size: Math.random()*6+2, speed: Math.random()*3+2, color: `hsl(${Math.random()*60+30}, 80%, 60%)` });
-        }
-        function animate() {
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            let any = false;
-            particles.forEach(p => {
-                p.y += p.speed;
-                if (p.y < canvas.height) any = true;
-                ctx.fillStyle = p.color;
-                ctx.fillRect(p.x, p.y, p.size, p.size);
+        function activateSection(sectionId) {
+            Object.values(sections).forEach(s => s.classList.remove('active'));
+            if (sections[sectionId]) sections[sectionId].classList.add('active');
+            navItems.forEach(item => {
+                const data = item.getAttribute('data-section');
+                item.classList.toggle('active', data === sectionId);
             });
-            if (any) requestAnimationFrame(animate);
-            else canvas.style.display = 'none';
         }
-        animate();
-        setTimeout(() => { canvas.style.display = 'none'; }, 2000);
-    }
 
-    // admin: save settings
-    saveAdmin.addEventListener('click', () => {
-        rewards.doubleRewardDays = toggleDoubleReward.checked;
-        rewards.tierThresholds.bronze = parseInt(bronzeThresh.value) || 20;
-        rewards.tierThresholds.silver = parseInt(silverThresh.value) || 50;
-        rewards.tierThresholds.gold = parseInt(goldThresh.value) || 100;
-        saveRewards();
-        updateRewardsUI();
-        alert('Admin settings saved');
-    });
-
-    adminToggle.addEventListener('click', () => {
-        if (adminPanel.style.display === 'none') adminPanel.style.display = 'flex';
-        else adminPanel.style.display = 'none';
-    });
-
-    // claim button
-    claimBtn.addEventListener('click', claimReward);
-
-    // referral button
-    document.getElementById('referFriendBtn')?.addEventListener('click', () => {
-        rewards.referralCount++;
-        saveRewards();
-        updateRewardsUI();
-        alert('Referral link copied (demo) – friend gets 10% off, you get 5% credit');
-    });
-
-    // ---- integrate with purchase buttons on home page ----
-    function attachPurchaseListeners() {
-        // one-time buy buttons (class .btn, not subscription or bulk)
-        // we target specific buttons by their onclick or we can add event listeners
-        // for demo, we override some existing alerts to also record purchase.
-        // we'll use a generic approach: any button that contains "quick buy", "buy", "order bulk" but exclude subscribe.
-        const allBuyButtons = document.querySelectorAll('#homeSection .btn, #homeSection .btn-gold, #homeSection .btn-outline');
-        allBuyButtons.forEach(btn => {
-            if (btn.closest('.card')?.querySelector('.badge')?.innerText.includes('subscription')) return; // skip subscription cards
-            if (btn.innerText.includes('subscribe')) return;
-            if (btn.closest('#tier1BulkCard')) return; // exclude tier1 bulk subscription
-            if (btn.closest('.bulk-calc')) {
-                // bulk option (min 10) – exclude from challenge
-                return;
-            }
-            // for other buy buttons, add click to record 1 chicken (simplified)
-            btn.addEventListener('click', function(e) {
-                // extract quantity if possible
-                let qty = 1;
-                const parentCard = this.closest('.card');
-                if (parentCard) {
-                    const qtyInput = parentCard.querySelector('.bulkOptionQty');
-                    if (qtyInput) qty = parseInt(qtyInput.value) || 1;
-                }
-                // determine if combo boost (buy standard chicken + by‑products) – simplified: if button is near by‑products grid, we assume combo
-                const isCombo = this.closest('.card')?.querySelector('.byproducts-grid') !== null;
-                recordOneTimePurchase(qty, isCombo);
-            });
-        });
-    }
-
-    // navigation
-    const navItems = document.querySelectorAll('.nav-item');
-    const sections = {
-        homeSection: document.getElementById('homeSection'),
-        bookSection: document.getElementById('bookSection'),
-        rewardsSection: document.getElementById('rewardsSection'),
-        ordersSection: document.getElementById('ordersSection'),
-        profileSection: document.getElementById('profileSection')
-    };
-
-    function activateSection(sectionId) {
-        Object.values(sections).forEach(s => s?.classList.remove('active'));
-        if (sections[sectionId]) sections[sectionId].classList.add('active');
         navItems.forEach(item => {
-            const data = item.getAttribute('data-section');
-            item.classList.toggle('active', data === sectionId);
+            item.addEventListener('click', (e) => {
+                const sectionId = item.getAttribute('data-section');
+                if (sectionId) activateSection(sectionId);
+            });
         });
-        if (sectionId === 'rewardsSection') updateRewardsUI();
-    }
 
-    navItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            const sectionId = item.getAttribute('data-section');
-            if (sectionId) activateSection(sectionId);
-        });
-    });
+        // bulk calculator (main bulk section)
+        const bulkQty = document.getElementById('bulkQty');
+        const bulkTotal = document.getElementById('bulkTotal');
+        const pricePerUnitSpan = document.getElementById('pricePerUnit');
+        const bulkDec = document.getElementById('bulkDec');
+        const bulkInc = document.getElementById('bulkInc');
 
-    // padding for fixed header/footer
-    const app = document.querySelector('.app');
-    const header = document.querySelector('.header');
-    const bottomNav = document.querySelector('.bottom-nav');
+        function updateBulkPrice() {
+            let qty = parseInt(bulkQty.value, 10);
+            if (isNaN(qty) || qty < 1) qty = 1;
+            if (qty > 200) qty = 200;
+            bulkQty.value = qty;
 
-    function setAppPadding() {
-        if (!app || !header || !bottomNav) return;
-        app.style.paddingTop = header.offsetHeight + 'px';
-        app.style.paddingBottom = bottomNav.offsetHeight + 'px';
-    }
-    window.addEventListener('load', setAppPadding);
-    window.addEventListener('resize', setAppPadding);
-    setTimeout(setAppPadding, 100);
-
-    // init rewards UI
-    updateRewardsUI();
-    attachPurchaseListeners();
-
-    // also trigger update when home section becomes active (to reflect purchases)
-    const observer = new MutationObserver(() => {
-        if (sections.homeSection.classList.contains('active')) {
-            // maybe update something
+            let unitPrice = (qty >= 10) ? 75 : 100;
+            let total = qty * unitPrice;
+            bulkTotal.innerText = total;
+            pricePerUnitSpan.innerText = `R${unitPrice} / chicken`;
         }
-    });
-    observer.observe(sections.homeSection, { attributes: true, attributeFilter: ['class'] });
 
-    // ensure home section buttons also work with existing alerts (we keep original alerts + reward)
-    // we add a wrapper to not break original onclick? We'll keep both.
-    // For existing inline onclick, we leave them as is, but also attach our listener.
-    // That may double count if both fire. To be safe, we can override onclick? We'll just note demo.
-    // We'll trust that our listener runs before inline? Probably not. Better to remove inline? But for demo it's fine.
-    // We'll modify inline alerts to also call recordOneTimePurchase? That would be complex.
-    // To keep it clean, I'll keep existing behavior and rely on our listeners (but inline may prevent default? no).
-    // anyway this is a simulation.
-})();
+        if (bulkDec && bulkInc && bulkQty) {
+            bulkDec.addEventListener('click', () => {
+                let val = parseInt(bulkQty.value, 10) || 1;
+                if (val > 1) bulkQty.value = val - 1;
+                updateBulkPrice();
+            });
+            bulkInc.addEventListener('click', () => {
+                let val = parseInt(bulkQty.value, 10) || 1;
+                if (val < 200) bulkQty.value = val + 1;
+                updateBulkPrice();
+            });
+            bulkQty.addEventListener('input', updateBulkPrice);
+            updateBulkPrice();
+        }
+
+        // bulk option card handlers (existing)
+        document.querySelectorAll('.bulkOptionDec').forEach(btn => {
+            btn.addEventListener('click', e => {
+                const card = e.target.closest('.card');
+                const input = card.querySelector('.bulkOptionQty');
+                let val = parseInt(input.value, 10) || 10;
+                if (val > 10) input.value = val - 1;
+                updateBulkOptionCard(card);
+            });
+        });
+        document.querySelectorAll('.bulkOptionInc').forEach(btn => {
+            btn.addEventListener('click', e => {
+                const card = e.target.closest('.card');
+                const input = card.querySelector('.bulkOptionQty');
+                let val = parseInt(input.value, 10) || 10;
+                if (val < 200) input.value = val + 1;
+                updateBulkOptionCard(card);
+            });
+        });
+        document.querySelectorAll('.bulkOptionQty').forEach(input => {
+            input.addEventListener('input', e => {
+                const card = e.target.closest('.card');
+                updateBulkOptionCard(card);
+            });
+        });
+
+        function updateBulkOptionCard(card) {
+            if (!card) return;
+            const input = card.querySelector('.bulkOptionQty');
+            const totalSpan = card.querySelector('.bulkOptionTotal');
+            const unitSpan = card.querySelector('.bulkOptionUnit');
+            let qty = parseInt(input.value, 10);
+            if (isNaN(qty) || qty < 10) qty = 10;
+            if (qty > 200) qty = 200;
+            input.value = qty;
+            let unit = 75; // bulk card always at 75
+            totalSpan.innerText = qty * unit;
+            unitSpan.innerText = `R${unit} / chicken`;
+        }
+
+        // ========== EXISTING SUBSCRIPTION QUANTITY HANDLERS (updated to 6% off) ==========
+        // Tier 1: Live
+        const subLiveQty = document.getElementById('subLiveQty');
+        const subLiveTotal = document.getElementById('subLiveTotal');
+        const subLiveDec = document.querySelector('.subLiveDec');
+        const subLiveInc = document.querySelector('.subLiveInc');
+        const LIVE_DISCOUNTED = 94.00;  // 6% off R100
+
+        function updateLiveSub() {
+            let q = parseInt(subLiveQty.value, 10);
+            if (isNaN(q) || q < 3) q = 3;
+            if (q > 50) q = 50;
+            subLiveQty.value = q;
+            subLiveTotal.innerText = (q * LIVE_DISCOUNTED).toFixed(2);
+        }
+        if (subLiveDec && subLiveInc && subLiveQty) {
+            subLiveDec.addEventListener('click', () => {
+                let val = parseInt(subLiveQty.value, 10) || 3;
+                if (val > 3) subLiveQty.value = val - 1;
+                updateLiveSub();
+            });
+            subLiveInc.addEventListener('click', () => {
+                let val = parseInt(subLiveQty.value, 10) || 3;
+                if (val < 50) subLiveQty.value = val + 1;
+                updateLiveSub();
+            });
+            subLiveQty.addEventListener('input', updateLiveSub);
+            updateLiveSub();
+        }
+
+        // Tier 2: Standard
+        const subStdQty = document.getElementById('subStdQty');
+        const subStdTotal = document.getElementById('subStdTotal');
+        const subStdDec = document.querySelector('.subStdDec');
+        const subStdInc = document.querySelector('.subStdInc');
+        const STD_DISCOUNTED = 94.00;   // 6% off R100
+
+        function updateStdSub() {
+            let q = parseInt(subStdQty.value, 10);
+            if (isNaN(q) || q < 3) q = 3;
+            if (q > 50) q = 50;
+            subStdQty.value = q;
+            subStdTotal.innerText = (q * STD_DISCOUNTED).toFixed(2);
+        }
+        if (subStdDec && subStdInc && subStdQty) {
+            subStdDec.addEventListener('click', () => {
+                let val = parseInt(subStdQty.value, 10) || 3;
+                if (val > 3) subStdQty.value = val - 1;
+                updateStdSub();
+            });
+            subStdInc.addEventListener('click', () => {
+                let val = parseInt(subStdQty.value, 10) || 3;
+                if (val < 50) subStdQty.value = val + 1;
+                updateStdSub();
+            });
+            subStdQty.addEventListener('input', updateStdSub);
+            updateStdSub();
+        }
+
+        // Tier 3: Premium
+        const subPremQty = document.getElementById('subPremQty');
+        const subPremTotal = document.getElementById('subPremTotal');
+        const subPremDec = document.querySelector('.subPremDec');
+        const subPremInc = document.querySelector('.subPremInc');
+        const PREM_DISCOUNTED = 108.10;  // 6% off R115
+
+        function updatePremSub() {
+            let q = parseInt(subPremQty.value, 10);
+            if (isNaN(q) || q < 3) q = 3;
+            if (q > 50) q = 50;
+            subPremQty.value = q;
+            subPremTotal.innerText = (q * PREM_DISCOUNTED).toFixed(2);
+        }
+        if (subPremDec && subPremInc && subPremQty) {
+            subPremDec.addEventListener('click', () => {
+                let val = parseInt(subPremQty.value, 10) || 3;
+                if (val > 3) subPremQty.value = val - 1;
+                updatePremSub();
+            });
+            subPremInc.addEventListener('click', () => {
+                let val = parseInt(subPremQty.value, 10) || 3;
+                if (val < 50) subPremQty.value = val + 1;
+                updatePremSub();
+            });
+            subPremQty.addEventListener('input', updatePremSub);
+            updatePremSub();
+        }
+
+        // ========== NEW TIER 1 BULK SUBSCRIPTION HANDLERS ==========
+        const tier1MonthlyQty = document.getElementById('tier1MonthlyQty');
+        const tier1DailyQty = document.getElementById('tier1DailyQty');
+        const tier1MonthlyPrice = document.getElementById('tier1MonthlyPrice');
+        const deliveriesSpan = document.getElementById('deliveriesPerMonth');
+        const tier1MonthlyDec = document.getElementById('tier1MonthlyDec');
+        const tier1MonthlyInc = document.getElementById('tier1MonthlyInc');
+        const tier1DailyDec = document.getElementById('tier1DailyDec');
+        const tier1DailyInc = document.getElementById('tier1DailyInc');
+        const TIER1_PRICE = 75;
+
+        function updateTier1() {
+            let monthly = parseInt(tier1MonthlyQty.value, 10);
+            let daily = parseInt(tier1DailyQty.value, 10);
+
+            if (isNaN(monthly) || monthly < 3) monthly = 3;
+            if (isNaN(daily) || daily < 3) daily = 3;
+            if (monthly > 200) monthly = 200;
+            if (daily > 200) daily = 200;
+
+            // Daily cannot exceed monthly total
+            if (daily > monthly) daily = monthly;
+
+            tier1MonthlyQty.value = monthly;
+            tier1DailyQty.value = daily;
+
+            // Calculate total price
+            tier1MonthlyPrice.innerText = (monthly * TIER1_PRICE).toFixed(2);
+
+            // Approximate deliveries this month (based on 30-day month, integer floor)
+            let deliveries = Math.floor(monthly / daily);
+            if (deliveries < 1) deliveries = 1;
+            deliveriesSpan.innerText = deliveries;
+        }
+
+        if (tier1MonthlyDec && tier1MonthlyInc && tier1MonthlyQty) {
+            tier1MonthlyDec.addEventListener('click', () => {
+                let val = parseInt(tier1MonthlyQty.value, 10) || 3;
+                if (val > 3) tier1MonthlyQty.value = val - 1;
+                updateTier1();
+            });
+            tier1MonthlyInc.addEventListener('click', () => {
+                let val = parseInt(tier1MonthlyQty.value, 10) || 3;
+                if (val < 200) tier1MonthlyQty.value = val + 1;
+                updateTier1();
+            });
+            tier1MonthlyQty.addEventListener('input', updateTier1);
+        }
+
+        if (tier1DailyDec && tier1DailyInc && tier1DailyQty) {
+            tier1DailyDec.addEventListener('click', () => {
+                let val = parseInt(tier1DailyQty.value, 10) || 3;
+                if (val > 3) tier1DailyQty.value = val - 1;
+                updateTier1();
+            });
+            tier1DailyInc.addEventListener('click', () => {
+                let val = parseInt(tier1DailyQty.value, 10) || 3;
+                if (val < 200) tier1DailyQty.value = val + 1;
+                updateTier1();
+            });
+            tier1DailyQty.addEventListener('input', updateTier1);
+        }
+
+        // Subscribe button
+        document.getElementById('tier1SubscribeBtn')?.addEventListener('click', () => {
+            let monthly = tier1MonthlyQty.value;
+            let daily = tier1DailyQty.value;
+            let total = (monthly * TIER1_PRICE).toFixed(2);
+            alert(`✅ Subscribed to Tier 1 Bulk plan · ${monthly} chickens per month · R${total}/month · Delivered approx. ${deliveriesSpan.innerText} times this month (${daily} per delivery). You can adjust daily quantity anytime.`);
+        });
+
+        // Extra chickens button
+        document.getElementById('tier1ExtraBtn')?.addEventListener('click', () => {
+            alert('🆕 Request additional fresh chickens for this week. Our team will contact you to confirm quantity and delivery.');
+        });
+
+        // Initialize
+        updateTier1();
+
+        // fixed header/footer padding
+        const app = document.querySelector('.app');
+        const header = document.querySelector('.header');
+        const bottomNav = document.querySelector('.bottom-nav');
+
+        function setAppPadding() {
+            if (!app || !header || !bottomNav) return;
+            const headerHeight = header.offsetHeight;
+            const bottomNavHeight = bottomNav.offsetHeight;
+            app.style.paddingTop = headerHeight + 'px';
+            app.style.paddingBottom = bottomNavHeight + 'px';
+        }
+
+        window.addEventListener('load', setAppPadding);
+        window.addEventListener('resize', setAppPadding);
+        setTimeout(setAppPadding, 100);
+
+        if (window.ResizeObserver) {
+            const observer = new ResizeObserver(() => setAppPadding());
+            observer.observe(header);
+            observer.observe(bottomNav);
+        }
+    })();
 </script>
-
-<!-- ========== full home section content (truncated in answer but included in final) ========== -->
-<!-- NOTE: In final answer, the full home section with all cards is present, but for brevity here I've shown only the modifications. The final code includes all original cards. -->
 </body>
 </html>
