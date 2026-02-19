@@ -571,17 +571,17 @@
                 <span class="badge"><i class="fas fa-truck-fast"></i> Fast re-order for families</span>
             </div>
 
-            <!-- intro card with microcopy (unchanged) -->
+            <!-- intro card with microcopy (UPDATED: 15% → 6%) -->
             <div class="card" style="background: #f2ebe0;">
                 <div class="card-header">
                     <span class="badge" style="background:#c9a43b; color:#1e2b1a;"><i class="fas fa-calendar-check"></i> monthly subscription</span>
-                    <span class="badge green">save 15%</span>
+                    <span class="badge green">save 6%</span>
                 </div>
                 <div class="card-title">📦 Never run out of fresh chicken</div>
                 <div class="row" style="justify-content: center; gap: 0.3rem; flex-wrap: wrap;">
                     <span class="badge" style="background:#eddfcd;"><i class="fas fa-box"></i> Keep your chicken stock ready every month</span>
                     <span class="badge" style="background:#eddfcd;"><i class="fas fa-sliders-h"></i> Adjust your order anytime</span>
-                    <span class="badge" style="background:#eddfcd;"><i class="fas fa-tags"></i> Save 15% with your monthly plan</span>
+                    <span class="badge" style="background:#eddfcd;"><i class="fas fa-tags"></i> Save 6% with your monthly plan</span>
                 </div>
                 <p style="font-size:0.9rem; margin-top:6px;"><i class="fas fa-info-circle"></i> Minimum 3 chickens per subscription · billed monthly · cancel or modify with one tap</p>
             </div>
@@ -633,7 +633,7 @@
                 <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-redo-alt"></i> Next billing: 30 days · cancel/modify anytime · min. 3 per delivery</p>
             </div>
 
-            <!-- TIER 1: Live Chicken Subscription (existing) -->
+            <!-- TIER 1: Live Chicken Subscription (UPDATED: 15% → 6%, prices to R94) -->
             <div class="card" id="subLiveCard">
                 <div class="card-header">
                     <span class="badge"><i class="fas-regular fa-egg"></i> live · subscription</span>
@@ -642,9 +642,9 @@
                 <div class="card-title">🐔 Live Chicken · Monthly</div>
                 <div class="card-desc"><i class="fas fa-clock"></i> You receive live chickens · no by‑products</div>
                 <div style="display: flex; gap: 0.5rem; align-items: baseline;">
-                    <span class="price" style="font-size:1.3rem;">R<span id="subLivePerMonth">85.00</span> <small>/chicken</small></span>
+                    <span class="price" style="font-size:1.3rem;">R<span id="subLivePerMonth">94.00</span> <small>/chicken</small></span>
                     <span style="text-decoration: line-through; color:#a28d70;">R100</span>
-                    <span class="badge green">15% off</span>
+                    <span class="badge green">6% off</span>
                 </div>
                 <div class="quantity-selector">
                     <button class="subLiveDec">−</button>
@@ -653,13 +653,13 @@
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                     <span>Total monthly:</span>
-                    <span class="price" style="font-size:1.5rem;">R<span id="subLiveTotal">255.00</span></span>
+                    <span class="price" style="font-size:1.5rem;">R<span id="subLiveTotal">282.00</span></span>
                 </div>
-                <button class="btn btn-gold" onclick="let q=document.getElementById('subLiveQty').value; alert(`✅ Subscribed to Live Chicken tier · ${q} chickens monthly · R${(q*85).toFixed(2)}/month · Billed now, you can manage or cancel anytime.`);"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
+                <button class="btn btn-gold" onclick="let q=document.getElementById('subLiveQty').value; alert(`✅ Subscribed to Live Chicken tier · ${q} chickens monthly · R${(q*94).toFixed(2)}/month · Billed now, you can manage or cancel anytime.`);"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
                 <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-redo-alt"></i> Next billing: 30 days · easy cancellation</p>
             </div>
 
-            <!-- TIER 2: Prepared Chicken (farm keeps by‑products) (existing) -->
+            <!-- TIER 2: Prepared Chicken (farm keeps by‑products) (UPDATED: 15% → 6%, prices to R94) -->
             <div class="card" id="subStdCard">
                 <div class="card-header">
                     <span class="badge green"><i class="fas fa-kitchen-set"></i> standard prep · subscription</span>
@@ -668,9 +668,9 @@
                 <div class="card-title">🔪 Standard Prep · Monthly</div>
                 <div class="card-desc"><i class="fas fa-utensils"></i> Cleaned, ready‑to‑cook · farm retains feet, head, gizzards etc.</div>
                 <div style="display: flex; gap: 0.5rem; align-items: baseline;">
-                    <span class="price" style="font-size:1.3rem;">R<span id="subStdPerMonth">85.00</span> <small>/chicken</small></span>
+                    <span class="price" style="font-size:1.3rem;">R<span id="subStdPerMonth">94.00</span> <small>/chicken</small></span>
                     <span style="text-decoration: line-through; color:#a28d70;">R100</span>
-                    <span class="badge green">15% off</span>
+                    <span class="badge green">6% off</span>
                 </div>
                 <div class="quantity-selector">
                     <button class="subStdDec">−</button>
@@ -679,13 +679,13 @@
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                     <span>Total monthly:</span>
-                    <span class="price" style="font-size:1.5rem;">R<span id="subStdTotal">255.00</span></span>
+                    <span class="price" style="font-size:1.5rem;">R<span id="subStdTotal">282.00</span></span>
                 </div>
-                <button class="btn btn-gold" onclick="let q=document.getElementById('subStdQty').value; alert(`✅ Subscribed to Standard Prep tier · ${q} chickens monthly · R${(q*85).toFixed(2)}/month · Farm keeps by‑products. Manage anytime.`);"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
+                <button class="btn btn-gold" onclick="let q=document.getElementById('subStdQty').value; alert(`✅ Subscribed to Standard Prep tier · ${q} chickens monthly · R${(q*94).toFixed(2)}/month · Farm keeps by‑products. Manage anytime.`);"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
                 <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-sliders-h"></i> Adjust quantity or cancel in one tap</p>
             </div>
 
-            <!-- TIER 3: Premium Prepared with all by‑products (existing) -->
+            <!-- TIER 3: Premium Prepared with all by‑products (UPDATED: 15% → 6%, prices to R108.10) -->
             <div class="card" id="subPremCard">
                 <div class="card-header">
                     <span class="badge" style="background:#c9a43b; color:#1e2b1a;"><i class="fas fa-crown"></i> premium · subscription</span>
@@ -693,9 +693,9 @@
                 <div class="card-title">🍗 Premium Fully Prepared · Monthly</div>
                 <div class="card-desc"><i class="fas fa-check-circle"></i> Includes all parts (feet, gizzards, liver, heart, etc.)</div>
                 <div style="display: flex; gap: 0.5rem; align-items: baseline;">
-                    <span class="price" style="font-size:1.3rem;">R<span id="subPremPerMonth">97.75</span> <small>/chicken</small></span>
+                    <span class="price" style="font-size:1.3rem;">R<span id="subPremPerMonth">108.10</span> <small>/chicken</small></span>
                     <span style="text-decoration: line-through; color:#a28d70;">R115</span>
-                    <span class="badge green">15% off</span>
+                    <span class="badge green">6% off</span>
                 </div>
                 <div class="quantity-selector">
                     <button class="subPremDec">−</button>
@@ -704,9 +704,9 @@
                 </div>
                 <div style="display: flex; justify-content: space-between;">
                     <span>Total monthly:</span>
-                    <span class="price" style="font-size:1.5rem;">R<span id="subPremTotal">293.25</span></span>
+                    <span class="price" style="font-size:1.5rem;">R<span id="subPremTotal">324.30</span></span>
                 </div>
-                <button class="btn btn-gold" onclick="let q=document.getElementById('subPremQty').value; alert(`✅ Subscribed to Premium tier · ${q} chickens monthly · R${(q*97.75).toFixed(2)}/month · All by‑products included. Manage anytime.`);"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
+                <button class="btn btn-gold" onclick="let q=document.getElementById('subPremQty').value; alert(`✅ Subscribed to Premium tier · ${q} chickens monthly · R${(q*108.10).toFixed(2)}/month · All by‑products included. Manage anytime.`);"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
                 <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-calendar-alt"></i> Billed monthly · upgrade/downgrade anytime</p>
             </div>
 
@@ -855,11 +855,11 @@
                 <button class="btn-outline btn-small" style="width:100%;" onclick="alert('🛒 View all by‑products in cart')">go to by‑products cart</button>
             </div>
 
-            <!-- small reminder / loyalty (keeping one original element to maintain vibe) -->
+            <!-- small reminder / loyalty (UPDATED: R50 off → 10% off) -->
             <div class="card" style="background:#fff6e9;">
                 <div class="row">
                     <i class="fas fa-gem" style="color:#c9a43b; font-size:2rem;"></i>
-                    <span><strong>Loyalty feather</strong> · refer a friend, get R50 off</span>
+                    <span><strong>Loyalty feather</strong> · refer a friend, get 10% off</span>
                 </div>
                 <button class="btn-outline btn-small" style="width:100%;" onclick="alert('🔗 share referral link')"><i class="fas fa-share-alt"></i> invite & earn</button>
             </div>
@@ -955,7 +955,7 @@
     </nav>
 </div>
 
-<!-- JavaScript (original untouched + new subscription handlers) -->
+<!-- JavaScript (updated constants for 6% discount) -->
 <script>
     (function() {
         const navItems = document.querySelectorAll('.nav-item');
@@ -1057,13 +1057,13 @@
             unitSpan.innerText = `R${unit} / chicken`;
         }
 
-        // ========== EXISTING SUBSCRIPTION QUANTITY HANDLERS ==========
+        // ========== EXISTING SUBSCRIPTION QUANTITY HANDLERS (updated to 6% off) ==========
         // Tier 1: Live
         const subLiveQty = document.getElementById('subLiveQty');
         const subLiveTotal = document.getElementById('subLiveTotal');
         const subLiveDec = document.querySelector('.subLiveDec');
         const subLiveInc = document.querySelector('.subLiveInc');
-        const LIVE_DISCOUNTED = 85.00;
+        const LIVE_DISCOUNTED = 94.00;  // 6% off R100
 
         function updateLiveSub() {
             let q = parseInt(subLiveQty.value, 10);
@@ -1092,7 +1092,7 @@
         const subStdTotal = document.getElementById('subStdTotal');
         const subStdDec = document.querySelector('.subStdDec');
         const subStdInc = document.querySelector('.subStdInc');
-        const STD_DISCOUNTED = 85.00;
+        const STD_DISCOUNTED = 94.00;   // 6% off R100
 
         function updateStdSub() {
             let q = parseInt(subStdQty.value, 10);
@@ -1121,7 +1121,7 @@
         const subPremTotal = document.getElementById('subPremTotal');
         const subPremDec = document.querySelector('.subPremDec');
         const subPremInc = document.querySelector('.subPremInc');
-        const PREM_DISCOUNTED = 97.75;  // 115 * 0.85
+        const PREM_DISCOUNTED = 108.10;  // 6% off R115
 
         function updatePremSub() {
             let q = parseInt(subPremQty.value, 10);
