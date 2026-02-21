@@ -53,6 +53,9 @@
             box-shadow: 0 6px 12px -6px rgba(90, 70, 40, 0.15);
             border-left: none;
             border-right: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         .header h1 {
             font-size: 1.5rem;
@@ -62,7 +65,6 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            position: relative;
             line-height: 1.3;
         }
         .main-feather {
@@ -93,6 +95,50 @@
             font-weight: 500;
             color: #3a2e1f;
             font-size: 0.65rem;
+        }
+        /* header right menu (hamburger) */
+        .header-menu {
+            position: relative;
+        }
+        .menu-icon {
+            font-size: 1.8rem;
+            color: #2c4532;
+            cursor: pointer;
+            padding: 0.2rem 0.4rem;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+        .menu-icon:hover {
+            background: #ede7dc;
+        }
+        .header-dropdown {
+            position: absolute;
+            top: 45px;
+            right: 0;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            width: 180px;
+            display: none;
+            flex-direction: column;
+            padding: 0.8rem;
+            gap: 0.3rem;
+            z-index: 1200;
+            border: 1px solid #e0cfbb;
+        }
+        .header-dropdown.show {
+            display: flex;
+        }
+        .header-dropdown-item {
+            padding: 0.8rem 1rem;
+            background: #f9f3ea;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #2c4532;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         /* ===== MAIN CONTENT scrolls naturally ===== */
         .main-content {
@@ -245,7 +291,7 @@
             padding: 0.5rem;
             background: white;
         }
-        /* ===== BOTTOM NAV (updated with 6 items) ===== */
+        /* ===== BOTTOM NAV (5 items now) ===== */
         .bottom-nav {
             background: #fefcf7;
             border-top: 1px solid #e8dccd;
@@ -287,50 +333,6 @@
             color: #2c4532;
             background: #ede7dc;
         }
-        /* More menu panel */
-        .more-panel {
-            position: fixed;
-            bottom: 80px;
-            right: 10px;
-            background: white;
-            border-radius: 28px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            padding: 1rem;
-            width: 160px;
-            display: none;
-            flex-direction: column;
-            gap: 0.5rem;
-            z-index: 1100;
-            border: 1px solid #e0cfbb;
-        }
-        .more-panel.show {
-            display: flex;
-        }
-        .more-item {
-            padding: 0.8rem;
-            background: #f9f3ea;
-            border-radius: 40px;
-            text-align: center;
-            font-weight: 600;
-            color: #2c4532;
-            cursor: pointer;
-        }
-        .order-item {
-            background: #f9f3ea;
-            border-radius: 18px;
-            padding: 1rem;
-            border-left: 6px solid #c9a43b;
-        }
-        .promo-banner {
-            background: linear-gradient(135deg, #3f6e4c 0%, #2c4532 100%);
-            color: white;
-            border-radius: 22px;
-            padding: 1rem;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-
         /* ---------- BRANDING ADDITIONS (unchanged) ---------- */
         .hero-brand {
             background: linear-gradient(145deg, #fff7e8, #fce8cf);
@@ -845,18 +847,89 @@
         .social-login-button.google { background: #db4437; }
         .social-login-button.facebook { background: #4267B2; }
         .social-login-button.apple { background: #000; }
+
+        /* ===== NEW STYLES FOR COMMUNITY FESTIVE PLAN ===== */
+        .village-selector {
+            background: #f2ebe0;
+            border-radius: 20px;
+            padding: 1rem;
+        }
+        .plan-cards {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 0.5rem 0.2rem 1rem;
+            scroll-snap-type: x mandatory;
+        }
+        .plan-card {
+            min-width: 160px;
+            background: #f9f2e7;
+            border-radius: 28px;
+            padding: 1rem;
+            scroll-snap-align: start;
+            border: 2px solid #e0cfbb;
+            position: relative;
+        }
+        .plan-card.popular {
+            border-color: #c9a43b;
+            background: #fff2df;
+        }
+        .plan-badge {
+            position: absolute;
+            top: -8px;
+            right: 10px;
+            background: #c9a43b;
+            color: #1e2b1a;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+        .savings-badge {
+            background: #3f6e4c;
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        .slots-left {
+            font-size: 0.8rem;
+            color: #b65151;
+            font-weight: 600;
+        }
+        .deadline {
+            font-size: 0.7rem;
+            color: #7e6b4b;
+        }
+        .group-full {
+            opacity: 0.6;
+            filter: grayscale(0.5);
+        }
+        .progress-detail {
+            background: #e9f0e5;
+            border-radius: 30px;
+            padding: 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
     </style>
 </head>
 <body>
 <div class="app" id="appContainer">
-    <!-- fixed header unchanged -->
+    <!-- fixed header with hamburger menu (More moved here) -->
     <div class="header">
         <h1>
             <i class="fas fa-feather main-feather"></i> The Golden Feather
         </h1>
-        <div class="tagline">
-            <i class="fas fa-seedling" style="color:#4e7f5a;"></i> quality from growth to table
-            <span><i class="far fa-star"></i> ethically raised</span>
+        <div class="header-menu">
+            <i class="fas fa-bars menu-icon" id="headerMenuIcon"></i>
+            <div class="header-dropdown" id="headerDropdown">
+                <div class="header-dropdown-item" data-section="messagesSection"><i class="fas fa-comment-dots"></i> Messages</div>
+                <div class="header-dropdown-item" data-section="supportSection"><i class="fas fa-headset"></i> Support</div>
+                <div class="header-dropdown-item" data-section="bookSection"><i class="fas fa-book"></i> Book</div>
+                <div class="header-dropdown-item" data-section="profileSection"><i class="fas fa-user-circle"></i> Profile</div>
+            </div>
         </div>
     </div>
 
@@ -1188,7 +1261,7 @@
             </div>
         </section>
 
-        <!-- REWARDS section (enhanced with account & loyalty) -->
+        <!-- REWARDS section (unchanged) -->
         <section id="rewardsSection" class="content-section">
             <!-- Customer account summary card -->
             <div class="card" style="background:#f3f0e6;">
@@ -1206,7 +1279,7 @@
                 <div>Claimed rewards: 2 vouchers, 1 free by‑product</div>
             </div>
 
-            <!-- 10-chicken challenge card (from original) -->
+            <!-- 10-chicken challenge card -->
             <div class="card rewards-header">
                 <div class="gold-title">Golden Rewards</div>
                 <div style="font-size: 0.95rem; color: #6b4f2a;">Earn more every time you buy</div>
@@ -1259,7 +1332,69 @@
             </div>
         </section>
 
-        <!-- MESSAGES section (chat inbox) -->
+        <!-- COMMUNITY FESTIVE PLAN (new section) -->
+        <section id="communitySection" class="content-section">
+            <div class="card hero-brand" style="background: linear-gradient(145deg, #e8f0e5, #d4e2d4); border-left-color: #2c4532;">
+                <div class="hero-headline">🎄 Community Festive Plan</div>
+                <div class="hero-subheadline">Village‑based bulk savings for the holidays</div>
+                <div class="hero-tagline">Save together, celebrate together</div>
+                <div class="hero-trust"><i class="fas fa-people-arrows"></i> Join your village group – get discounted chickens for Christmas & New Year</div>
+            </div>
+
+            <!-- Plan selection cards (5,10,15 chickens) -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge green"><i class="fas fa-boxes"></i> Choose your festive pack</span>
+                </div>
+                <div class="plan-cards" id="planCardsContainer">
+                    <!-- dynamically filled by JS, but static fallback -->
+                </div>
+            </div>
+
+            <!-- Village selection dropdown with live slots -->
+            <div class="card village-selector">
+                <div class="card-title" style="font-size:1.1rem;">📍 Select your village</div>
+                <select id="villageSelect" style="width:100%; padding:0.8rem; border-radius:40px; border:1px solid #c0aa83; background:white; margin:0.5rem 0;">
+                    <option value="mgwali">Mgwali – 12 slots left</option>
+                    <option value="dimbaza">Dimbaza – 5 slots left</option>
+                    <option value="berlin">Berlin – 8 slots left</option>
+                    <option value="kayalethu">Kayalethu – 3 slots left</option>
+                </select>
+                <p id="groupAvailability" style="font-size:0.9rem;"><i class="fas fa-users"></i> <span id="slotsDisplay">12</span> spots open in this group</p>
+                <div id="groupFullMessage" style="color:#b65151; display:none;">⚠️ This group is full. Please select another village.</div>
+            </div>
+
+            <!-- Contribution progress (logged-in) / guest preview -->
+            <div class="card" id="contributionProgressCard">
+                <div class="card-header">
+                    <span class="badge"><i class="fas fa-chart-line"></i> Your festive savings</span>
+                    <span id="progressLoginBadge" class="badge green">Logged in as Mpho</span>
+                </div>
+                <div id="loggedInProgress" style="display:block;">
+                    <div class="row" style="justify-content:space-between;">
+                        <span>Contributed: R<span id="contributedAmount">0</span></span>
+                        <span>Goal: R<span id="goalAmount">750</span></span>
+                    </div>
+                    <div class="progress-container">
+                        <div id="contributionProgressFill" class="progress-fill-reward" style="width:0%;"></div>
+                    </div>
+                    <p><span id="remainingBalance">750</span> remaining · est. delivery <span id="deliveryDate">15 Dec 2025</span></p>
+                    <button class="btn btn-gold btn-small" id="makePaymentBtn"><i class="fas fa-credit-card"></i> Make a payment</button>
+                    <button class="btn-outline btn-small" id="payFullBtn"><i class="fas fa-check-circle"></i> Pay full amount</button>
+                </div>
+                <div id="guestProgress" style="display:none;">
+                    <p><i class="fas fa-lock"></i> <a href="#" id="loginToTrack">Log in</a> to track your festive progress and claim village discounts.</p>
+                </div>
+            </div>
+
+            <!-- Info & terms -->
+            <div class="card" style="background:#faf0e6;">
+                <p><i class="fas fa-info-circle"></i> Contribute throughout the year, lock in today’s low prices. Minimum 50% deposit required. Groups limited to 20 families per village.</p>
+                <p><i class="fas fa-gift"></i> Extra bonus: Each paid chicken earns double loyalty points!</p>
+            </div>
+        </section>
+
+        <!-- MESSAGES section (unchanged, but now in header dropdown) -->
         <section id="messagesSection" class="content-section">
             <div class="card">
                 <div class="card-header"><span class="badge green"><i class="fas fa-comments"></i> Live chat with farm</span></div>
@@ -1272,7 +1407,6 @@
                     <button class="btn-small btn-gold" onclick="alert('Message sent (simulated)')"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
-            <!-- notifications card -->
             <div class="card">
                 <div class="card-header"><i class="fas fa-bell"></i> Notifications</div>
                 <div class="badge">Admin responded to your refund request</div>
@@ -1280,7 +1414,7 @@
             </div>
         </section>
 
-        <!-- SUPPORT section (requests & ratings) -->
+        <!-- SUPPORT section (unchanged, now in header dropdown) -->
         <section id="supportSection" class="content-section">
             <div class="card">
                 <div class="card-title">Submit a request</div>
@@ -1308,7 +1442,7 @@
             </div>
         </section>
 
-        <!-- hidden sections: BOOK and PROFILE (kept unchanged) for More menu -->
+        <!-- hidden sections: BOOK and PROFILE (unchanged, in header dropdown) -->
         <section id="bookSection" class="content-section">
             <div class="card">
                 <div class="card-header"><span class="badge green"><i class="fas fa-seedling"></i> growing</span></div>
@@ -1348,178 +1482,165 @@
         </section>
     </main>
 
-    <!-- bottom nav: Home, Orders, Rewards, Messages, Support, More (three dots) -->
+    <!-- bottom nav: Home, Orders, Rewards, Community, (no More) -->
     <nav class="bottom-nav">
         <div class="nav-item active" data-section="homeSection"><i class="fas fa-home"></i><span>Home</span></div>
         <div class="nav-item" data-section="ordersSection"><i class="fas fa-clipboard-list"></i><span>Orders</span></div>
         <div class="nav-item" data-section="rewardsSection"><i class="fas fa-gift"></i><span>Rewards</span></div>
-        <div class="nav-item" data-section="messagesSection"><i class="fas fa-comment-dots"></i><span>Messages</span></div>
-        <div class="nav-item" data-section="supportSection"><i class="fas fa-headset"></i><span>Support</span></div>
-        <div class="nav-item" id="moreNav"><i class="fas fa-ellipsis-h"></i><span>More</span></div>
+        <div class="nav-item" data-section="communitySection"><i class="fas fa-people-group"></i><span>Community</span></div>
+        <div class="nav-item" id="moreNavPlaceholder" style="display:none;"></div> <!-- kept for spacing -->
     </nav>
 
-    <!-- More panel (Book & Profile) -->
-    <div class="more-panel" id="morePanel">
-        <div class="more-item" data-section="bookSection">📖 Book</div>
-        <div class="more-item" data-section="profileSection">👤 Profile</div>
+    <!-- Floating Cart Button (unchanged) -->
+    <div class="floating-cart" id="floatingCart">
+        <div class="floating-cart-container" id="cartIcon">
+            <i class="fas fa-shopping-bag"></i>
+            <div class="floating-cart-badge" id="cartBadge">0</div>
+        </div>
+    </div>
+
+    <!-- Cart Modal (unchanged) -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content" style="position:relative;">
+            <button class="close-button" id="closeCart">&times;</button>
+            <h2 style="color:#2c4532;">Your Cart</h2>
+            <div id="cartItemsContainer"></div>
+            <div class="cart-summary" id="cartSummary" style="display:none;">
+                <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">R0.00</span></div>
+                <div class="summary-row"><span>Shipping</span><span id="cartShipping">R50.00</span></div>
+                <div class="summary-row total"><span>Total</span><span id="cartTotal">R0.00</span></div>
+                <button class="btn btn-gold" style="width:100%;" id="checkoutBtn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Choice Modal (unchanged) -->
+    <div class="modal" id="authChoiceModal">
+        <div class="modal-content" style="position:relative;">
+            <button class="close-button" id="closeAuthChoice">&times;</button>
+            <h2 style="color:#2c4532;">How would you like to proceed?</h2>
+            <div style="display:flex; flex-direction:column; gap:1rem; margin:1rem 0;">
+                <div class="auth-choice-option" id="guestOption">
+                    <i class="fas fa-user"></i>
+                    <h4>Continue as Guest</h4>
+                    <p>Checkout without an account</p>
+                </div>
+                <div class="auth-choice-option" id="signupOption">
+                    <i class="fas fa-user-plus"></i>
+                    <h4>Sign Up & Get 15% off</h4>
+                    <p>Create account for rewards</p>
+                </div>
+                <div class="auth-choice-option" id="loginOption">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <h4>Login</h4>
+                    <p>Welcome back!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Auth Modal (unchanged) -->
+    <div class="modal" id="enhancedAuthModal">
+        <div class="modal-content" style="position:relative;">
+            <button class="close-button" id="closeEnhancedAuth">&times;</button>
+            <div id="authLoading" style="display:none; text-align:center;"><i class="fas fa-spinner fa-spin"></i> Processing...</div>
+            <div id="mainAuthContent">
+                <div style="display:flex; gap:1rem; margin-bottom:1rem;">
+                    <button class="btn-outline" id="tabLogin" style="flex:1;">Login</button>
+                    <button class="btn-outline" id="tabSignup" style="flex:1;">Sign Up</button>
+                </div>
+                <div class="social-login-buttons">
+                    <div class="social-login-button google" id="googleLogin"><i class="fab fa-google"></i></div>
+                    <div class="social-login-button facebook" id="facebookLogin"><i class="fab fa-facebook-f"></i></div>
+                    <div class="social-login-button apple" id="appleLogin"><i class="fab fa-apple"></i></div>
+                </div>
+                <p style="text-align:center; margin:0.5rem 0;">or use email</p>
+                <form id="loginForm" style="display:block;">
+                    <div class="form-group"><label>Email</label><input type="email" id="loginEmail" required></div>
+                    <div class="form-group"><label>Password</label><input type="password" id="loginPassword" required></div>
+                    <button type="submit" class="btn" style="width:100%;">Login</button>
+                </form>
+                <form id="signupForm" style="display:none;">
+                    <div class="form-group"><label>First Name</label><input type="text" id="signupFirstName" required></div>
+                    <div class="form-group"><label>Last Name</label><input type="text" id="signupLastName" required></div>
+                    <div class="form-group"><label>Email</label><input type="email" id="signupEmail" required></div>
+                    <div class="form-group"><label>Password</label><input type="password" id="signupPassword" required></div>
+                    <div class="form-group"><label>Confirm Password</label><input type="password" id="signupConfirmPassword" required></div>
+                    <button type="submit" class="btn btn-gold" style="width:100%;">Create Account & Get 15% off</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal (unchanged) -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content" style="position:relative;">
+            <button class="close-button" id="closeCheckout">&times;</button>
+            <h2 style="color:#2c4532;">Checkout</h2>
+            <div id="checkoutSteps" style="display:flex; gap:0.5rem; margin:1rem 0;">
+                <div class="step active" data-step="1" style="flex:1; text-align:center;">1. Shipping</div>
+                <div class="step" data-step="2" style="flex:1; text-align:center;">2. Payment</div>
+                <div class="step" data-step="3" style="flex:1; text-align:center;">3. Review</div>
+            </div>
+            <form id="shippingForm" style="display:block;">
+                <div class="form-group"><label>Full Name</label><input type="text" id="shipName" required></div>
+                <div class="form-group"><label>Address</label><input type="text" id="shipAddress" required></div>
+                <div class="form-group"><label>City</label><input type="text" id="shipCity" required></div>
+                <div class="form-group"><label>ZIP</label><input type="text" id="shipZip" required></div>
+                <button type="button" class="btn" id="nextToPayment" style="width:100%;">Next</button>
+            </form>
+            <div id="paymentForm" style="display:none;">
+                <div class="payment-method selected" data-method="credit">Credit Card</div>
+                <div class="payment-method" data-method="paypal">PayPal</div>
+                <div class="payment-method" data-method="bank">Bank Transfer</div>
+                <div id="creditDetails" style="display:block;">
+                    <div class="form-group"><label>Card Number</label><input type="text" id="cardNumber"></div>
+                    <div class="form-group"><label>Expiry</label><input type="text" id="cardExpiry" placeholder="MM/YY"></div>
+                    <div class="form-group"><label>CVC</label><input type="text" id="cardCVC"></div>
+                </div>
+                <div id="paypalDetails" style="display:none;">You'll be redirected to PayPal.</div>
+                <div id="bankDetails" style="display:none;">Bank transfer details will be shown.</div>
+                <button type="button" class="btn" id="nextToReview" style="width:100%; margin-top:1rem;">Next</button>
+            </div>
+            <div id="reviewForm" style="display:none;">
+                <div id="reviewItems"></div>
+                <div class="summary-row total"><span>Total</span><span id="reviewTotal">R0.00</span></div>
+                <button class="btn btn-gold" id="placeOrder" style="width:100%;">Place Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal (unchanged) -->
+    <div class="modal" id="successModal">
+        <div class="modal-content" style="position:relative; text-align:center;">
+            <button class="close-button" id="closeSuccess">&times;</button>
+            <i class="fas fa-check-circle" style="font-size:4rem; color:#2c4532;"></i>
+            <h3>Order Confirmed!</h3>
+            <p id="successMessage">Thank you for your purchase.</p>
+            <button class="btn btn-gold" id="continueShopping">Continue Shopping</button>
+        </div>
     </div>
 
     <!-- Confetti canvas -->
     <canvas id="confettiCanvas" class="confetti-canvas" style="display:none;"></canvas>
 </div>
 
-<!-- ========== NEW CART & CHECKOUT MODALS ========== -->
-<!-- Floating Cart Button -->
-<div class="floating-cart" id="floatingCart">
-    <div class="floating-cart-container" id="cartIcon">
-        <i class="fas fa-shopping-bag"></i>
-        <div class="floating-cart-badge" id="cartBadge">0</div>
-    </div>
-</div>
-
-<!-- Cart Modal -->
-<div class="modal" id="cartModal">
-    <div class="modal-content" style="position:relative;">
-        <button class="close-button" id="closeCart">&times;</button>
-        <h2 style="color:#2c4532;">Your Cart</h2>
-        <div id="cartItemsContainer"></div>
-        <div class="cart-summary" id="cartSummary" style="display:none;">
-            <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">R0.00</span></div>
-            <div class="summary-row"><span>Shipping</span><span id="cartShipping">R50.00</span></div>
-            <div class="summary-row total"><span>Total</span><span id="cartTotal">R0.00</span></div>
-            <button class="btn btn-gold" style="width:100%;" id="checkoutBtn">Proceed to Checkout</button>
-        </div>
-    </div>
-</div>
-
-<!-- Auth Choice Modal -->
-<div class="modal" id="authChoiceModal">
-    <div class="modal-content" style="position:relative;">
-        <button class="close-button" id="closeAuthChoice">&times;</button>
-        <h2 style="color:#2c4532;">How would you like to proceed?</h2>
-        <div style="display:flex; flex-direction:column; gap:1rem; margin:1rem 0;">
-            <div class="auth-choice-option" id="guestOption">
-                <i class="fas fa-user"></i>
-                <h4>Continue as Guest</h4>
-                <p>Checkout without an account</p>
-            </div>
-            <div class="auth-choice-option" id="signupOption">
-                <i class="fas fa-user-plus"></i>
-                <h4>Sign Up & Get 15% off</h4>
-                <p>Create account for rewards</p>
-            </div>
-            <div class="auth-choice-option" id="loginOption">
-                <i class="fas fa-sign-in-alt"></i>
-                <h4>Login</h4>
-                <p>Welcome back!</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Enhanced Auth Modal (Login/Signup) -->
-<div class="modal" id="enhancedAuthModal">
-    <div class="modal-content" style="position:relative;">
-        <button class="close-button" id="closeEnhancedAuth">&times;</button>
-        <div id="authLoading" style="display:none; text-align:center;"><i class="fas fa-spinner fa-spin"></i> Processing...</div>
-        <div id="mainAuthContent">
-            <div style="display:flex; gap:1rem; margin-bottom:1rem;">
-                <button class="btn-outline" id="tabLogin" style="flex:1;">Login</button>
-                <button class="btn-outline" id="tabSignup" style="flex:1;">Sign Up</button>
-            </div>
-            <!-- Social Login -->
-            <div class="social-login-buttons">
-                <div class="social-login-button google" id="googleLogin"><i class="fab fa-google"></i></div>
-                <div class="social-login-button facebook" id="facebookLogin"><i class="fab fa-facebook-f"></i></div>
-                <div class="social-login-button apple" id="appleLogin"><i class="fab fa-apple"></i></div>
-            </div>
-            <p style="text-align:center; margin:0.5rem 0;">or use email</p>
-            <!-- Login Form -->
-            <form id="loginForm" style="display:block;">
-                <div class="form-group"><label>Email</label><input type="email" id="loginEmail" required></div>
-                <div class="form-group"><label>Password</label><input type="password" id="loginPassword" required></div>
-                <button type="submit" class="btn" style="width:100%;">Login</button>
-            </form>
-            <!-- Signup Form -->
-            <form id="signupForm" style="display:none;">
-                <div class="form-group"><label>First Name</label><input type="text" id="signupFirstName" required></div>
-                <div class="form-group"><label>Last Name</label><input type="text" id="signupLastName" required></div>
-                <div class="form-group"><label>Email</label><input type="email" id="signupEmail" required></div>
-                <div class="form-group"><label>Password</label><input type="password" id="signupPassword" required></div>
-                <div class="form-group"><label>Confirm Password</label><input type="password" id="signupConfirmPassword" required></div>
-                <button type="submit" class="btn btn-gold" style="width:100%;">Create Account & Get 15% off</button>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- Checkout Modal -->
-<div class="modal" id="checkoutModal">
-    <div class="modal-content" style="position:relative;">
-        <button class="close-button" id="closeCheckout">&times;</button>
-        <h2 style="color:#2c4532;">Checkout</h2>
-        <div id="checkoutSteps" style="display:flex; gap:0.5rem; margin:1rem 0;">
-            <div class="step active" data-step="1" style="flex:1; text-align:center;">1. Shipping</div>
-            <div class="step" data-step="2" style="flex:1; text-align:center;">2. Payment</div>
-            <div class="step" data-step="3" style="flex:1; text-align:center;">3. Review</div>
-        </div>
-        <!-- Step 1: Shipping -->
-        <form id="shippingForm" style="display:block;">
-            <div class="form-group"><label>Full Name</label><input type="text" id="shipName" required></div>
-            <div class="form-group"><label>Address</label><input type="text" id="shipAddress" required></div>
-            <div class="form-group"><label>City</label><input type="text" id="shipCity" required></div>
-            <div class="form-group"><label>ZIP</label><input type="text" id="shipZip" required></div>
-            <button type="button" class="btn" id="nextToPayment" style="width:100%;">Next</button>
-        </form>
-        <!-- Step 2: Payment -->
-        <div id="paymentForm" style="display:none;">
-            <div class="payment-method selected" data-method="credit">Credit Card</div>
-            <div class="payment-method" data-method="paypal">PayPal</div>
-            <div class="payment-method" data-method="bank">Bank Transfer</div>
-            <div id="creditDetails" style="display:block;">
-                <div class="form-group"><label>Card Number</label><input type="text" id="cardNumber"></div>
-                <div class="form-group"><label>Expiry</label><input type="text" id="cardExpiry" placeholder="MM/YY"></div>
-                <div class="form-group"><label>CVC</label><input type="text" id="cardCVC"></div>
-            </div>
-            <div id="paypalDetails" style="display:none;">You'll be redirected to PayPal.</div>
-            <div id="bankDetails" style="display:none;">Bank transfer details will be shown.</div>
-            <button type="button" class="btn" id="nextToReview" style="width:100%; margin-top:1rem;">Next</button>
-        </div>
-        <!-- Step 3: Review -->
-        <div id="reviewForm" style="display:none;">
-            <div id="reviewItems"></div>
-            <div class="summary-row total"><span>Total</span><span id="reviewTotal">R0.00</span></div>
-            <button class="btn btn-gold" id="placeOrder" style="width:100%;">Place Order</button>
-        </div>
-    </div>
-</div>
-
-<!-- Success Modal -->
-<div class="modal" id="successModal">
-    <div class="modal-content" style="position:relative; text-align:center;">
-        <button class="close-button" id="closeSuccess">&times;</button>
-        <i class="fas fa-check-circle" style="font-size:4rem; color:#2c4532;"></i>
-        <h3>Order Confirmed!</h3>
-        <p id="successMessage">Thank you for your purchase.</p>
-        <button class="btn btn-gold" id="continueShopping">Continue Shopping</button>
-    </div>
-</div>
-
-<!-- JavaScript (enhanced with all features) -->
 <script>
     (function() {
-        // ---------- navigation ----------
+        // ---------- navigation (updated with header dropdown and new community section) ----------
         const navItems = document.querySelectorAll('.nav-item');
         const sections = {
             homeSection: document.getElementById('homeSection'),
             ordersSection: document.getElementById('ordersSection'),
             rewardsSection: document.getElementById('rewardsSection'),
+            communitySection: document.getElementById('communitySection'),
             messagesSection: document.getElementById('messagesSection'),
             supportSection: document.getElementById('supportSection'),
             bookSection: document.getElementById('bookSection'),
             profileSection: document.getElementById('profileSection')
         };
-        const morePanel = document.getElementById('morePanel');
+        const headerDropdown = document.getElementById('headerDropdown');
+        const headerMenuIcon = document.getElementById('headerMenuIcon');
 
         function activateSection(sectionId) {
             Object.values(sections).forEach(s => s?.classList.remove('active'));
@@ -1528,25 +1649,33 @@
                 const data = item.getAttribute('data-section');
                 item.classList.toggle('active', data === sectionId);
             });
-            morePanel.classList.remove('show');
+            headerDropdown.classList.remove('show');
         }
 
         navItems.forEach(item => {
             item.addEventListener('click', (e) => {
                 const sectionId = item.getAttribute('data-section');
                 if (sectionId) activateSection(sectionId);
-                if (item.id === 'moreNav') {
-                    morePanel.classList.toggle('show');
-                } else {
-                    morePanel.classList.remove('show');
-                }
             });
         });
-        document.querySelectorAll('.more-item').forEach(el => {
+
+        // Header dropdown items
+        document.querySelectorAll('.header-dropdown-item').forEach(el => {
             el.addEventListener('click', () => {
                 const sectionId = el.getAttribute('data-section');
                 if (sectionId) activateSection(sectionId);
             });
+        });
+
+        headerMenuIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            headerDropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!headerMenuIcon.contains(e.target) && !headerDropdown.contains(e.target)) {
+                headerDropdown.classList.remove('show');
+            }
         });
 
         // ---------- rewards state & UI (from original, extended) ----------
@@ -1610,7 +1739,7 @@
             updateRewardsUI();
         });
 
-        // ---------- CART FUNCTIONALITY ----------
+        // ---------- CART FUNCTIONALITY (unchanged) ----------
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
 
@@ -1669,7 +1798,6 @@
             document.getElementById('cartTotal').textContent = `R${(subtotal+50).toFixed(2)}`;
             summary.style.display = 'block';
 
-            // attach events
             document.querySelectorAll('.decCart').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const idx = e.target.dataset.index;
@@ -1700,7 +1828,7 @@
             });
         }
 
-        // ---------- MODAL CONTROLS ----------
+        // ---------- MODAL CONTROLS (unchanged) ----------
         const cartModal = document.getElementById('cartModal');
         const authChoiceModal = document.getElementById('authChoiceModal');
         const enhancedAuthModal = document.getElementById('enhancedAuthModal');
@@ -1721,7 +1849,6 @@
             cartModal.classList.remove('active');
         });
 
-        // Checkout flow
         document.getElementById('checkoutBtn').addEventListener('click', () => {
             cartModal.classList.remove('active');
             authChoiceModal.classList.add('active');
@@ -1734,7 +1861,6 @@
         document.getElementById('signupOption').addEventListener('click', () => {
             authChoiceModal.classList.remove('active');
             enhancedAuthModal.classList.add('active');
-            // switch to signup tab
             document.getElementById('loginForm').style.display = 'none';
             document.getElementById('signupForm').style.display = 'block';
         });
@@ -1745,7 +1871,6 @@
             document.getElementById('signupForm').style.display = 'none';
         });
 
-        // Tab switching
         document.getElementById('tabLogin').addEventListener('click', () => {
             document.getElementById('loginForm').style.display = 'block';
             document.getElementById('signupForm').style.display = 'none';
@@ -1755,40 +1880,33 @@
             document.getElementById('signupForm').style.display = 'block';
         });
 
-        // Social login placeholders
         document.querySelectorAll('.social-login-button').forEach(btn => {
             btn.addEventListener('click', () => {
                 alert('Social login demo – would redirect to OAuth.');
             });
         });
 
-        // Login form
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            // Simulate login
             currentUser = { name: 'Test User', email: document.getElementById('loginEmail').value, hasDiscount: false };
             localStorage.setItem('currentUser', JSON.stringify(currentUser));
             enhancedAuthModal.classList.remove('active');
             checkoutModal.classList.add('active');
         });
 
-        // Signup form
         document.getElementById('signupForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            // Simulate signup with 15% discount
             currentUser = {
                 name: document.getElementById('signupFirstName').value + ' ' + document.getElementById('signupLastName').value,
                 email: document.getElementById('signupEmail').value,
                 hasDiscount: true
             };
             localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            // Apply discount to cart? For simplicity, we'll note it
             alert('Welcome! 15% discount applied to your order.');
             enhancedAuthModal.classList.remove('active');
             checkoutModal.classList.add('active');
         });
 
-        // Checkout steps
         let currentStep = 1;
         function showStep(step) {
             document.getElementById('shippingForm').style.display = step === 1 ? 'block' : 'none';
@@ -1799,21 +1917,17 @@
             });
         }
         document.getElementById('nextToPayment').addEventListener('click', () => {
-            // validate shipping
             if (!document.getElementById('shipName').value) { alert('Please fill all fields'); return; }
             currentStep = 2;
             showStep(2);
         });
         document.getElementById('nextToReview').addEventListener('click', () => {
-            // validate payment (simplified)
             currentStep = 3;
-            // build review
             let subtotal = cart.reduce((s,i) => s + i.price*i.quantity, 0);
             document.getElementById('reviewTotal').textContent = `R${(subtotal+50).toFixed(2)}`;
             showStep(3);
         });
 
-        // Payment method selection
         document.querySelectorAll('.payment-method').forEach(m => {
             m.addEventListener('click', () => {
                 document.querySelectorAll('.payment-method').forEach(p => p.classList.remove('selected'));
@@ -1825,15 +1939,12 @@
             });
         });
 
-        // Place order
         document.getElementById('placeOrder').addEventListener('click', () => {
-            // update lifetime purchases based on cart items
             let totalChickens = cart.filter(i => i.type !== 'byproduct').reduce((s,i) => s + i.quantity, 0);
             lifetimePurchases += totalChickens;
             oneTimePurchases += totalChickens;
             weeklyStreak += 1;
             updateRewardsUI();
-            // clear cart
             cart = [];
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartBadge();
@@ -1842,17 +1953,15 @@
             successModal.classList.add('active');
         });
 
-        // ---------- HOOK PURCHASE BUTTONS TO CART ----------
-        // One-time purchases
+        // ---------- HOOK PURCHASE BUTTONS TO CART (unchanged) ----------
         document.querySelectorAll('.one-time-purchase').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const card = btn.closest('.card');
                 const qtyInput = card?.querySelector('input[type="number"]');
                 let qty = qtyInput ? parseInt(qtyInput.value) : 1;
-                let price = 100; // default, but could extract from card
+                let price = 100;
                 let name = card?.querySelector('.card-title')?.textContent.trim() || 'Chicken';
-                // determine price from card text
                 const priceEl = card?.querySelector('.price');
                 if (priceEl) {
                     let match = priceEl.textContent.match(/R(\d+)/);
@@ -1862,7 +1971,6 @@
             });
         });
 
-        // Bulk purchase
         document.querySelectorAll('.bulk-purchase').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1873,7 +1981,6 @@
             });
         });
 
-        // By-products
         document.querySelectorAll('.byproduct-add').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1884,7 +1991,6 @@
             });
         });
 
-        // Subscriptions – we'll add to cart as a special item
         window.handleSubscription = function() {
             alert('✅ Subscribed! (added to cart)');
             addToCart({ id: Date.now(), name: 'Monthly Subscription (3 chickens)', price: 282, quantity: 1, type: 'subscription' });
@@ -1892,7 +1998,6 @@
             updateRewardsUI();
         };
 
-        // Tier1 subscribe
         document.getElementById('tier1SubscribeBtn')?.addEventListener('click', () => {
             let monthly = parseInt(document.getElementById('tier1MonthlyQty').value);
             addToCart({ id: Date.now(), name: 'Tier1 Bulk Subscription', price: 75, quantity: monthly, type: 'subscription' });
@@ -1939,7 +2044,173 @@
             setTimeout(() => { canvas.style.display = 'none'; }, 3000);
         }
 
-        // padding fix (unchanged)
+        // ---------- COMMUNITY FESTIVE PLAN LOGIC ----------
+        const plans = [
+            { name: '5 Chickens', chickens:5, normalPrice:500, discountedPrice:425, savings:75, slots:12, deadline:'30 Nov 2025', popular:false },
+            { name: '10 Chickens', chickens:10, normalPrice:1000, discountedPrice:850, savings:150, slots:8, deadline:'30 Nov 2025', popular:true },
+            { name: '15 Chickens', chickens:15, normalPrice:1500, discountedPrice:1275, savings:225, slots:5, deadline:'30 Nov 2025', popular:false }
+        ];
+        const villages = {
+            mgwali: { name:'Mgwali', slots:12, full:false },
+            dimbaza: { name:'Dimbaza', slots:5, full:false },
+            berlin: { name:'Berlin', slots:8, full:false },
+            kayalethu: { name:'Kayalethu', slots:3, full:false }
+        };
+
+        // Render plan cards
+        const planContainer = document.getElementById('planCardsContainer');
+        function renderPlans() {
+            planContainer.innerHTML = '';
+            plans.forEach((p, idx) => {
+                const card = document.createElement('div');
+                card.className = `plan-card ${p.popular ? 'popular' : ''}`;
+                card.innerHTML = `
+                    ${p.popular ? '<div class="plan-badge">Most popular</div>' : ''}
+                    <div style="font-weight:700; font-size:1.3rem;">${p.name}</div>
+                    <div><span class="price" style="font-size:1.4rem;">R${p.discountedPrice}</span> <small>was R${p.normalPrice}</small></div>
+                    <div><span class="savings-badge">Save R${p.savings}</span></div>
+                    <div class="slots-left"><i class="fas fa-users"></i> <span id="slots-${idx}">${p.slots}</span> slots left</div>
+                    <div class="deadline"><i class="far fa-calendar"></i> Deadline: ${p.deadline}</div>
+                    <button class="btn btn-gold btn-small join-plan" data-plan='${JSON.stringify(p)}' style="margin-top:8px;"><i class="fas fa-hand-holding-heart"></i> Join</button>
+                `;
+                planContainer.appendChild(card);
+            });
+        }
+        renderPlans();
+
+        // Village select update
+        const villageSelect = document.getElementById('villageSelect');
+        const slotsDisplay = document.getElementById('slotsDisplay');
+        const groupFullMessage = document.getElementById('groupFullMessage');
+        function updateVillageInfo() {
+            const villageKey = villageSelect.value;
+            const village = villages[villageKey];
+            if (village) {
+                slotsDisplay.textContent = village.slots;
+                if (village.slots <= 0) {
+                    village.full = true;
+                    groupFullMessage.style.display = 'block';
+                } else {
+                    groupFullMessage.style.display = 'none';
+                }
+            }
+        }
+        villageSelect.addEventListener('change', updateVillageInfo);
+        updateVillageInfo();
+
+        // Contribution progress (mock user data)
+        let userContribution = { plan: null, contributed: 0, goal: 0, village: null };
+        const contributedSpan = document.getElementById('contributedAmount');
+        const goalSpan = document.getElementById('goalAmount');
+        const remainingSpan = document.getElementById('remainingBalance');
+        const progressFillContribution = document.getElementById('contributionProgressFill');
+        const deliveryDateSpan = document.getElementById('deliveryDate');
+        const loggedInDiv = document.getElementById('loggedInProgress');
+        const guestDiv = document.getElementById('guestProgress');
+        const progressLoginBadge = document.getElementById('progressLoginBadge');
+
+        // Simulate logged in user (Mpho)
+        const isLoggedIn = true; // for demo
+        if (isLoggedIn) {
+            guestDiv.style.display = 'none';
+            loggedInDiv.style.display = 'block';
+            progressLoginBadge.style.display = 'inline-block';
+            // load from localStorage if exists
+            const saved = localStorage.getItem('communityPlan');
+            if (saved) {
+                userContribution = JSON.parse(saved);
+                updateContributionUI();
+            }
+        } else {
+            guestDiv.style.display = 'block';
+            loggedInDiv.style.display = 'none';
+        }
+
+        function updateContributionUI() {
+            if (userContribution.plan) {
+                contributedSpan.textContent = userContribution.contributed;
+                goalSpan.textContent = userContribution.goal;
+                let remaining = userContribution.goal - userContribution.contributed;
+                remainingSpan.textContent = remaining > 0 ? remaining : 0;
+                let percent = (userContribution.contributed / userContribution.goal) * 100;
+                progressFillContribution.style.width = Math.min(percent,100) + '%';
+                deliveryDateSpan.textContent = '15 Dec 2025'; // fixed
+            }
+        }
+
+        // Join plan buttons
+        document.querySelectorAll('.join-plan').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const plan = JSON.parse(e.target.dataset.plan);
+                const villageKey = villageSelect.value;
+                const village = villages[villageKey];
+                if (village.slots <= 0) {
+                    alert('Sorry, this group is full. Please select another village.');
+                    return;
+                }
+                if (!isLoggedIn) {
+                    alert('Please log in to join a festive plan.');
+                    activateSection('profileSection'); // quick login simulation
+                    return;
+                }
+                // reserve slot
+                village.slots -= 1;
+                updateVillageInfo();
+                userContribution.plan = plan;
+                userContribution.goal = plan.discountedPrice;
+                userContribution.village = villageKey;
+                userContribution.contributed = 0;
+                localStorage.setItem('communityPlan', JSON.stringify(userContribution));
+                updateContributionUI();
+                alert(`You've joined the ${plan.name} plan in ${village.name}! Make a deposit to secure.`);
+            });
+        });
+
+        // Payment buttons
+        document.getElementById('makePaymentBtn').addEventListener('click', () => {
+            if (!userContribution.plan) {
+                alert('Please select a plan first.');
+                return;
+            }
+            let amount = prompt('Enter payment amount (R) – minimum R50:', '200');
+            if (amount && !isNaN(amount) && parseFloat(amount) > 0) {
+                amount = parseFloat(amount);
+                userContribution.contributed += amount;
+                if (userContribution.contributed > userContribution.goal) userContribution.contributed = userContribution.goal;
+                localStorage.setItem('communityPlan', JSON.stringify(userContribution));
+                updateContributionUI();
+                // also add to cart as a "Festive Contribution" item
+                addToCart({ id: Date.now(), name: 'Festive Plan Contribution', price: amount, quantity: 1, type: 'festive' });
+                alert('Payment recorded and added to cart. Please complete checkout.');
+            }
+        });
+
+        document.getElementById('payFullBtn').addEventListener('click', () => {
+            if (!userContribution.plan) {
+                alert('Please select a plan first.');
+                return;
+            }
+            let remaining = userContribution.goal - userContribution.contributed;
+            if (remaining <= 0) {
+                alert('You have already fully paid!');
+                return;
+            }
+            userContribution.contributed = userContribution.goal;
+            localStorage.setItem('communityPlan', JSON.stringify(userContribution));
+            updateContributionUI();
+            addToCart({ id: Date.now(), name: 'Festive Plan Full Payment', price: remaining, quantity: 1, type: 'festive' });
+            alert('Full amount added to cart. Complete checkout to finalize.');
+        });
+
+        document.getElementById('loginToTrack')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Demo: redirect to login. For now, assume you are logged in.');
+            // toggle for demo
+            guestDiv.style.display = 'none';
+            loggedInDiv.style.display = 'block';
+        });
+
+        // padding fix
         const app = document.querySelector('.app');
         const header = document.querySelector('.header');
         const bottomNav = document.querySelector('.bottom-nav');
@@ -1957,13 +2228,11 @@
             observer.observe(bottomNav);
         }
 
-        // rating prompt
         window.promptRating = function(orderId) {
             let stars = prompt('Rate 1-5 stars for order #'+orderId);
             if (stars) alert('Thank you! Your private feedback helps us improve.');
         };
 
-        // Initialize
         updateCartBadge();
     })();
 </script>
