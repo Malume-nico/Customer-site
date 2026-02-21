@@ -913,11 +913,69 @@
             display: flex;
             justify-content: space-between;
         }
+
+        /* ---------- NEW STYLES FOR PERSONALIZED POULTRY PLAN (added) ---------- */
+        .tier-comparison {
+            display: flex;
+            gap: 0.8rem;
+            overflow-x: auto;
+            padding: 0.5rem 0.2rem 1rem;
+            scroll-snap-type: x mandatory;
+        }
+        .tier-compare-card {
+            min-width: 200px;
+            background: #f9f2e7;
+            border-radius: 28px;
+            padding: 1rem;
+            scroll-snap-align: start;
+            border-left: 6px solid;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .tier-compare-card.steady { border-color: #7e9a7a; }
+        .tier-compare-card.celebration { border-color: #c9a43b; }
+        .tier-compare-card.signature { border-color: #b87333; }
+        .savings-highlight {
+            background: #d4edc9;
+            border-radius: 30px;
+            padding: 0.8rem;
+            font-weight: 600;
+            color: #1f4f1f;
+            text-align: center;
+        }
+        .event-reserve-card {
+            background: #f0f3e8;
+        }
+        .installment-option {
+            border: 1px dashed #c9a43b;
+            border-radius: 20px;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+        .dashboard-item {
+            background: #f9f2e7;
+            border-radius: 20px;
+            padding: 0.8rem;
+            text-align: center;
+        }
+        .admin-card {
+            background: #2c4532;
+            color: #f0ebdd;
+            border: 2px solid #c9a43b;
+        }
+        .admin-card .badge {
+            background: #c9a43b;
+            color: #1e2b1a;
+        }
     </style>
 </head>
 <body>
 <div class="app" id="appContainer">
-    <!-- fixed header with hamburger menu (Community added, Messages removed) -->
+    <!-- fixed header with hamburger menu (Personalized Plan added) -->
     <div class="header">
         <h1>
             <i class="fas fa-feather main-feather"></i> The Golden Feather
@@ -925,7 +983,8 @@
         <div class="header-menu">
             <i class="fas fa-bars menu-icon" id="headerMenuIcon"></i>
             <div class="header-dropdown" id="headerDropdown">
-                <!-- Community now appears here (replaces Messages) -->
+                <!-- new Personalized Plan item added -->
+                <div class="header-dropdown-item" data-section="personalizedSection"><i class="fas fa-crown"></i> Personalized Plan</div>
                 <div class="header-dropdown-item" data-section="communitySection"><i class="fas fa-people-group"></i> Community</div>
                 <div class="header-dropdown-item" data-section="supportSection"><i class="fas fa-headset"></i> Support</div>
                 <div class="header-dropdown-item" data-section="bookSection"><i class="fas fa-book"></i> Book</div>
@@ -934,7 +993,7 @@
         </div>
     </div>
 
-    <!-- main content (sections) – all sections unchanged, including messagesSection and communitySection -->
+    <!-- main content (sections) – all existing sections unchanged, then new personalizedSection added -->
     <main class="main-content" id="mainContent">
         <!-- HOME section (unchanged, full) -->
         <section id="homeSection" class="content-section active">
@@ -1481,9 +1540,174 @@
                 <p style="color:white;">🎁 10% off your next bulk order</p>
             </div>
         </section>
+
+        <!-- NEW SECTION: PERSONALIZED POULTRY PLAN -->
+        <section id="personalizedSection" class="content-section">
+            <!-- Hero -->
+            <div class="card hero-brand" style="background: linear-gradient(145deg, #fef5e7, #fae1b0); border-left-color: #c9a43b;">
+                <div class="hero-headline">🐓 Personalized Poultry Plan</div>
+                <div class="hero-subheadline">Your custom supply, your way</div>
+                <div class="hero-tagline">Lock in prices, priority access, exclusive perks</div>
+                <div class="hero-trust"><i class="fas fa-star"></i> Three tiers · choose what fits your lifestyle</div>
+            </div>
+
+            <!-- Comparison Table (horizontal scroll) -->
+            <div class="card">
+                <div class="card-header"><span class="badge green"><i class="fas fa-scale-balanced"></i> Tier comparison</span></div>
+                <div class="tier-comparison">
+                    <div class="tier-compare-card steady">
+                        <span class="badge" style="background:#7e9a7a;">Steady Supply</span>
+                        <div class="price" style="font-size:1.8rem;">R94<small>/chicken</small></div>
+                        <ul style="list-style:none; padding:0; font-size:0.9rem;">
+                            <li>✓ Min. 3 monthly</li>
+                            <li>✓ Locked 12 months</li>
+                            <li>✓ Priority festive</li>
+                            <li>✓ 1.2x loyalty</li>
+                        </ul>
+                        <p><strong>Yearly savings</strong> ≈ R720</p>
+                    </div>
+                    <div class="tier-compare-card celebration">
+                        <span class="badge" style="background:#c9a43b;">Celebration</span>
+                        <div class="price" style="font-size:1.8rem;">R89<small>/chicken</small></div>
+                        <ul style="list-style:none; padding:0; font-size:0.9rem;">
+                            <li>✓ Everything in Steady</li>
+                            <li>✓ Holiday allocation</li>
+                            <li>✓ Adjustable qty</li>
+                            <li>✓ 1.5x loyalty</li>
+                        </ul>
+                        <p><strong>Yearly savings</strong> ≈ R1,320</p>
+                    </div>
+                    <div class="tier-compare-card signature">
+                        <span class="badge" style="background:#b87333;">Signature Reserve</span>
+                        <div class="price" style="font-size:1.8rem;">R84<small>/chicken</small></div>
+                        <ul style="list-style:none; padding:0; font-size:0.9rem;">
+                            <li>✓ Everything in Celebration</li>
+                            <li>✓ Event scheduling</li>
+                            <li>✓ 30% deposit lock</li>
+                            <li>✓ Installments</li>
+                            <li>✓ VIP support</li>
+                        </ul>
+                        <p><strong>Yearly savings</strong> ≈ R1,920</p>
+                    </div>
+                </div>
+                <div class="savings-highlight"><i class="fas fa-coins"></i> Lock in today's prices – you save up to 16% vs one‑time</div>
+            </div>
+
+            <!-- Subscription selection UI -->
+            <div class="card">
+                <div class="card-title">📝 Build your personalized plan</div>
+                <label>Tier</label>
+                <select id="tierSelect" style="width:100%; padding:0.8rem; border-radius:40px; border:1px solid #c0aa83; margin:0.5rem 0;">
+                    <option value="steady">Steady Supply (R94/chicken)</option>
+                    <option value="celebration">Celebration (R89/chicken)</option>
+                    <option value="signature">Signature Reserve (R84/chicken)</option>
+                </select>
+                <label>Monthly quantity (min. 3)</label>
+                <div class="quantity-selector">
+                    <button id="personalizedQtyDec">−</button>
+                    <input type="number" id="personalizedQty" value="3" min="3" max="200">
+                    <button id="personalizedQtyInc">+</button>
+                </div>
+                <div style="background:#f2ebe0; border-radius:20px; padding:0.8rem; margin:0.5rem 0;">
+                    <div class="row" style="justify-content:space-between;">
+                        <span>Monthly total:</span>
+                        <span class="price" id="personalizedMonthlyTotal">R282.00</span>
+                    </div>
+                    <div class="row" style="justify-content:space-between;">
+                        <span>Yearly savings vs normal:</span>
+                        <span class="badge green" id="personalizedYearlySavings">R720</span>
+                    </div>
+                    <div class="row" style="justify-content:space-between;">
+                        <span>Total value (12 months):</span>
+                        <span id="personalizedYearlyTotal">R3,384</span>
+                    </div>
+                </div>
+                <button class="btn btn-gold" id="subscribePersonalizedBtn"><i class="fas fa-calendar-plus"></i> Subscribe to Personalized Plan</button>
+                <p style="font-size:0.75rem;"><i class="fas fa-lock"></i> Prices locked for 12 months. Loyalty multipliers stack with your rewards.</p>
+            </div>
+
+            <!-- Event Reservation Module (available to ALL) -->
+            <div class="card event-reserve-card">
+                <div class="card-header">
+                    <span class="badge"><i class="fas fa-calendar-check"></i> Event reservation</span>
+                    <span class="badge green">30% deposit</span>
+                </div>
+                <div class="card-title">🎉 Weddings · Funerals · Birthdays</div>
+                <p>Reserve chickens for your special event. Pay 30% now, remaining in installments.</p>
+                <label>Event date</label>
+                <input type="date" id="eventDate" style="width:100%; padding:0.8rem; border-radius:40px; border:1px solid #c0aa83; margin:0.3rem 0;">
+                <label>Estimated quantity</label>
+                <div class="quantity-selector">
+                    <button id="eventQtyDec">−</button>
+                    <input type="number" id="eventQty" value="10" min="1" max="500">
+                    <button id="eventQtyInc">+</button>
+                </div>
+                <div class="installment-option">
+                    <div class="row" style="justify-content:space-between;">
+                        <span>Total price (R84 each):</span>
+                        <span class="price" id="eventTotal">R840.00</span>
+                    </div>
+                    <div class="row" style="justify-content:space-between;">
+                        <span>Deposit (30%):</span>
+                        <span class="badge" id="eventDeposit">R252.00</span>
+                    </div>
+                    <div class="row" style="justify-content:space-between;">
+                        <span>Remaining balance:</span>
+                        <span id="eventRemaining">R588.00</span>
+                    </div>
+                </div>
+                <button class="btn btn-gold" id="reserveEventBtn"><i class="fas fa-hand-holding-heart"></i> Reserve with deposit</button>
+                <p class="card-desc"><i class="fas fa-info-circle"></i> Remaining balance can be paid in up to 3 installments before event.</p>
+            </div>
+
+            <!-- Dashboard for logged-in users (simulated) -->
+            <div class="card" id="personalizedDashboard">
+                <div class="card-header">
+                    <span class="badge green"><i class="fas fa-user-check"></i> Your personalized dashboard</span>
+                    <span class="badge" id="personalizedActiveTier">Steady Supply</span>
+                </div>
+                <div id="loggedInPersonalized" style="display:block;">
+                    <div class="dashboard-grid">
+                        <div class="dashboard-item"><i class="fas fa-calendar-alt"></i> Next delivery<br><strong>15 June 2025</strong></div>
+                        <div class="dashboard-item"><i class="fas fa-gift"></i> Holiday allocation<br><strong>8 chickens</strong></div>
+                        <div class="dashboard-item"><i class="fas fa-clock"></i> Reserved events<br><strong>1 (25 Nov)</strong></div>
+                        <div class="dashboard-item"><i class="fas fa-credit-card"></i> Balance due<br><strong>R588</strong></div>
+                    </div>
+                    <p><i class="fas fa-star"></i> Loyalty multiplier: <strong>1.2x</strong> (active)</p>
+                    <div class="row">
+                        <button class="btn-small btn-outline" id="upgradeTierBtn"><i class="fas fa-arrow-up"></i> Upgrade</button>
+                        <button class="btn-small btn-outline" id="downgradeTierBtn"><i class="fas fa-arrow-down"></i> Downgrade</button>
+                        <button class="btn-small btn-outline" style="border-color:#b65151;"><i class="fas fa-times"></i> Cancel</button>
+                    </div>
+                </div>
+                <div id="guestPersonalized" style="display:none;">
+                    <p><i class="fas fa-lock"></i> <a href="#" id="loginForDashboard">Log in</a> to see your personalized dashboard and manage your plan.</p>
+                </div>
+            </div>
+
+            <!-- Admin dashboard (demo) – shows controls, does not interfere -->
+            <div class="card admin-card">
+                <div class="card-header">
+                    <span class="badge" style="background:#c9a43b;">👑 Admin panel (demo)</span>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+                    <select style="padding:0.4rem; border-radius:30px;"><option>Filter by tier</option></select>
+                    <button class="btn-small">View members</button>
+                    <button class="btn-small">Delivery totals</button>
+                    <button class="btn-small">Holiday totals</button>
+                </div>
+                <div style="margin-top:0.5rem;">
+                    <label>Deposit % <input type="number" value="30" style="width:60px;"></label>
+                    <label>Min monthly <input type="number" value="3" style="width:60px;"></label>
+                    <button class="btn-small">Adjust pricing</button>
+                </div>
+                <p><i class="fas fa-flag"></i> VIP clients: Mpho Dlamini, Grace Ndlovu</p>
+                <p class="card-desc">Full admin controls (mockup) – all existing features untouched.</p>
+            </div>
+        </section>
     </main>
 
-    <!-- bottom nav: Home, Orders, Rewards, Message (Community removed, Message added) -->
+    <!-- bottom nav: Home, Orders, Rewards, Message (unchanged) -->
     <nav class="bottom-nav">
         <div class="nav-item active" data-section="homeSection"><i class="fas fa-home"></i><span>Home</span></div>
         <div class="nav-item" data-section="ordersSection"><i class="fas fa-clipboard-list"></i><span>Orders</span></div>
@@ -1637,7 +1861,8 @@
             messagesSection: document.getElementById('messagesSection'),
             supportSection: document.getElementById('supportSection'),
             bookSection: document.getElementById('bookSection'),
-            profileSection: document.getElementById('profileSection')
+            profileSection: document.getElementById('profileSection'),
+            personalizedSection: document.getElementById('personalizedSection')   // new
         };
         const headerDropdown = document.getElementById('headerDropdown');
         const headerMenuIcon = document.getElementById('headerMenuIcon');
@@ -1659,7 +1884,7 @@
             });
         });
 
-        // Header dropdown items (now includes Community)
+        // Header dropdown items (now includes Personalized)
         document.querySelectorAll('.header-dropdown-item').forEach(el => {
             el.addEventListener('click', () => {
                 const sectionId = el.getAttribute('data-section');
@@ -2234,6 +2459,124 @@
         };
 
         updateCartBadge();
+
+        // ---------- NEW PERSONALIZED PLAN LOGIC ----------
+        const tierSelect = document.getElementById('tierSelect');
+        const personalizedQty = document.getElementById('personalizedQty');
+        const personalizedMonthlyTotal = document.getElementById('personalizedMonthlyTotal');
+        const personalizedYearlySavings = document.getElementById('personalizedYearlySavings');
+        const personalizedYearlyTotal = document.getElementById('personalizedYearlyTotal');
+
+        const tierPrices = { steady: 94, celebration: 89, signature: 84 };
+        const yearlySavingsMap = { steady: 720, celebration: 1320, signature: 1920 };
+
+        function updatePersonalizedPricing() {
+            let tier = tierSelect.value;
+            let pricePer = tierPrices[tier];
+            let qty = parseInt(personalizedQty.value) || 3;
+            if (qty < 3) qty = 3;
+            personalizedQty.value = qty;
+            let monthly = pricePer * qty;
+            personalizedMonthlyTotal.textContent = `R${monthly.toFixed(2)}`;
+            personalizedYearlySavings.textContent = `R${yearlySavingsMap[tier]}`;
+            let yearlyTotal = monthly * 12;
+            personalizedYearlyTotal.textContent = `R${yearlyTotal.toFixed(2)}`;
+        }
+
+        tierSelect.addEventListener('change', updatePersonalizedPricing);
+        document.getElementById('personalizedQtyDec').addEventListener('click', () => {
+            personalizedQty.value = Math.max(3, parseInt(personalizedQty.value)-1);
+            updatePersonalizedPricing();
+        });
+        document.getElementById('personalizedQtyInc').addEventListener('click', () => {
+            personalizedQty.value = Math.min(200, parseInt(personalizedQty.value)+1);
+            updatePersonalizedPricing();
+        });
+        personalizedQty.addEventListener('input', updatePersonalizedPricing);
+        updatePersonalizedPricing();
+
+        // Subscribe button
+        document.getElementById('subscribePersonalizedBtn').addEventListener('click', () => {
+            let tier = tierSelect.value;
+            let qty = parseInt(personalizedQty.value);
+            let price = tierPrices[tier];
+            let monthlyTotal = price * qty;
+            let name = `Personalized ${tier} Plan (${qty}/mo)`;
+            addToCart({ id: Date.now(), name: name, price: monthlyTotal, quantity: 1, type: 'subscription' });
+            lifetimePurchases += qty;
+            updateRewardsUI();
+            alert('Personalized plan added to cart. Please complete checkout.');
+        });
+
+        // Event reservation
+        const eventQty = document.getElementById('eventQty');
+        const eventTotal = document.getElementById('eventTotal');
+        const eventDeposit = document.getElementById('eventDeposit');
+        const eventRemaining = document.getElementById('eventRemaining');
+
+        function updateEventPricing() {
+            let qty = parseInt(eventQty.value) || 1;
+            if (qty < 1) qty = 1;
+            eventQty.value = qty;
+            let total = qty * 84; // signature price
+            let deposit = total * 0.3;
+            let remaining = total - deposit;
+            eventTotal.textContent = `R${total.toFixed(2)}`;
+            eventDeposit.textContent = `R${deposit.toFixed(2)}`;
+            eventRemaining.textContent = `R${remaining.toFixed(2)}`;
+        }
+        document.getElementById('eventQtyDec').addEventListener('click', () => {
+            eventQty.value = Math.max(1, parseInt(eventQty.value)-1);
+            updateEventPricing();
+        });
+        document.getElementById('eventQtyInc').addEventListener('click', () => {
+            eventQty.value = Math.min(500, parseInt(eventQty.value)+1);
+            updateEventPricing();
+        });
+        eventQty.addEventListener('input', updateEventPricing);
+        updateEventPricing();
+
+        document.getElementById('reserveEventBtn').addEventListener('click', () => {
+            let date = document.getElementById('eventDate').value;
+            if (!date) {
+                alert('Please select an event date.');
+                return;
+            }
+            let qty = parseInt(eventQty.value);
+            let deposit = parseFloat(eventDeposit.textContent.replace('R',''));
+            addToCart({ id: Date.now(), name: `Event reservation (${qty} chickens, ${date})`, price: deposit, quantity: 1, type: 'event-deposit' });
+            alert('Deposit added to cart. Complete checkout to secure your event.');
+        });
+
+        // Guest / login toggle for personalized dashboard
+        const loggedInPersonalized = document.getElementById('loggedInPersonalized');
+        const guestPersonalized = document.getElementById('guestPersonalized');
+        // Simulate logged in (same as community)
+        if (isLoggedIn) {
+            guestPersonalized.style.display = 'none';
+            loggedInPersonalized.style.display = 'block';
+            // set active tier display
+            document.getElementById('personalizedActiveTier').textContent = 'Steady Supply'; // mock
+        } else {
+            guestPersonalized.style.display = 'block';
+            loggedInPersonalized.style.display = 'none';
+        }
+        document.getElementById('loginForDashboard')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Demo: login required. Redirect to login page.');
+            // toggle for demo
+            guestPersonalized.style.display = 'none';
+            loggedInPersonalized.style.display = 'block';
+        });
+
+        // Upgrade/downgrade buttons
+        document.getElementById('upgradeTierBtn')?.addEventListener('click', () => {
+            alert('Upgrade to Celebration or Signature Reserve. New price applies next billing.');
+        });
+        document.getElementById('downgradeTierBtn')?.addEventListener('click', () => {
+            alert('Downgrade to a lower tier. Changes take effect next cycle.');
+        });
+
     })();
 </script>
 </body>
