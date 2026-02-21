@@ -962,7 +962,7 @@
             padding: 0.8rem;
             text-align: center;
         }
-        /* Admin card removed as requested */
+        /* Admin card removed as requested (original note) */
     </style>
 </head>
 <body>
@@ -975,12 +975,14 @@
         <div class="header-menu">
             <i class="fas fa-bars menu-icon" id="headerMenuIcon"></i>
             <div class="header-dropdown" id="headerDropdown">
-                <!-- new Personalized Plan item added -->
+                <!-- new Personalized Plan item -->
                 <div class="header-dropdown-item" data-section="personalizedSection"><i class="fas fa-crown"></i> Personalized Plan</div>
                 <div class="header-dropdown-item" data-section="communitySection"><i class="fas fa-people-group"></i> Community</div>
                 <div class="header-dropdown-item" data-section="supportSection"><i class="fas fa-headset"></i> Support</div>
                 <div class="header-dropdown-item" data-section="bookSection"><i class="fas fa-book"></i> Book</div>
                 <div class="header-dropdown-item" data-section="profileSection"><i class="fas fa-user-circle"></i> Profile</div>
+                <!-- admin item (hidden by default, shown if isAdmin) -->
+                <div class="header-dropdown-item" data-section="adminAssuranceSection" id="adminDropdownItem" style="display:none;"><i class="fas fa-shield-hacked"></i> Admin</div>
             </div>
         </div>
     </div>
@@ -1677,7 +1679,80 @@
                 </div>
             </div>
 
-            <!-- Admin panel demo removed as requested -->
+            <!-- ========== NEW COMMUNITY ASSURANCE PLAN CARD ========== -->
+            <div class="card" id="assurancePlanCard">
+                <div class="card-header">
+                    <span class="badge" style="background:#2c4532; color:white;"><i class="fas fa-shield-alt"></i> Community Assurance Plan</span>
+                    <span class="badge green" id="assuranceStatusBadge">Optional add-on</span>
+                </div>
+                <div class="card-title">🛡️ Guaranteed allocation for bereavement events</div>
+                <p class="card-desc">Lock in pricing, priority dispatch, and peace of mind. Choose an allocation plan below.</p>
+                
+                <!-- Plan selector -->
+                <div style="display:flex; gap:0.5rem; margin:1rem 0; flex-wrap:wrap;">
+                    <div class="plan-option" data-chickens="20" style="flex:1; min-width:100px; background:#f9f2e7; border-radius:20px; padding:0.8rem; text-align:center; border:2px solid transparent; cursor:pointer;" id="plan20">
+                        <div style="font-weight:700;">20 Chickens</div>
+                        <div class="price" style="font-size:1.2rem;">R150<small>/mo</small></div>
+                        <div><small>R7.50/chicken</small></div>
+                    </div>
+                    <div class="plan-option" data-chickens="40" style="flex:1; min-width:100px; background:#f9f2e7; border-radius:20px; padding:0.8rem; text-align:center; border:2px solid transparent; cursor:pointer;" id="plan40">
+                        <div style="font-weight:700;">40 Chickens</div>
+                        <div class="price" style="font-size:1.2rem;">R280<small>/mo</small></div>
+                        <div><small>R7.00/chicken</small></div>
+                    </div>
+                    <div class="plan-option" data-chickens="60" style="flex:1; min-width:100px; background:#f9f2e7; border-radius:20px; padding:0.8rem; text-align:center; border:2px solid transparent; cursor:pointer;" id="plan60">
+                        <div style="font-weight:700;">60 Chickens</div>
+                        <div class="price" style="font-size:1.2rem;">R400<small>/mo</small></div>
+                        <div><small>R6.67/chicken</small></div>
+                    </div>
+                </div>
+                
+                <!-- Selected plan details and status -->
+                <div id="assuranceStatusArea">
+                    <!-- dynamic content based on user enrollment -->
+                </div>
+                
+                <!-- Action buttons -->
+                <div class="row" id="assuranceActions">
+                    <button class="btn btn-gold" id="enrollAssuranceBtn">Enroll in Assurance Plan</button>
+                    <button class="btn btn-outline" id="claimAssuranceBtn" disabled>Claim Bereavement</button>
+                </div>
+                
+                <!-- Loyalty credit info -->
+                <div id="loyaltyCreditInfo" style="background:#f0f3e5; border-radius:20px; padding:0.8rem; margin-top:0.8rem; display:none;">
+                    <i class="fas fa-gift"></i> <span id="loyaltyCreditText"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADMIN ASSURANCE SECTION (visible only to admin) -->
+        <section id="adminAssuranceSection" class="content-section">
+            <div class="card">
+                <div class="card-header">
+                    <span class="badge" style="background:#2c4532;">Admin · Assurance Plan</span>
+                </div>
+                <div class="card-title">🛡️ Manage Community Assurance</div>
+                
+                <!-- Settings -->
+                <div style="background:#f2ebe0; border-radius:20px; padding:1rem; margin:1rem 0;">
+                    <label>Enable Plan: <input type="checkbox" id="adminEnablePlan" checked></label><br>
+                    <label>Loyalty Return %: <input type="number" id="adminReturnPercent" value="17.5" min="15" max="20" step="0.5"> %</label>
+                    <button class="btn-small btn-outline" id="adminSaveSettings">Save Settings</button>
+                </div>
+                
+                <!-- Members list -->
+                <div class="card-title">Active Members</div>
+                <div id="adminMembersList">
+                    <!-- populated by JS -->
+                </div>
+                
+                <!-- Pending Claims -->
+                <div class="card-title">Pending Claims</div>
+                <div id="adminPendingClaims"></div>
+                
+                <!-- Controls -->
+                <button class="btn btn-gold" id="adminIssueCreditBtn">Issue Loyalty Credit to Selected</button>
+            </div>
         </section>
     </main>
 
@@ -1836,7 +1911,8 @@
             supportSection: document.getElementById('supportSection'),
             bookSection: document.getElementById('bookSection'),
             profileSection: document.getElementById('profileSection'),
-            personalizedSection: document.getElementById('personalizedSection')   // new
+            personalizedSection: document.getElementById('personalizedSection'),
+            adminAssuranceSection: document.getElementById('adminAssuranceSection')
         };
         const headerDropdown = document.getElementById('headerDropdown');
         const headerMenuIcon = document.getElementById('headerMenuIcon');
@@ -2550,6 +2626,252 @@
         document.getElementById('downgradeTierBtn')?.addEventListener('click', () => {
             alert('Downgrade to a lower tier. Changes take effect next cycle.');
         });
+
+        // ---------- COMMUNITY ASSURANCE PLAN (new) ----------
+        const assurancePlans = {
+            20: { monthly: 150, chickens: 20, pricePerChicken: 7.5 },
+            40: { monthly: 280, chickens: 40, pricePerChicken: 7.0 },
+            60: { monthly: 400, chickens: 60, pricePerChicken: 6.6667 }
+        };
+
+        let userAssurance = JSON.parse(localStorage.getItem('userAssurance')) || {
+            enrolled: false,
+            plan: null, // 20,40,60
+            startDate: null,
+            contributions: [], // array of {date, amount}
+            claims: [], // array of {date, chickensClaimed, eventType, approved}
+            loyaltyCredits: [], // array of {date, amount, type}
+            cycleEnd: null,
+            nextClaimAllowed: true
+        };
+
+        let adminSettings = JSON.parse(localStorage.getItem('adminSettings')) || {
+            enabled: true,
+            returnPercent: 17.5,
+            members: [] // we'll manage manually
+        };
+
+        let isAdmin = true; // for demo, show admin panel. In production would be false.
+
+        // Show admin dropdown if admin
+        if (isAdmin) {
+            document.getElementById('adminDropdownItem').style.display = 'block';
+        }
+
+        // Populate admin members list with mock data including current user
+        function refreshAdminMembers() {
+            // For demo, we'll just show current user and some dummy
+            let membersHtml = '';
+            // current user
+            let user = currentUser ? currentUser.name : 'Guest';
+            let status = userAssurance.enrolled ? `Enrolled (${userAssurance.plan} chickens)` : 'Not enrolled';
+            membersHtml += `<div class="request-item"><strong>${user}</strong> - ${status} <button class="btn-small" onclick="adminViewDetails('current')">View</button></div>`;
+            // dummy
+            membersHtml += `<div class="request-item"><strong>John D.</strong> - Enrolled (40 chickens) <button class="btn-small">View</button></div>`;
+            membersHtml += `<div class="request-item"><strong>Mary S.</strong> - Enrolled (20 chickens) <button class="btn-small">View</button></div>`;
+            document.getElementById('adminMembersList').innerHTML = membersHtml;
+            
+            // Pending claims - from userAssurance.claims where status pending
+            let pendingHtml = '';
+            if (userAssurance.claims && userAssurance.claims.length > 0) {
+                userAssurance.claims.forEach((claim, idx) => {
+                    if (!claim.approved) {
+                        pendingHtml += `<div class="request-item">Claim #${idx+1}: ${claim.chickensClaimed} chickens on ${new Date(claim.date).toLocaleDateString()} <button class="btn-small btn-gold" onclick="approveClaim(${idx})">Approve</button> <button class="btn-small btn-outline">Reject</button></div>`;
+                    }
+                });
+            }
+            if (!pendingHtml) pendingHtml = '<p>No pending claims.</p>';
+            document.getElementById('adminPendingClaims').innerHTML = pendingHtml;
+        }
+
+        // Approve claim function
+        window.approveClaim = function(claimIndex) {
+            if (userAssurance.claims[claimIndex]) {
+                userAssurance.claims[claimIndex].approved = true;
+                // Mark event, reset cycle, etc.
+                userAssurance.nextClaimAllowed = false;
+                // Reset cycle after claim: set cycleEnd to one year from now? For simplicity, we'll set a flag.
+                // Also maybe add to contributions? Not needed.
+                localStorage.setItem('userAssurance', JSON.stringify(userAssurance));
+                alert('Claim approved. Priority dispatch flagged.');
+                refreshAdminMembers();
+                updateAssuranceUI();
+            }
+        };
+
+        // Update assurance UI based on user state
+        function updateAssuranceUI() {
+            const statusArea = document.getElementById('assuranceStatusArea');
+            const statusBadge = document.getElementById('assuranceStatusBadge');
+            const enrollBtn = document.getElementById('enrollAssuranceBtn');
+            const claimBtn = document.getElementById('claimAssuranceBtn');
+            const loyaltyInfo = document.getElementById('loyaltyCreditInfo');
+            const loyaltyText = document.getElementById('loyaltyCreditText');
+            
+            if (userAssurance.enrolled) {
+                statusBadge.textContent = `Active · ${userAssurance.plan} chickens`;
+                statusBadge.className = 'badge green';
+                // Show plan details
+                let plan = assurancePlans[userAssurance.plan];
+                let monthsSinceStart = Math.floor((new Date() - new Date(userAssurance.startDate)) / (30*24*60*60*1000));
+                let annualTotal = plan.monthly * 12;
+                let loyaltyAmount = (annualTotal * adminSettings.returnPercent / 100).toFixed(2);
+                statusArea.innerHTML = `
+                    <div style="background:#e8f0e5; border-radius:20px; padding:0.8rem; margin:0.5rem 0;">
+                        <div><strong>Plan:</strong> ${userAssurance.plan} chickens (R${plan.monthly}/month)</div>
+                        <div><strong>Started:</strong> ${new Date(userAssurance.startDate).toLocaleDateString()}</div>
+                        <div><strong>Cycle ends:</strong> ${userAssurance.cycleEnd ? new Date(userAssurance.cycleEnd).toLocaleDateString() : 'N/A'}</div>
+                        <div><strong>Claims this cycle:</strong> ${userAssurance.claims.length}</div>
+                        <div><strong>Next claim allowed:</strong> ${userAssurance.nextClaimAllowed ? 'Yes' : 'No (already claimed)'}</div>
+                    </div>
+                `;
+                // Check if 12 months passed and no claims -> loyalty credit
+                if (userAssurance.claims.length === 0 && userAssurance.cycleEnd && new Date() > new Date(userAssurance.cycleEnd)) {
+                    // Issue loyalty credit if not already issued
+                    if (!userAssurance.loyaltyCredits.some(c => c.type === '12month')) {
+                        // Add credit to wallet
+                        walletCredit += parseFloat(loyaltyAmount);
+                        userAssurance.loyaltyCredits.push({ date: new Date().toISOString(), amount: loyaltyAmount, type: '12month' });
+                        localStorage.setItem('userAssurance', JSON.stringify(userAssurance));
+                        updateRewardsUI();
+                        loyaltyInfo.style.display = 'block';
+                        loyaltyText.textContent = `You received R${loyaltyAmount} loyalty credit for no claims in 12 months.`;
+                    }
+                }
+                // Enable claim button only if allowed and not already claimed
+                claimBtn.disabled = !userAssurance.nextClaimAllowed;
+                enrollBtn.disabled = true;
+                enrollBtn.textContent = 'Enrolled';
+            } else {
+                statusBadge.textContent = 'Optional add-on';
+                statusBadge.className = 'badge';
+                statusArea.innerHTML = '<p>Select a plan above to get started. Monthly contribution locks in allocation and priority.</p>';
+                claimBtn.disabled = true;
+                enrollBtn.disabled = false;
+                enrollBtn.textContent = 'Enroll in Assurance Plan';
+            }
+        }
+
+        // Enroll in selected plan
+        document.getElementById('enrollAssuranceBtn').addEventListener('click', () => {
+            // Find selected plan option (highlighted)
+            let selected = document.querySelector('.plan-option.selected');
+            if (!selected) {
+                alert('Please select a plan (20, 40, or 60 chickens).');
+                return;
+            }
+            let chickens = parseInt(selected.dataset.chickens);
+            let plan = assurancePlans[chickens];
+            if (!plan) return;
+            
+            // For demo, we assume user is logged in. In real, check.
+            if (!currentUser) {
+                alert('Please log in to enroll.');
+                return;
+            }
+            
+            // Add subscription to cart? Or directly enroll? We'll add a monthly subscription item to cart.
+            addToCart({
+                id: Date.now(),
+                name: `Community Assurance Plan (${chickens} chickens)`,
+                price: plan.monthly,
+                quantity: 1,
+                type: 'subscription',
+                assurance: true
+            });
+            
+            // Also set userAssurance enrolled but pending payment? We'll set after checkout.
+            // For demo, we'll simulate immediate enrollment (since cart is just for payment)
+            // Actually, we should only enroll after payment is complete. But for demo, we'll do it now.
+            userAssurance.enrolled = true;
+            userAssurance.plan = chickens;
+            userAssurance.startDate = new Date().toISOString();
+            userAssurance.cycleEnd = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString();
+            userAssurance.contributions.push({ date: new Date().toISOString(), amount: plan.monthly });
+            userAssurance.claims = [];
+            userAssurance.nextClaimAllowed = true;
+            localStorage.setItem('userAssurance', JSON.stringify(userAssurance));
+            
+            updateAssuranceUI();
+            refreshAdminMembers();
+            alert('Enrolled in Community Assurance Plan! Monthly contribution added to cart. Please complete checkout.');
+        });
+
+        // Claim button
+        document.getElementById('claimAssuranceBtn').addEventListener('click', () => {
+            if (!userAssurance.enrolled || !userAssurance.nextClaimAllowed) return;
+            
+            // Prompt for event type
+            let eventType = prompt('Enter event type (e.g., Bereavement):', 'Bereavement');
+            if (!eventType) return;
+            
+            // How many chickens to claim? Up to plan allocation.
+            let maxChickens = userAssurance.plan;
+            let claimQty = prompt(`How many chickens do you need? (max ${maxChickens})`, maxChickens);
+            claimQty = parseInt(claimQty);
+            if (isNaN(claimQty) || claimQty < 1 || claimQty > maxChickens) {
+                alert(`Please enter a number between 1 and ${maxChickens}.`);
+                return;
+            }
+            
+            // Create claim record
+            let claim = {
+                date: new Date().toISOString(),
+                chickensClaimed: claimQty,
+                eventType: eventType,
+                approved: false, // pending admin approval
+                fulfilled: false
+            };
+            userAssurance.claims.push(claim);
+            userAssurance.nextClaimAllowed = false; // prevent further claims this cycle
+            localStorage.setItem('userAssurance', JSON.stringify(userAssurance));
+            
+            // Also add a priority order to cart? Or just flag. For demo, we'll add a special item.
+            addToCart({
+                id: Date.now(),
+                name: `Bereavement Claim (${claimQty} chickens) - Priority`,
+                price: 0, // covered by assurance? Actually they pay monthly, so no additional cost? But we need to indicate allocation. We'll add a zero-cost item to track.
+                quantity: 1,
+                type: 'claim',
+                assuranceClaim: true
+            });
+            
+            updateAssuranceUI();
+            refreshAdminMembers();
+            alert('Claim submitted for admin approval. You will be notified once approved.');
+        });
+
+        // Plan option selection
+        document.querySelectorAll('.plan-option').forEach(opt => {
+            opt.addEventListener('click', function() {
+                document.querySelectorAll('.plan-option').forEach(o => o.style.borderColor = 'transparent');
+                this.style.borderColor = '#c9a43b';
+                this.classList.add('selected');
+            });
+        });
+
+        // Admin settings save
+        document.getElementById('adminSaveSettings')?.addEventListener('click', () => {
+            adminSettings.enabled = document.getElementById('adminEnablePlan').checked;
+            adminSettings.returnPercent = parseFloat(document.getElementById('adminReturnPercent').value);
+            localStorage.setItem('adminSettings', JSON.stringify(adminSettings));
+            alert('Admin settings saved.');
+        });
+
+        // Issue loyalty credit manually (admin)
+        document.getElementById('adminIssueCreditBtn')?.addEventListener('click', () => {
+            // For demo, issue to current user
+            let amount = prompt('Enter credit amount (R):', '50');
+            if (amount) {
+                walletCredit += parseFloat(amount);
+                updateRewardsUI();
+                alert(`R${amount} credit issued to user.`);
+            }
+        });
+
+        // Initialize assurance UI
+        updateAssuranceUI();
+        refreshAdminMembers();
 
     })();
 </script>
