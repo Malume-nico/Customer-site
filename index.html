@@ -291,7 +291,7 @@
             padding: 0.5rem;
             background: white;
         }
-        /* ===== BOTTOM NAV (5 items now) ===== */
+        /* ===== BOTTOM NAV (4 items: Home, Orders, Rewards, Message) ===== */
         .bottom-nav {
             background: #fefcf7;
             border-top: 1px solid #e8dccd;
@@ -917,7 +917,7 @@
 </head>
 <body>
 <div class="app" id="appContainer">
-    <!-- fixed header with hamburger menu (More moved here) -->
+    <!-- fixed header with hamburger menu (Community added, Messages removed) -->
     <div class="header">
         <h1>
             <i class="fas fa-feather main-feather"></i> The Golden Feather
@@ -925,7 +925,8 @@
         <div class="header-menu">
             <i class="fas fa-bars menu-icon" id="headerMenuIcon"></i>
             <div class="header-dropdown" id="headerDropdown">
-                <div class="header-dropdown-item" data-section="messagesSection"><i class="fas fa-comment-dots"></i> Messages</div>
+                <!-- Community now appears here (replaces Messages) -->
+                <div class="header-dropdown-item" data-section="communitySection"><i class="fas fa-people-group"></i> Community</div>
                 <div class="header-dropdown-item" data-section="supportSection"><i class="fas fa-headset"></i> Support</div>
                 <div class="header-dropdown-item" data-section="bookSection"><i class="fas fa-book"></i> Book</div>
                 <div class="header-dropdown-item" data-section="profileSection"><i class="fas fa-user-circle"></i> Profile</div>
@@ -933,7 +934,7 @@
         </div>
     </div>
 
-    <!-- main content (sections) -->
+    <!-- main content (sections) – all sections unchanged, including messagesSection and communitySection -->
     <main class="main-content" id="mainContent">
         <!-- HOME section (unchanged, full) -->
         <section id="homeSection" class="content-section active">
@@ -1332,7 +1333,7 @@
             </div>
         </section>
 
-        <!-- COMMUNITY FESTIVE PLAN (new section) -->
+        <!-- COMMUNITY FESTIVE PLAN (still here, now accessible via top menu) -->
         <section id="communitySection" class="content-section">
             <div class="card hero-brand" style="background: linear-gradient(145deg, #e8f0e5, #d4e2d4); border-left-color: #2c4532;">
                 <div class="hero-headline">🎄 Community Festive Plan</div>
@@ -1394,7 +1395,7 @@
             </div>
         </section>
 
-        <!-- MESSAGES section (unchanged, but now in header dropdown) -->
+        <!-- MESSAGES section (still here, now accessible via bottom nav) -->
         <section id="messagesSection" class="content-section">
             <div class="card">
                 <div class="card-header"><span class="badge green"><i class="fas fa-comments"></i> Live chat with farm</span></div>
@@ -1414,7 +1415,7 @@
             </div>
         </section>
 
-        <!-- SUPPORT section (unchanged, now in header dropdown) -->
+        <!-- SUPPORT section (unchanged) -->
         <section id="supportSection" class="content-section">
             <div class="card">
                 <div class="card-title">Submit a request</div>
@@ -1482,13 +1483,12 @@
         </section>
     </main>
 
-    <!-- bottom nav: Home, Orders, Rewards, Community, (no More) -->
+    <!-- bottom nav: Home, Orders, Rewards, Message (Community removed, Message added) -->
     <nav class="bottom-nav">
         <div class="nav-item active" data-section="homeSection"><i class="fas fa-home"></i><span>Home</span></div>
         <div class="nav-item" data-section="ordersSection"><i class="fas fa-clipboard-list"></i><span>Orders</span></div>
         <div class="nav-item" data-section="rewardsSection"><i class="fas fa-gift"></i><span>Rewards</span></div>
-        <div class="nav-item" data-section="communitySection"><i class="fas fa-people-group"></i><span>Community</span></div>
-        <div class="nav-item" id="moreNavPlaceholder" style="display:none;"></div> <!-- kept for spacing -->
+        <div class="nav-item" data-section="messagesSection"><i class="fas fa-comment-dots"></i><span>Message</span></div>
     </nav>
 
     <!-- Floating Cart Button (unchanged) -->
@@ -1627,7 +1627,7 @@
 
 <script>
     (function() {
-        // ---------- navigation (updated with header dropdown and new community section) ----------
+        // ---------- navigation (updated with new bottom nav and header dropdown) ----------
         const navItems = document.querySelectorAll('.nav-item');
         const sections = {
             homeSection: document.getElementById('homeSection'),
@@ -1659,7 +1659,7 @@
             });
         });
 
-        // Header dropdown items
+        // Header dropdown items (now includes Community)
         document.querySelectorAll('.header-dropdown-item').forEach(el => {
             el.addEventListener('click', () => {
                 const sectionId = el.getAttribute('data-section');
