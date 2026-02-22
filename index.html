@@ -1007,6 +1007,268 @@
             background: #f8d7da;
             color: #b65151;
         }
+
+        /* ========== NEW REVIEWS SECTION STYLES ========== */
+        .fade-in, .fade-in-left, .fade-in-right {
+            opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible { opacity: 1; }
+        .fade-in-left { transform: translateX(-20px); }
+        .fade-in-left.visible { opacity: 1; transform: translateX(0); }
+        .fade-in-right { transform: translateX(20px); }
+        .fade-in-right.visible { opacity: 1; transform: translateX(0); }
+
+        .review-rating {
+            display: flex;
+            gap: 0.3rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .review-rating i {
+            color: #ddd;
+            transition: color 0.2s;
+        }
+        .review-rating i.filled {
+            color: #f5b342;
+        }
+        .photo-preview-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+        .photo-preview {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e0cfbb;
+        }
+        .photo-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .photo-preview .remove-photo {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .upload-btn {
+            background: #f2ebe0;
+            border: 1px dashed #c9a43b;
+            border-radius: 40px;
+            padding: 0.5rem 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .upload-btn input {
+            display: none;
+        }
+        .reviews-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .review-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1rem;
+            border: 1px solid #f0e7da;
+        }
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #c9a43b;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .review-name {
+            font-weight: 600;
+        }
+        .review-time {
+            font-size: 0.75rem;
+            color: #7e6b4b;
+        }
+        .review-stars {
+            display: flex;
+            gap: 2px;
+            color: #f5b342;
+        }
+        .review-text {
+            margin: 0.5rem 0;
+            line-height: 1.4;
+        }
+        .review-photos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+        .review-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .review-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin: 0.5rem 0;
+        }
+        .action-btn {
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #5f4e36;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .action-btn.liked i {
+            color: #e63946;
+        }
+        .action-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .replies-section {
+            margin-left: 2rem;
+            padding-left: 1rem;
+            border-left: 2px solid #eee3d5;
+        }
+        .reply-item {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        .reply-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .reply-form input {
+            flex: 1;
+            padding: 0.5rem;
+            border-radius: 30px;
+            border: 1px solid #d4c0a3;
+        }
+        .reply-form button {
+            padding: 0.5rem 1rem;
+            background: #c9a43b;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-weight: 600;
+        }
+        .loader-burger {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 2rem;
+        }
+        .loader-burger .bun, .loader-burger .patty {
+            width: 20px;
+            height: 20px;
+            background: #c9a43b;
+            border-radius: 50%;
+            animation: bounce 0.6s infinite alternate;
+        }
+        .loader-burger .patty {
+            background: #8b6b4d;
+            animation-delay: 0.2s;
+        }
+        .loader-burger .dot {
+            width: 8px;
+            height: 8px;
+            background: #2c4532;
+            border-radius: 50%;
+            animation: bounce 0.6s infinite alternate;
+            animation-delay: 0.4s;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+        .toast {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: #2c4532;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 3000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+        }
+        .toast.show {
+            transform: translateX(0);
+        }
+        .toast.success {
+            background: #2c4532;
+        }
+        .image-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 4000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+        .image-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .image-modal img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 12px;
+        }
+        .image-modal .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        .api-integration {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -1019,19 +1281,19 @@
         <div class="header-menu">
             <i class="fas fa-bars menu-icon" id="headerMenuIcon"></i>
             <div class="header-dropdown" id="headerDropdown">
-                <!-- new Personalized Plan item -->
                 <div class="header-dropdown-item" data-section="personalizedSection"><i class="fas fa-crown"></i> Personalized Plan</div>
                 <div class="header-dropdown-item" data-section="communitySection"><i class="fas fa-people-group"></i> Community</div>
-                <!-- NEW RESERVE PROGRAM -->
                 <div class="header-dropdown-item" data-section="reserveSection"><i class="fas fa-shield-alt"></i> Reserve Program</div>
                 <div class="header-dropdown-item" data-section="supportSection"><i class="fas fa-headset"></i> Support</div>
                 <div class="header-dropdown-item" data-section="bookSection"><i class="fas fa-book"></i> Book</div>
                 <div class="header-dropdown-item" data-section="profileSection"><i class="fas fa-user-circle"></i> Profile</div>
+                <!-- NEW REVIEWS ITEM -->
+                <div class="header-dropdown-item" data-section="reviewsSection"><i class="fas fa-star"></i> Reviews</div>
             </div>
         </div>
     </div>
 
-    <!-- main content (sections) – all existing sections unchanged, then new reserveSection added -->
+    <!-- main content (sections) – all existing sections unchanged, then new reserveSection added, then reviewsSection -->
     <main class="main-content" id="mainContent">
         <!-- HOME section (unchanged, full) -->
         <section id="homeSection" class="content-section active">
@@ -1824,6 +2086,55 @@
                 <p><i class="fas fa-gem"></i> Loyalty credit stacks with your existing rewards. No cash payouts.</p>
             </div>
         </section>
+
+        <!-- ========== NEW REVIEWS SECTION ========== -->
+        <section id="reviewsSection" class="content-section">
+            <div class="card fade-in">
+                <div class="card-header">
+                    <span class="badge green"><i class="fas fa-star"></i> Customer Reviews</span>
+                </div>
+                <div class="card-title">Share your experience</div>
+                <!-- Write Review Form -->
+                <div class="write-review">
+                    <div class="review-rating" id="reviewStars">
+                        <i class="far fa-star" data-value="1"></i>
+                        <i class="far fa-star" data-value="2"></i>
+                        <i class="far fa-star" data-value="3"></i>
+                        <i class="far fa-star" data-value="4"></i>
+                        <i class="far fa-star" data-value="5"></i>
+                    </div>
+                    <input type="hidden" id="ratingValue" value="0">
+                    <textarea id="reviewText" placeholder="Tell us about your experience..." rows="3" style="width:100%; border-radius:20px; border:1px solid #d4c0a3; padding:0.8rem; margin:0.5rem 0;"></textarea>
+                    
+                    <!-- Photo upload -->
+                    <div class="upload-btn">
+                        <i class="fas fa-camera"></i> Upload Photos
+                        <input type="file" id="photoUpload" accept="image/*" multiple>
+                    </div>
+                    <div class="photo-preview-grid" id="photoPreviewContainer"></div>
+                    
+                    <button class="btn btn-gold" id="submitReviewBtn" style="width:100%; margin-top:0.5rem;">
+                        <span>Post Review</span>
+                        <i class="fas fa-spinner fa-spin" style="display:none;"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Reviews Feed -->
+            <div class="card fade-in-left" id="reviewsFeedContainer">
+                <div class="card-header">
+                    <span class="badge">Recent reviews</span>
+                </div>
+                <div id="reviewsFeed" class="reviews-feed">
+                    <!-- Loader will be shown here -->
+                    <div class="loader-burger" id="reviewsLoader">
+                        <div class="bun"></div>
+                        <div class="patty"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- bottom nav: Home, Orders, Rewards, Message (unchanged) -->
@@ -1966,6 +2277,18 @@
 
     <!-- Confetti canvas -->
     <canvas id="confettiCanvas" class="confetti-canvas" style="display:none;"></canvas>
+
+    <!-- Image Modal for reviews (new) -->
+    <div class="image-modal" id="imageModal">
+        <span class="close-modal" id="closeImageModal">&times;</span>
+        <img id="modalImage" src="" alt="Enlarged review photo">
+    </div>
+
+    <!-- Toast notification (new) -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Hidden element for API integration -->
+    <div class="api-integration"></div>
 </div>
 
 <script>
@@ -1982,7 +2305,8 @@
             bookSection: document.getElementById('bookSection'),
             profileSection: document.getElementById('profileSection'),
             personalizedSection: document.getElementById('personalizedSection'),
-            reserveSection: document.getElementById('reserveSection')   // new
+            reserveSection: document.getElementById('reserveSection'),
+            reviewsSection: document.getElementById('reviewsSection')   // new
         };
         const headerDropdown = document.getElementById('headerDropdown');
         const headerMenuIcon = document.getElementById('headerMenuIcon');
@@ -2004,7 +2328,7 @@
             });
         });
 
-        // Header dropdown items (now includes Personalized and Reserve)
+        // Header dropdown items (now includes Personalized, Reserve, Reviews)
         document.querySelectorAll('.header-dropdown-item').forEach(el => {
             el.addEventListener('click', () => {
                 const sectionId = el.getAttribute('data-section');
@@ -2832,6 +3156,408 @@
 
         // Ensure reserve dashboard updates on page load
         updateReserveDashboard();
+
+        // ========== REVIEWS MODULE ==========
+        // This module implements all customer review functionality
+        const reviewsModule = (function() {
+            // DOM elements
+            const reviewsSection = document.getElementById('reviewsSection');
+            const reviewsFeed = document.getElementById('reviewsFeed');
+            const reviewsLoader = document.getElementById('reviewsLoader');
+            const submitBtn = document.getElementById('submitReviewBtn');
+            const reviewText = document.getElementById('reviewText');
+            const ratingStars = document.querySelectorAll('#reviewStars i');
+            const ratingInput = document.getElementById('ratingValue');
+            const photoUpload = document.getElementById('photoUpload');
+            const photoPreviewContainer = document.getElementById('photoPreviewContainer');
+            const toast = document.getElementById('toast');
+            const imageModal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const closeImageModal = document.getElementById('closeImageModal');
+
+            // State
+            let currentRating = 0;
+            let selectedFiles = []; // array of File objects
+            let reviews = [];
+            let currentPage = 1;
+            let isLoading = false;
+            let autoRefreshInterval = null;
+            const API_BASE = window.API_BASE_URL || (window.location.hostname === 'localhost' ? 'http://localhost:8000' : '');
+
+            // Helper: escape HTML
+            function escapeHTML(str) {
+                if (!str) return '';
+                return String(str).replace(/[&<>"]/g, function(m) {
+                    if (m === '&') return '&amp;';
+                    if (m === '<') return '&lt;';
+                    if (m === '>') return '&gt;';
+                    if (m === '"') return '&quot;';
+                    return m;
+                });
+            }
+
+            // Helper: time ago
+            function timeAgo(dateISO) {
+                const date = new Date(dateISO);
+                const now = new Date();
+                const seconds = Math.floor((now - date) / 1000);
+                if (seconds < 60) return 'Just now';
+                const minutes = Math.floor(seconds / 60);
+                if (minutes < 60) return minutes + 'm ago';
+                const hours = Math.floor(minutes / 60);
+                if (hours < 24) return hours + 'h ago';
+                const days = Math.floor(hours / 24);
+                if (days < 7) return days + 'd ago';
+                return date.toLocaleDateString();
+            }
+
+            // Helper: get auth token
+            function getToken() {
+                // In a real app, you'd have a global Auth object. Here we use localStorage.
+                const user = JSON.parse(localStorage.getItem('currentUser'));
+                return user?.token || null; // token not stored in this demo, but placeholder
+            }
+
+            function isLoggedIn() {
+                return !!localStorage.getItem('currentUser');
+            }
+
+            // Helper: show toast
+            function showToast(message, type = 'success') {
+                toast.textContent = message;
+                toast.className = `toast ${type}`;
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 3000);
+            }
+
+            // Rating star click
+            ratingStars.forEach(star => {
+                star.addEventListener('click', () => {
+                    const val = parseInt(star.dataset.value);
+                    currentRating = val;
+                    ratingInput.value = val;
+                    ratingStars.forEach((s, i) => {
+                        if (i < val) s.classList.remove('far'); s.classList.add('fas', 'filled');
+                        else s.classList.remove('fas', 'filled'); s.classList.add('far');
+                    });
+                });
+            });
+
+            // Photo upload preview
+            photoUpload.addEventListener('change', (e) => {
+                const files = Array.from(e.target.files);
+                selectedFiles = selectedFiles.concat(files);
+                renderPhotoPreviews();
+                // Reset input to allow selecting same files again
+                photoUpload.value = '';
+            });
+
+            function renderPhotoPreviews() {
+                let html = '';
+                selectedFiles.forEach((file, index) => {
+                    const url = URL.createObjectURL(file);
+                    html += `
+                        <div class="photo-preview">
+                            <img src="${url}" alt="preview">
+                            <button class="remove-photo" data-index="${index}">&times;</button>
+                        </div>
+                    `;
+                });
+                photoPreviewContainer.innerHTML = html;
+                document.querySelectorAll('.remove-photo').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const idx = e.target.dataset.index;
+                        selectedFiles.splice(idx, 1);
+                        renderPhotoPreviews();
+                    });
+                });
+            }
+
+            // Submit review
+            submitBtn.addEventListener('click', async () => {
+                const text = reviewText.value.trim();
+                if (!text || currentRating === 0) {
+                    alert('Please provide a rating and review text.');
+                    return;
+                }
+
+                // Disable button and show spinner
+                submitBtn.disabled = true;
+                const spinner = submitBtn.querySelector('.fa-spinner');
+                const span = submitBtn.querySelector('span');
+                spinner.style.display = 'inline-block';
+                span.textContent = ' Posting...';
+
+                let guestName = null;
+                if (!isLoggedIn()) {
+                    guestName = prompt('You are not logged in. Enter your name (or leave blank for "Guest"):') || 'Guest';
+                }
+
+                // Prepare FormData
+                const formData = new FormData();
+                formData.append('stars', currentRating);
+                formData.append('text', text);
+                if (guestName) formData.append('guest_name', guestName);
+                selectedFiles.forEach(file => formData.append('files[]', file));
+
+                try {
+                    const headers = {};
+                    const token = getToken();
+                    if (token) headers['Authorization'] = `Bearer ${token}`;
+
+                    const response = await fetch(API_BASE + '/reviews/submit', {
+                        method: 'POST',
+                        headers,
+                        body: formData
+                    });
+                    if (!response.ok) {
+                        const err = await response.json();
+                        throw new Error(err.detail || 'Submission failed');
+                    }
+                    const newReview = await response.json();
+                    // Prepend to feed
+                    reviews.unshift(newReview);
+                    renderReviews();
+                    // Reset form
+                    reviewText.value = '';
+                    currentRating = 0;
+                    ratingInput.value = 0;
+                    ratingStars.forEach(s => s.classList.remove('fas', 'filled'));
+                    selectedFiles = [];
+                    renderPhotoPreviews();
+                    showToast('Review posted successfully!');
+                } catch (error) {
+                    alert('Error: ' + error.message);
+                } finally {
+                    submitBtn.disabled = false;
+                    spinner.style.display = 'none';
+                    span.textContent = 'Post Review';
+                }
+            });
+
+            // Fetch reviews
+            async function fetchReviews(page = 1) {
+                if (isLoading) return;
+                isLoading = true;
+                if (reviewsLoader) reviewsLoader.style.display = 'flex';
+                try {
+                    const url = `${API_BASE}/reviews/feed?page=${page}&limit=10`;
+                    const headers = {};
+                    const token = getToken();
+                    if (token) headers['Authorization'] = `Bearer ${token}`;
+                    const res = await fetch(url, { headers });
+                    if (!res.ok) throw new Error('Failed to load reviews');
+                    const data = await res.json();
+                    reviews = data.reviews || data; // assume array
+                    renderReviews();
+                } catch (err) {
+                    console.error('Fetch reviews error:', err);
+                    // fallback: show empty
+                } finally {
+                    isLoading = false;
+                    if (reviewsLoader) reviewsLoader.style.display = 'none';
+                }
+            }
+
+            // Render reviews
+            function renderReviews() {
+                if (!reviewsFeed) return;
+                if (reviews.length === 0) {
+                    reviewsFeed.innerHTML = '<p style="text-align:center; color:#7e6b4b;">No reviews yet. Be the first!</p>';
+                    return;
+                }
+                let html = '';
+                reviews.forEach(rev => {
+                    const name = escapeHTML(rev.full_name || rev.guest_name || 'Anonymous');
+                    const time = timeAgo(rev.created_at);
+                    const stars = rev.stars || 0;
+                    const starIcons = Array(5).fill().map((_, i) => i < stars ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>').join('');
+                    const reviewTextEsc = escapeHTML(rev.text || '');
+                    const photos = rev.images || [];
+                    const photosHtml = photos.length ? 
+                        '<div class="review-photos">' + photos.map(p => `<img src="${p.image_url}" class="review-photo" alt="review photo">`).join('') + '</div>' : '';
+                    const likeBtnClass = rev.is_liked ? 'action-btn liked' : 'action-btn';
+                    const likesCount = rev.likes_count || 0;
+                    const commentsCount = rev.comments_count || 0;
+                    const comments = rev.comments || [];
+                    const repliesHtml = comments.map(c => `
+                        <div class="reply-item">
+                            <strong>${escapeHTML(c.full_name)}</strong> <small>${timeAgo(c.created_at)}</small>
+                            <p>${escapeHTML(c.text)}</p>
+                        </div>
+                    `).join('');
+
+                    html += `
+                        <div class="review-card fade-in" data-review-id="${rev.id}">
+                            <div class="review-header">
+                                <div class="review-avatar">${name.charAt(0)}</div>
+                                <div>
+                                    <div class="review-name">${name}</div>
+                                    <div class="review-time">${time}</div>
+                                </div>
+                            </div>
+                            <div class="review-stars">${starIcons}</div>
+                            <div class="review-text">${reviewTextEsc}</div>
+                            ${photosHtml}
+                            <div class="review-actions">
+                                <button class="${likeBtnClass}" data-action="like" data-id="${rev.id}">
+                                    <i class="fas fa-heart"></i> <span>${likesCount}</span>
+                                </button>
+                                <button class="action-btn" data-action="comment" data-id="${rev.id}">
+                                    <i class="fas fa-comment"></i> <span>${commentsCount}</span>
+                                </button>
+                            </div>
+                            <div class="replies-section" id="replies-${rev.id}">
+                                ${repliesHtml}
+                                <div class="reply-form" style="display:none;" data-review-id="${rev.id}">
+                                    <input type="text" placeholder="Write a reply..." class="reply-input">
+                                    <button class="reply-submit">Comment</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                reviewsFeed.innerHTML = html;
+
+                // Attach event listeners for like, comment, image click
+                document.querySelectorAll('[data-action="like"]').forEach(btn => {
+                    btn.addEventListener('click', handleLike);
+                });
+                document.querySelectorAll('[data-action="comment"]').forEach(btn => {
+                    btn.addEventListener('click', toggleReplyForm);
+                });
+                document.querySelectorAll('.reply-submit').forEach(btn => {
+                    btn.addEventListener('click', submitReply);
+                });
+                document.querySelectorAll('.review-photo').forEach(img => {
+                    img.addEventListener('click', () => {
+                        modalImage.src = img.src;
+                        imageModal.classList.add('active');
+                    });
+                });
+            }
+
+            // Like handler
+            async function handleLike(e) {
+                const btn = e.currentTarget;
+                const reviewId = btn.dataset.id;
+                if (!isLoggedIn()) {
+                    alert('Please log in to like reviews.');
+                    return;
+                }
+                btn.disabled = true;
+                try {
+                    const token = getToken();
+                    const res = await fetch(`${API_BASE}/reviews/${reviewId}/like`, {
+                        method: 'POST',
+                        headers: { 'Authorization': `Bearer ${token}` }
+                    });
+                    if (!res.ok) throw new Error('Like failed');
+                    const data = await res.json();
+                    // update UI
+                    const review = reviews.find(r => r.id == reviewId);
+                    if (review) {
+                        review.is_liked = data.is_liked;
+                        review.likes_count = data.likes_count;
+                    }
+                    renderReviews(); // re-render to reflect changes
+                } catch (err) {
+                    alert(err.message);
+                } finally {
+                    btn.disabled = false;
+                }
+            }
+
+            // Toggle reply form
+            function toggleReplyForm(e) {
+                const reviewId = e.currentTarget.dataset.id;
+                const replyForm = document.querySelector(`#replies-${reviewId} .reply-form`);
+                if (replyForm) {
+                    replyForm.style.display = replyForm.style.display === 'none' ? 'flex' : 'none';
+                }
+            }
+
+            // Submit reply
+            async function submitReply(e) {
+                const btn = e.currentTarget;
+                const replyForm = btn.closest('.reply-form');
+                const reviewId = replyForm.dataset.reviewId;
+                const input = replyForm.querySelector('.reply-input');
+                const text = input.value.trim();
+                if (!text) return;
+
+                let guestName = null;
+                if (!isLoggedIn()) {
+                    guestName = prompt('Enter your name (or Guest):') || 'Guest';
+                }
+
+                btn.disabled = true;
+                try {
+                    const token = getToken();
+                    const body = { text };
+                    if (guestName) body.guest_name = guestName;
+                    const res = await fetch(`${API_BASE}/reviews/${reviewId}/comment`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            ...(token && { 'Authorization': `Bearer ${token}` })
+                        },
+                        body: JSON.stringify(body)
+                    });
+                    if (!res.ok) throw new Error('Comment failed');
+                    const newComment = await res.json();
+                    // update review
+                    const review = reviews.find(r => r.id == reviewId);
+                    if (review) {
+                        review.comments = review.comments || [];
+                        review.comments.push(newComment);
+                        review.comments_count = (review.comments_count || 0) + 1;
+                    }
+                    renderReviews(); // re-render
+                    input.value = '';
+                } catch (err) {
+                    alert(err.message);
+                } finally {
+                    btn.disabled = false;
+                }
+            }
+
+            // Close image modal
+            closeImageModal.addEventListener('click', () => {
+                imageModal.classList.remove('active');
+            });
+            imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal) imageModal.classList.remove('active');
+            });
+
+            // Auto-refresh every 60 seconds when on page 1 and reviews section active
+            function startAutoRefresh() {
+                if (autoRefreshInterval) clearInterval(autoRefreshInterval);
+                autoRefreshInterval = setInterval(() => {
+                    if (reviewsSection.classList.contains('active') && currentPage === 1) {
+                        fetchReviews(1);
+                    }
+                }, 60000);
+            }
+
+            // Intersection Observer for fade-in
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => observer.observe(el));
+
+            // Initial load
+            fetchReviews(1);
+            startAutoRefresh();
+
+            return {
+                refresh: () => fetchReviews(1)
+            };
+        })();
 
     })();
 </script>
