@@ -963,11 +963,95 @@
             text-align: center;
         }
         /* Admin card removed as requested */
+
+        /* ---------- NEW STYLES FOR COMMUNITY RESERVE PROGRAM ---------- */
+        .reserve-tier-cards {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 0.5rem 0.2rem 1rem;
+            scroll-snap-type: x mandatory;
+        }
+        .reserve-tier-card {
+            min-width: 180px;
+            background: #f0f3e8;
+            border-radius: 28px;
+            padding: 1.2rem;
+            scroll-snap-align: start;
+            border-left: 6px solid #b0a28a;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .reserve-tier-card.popular {
+            border-left-color: #c9a43b;
+            background: #fff6e5;
+        }
+        .reserve-badge {
+            background: #5f7e5a;
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.3rem 0.9rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        .reserve-feature-list {
+            list-style: none;
+            padding: 0;
+            font-size: 0.9rem;
+            margin: 0.8rem 0;
+        }
+        .reserve-feature-list li {
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .reserve-feature-list i {
+            color: #c9a43b;
+            width: 1.2rem;
+        }
+        .reserve-progress-ring {
+            background: #e6d9c0;
+            border-radius: 20px;
+            height: 8px;
+            margin: 0.5rem 0;
+        }
+        .reserve-progress-fill {
+            height: 8px;
+            background: #2c4532;
+            border-radius: 20px;
+            width: 0%;
+        }
+        .reserve-dashboard {
+            background: #f2ebe0;
+            border-radius: 24px;
+            padding: 1rem;
+        }
+        .reserve-stat {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem 0;
+        }
+        .reserve-release-btn {
+            background: #b65151;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            padding: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+        }
+        .reserve-release-btn:disabled {
+            background: #d4bcbc;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
 <div class="app" id="appContainer">
-    <!-- fixed header with hamburger menu (Personalized Plan added) -->
+    <!-- fixed header with hamburger menu (Community Reserve added) -->
     <div class="header">
         <h1>
             <i class="fas fa-feather main-feather"></i> The Golden Feather
@@ -975,9 +1059,11 @@
         <div class="header-menu">
             <i class="fas fa-bars menu-icon" id="headerMenuIcon"></i>
             <div class="header-dropdown" id="headerDropdown">
-                <!-- new Personalized Plan item added -->
+                <!-- new Personalized Plan item -->
                 <div class="header-dropdown-item" data-section="personalizedSection"><i class="fas fa-crown"></i> Personalized Plan</div>
                 <div class="header-dropdown-item" data-section="communitySection"><i class="fas fa-people-group"></i> Community</div>
+                <!-- NEW: Community Reserve -->
+                <div class="header-dropdown-item" data-section="communityReserveSection"><i class="fas fa-shield-heart"></i> Community Reserve</div>
                 <div class="header-dropdown-item" data-section="supportSection"><i class="fas fa-headset"></i> Support</div>
                 <div class="header-dropdown-item" data-section="bookSection"><i class="fas fa-book"></i> Book</div>
                 <div class="header-dropdown-item" data-section="profileSection"><i class="fas fa-user-circle"></i> Profile</div>
@@ -985,7 +1071,7 @@
         </div>
     </div>
 
-    <!-- main content (sections) – all existing sections unchanged, then new personalizedSection added -->
+    <!-- main content (sections) – all existing sections unchanged, plus new communityReserveSection added -->
     <main class="main-content" id="mainContent">
         <!-- HOME section (unchanged, full) -->
         <section id="homeSection" class="content-section active">
@@ -1679,6 +1765,115 @@
 
             <!-- Admin panel demo removed as requested -->
         </section>
+
+        <!-- NEW SECTION: COMMUNITY RESERVE PROGRAM -->
+        <section id="communityReserveSection" class="content-section">
+            <!-- Hero -->
+            <div class="card hero-brand" style="background: linear-gradient(145deg, #eef3e9, #dde8da); border-left-color: #2c4532;">
+                <div class="hero-headline">🛡️ Community Reserve Program</div>
+                <div class="hero-subheadline">Prepared Together. Supplied Without Stress.</div>
+                <div class="hero-tagline">Not insurance – community preparedness & supply stability</div>
+                <div class="hero-trust"><i class="fas fa-hand-holding-heart"></i> Contribute monthly toward a secured poultry allocation. If a bereavement occurs, allocation is released immediately with priority. Unused? Get loyalty value back.</div>
+            </div>
+
+            <!-- Positioning copy -->
+            <div class="card">
+                <p><i class="fas fa-quote-left" style="color:#c9a43b;"></i> Members contribute monthly toward a secured poultry allocation. If a bereavement occurs, allocation is released immediately with priority fulfillment. If unused within 12 months, members receive loyalty value back through the rewards system (15% of total annual contribution as store credit). <i class="fas fa-quote-right" style="color:#c9a43b;"></i></p>
+                <div class="repeat-psychology" style="justify-content: center;">
+                    <span class="badge"><i class="fas fa-check-circle"></i> Not insurance</span>
+                    <span class="badge"><i class="fas fa-users"></i> Community support</span>
+                    <span class="badge"><i class="fas fa-box"></i> Supply stability</span>
+                    <span class="badge"><i class="fas fa-lock"></i> Locked pricing</span>
+                </div>
+            </div>
+
+            <!-- Three tier cards -->
+            <div class="card">
+                <div class="card-header"><span class="badge green">Choose your reserve tier</span></div>
+                <div class="reserve-tier-cards">
+                    <!-- 20 chicken tier -->
+                    <div class="reserve-tier-card">
+                        <span class="reserve-badge">20 chickens</span>
+                        <div class="price" style="font-size:1.6rem;">R300<small>/mo</small></div>
+                        <ul class="reserve-feature-list">
+                            <li><i class="fas fa-check"></i> R15 per chicken/month</li>
+                            <li><i class="fas fa-bolt"></i> Guaranteed bereavement release</li>
+                            <li><i class="fas fa-tag"></i> Locked pricing</li>
+                            <li><i class="fas fa-rocket"></i> Same‑day dispatch</li>
+                            <li><i class="fas fa-gift"></i> Annual loyalty return ~R540</li>
+                        </ul>
+                        <button class="btn btn-gold btn-small join-reserve" data-tier="20" data-monthly="300" data-credit="540">Select 20</button>
+                    </div>
+                    <!-- 40 chicken tier (popular) -->
+                    <div class="reserve-tier-card popular">
+                        <span class="reserve-badge" style="background:#c9a43b;">40 chickens · best value</span>
+                        <div class="price" style="font-size:1.6rem;">R600<small>/mo</small></div>
+                        <ul class="reserve-feature-list">
+                            <li><i class="fas fa-check"></i> R15 per chicken/month</li>
+                            <li><i class="fas fa-bolt"></i> Guaranteed bereavement release</li>
+                            <li><i class="fas fa-tag"></i> Locked pricing</li>
+                            <li><i class="fas fa-rocket"></i> Same‑day dispatch</li>
+                            <li><i class="fas fa-gift"></i> Annual loyalty return ~R1,080</li>
+                        </ul>
+                        <button class="btn btn-gold btn-small join-reserve" data-tier="40" data-monthly="600" data-credit="1080">Select 40</button>
+                    </div>
+                    <!-- 60 chicken tier -->
+                    <div class="reserve-tier-card">
+                        <span class="reserve-badge">60 chickens</span>
+                        <div class="price" style="font-size:1.6rem;">R900<small>/mo</small></div>
+                        <ul class="reserve-feature-list">
+                            <li><i class="fas fa-check"></i> R15 per chicken/month</li>
+                            <li><i class="fas fa-bolt"></i> Guaranteed bereavement release</li>
+                            <li><i class="fas fa-tag"></i> Locked pricing</li>
+                            <li><i class="fas fa-rocket"></i> Same‑day dispatch</li>
+                            <li><i class="fas fa-gift"></i> Annual loyalty return ~R1,620</li>
+                        </ul>
+                        <button class="btn btn-gold btn-small join-reserve" data-tier="60" data-monthly="900" data-credit="1620">Select 60</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard for logged-in members / guest preview -->
+            <div class="card" id="reserveDashboardCard">
+                <div class="card-header">
+                    <span class="badge green"><i class="fas fa-tachometer-alt"></i> Your reserve dashboard</span>
+                    <span id="reserveLoginBadge" class="badge">Logged in as Mpho</span>
+                </div>
+                <!-- Logged-in view (visible if isLoggedIn) -->
+                <div id="loggedInReserve" style="display:block;">
+                    <div class="reserve-dashboard">
+                        <div class="reserve-stat"><span>Active tier:</span> <strong id="reserveActiveTier">20 chickens</strong></div>
+                        <div class="reserve-stat"><span>Allocation quantity:</span> <strong id="reserveAllocation">20 chickens</strong></div>
+                        <div class="reserve-stat"><span>Monthly contribution:</span> <strong id="reserveMonthly">R300</strong></div>
+                        <div class="reserve-stat"><span>Annual cycle ends:</span> <strong id="reserveEnds">2026-02-22</strong></div>
+                        <div class="reserve-stat"><span>Time remaining:</span> <strong id="reserveTimeRemaining">364 days</strong></div>
+                        <div class="reserve-progress-ring">
+                            <div id="reserveProgressFill" class="reserve-progress-fill" style="width:0%;"></div>
+                        </div>
+                        <div class="reserve-stat"><span>Loyalty value at stake:</span> <strong id="reserveLoyaltyValue">R540</strong></div>
+                        <div class="reserve-stat"><span>Status:</span> <strong id="reserveStatus">Active</strong></div>
+                        <button class="reserve-release-btn" id="releaseAllocationBtn"><i class="fas fa-exclamation-triangle"></i> Release Allocation (Bereavement)</button>
+                        <p style="font-size:0.75rem; margin-top:0.5rem;"><i class="fas fa-info-circle"></i> Once released, a new 12‑month cycle begins. Admin will be flagged immediately.</p>
+                    </div>
+                </div>
+                <!-- Guest view (visible if not logged in) -->
+                <div id="guestReserve" style="display:none;">
+                    <p><i class="fas fa-lock"></i> <a href="#" id="loginForReserve">Log in</a> to enroll and manage your Community Reserve plan.</p>
+                    <div style="background:#f2ebe0; border-radius:20px; padding:1rem;">
+                        <p><i class="fas fa-shield-alt"></i> Preview: choose a tier above to see benefits. Members enjoy priority fulfillment and loyalty returns.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- extra info / admin simulation (for demo) -->
+            <div class="card" style="background:#faf0e6;">
+                <p><i class="fas fa-clock"></i> <strong>Annual loyalty return:</strong> If no release within 12 months, you receive 15% of total contributions as store credit (added to your rewards wallet).</p>
+                <p><i class="fas fa-tag"></i> Locked pricing guaranteed for your tier.</p>
+                <p><i class="fas fa-flag"></i> Bereavement release triggers admin notification and overrides stock priority.</p>
+                <!-- Demo button to simulate end of annual cycle (for testing) -->
+                <button class="btn-small btn-outline" id="simulateCycleEndBtn"><i class="fas fa-calendar-times"></i> Simulate 12 months (no release)</button>
+            </div>
+        </section>
     </main>
 
     <!-- bottom nav: Home, Orders, Rewards, Message (unchanged) -->
@@ -1836,7 +2031,8 @@
             supportSection: document.getElementById('supportSection'),
             bookSection: document.getElementById('bookSection'),
             profileSection: document.getElementById('profileSection'),
-            personalizedSection: document.getElementById('personalizedSection')   // new
+            personalizedSection: document.getElementById('personalizedSection'),
+            communityReserveSection: document.getElementById('communityReserveSection') // new
         };
         const headerDropdown = document.getElementById('headerDropdown');
         const headerMenuIcon = document.getElementById('headerMenuIcon');
@@ -1858,7 +2054,7 @@
             });
         });
 
-        // Header dropdown items (now includes Personalized)
+        // Header dropdown items (now includes Personalized and Community Reserve)
         document.querySelectorAll('.header-dropdown-item').forEach(el => {
             el.addEventListener('click', () => {
                 const sectionId = el.getAttribute('data-section');
@@ -2550,6 +2746,172 @@
         document.getElementById('downgradeTierBtn')?.addEventListener('click', () => {
             alert('Downgrade to a lower tier. Changes take effect next cycle.');
         });
+
+        // ========== NEW: COMMUNITY RESERVE PROGRAM ==========
+        // State management
+        let reserveState = JSON.parse(localStorage.getItem('communityReserve')) || null;
+
+        // DOM elements for reserve
+        const loggedInReserve = document.getElementById('loggedInReserve');
+        const guestReserve = document.getElementById('guestReserve');
+        const reserveLoginBadge = document.getElementById('reserveLoginBadge');
+        const reserveActiveTier = document.getElementById('reserveActiveTier');
+        const reserveAllocation = document.getElementById('reserveAllocation');
+        const reserveMonthly = document.getElementById('reserveMonthly');
+        const reserveEnds = document.getElementById('reserveEnds');
+        const reserveTimeRemaining = document.getElementById('reserveTimeRemaining');
+        const reserveProgressFill = document.getElementById('reserveProgressFill');
+        const reserveLoyaltyValue = document.getElementById('reserveLoyaltyValue');
+        const reserveStatus = document.getElementById('reserveStatus');
+        const releaseBtn = document.getElementById('releaseAllocationBtn');
+        const simulateCycleBtn = document.getElementById('simulateCycleEndBtn');
+
+        // Tier data mapping (monthly contribution, annual credit 15% of total)
+        const reserveTierData = {
+            20: { monthly: 300, credit: 540, chickens: 20 },
+            40: { monthly: 600, credit: 1080, chickens: 40 },
+            60: { monthly: 900, credit: 1620, chickens: 60 }
+        };
+
+        function updateReserveUI() {
+            if (!isLoggedIn) {
+                loggedInReserve.style.display = 'none';
+                guestReserve.style.display = 'block';
+                return;
+            } else {
+                loggedInReserve.style.display = 'block';
+                guestReserve.style.display = 'none';
+                reserveLoginBadge.style.display = 'inline-block';
+            }
+
+            if (!reserveState) {
+                // No active plan: show empty dashboard
+                reserveActiveTier.textContent = 'None';
+                reserveAllocation.textContent = '0';
+                reserveMonthly.textContent = 'R0';
+                reserveEnds.textContent = '-';
+                reserveTimeRemaining.textContent = '-';
+                reserveProgressFill.style.width = '0%';
+                reserveLoyaltyValue.textContent = 'R0';
+                reserveStatus.textContent = 'Not enrolled';
+                if (releaseBtn) releaseBtn.disabled = true;
+                return;
+            }
+
+            const tier = reserveState.tier;
+            const data = reserveTierData[tier];
+            reserveActiveTier.textContent = `${tier} chickens`;
+            reserveAllocation.textContent = `${data.chickens} chickens`;
+            reserveMonthly.textContent = `R${data.monthly}`;
+
+            // Calculate cycle end and progress
+            const start = new Date(reserveState.startDate);
+            const now = new Date();
+            const end = new Date(start);
+            end.setFullYear(end.getFullYear() + 1);
+            const totalMs = end - start;
+            const elapsedMs = now - start;
+            const percent = Math.min(100, Math.max(0, (elapsedMs / totalMs) * 100));
+            reserveProgressFill.style.width = percent + '%';
+
+            const daysRemaining = Math.ceil((end - now) / (1000 * 60 * 60 * 24));
+            reserveTimeRemaining.textContent = daysRemaining > 0 ? daysRemaining + ' days' : '0 days (cycle ended)';
+
+            reserveEnds.textContent = end.toISOString().split('T')[0];
+            reserveLoyaltyValue.textContent = `R${data.credit}`;
+            reserveStatus.textContent = reserveState.released ? 'Allocation Released' : 'Active';
+
+            // Release button logic
+            if (releaseBtn) {
+                if (reserveState.released) {
+                    releaseBtn.disabled = true;
+                    releaseBtn.textContent = 'Already Released';
+                } else {
+                    releaseBtn.disabled = false;
+                    releaseBtn.textContent = 'Release Allocation (Bereavement)';
+                }
+            }
+        }
+
+        // Join reserve buttons
+        document.querySelectorAll('.join-reserve').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if (!isLoggedIn) {
+                    alert('Please log in to join the Community Reserve.');
+                    activateSection('profileSection'); // redirect to login simulation
+                    return;
+                }
+                const tier = e.target.dataset.tier;
+                const monthly = e.target.dataset.monthly;
+                const credit = e.target.dataset.credit;
+                if (confirm(`Enroll in ${tier} chicken reserve (R${monthly}/month)?`)) {
+                    reserveState = {
+                        tier: parseInt(tier),
+                        startDate: new Date().toISOString(),
+                        released: false
+                    };
+                    localStorage.setItem('communityReserve', JSON.stringify(reserveState));
+                    updateReserveUI();
+                    alert('Welcome to the Community Reserve! Your monthly contribution will be billed separately.');
+                    // Add first month to cart as subscription
+                    addToCart({ id: Date.now(), name: `Community Reserve ${tier}ch (first month)`, price: parseInt(monthly), quantity: 1, type: 'reserve' });
+                }
+            });
+        });
+
+        // Release allocation
+        if (releaseBtn) {
+            releaseBtn.addEventListener('click', () => {
+                if (!reserveState || reserveState.released) return;
+                if (confirm('Confirm bereavement release? Allocation will be dispatched immediately with priority. This action cannot be undone.')) {
+                    reserveState.released = true;
+                    reserveState.releaseDate = new Date().toISOString();
+                    // Reset annual cycle: start new cycle from today
+                    reserveState.startDate = new Date().toISOString();
+                    reserveState.released = false; // after reset, it's a new cycle
+                    localStorage.setItem('communityReserve', JSON.stringify(reserveState));
+                    updateReserveUI();
+                    alert('✅ Bereavement release triggered. Admin has been flagged. Your allocation will be dispatched same-day.');
+                    startConfetti();
+                }
+            });
+        }
+
+        // Simulate 12 months end (for testing loyalty credit)
+        if (simulateCycleBtn) {
+            simulateCycleBtn.addEventListener('click', () => {
+                if (!reserveState) {
+                    alert('No active reserve.');
+                    return;
+                }
+                if (reserveState.released) {
+                    alert('Allocation already released this cycle. Start new cycle by enrolling again.');
+                    return;
+                }
+                // Add loyalty credit to wallet (15% of annual contribution)
+                const tier = reserveState.tier;
+                const credit = reserveTierData[tier].credit;
+                walletCredit += credit;
+                updateRewardsUI();
+                alert(`🎉 Annual cycle ended with no release. You received R${credit} store credit (added to wallet).`);
+                // Reset cycle: start new cycle
+                reserveState.startDate = new Date().toISOString();
+                localStorage.setItem('communityReserve', JSON.stringify(reserveState));
+                updateReserveUI();
+            });
+        }
+
+        // Login link for guest
+        document.getElementById('loginForReserve')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Demo: please log in. (Assume logged in now)');
+            // toggle for demo (in real app would redirect)
+            // For demo we just reload UI as if logged in
+            // Note: isLoggedIn is const true, so guest view never shows; this is for completeness
+        });
+
+        // Initial UI update
+        updateReserveUI();
 
     })();
 </script>
