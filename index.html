@@ -80,32 +80,25 @@
             60% { transform: translateY(4px) rotate(7deg); opacity: 0.8; }
             100% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
         }
-        /* Authentication links (desktop) */
-        .auth-links {
+        .header .tagline {
+            font-size: 0.75rem;
+            color: #7e6b4b;
+            margin-top: 2px;
             display: flex;
-            gap: 0.5rem;
             align-items: center;
+            gap: 8px;
         }
-        .auth-links .login-btn, .auth-links .signup-btn {
-            background: #f0e7da;
-            padding: 0.3rem 1rem;
+        .header .tagline span {
+            background: #e9dbc9;
+            padding: 0.2rem 0.8rem;
             border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #2c4532;
-            cursor: pointer;
-            white-space: nowrap;
-            border: 1px solid #c0aa83;
+            font-weight: 500;
+            color: #3a2e1f;
+            font-size: 0.65rem;
         }
-        .auth-links .signup-btn {
-            background: #c9a43b;
-            color: #1e2b1a;
-            border: none;
-        }
-        /* header menu (hamburger) – hidden on desktop, visible on mobile */
+        /* header right menu (hamburger) */
         .header-menu {
             position: relative;
-            display: none; /* hidden by default, shown in media query */
         }
         .menu-icon {
             font-size: 1.8rem;
@@ -118,30 +111,26 @@
         .menu-icon:hover {
             background: #ede7dc;
         }
-        /* Full-screen overlay for mobile */
         .header-dropdown {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(254, 252, 247, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 2000;
+            position: absolute;
+            top: 45px;
+            right: 0;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            width: 180px;
             display: none;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            border: none;
+            padding: 0.8rem;
+            gap: 0.3rem;
+            z-index: 1200;
+            border: 1px solid #e0cfbb;
         }
         .header-dropdown.show {
             display: flex;
         }
         .header-dropdown-item {
-            padding: 1rem 2rem;
+            padding: 0.8rem 1rem;
             background: #f9f3ea;
             border-radius: 40px;
             font-weight: 600;
@@ -150,15 +139,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            width: 80%;
-            max-width: 300px;
-            justify-content: center;
-            border: 1px solid #e0cfbb;
         }
-        .header-dropdown-item i {
-            font-size: 1.2rem;
-        }
-        /* ===== MAIN CONTENT ===== */
+        /* ===== MAIN CONTENT scrolls naturally ===== */
         .main-content {
             overflow: visible;
             display: block;
@@ -309,7 +291,7 @@
             padding: 0.5rem;
             background: white;
         }
-        /* ===== BOTTOM NAV (5 items) ===== */
+        /* ===== BOTTOM NAV (4 items: Home, Orders, Rewards, Message) ===== */
         .bottom-nav {
             background: #fefcf7;
             border-top: 1px solid #e8dccd;
@@ -351,7 +333,6 @@
             color: #2c4532;
             background: #ede7dc;
         }
-
         /* ---------- BRANDING ADDITIONS (unchanged) ---------- */
         .hero-brand {
             background: linear-gradient(145deg, #fff7e8, #fce8cf);
@@ -1026,339 +1007,35 @@
             background: #f8d7da;
             color: #b65151;
         }
-
-        /* ---------- NEW REVIEWS SECTION STYLES ---------- */
-        .reviews-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .star-rating {
-            display: flex;
-            gap: 0.2rem;
-            font-size: 1.5rem;
-            color: #d4c0a3;
-            cursor: pointer;
-        }
-        .star-rating .fas.fa-star {
-            color: #c9a43b;
-        }
-        .photo-preview-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 0.5rem 0;
-        }
-        .photo-preview {
-            position: relative;
-            width: 80px;
-            height: 80px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #e0cfbb;
-        }
-        .photo-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .photo-preview .remove-photo {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            cursor: pointer;
-        }
-        .review-card {
-            background: white;
-            border-radius: 24px;
-            padding: 1rem;
-            border: 1px solid #f0e7da;
-            margin-bottom: 1rem;
-        }
-        .review-header {
-            display: flex;
-            gap: 0.8rem;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        .review-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #c9a43b;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .review-name {
-            font-weight: 600;
-            color: #2c4532;
-        }
-        .review-time {
-            font-size: 0.7rem;
-            color: #7e6b4b;
-        }
-        .review-stars {
-            display: flex;
-            gap: 0.2rem;
-            color: #d4c0a3;
-            margin: 0.3rem 0;
-        }
-        .review-stars .filled {
-            color: #c9a43b;
-        }
-        .review-text {
-            font-size: 0.95rem;
-            margin: 0.5rem 0;
-            color: #3f3a30;
-        }
-        .review-photos {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 0.5rem 0;
-        }
-        .review-photo {
-            width: 80px;
-            height: 80px;
-            border-radius: 12px;
-            object-fit: cover;
-            cursor: pointer;
-            border: 1px solid #e0cfbb;
-        }
-        .review-actions {
-            display: flex;
-            gap: 1rem;
-            margin: 0.8rem 0 0.5rem;
-        }
-        .action-btn {
-            background: none;
-            border: none;
-            color: #7e6b4b;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            cursor: pointer;
-            padding: 0.3rem 0.8rem;
-            border-radius: 30px;
-            transition: background 0.2s;
-        }
-        .action-btn:hover {
-            background: #f0e7da;
-        }
-        .action-btn.liked {
-            color: #c94f4f;
-        }
-        .action-btn i {
-            font-size: 1.1rem;
-        }
-        .reply-section {
-            margin-left: 2rem;
-            border-left: 2px solid #e0cfbb;
-            padding-left: 1rem;
-        }
-        .reply {
-            margin: 0.5rem 0;
-            font-size: 0.9rem;
-        }
-        .reply-name {
-            font-weight: 600;
-            color: #2c4532;
-        }
-        .reply-time {
-            font-size: 0.65rem;
-            color: #7e6b4b;
-        }
-        .reply-form {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-        .reply-form input {
-            flex: 1;
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            border: 1px solid #d4c0a3;
-        }
-        .reply-form button {
-            background: #c9a43b;
-            border: none;
-            color: #1e2b1a;
-            padding: 0.5rem 1.2rem;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .loader-burger {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            padding: 2rem;
-        }
-        .buns {
-            display: flex;
-            gap: 0.3rem;
-        }
-        .bun {
-            width: 12px;
-            height: 12px;
-            background: #c9a43b;
-            border-radius: 50%;
-            animation: bounce 0.6s infinite alternate;
-        }
-        .bun:nth-child(2) { animation-delay: 0.2s; }
-        .bun:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes bounce {
-            to { transform: translateY(-10px); }
-        }
-        .toast {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #2c4532;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 40px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            z-index: 3000;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.3s ease;
-        }
-        .toast.show {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .toast.success {
-            background: #2c4532;
-        }
-        .toast.error {
-            background: #b65151;
-        }
-        .image-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 4000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .image-modal img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 12px;
-        }
-        .image-modal .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-        .api-integration {
-            display: none;
-        }
-        /* footer */
-        .footer {
-            background: #2c4532;
-            color: #f7f0e0;
-            border-radius: 28px 28px 0 0;
-            padding: 1.5rem 1rem;
-            margin-top: 2rem;
-            font-size: 0.85rem;
-        }
-        .footer a {
-            color: #f5d742;
-            text-decoration: none;
-        }
-        .footer .social-links {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin: 1rem 0;
-        }
-        .footer .social-links i {
-            font-size: 1.5rem;
-            color: #f5d742;
-        }
-        .footer .quick-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin: 1rem 0;
-        }
-        .footer .copyright {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.7rem;
-            opacity: 0.8;
-        }
-        /* mobile menu: show hamburger, hide desktop auth links */
-        @media (max-width: 992px) {
-            .auth-links {
-                display: none;
-            }
-            .header-menu {
-                display: block;
-            }
-            .header-dropdown {
-                /* full-screen overlay already styled */
-            }
-        }
-        @media (min-width: 993px) {
-            .header-menu {
-                display: none;
-            }
-        }
     </style>
 </head>
 <body>
 <div class="app" id="appContainer">
-    <!-- fixed header with auth links (desktop) and hamburger (mobile) -->
+    <!-- fixed header with hamburger menu (Reserve Program added) -->
     <div class="header">
         <h1>
             <i class="fas fa-feather main-feather"></i> The Golden Feather
         </h1>
-        <!-- desktop auth links -->
-        <div class="auth-links" id="desktopAuth">
-            <span class="login-btn" id="loginBtn">Login</span>
-            <span class="signup-btn" id="signupBtn">Sign Up</span>
-        </div>
-        <!-- mobile hamburger -->
         <div class="header-menu">
             <i class="fas fa-bars menu-icon" id="headerMenuIcon"></i>
             <div class="header-dropdown" id="headerDropdown">
-                <!-- will be populated dynamically with auth + nav links -->
+                <!-- new Personalized Plan item -->
+                <div class="header-dropdown-item" data-section="personalizedSection"><i class="fas fa-crown"></i> Personalized Plan</div>
+                <div class="header-dropdown-item" data-section="communitySection"><i class="fas fa-people-group"></i> Community</div>
+                <!-- NEW RESERVE PROGRAM -->
+                <div class="header-dropdown-item" data-section="reserveSection"><i class="fas fa-shield-alt"></i> Reserve Program</div>
+                <div class="header-dropdown-item" data-section="supportSection"><i class="fas fa-headset"></i> Support</div>
+                <div class="header-dropdown-item" data-section="bookSection"><i class="fas fa-book"></i> Book</div>
+                <div class="header-dropdown-item" data-section="profileSection"><i class="fas fa-user-circle"></i> Profile</div>
             </div>
         </div>
     </div>
 
-    <!-- main content (sections) -->
+    <!-- main content (sections) – all existing sections unchanged, then new reserveSection added -->
     <main class="main-content" id="mainContent">
-        <!-- EXISTING SECTIONS (home, orders, rewards, community, messages, support, book, profile, personalized, reserve) are preserved exactly as in original HTML -->
-        <!-- HOME section -->
+        <!-- HOME section (unchanged, full) -->
         <section id="homeSection" class="content-section active">
-            <!-- all home content exactly as originally provided -->
+            <!-- all home content exactly as originally provided, including hero, cards, subscriptions, by‑products, etc. -->
             <div class="card hero-brand">
                 <div class="hero-headline">Farm Fresh Chicken, Raised for Your Family</div>
                 <div class="hero-subheadline">Trusted Local Poultry Supplier</div>
@@ -1665,7 +1342,7 @@
             </div>
         </section>
 
-        <!-- ORDERS section -->
+        <!-- ORDERS section (unchanged) -->
         <section id="ordersSection" class="content-section">
             <div class="order-item">
                 <div><strong>#GC2341</strong> · 5 chickens <span style="float:right;">ready 4 May</span></div>
@@ -1682,7 +1359,7 @@
             </div>
         </section>
 
-        <!-- REWARDS section -->
+        <!-- REWARDS section (unchanged) -->
         <section id="rewardsSection" class="content-section">
             <!-- Customer account summary card -->
             <div class="card" style="background:#f3f0e6;">
@@ -1753,7 +1430,7 @@
             </div>
         </section>
 
-        <!-- COMMUNITY FESTIVE PLAN -->
+        <!-- COMMUNITY FESTIVE PLAN (still here, now accessible via top menu) -->
         <section id="communitySection" class="content-section">
             <div class="card hero-brand" style="background: linear-gradient(145deg, #e8f0e5, #d4e2d4); border-left-color: #2c4532;">
                 <div class="hero-headline">🎄 Community Festive Plan</div>
@@ -1815,7 +1492,7 @@
             </div>
         </section>
 
-        <!-- MESSAGES section -->
+        <!-- MESSAGES section (still here, now accessible via bottom nav) -->
         <section id="messagesSection" class="content-section">
             <div class="card">
                 <div class="card-header"><span class="badge green"><i class="fas fa-comments"></i> Live chat with farm</span></div>
@@ -1835,7 +1512,7 @@
             </div>
         </section>
 
-        <!-- SUPPORT section -->
+        <!-- SUPPORT section (unchanged) -->
         <section id="supportSection" class="content-section">
             <div class="card">
                 <div class="card-title">Submit a request</div>
@@ -1863,7 +1540,7 @@
             </div>
         </section>
 
-        <!-- BOOK section -->
+        <!-- hidden sections: BOOK and PROFILE (unchanged, in header dropdown) -->
         <section id="bookSection" class="content-section">
             <div class="card">
                 <div class="card-header"><span class="badge green"><i class="fas fa-seedling"></i> growing</span></div>
@@ -1883,8 +1560,6 @@
                 <p><i class="fas fa-bell"></i> Notifications: we’ll alert you 2 days before pickup.</p>
             </div>
         </section>
-
-        <!-- PROFILE section -->
         <section id="profileSection" class="content-section">
             <div class="card">
                 <div style="display:flex; gap:1rem;">
@@ -1904,7 +1579,7 @@
             </div>
         </section>
 
-        <!-- PERSONALIZED POULTRY PLAN -->
+        <!-- NEW SECTION: PERSONALIZED POULTRY PLAN -->
         <section id="personalizedSection" class="content-section">
             <!-- Hero -->
             <div class="card hero-brand" style="background: linear-gradient(145deg, #fef5e7, #fae1b0); border-left-color: #c9a43b;">
@@ -2049,7 +1724,7 @@
             </div>
         </section>
 
-        <!-- COMMUNITY RESERVE PROGRAM -->
+        <!-- NEW SECTION: COMMUNITY RESERVE PROGRAM -->
         <section id="reserveSection" class="content-section">
             <!-- Hero with tagline -->
             <div class="card hero-brand" style="background: linear-gradient(145deg, #e6f0e8, #d0e0d0); border-left-color: #2c4532;">
@@ -2149,101 +1824,14 @@
                 <p><i class="fas fa-gem"></i> Loyalty credit stacks with your existing rewards. No cash payouts.</p>
             </div>
         </section>
-
-        <!-- NEW REVIEWS SECTION (Comments) -->
-        <section id="commentsSection" class="content-section">
-            <div class="card">
-                <div class="reviews-header">
-                    <h2 style="color:#2c4532;">Customer Reviews</h2>
-                    <span class="badge green" id="reviewCount">0 reviews</span>
-                </div>
-                <!-- Write Review Form -->
-                <div class="card" style="background:#f9f3ea;">
-                    <div class="card-title">Write a Review</div>
-                    <div class="star-rating" id="writeRating">
-                        <i class="far fa-star" data-rating="1"></i>
-                        <i class="far fa-star" data-rating="2"></i>
-                        <i class="far fa-star" data-rating="3"></i>
-                        <i class="far fa-star" data-rating="4"></i>
-                        <i class="far fa-star" data-rating="5"></i>
-                    </div>
-                    <textarea id="reviewText" placeholder="Tell us about your experience..." rows="3" style="width:100%; border-radius:20px; border:1px solid #d4c0a3; padding:0.8rem; margin:0.5rem 0;"></textarea>
-                    <div class="photo-upload">
-                        <button class="btn-outline btn-small" id="uploadPhotosBtn"><i class="fas fa-camera"></i> Upload Photos</button>
-                        <input type="file" id="photoInput" multiple accept="image/*" style="display:none;">
-                        <div class="photo-preview-grid" id="photoPreview"></div>
-                    </div>
-                    <button class="btn btn-gold" id="submitReviewBtn" style="margin-top:0.5rem;">Post Review</button>
-                </div>
-
-                <!-- Reviews Feed -->
-                <div id="reviewsFeed">
-                    <!-- Loader will be inserted here -->
-                </div>
-                <div id="loadMoreContainer" style="text-align:center; margin:1rem 0;">
-                    <button class="btn-outline btn-small" id="loadMoreBtn">Load More</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- NEW COUPONS SECTION -->
-        <section id="couponsSection" class="content-section">
-            <div class="card">
-                <h2 style="color:#2c4532;">Exclusive Coupons</h2>
-                <div class="coupon-card" style="background:#fff2df; border-radius:20px; padding:1rem; margin:0.5rem 0;">
-                    <div style="display:flex; justify-content:space-between;">
-                        <span><strong>10% OFF</strong> on your next bulk order</span>
-                        <span class="badge green">Expires 30 Jun</span>
-                    </div>
-                    <p>Code: BULK10</p>
-                    <button class="btn-small btn-outline" onclick="alert('Coupon copied!')">Copy code</button>
-                </div>
-                <div class="coupon-card" style="background:#e8f0e5; border-radius:20px; padding:1rem; margin:0.5rem 0;">
-                    <div style="display:flex; justify-content:space-between;">
-                        <span><strong>Free by‑product</strong> with any 5 chickens</span>
-                        <span class="badge green">Expires 15 Jul</span>
-                    </div>
-                    <p>Code: FREEFEET</p>
-                    <button class="btn-small btn-outline" onclick="alert('Coupon copied!')">Copy code</button>
-                </div>
-                <div class="coupon-card" style="background:#f3e8e0; border-radius:20px; padding:1rem; margin:0.5rem 0;">
-                    <div style="display:flex; justify-content:space-between;">
-                        <span><strong>R50 off</strong> first subscription</span>
-                        <span class="badge green">New members</span>
-                    </div>
-                    <p>Code: WELCOME50</p>
-                    <button class="btn-small btn-outline" onclick="alert('Coupon copied!')">Copy code</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="footer">
-            <div style="text-align:center; font-weight:600;">The Golden Feather</div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <div class="quick-links">
-                <a href="#">About</a>
-                <a href="#">Contact</a>
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-            </div>
-            <div class="copyright">
-                © 2025 The Golden Feather. All rights reserved.
-            </div>
-        </footer>
     </main>
 
-    <!-- bottom nav (5 items) -->
+    <!-- bottom nav: Home, Orders, Rewards, Message (unchanged) -->
     <nav class="bottom-nav">
         <div class="nav-item active" data-section="homeSection"><i class="fas fa-home"></i><span>Home</span></div>
-        <div class="nav-item" data-section="commentsSection"><i class="fas fa-comments"></i><span>Comments</span></div>
-        <div class="nav-item" data-section="bookSection"><i class="fas fa-calendar-check"></i><span>Bookings</span></div>
-        <div class="nav-item" data-section="couponsSection"><i class="fas fa-tags"></i><span>Coupons</span></div>
-        <div class="nav-item" data-section="profileSection"><i class="fas fa-user-circle"></i><span>Profile</span></div>
+        <div class="nav-item" data-section="ordersSection"><i class="fas fa-clipboard-list"></i><span>Orders</span></div>
+        <div class="nav-item" data-section="rewardsSection"><i class="fas fa-gift"></i><span>Rewards</span></div>
+        <div class="nav-item" data-section="messagesSection"><i class="fas fa-comment-dots"></i><span>Message</span></div>
     </nav>
 
     <!-- Floating Cart Button (unchanged) -->
@@ -2376,25 +1964,11 @@
         </div>
     </div>
 
-    <!-- Image Modal (for reviews) -->
-    <div class="image-modal" id="imageModal" style="display:none;">
-        <span class="close-modal" id="closeImageModal">&times;</span>
-        <img id="modalImage" src="" alt="Enlarged review photo">
-    </div>
-
-    <!-- Toast notification -->
-    <div id="toast" class="toast"></div>
-
-    <!-- Hidden API integration element -->
-    <div class="api-integration"></div>
-
     <!-- Confetti canvas -->
     <canvas id="confettiCanvas" class="confetti-canvas" style="display:none;"></canvas>
 </div>
 
-<!-- Existing JavaScript (unchanged, preserved in full) -->
 <script>
-    // ... existing code from original HTML (preserved exactly) ...
     (function() {
         // ---------- navigation (updated with new bottom nav and header dropdown) ----------
         const navItems = document.querySelectorAll('.nav-item');
@@ -2408,9 +1982,7 @@
             bookSection: document.getElementById('bookSection'),
             profileSection: document.getElementById('profileSection'),
             personalizedSection: document.getElementById('personalizedSection'),
-            reserveSection: document.getElementById('reserveSection'),
-            commentsSection: document.getElementById('commentsSection'),   // new
-            couponsSection: document.getElementById('couponsSection')      // new
+            reserveSection: document.getElementById('reserveSection')   // new
         };
         const headerDropdown = document.getElementById('headerDropdown');
         const headerMenuIcon = document.getElementById('headerMenuIcon');
@@ -2432,7 +2004,7 @@
             });
         });
 
-        // Header dropdown items (now includes new sections)
+        // Header dropdown items (now includes Personalized and Reserve)
         document.querySelectorAll('.header-dropdown-item').forEach(el => {
             el.addEventListener('click', () => {
                 const sectionId = el.getAttribute('data-section');
@@ -3261,550 +2833,6 @@
         // Ensure reserve dashboard updates on page load
         updateReserveDashboard();
 
-    })();
-</script>
-
-<!-- NEW REVIEWS SYSTEM JS (modular, non‑conflicting) -->
-<script>
-    (function() {
-        // ========== AUTH OBJECT ==========
-        window.Auth = window.Auth || {
-            isLoggedIn: function() {
-                return !!localStorage.getItem('currentUser');
-            },
-            getToken: function() {
-                const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
-                return user.token || 'mock-token';
-            },
-            getUser: function() {
-                return JSON.parse(localStorage.getItem('currentUser') || 'null');
-            },
-            logout: function() {
-                localStorage.removeItem('currentUser');
-                localStorage.removeItem('cart');
-                window.location.reload();
-            }
-        };
-
-        // ========== API BASE ==========
-        window.API_BASE_URL = window.API_BASE_URL || (window.location.hostname === 'localhost' ? 'http://localhost:8000' : '');
-
-        // ========== TOAST ==========
-        const toastEl = document.getElementById('toast');
-        function showToast(message, type = 'success') {
-            toastEl.textContent = message;
-            toastEl.className = `toast ${type} show`;
-            setTimeout(() => {
-                toastEl.classList.remove('show');
-            }, 3000);
-        }
-
-        // ========== IMAGE MODAL ==========
-        const imageModal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        document.getElementById('closeImageModal').addEventListener('click', () => {
-            imageModal.style.display = 'none';
-        });
-        imageModal.addEventListener('click', (e) => {
-            if (e.target === imageModal) imageModal.style.display = 'none';
-        });
-
-        // ========== MOCK DATA & STATE ==========
-        let reviews = JSON.parse(localStorage.getItem('mockReviews')) || [];
-        // seed some demo reviews if empty
-        if (reviews.length === 0) {
-            reviews = [
-                {
-                    id: 1,
-                    full_name: 'Thabo M.',
-                    stars: 5,
-                    text: 'Best chicken in the area! So fresh and tasty.',
-                    created_at: new Date(Date.now() - 2*24*60*60*1000).toISOString(),
-                    images: [{ image_url: 'https://via.placeholder.com/150' }],
-                    likes_count: 12,
-                    comments_count: 2,
-                    is_liked: false,
-                    comments: [
-                        { full_name: 'Farm Admin', text: 'Thank you Thabo!', created_at: new Date(Date.now() - 1*24*60*60*1000).toISOString() }
-                    ]
-                },
-                {
-                    id: 2,
-                    full_name: 'Lerato S.',
-                    stars: 4,
-                    text: 'Great service, will order again.',
-                    created_at: new Date(Date.now() - 5*24*60*60*1000).toISOString(),
-                    images: [],
-                    likes_count: 5,
-                    comments_count: 0,
-                    is_liked: false,
-                    comments: []
-                }
-            ];
-            localStorage.setItem('mockReviews', JSON.stringify(reviews));
-        }
-
-        let currentPage = 1;
-        let loading = false;
-        let hasMore = true;
-
-        // ========== RENDER REVIEWS ==========
-        function timeAgo(dateStr) {
-            const date = new Date(dateStr);
-            const now = new Date();
-            const seconds = Math.floor((now - date) / 1000);
-            if (seconds < 60) return 'Just now';
-            const minutes = Math.floor(seconds / 60);
-            if (minutes < 60) return minutes + 'm ago';
-            const hours = Math.floor(minutes / 60);
-            if (hours < 24) return hours + 'h ago';
-            const days = Math.floor(hours / 24);
-            if (days < 7) return days + 'd ago';
-            return date.toLocaleDateString();
-        }
-
-        function escapeHTML(str) {
-            return String(str).replace(/[&<>"]/g, function(m) {
-                if (m === '&') return '&amp;';
-                if (m === '<') return '&lt;';
-                if (m === '>') return '&gt;';
-                if (m === '"') return '&quot;';
-                return m;
-            });
-        }
-
-        function renderReview(review) {
-            const stars = Array(5).fill(0).map((_, i) => 
-                `<i class="fas fa-star ${i < review.stars ? 'filled' : ''}" style="color: ${i < review.stars ? '#c9a43b' : '#d4c0a3'};"></i>`
-            ).join('');
-
-            const photos = review.images.map(img => 
-                `<img class="review-photo" src="${escapeHTML(img.image_url)}" alt="review photo" onclick="openImageModal('${escapeHTML(img.image_url)}')">`
-            ).join('');
-
-            const replies = review.comments.map(c => 
-                `<div class="reply"><span class="reply-name">${escapeHTML(c.full_name)}</span> <span class="reply-time">${timeAgo(c.created_at)}</span><br>${escapeHTML(c.text)}</div>`
-            ).join('');
-
-            return `
-                <div class="review-card" data-review-id="${review.id}">
-                    <div class="review-header">
-                        <div class="review-avatar">${escapeHTML(review.full_name.charAt(0))}</div>
-                        <div>
-                            <div class="review-name">${escapeHTML(review.full_name)}</div>
-                            <div class="review-time">${timeAgo(review.created_at)}</div>
-                        </div>
-                    </div>
-                    <div class="review-stars">${stars}</div>
-                    <div class="review-text">${escapeHTML(review.text)}</div>
-                    ${photos ? `<div class="review-photos">${photos}</div>` : ''}
-                    <div class="review-actions">
-                        <button class="action-btn like-btn ${review.is_liked ? 'liked' : ''}" data-id="${review.id}"><i class="fas fa-heart"></i> <span class="like-count">${review.likes_count}</span></button>
-                        <button class="action-btn comment-toggle" data-id="${review.id}"><i class="fas fa-comment"></i> <span class="comment-count">${review.comments_count}</span></button>
-                    </div>
-                    <div class="reply-section" id="replies-${review.id}" style="display: none;">
-                        ${replies}
-                        <div class="reply-form" id="reply-form-${review.id}">
-                            <input type="text" placeholder="Write a reply..." class="reply-input" data-id="${review.id}">
-                            <button class="submit-reply" data-id="${review.id}">Comment</button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function loadReviews(page = 1, append = false) {
-            if (loading) return;
-            loading = true;
-            const feed = document.getElementById('reviewsFeed');
-            if (!append) {
-                feed.innerHTML = `<div class="loader-burger"><div class="buns"><div class="bun"></div><div class="bun"></div><div class="bun"></div></div><div>Loading reviews...</div></div>`;
-            }
-
-            // Mock API call
-            setTimeout(() => {
-                const limit = 10;
-                const start = (page - 1) * limit;
-                const paginated = reviews.slice(start, start + limit);
-                hasMore = reviews.length > start + limit;
-
-                if (!append) feed.innerHTML = '';
-                paginated.forEach(r => {
-                    feed.insertAdjacentHTML('beforeend', renderReview(r));
-                });
-
-                // Attach event listeners for new reviews
-                document.querySelectorAll('.like-btn').forEach(btn => {
-                    btn.removeEventListener('click', handleLike);
-                    btn.addEventListener('click', handleLike);
-                });
-                document.querySelectorAll('.comment-toggle').forEach(btn => {
-                    btn.removeEventListener('click', toggleReplySection);
-                    btn.addEventListener('click', toggleReplySection);
-                });
-                document.querySelectorAll('.submit-reply').forEach(btn => {
-                    btn.removeEventListener('click', submitReply);
-                });
-
-                loading = false;
-                document.getElementById('reviewCount').innerText = reviews.length + ' reviews';
-            }, 800);
-        }
-
-        // ========== HANDLE LIKE ==========
-        async function handleLike(e) {
-            e.preventDefault();
-            const btn = e.currentTarget;
-            const reviewId = btn.dataset.id;
-            const review = reviews.find(r => r.id == reviewId);
-            if (!review) return;
-
-            if (!Auth.isLoggedIn()) {
-                const guestName = prompt('You are not logged in. Enter your name to continue as guest:', 'Guest');
-                if (guestName === null) return;
-                // simulate guest like (store in localStorage)
-                review.is_liked = !review.is_liked;
-                review.likes_count += review.is_liked ? 1 : -1;
-                localStorage.setItem('mockReviews', JSON.stringify(reviews));
-                btn.classList.toggle('liked', review.is_liked);
-                btn.querySelector('.like-count').textContent = review.likes_count;
-                return;
-            }
-
-            btn.disabled = true;
-            btn.classList.add('updating');
-            try {
-                // mock API call
-                await new Promise(r => setTimeout(r, 500));
-                review.is_liked = !review.is_liked;
-                review.likes_count += review.is_liked ? 1 : -1;
-                localStorage.setItem('mockReviews', JSON.stringify(reviews));
-                btn.classList.toggle('liked', review.is_liked);
-                btn.querySelector('.like-count').textContent = review.likes_count;
-            } catch (err) {
-                alert('Error updating like');
-            } finally {
-                btn.disabled = false;
-                btn.classList.remove('updating');
-            }
-        }
-
-        function toggleReplySection(e) {
-            const btn = e.currentTarget;
-            const reviewId = btn.dataset.id;
-            const replySection = document.getElementById('replies-' + reviewId);
-            if (replySection) {
-                replySection.style.display = replySection.style.display === 'none' ? 'block' : 'none';
-            }
-        }
-
-        async function submitReply(e) {
-            const btn = e.currentTarget;
-            const reviewId = btn.dataset.id;
-            const input = document.querySelector(`#reply-form-${reviewId} .reply-input`);
-            const text = input.value.trim();
-            if (!text) return;
-
-            const review = reviews.find(r => r.id == reviewId);
-            if (!review) return;
-
-            let guestName = null;
-            if (!Auth.isLoggedIn()) {
-                guestName = prompt('You are not logged in. Enter your name to continue as guest:', 'Guest');
-                if (guestName === null) return;
-            }
-
-            btn.disabled = true;
-            try {
-                // mock API
-                await new Promise(r => setTimeout(r, 500));
-                const newReply = {
-                    full_name: guestName || Auth.getUser()?.name || 'You',
-                    text: text,
-                    created_at: new Date().toISOString()
-                };
-                review.comments.push(newReply);
-                review.comments_count = review.comments.length;
-                localStorage.setItem('mockReviews', JSON.stringify(reviews));
-
-                // re-render replies section
-                const replySection = document.getElementById('replies-' + reviewId);
-                const repliesHtml = review.comments.map(c => 
-                    `<div class="reply"><span class="reply-name">${escapeHTML(c.full_name)}</span> <span class="reply-time">${timeAgo(c.created_at)}</span><br>${escapeHTML(c.text)}</div>`
-                ).join('');
-                replySection.innerHTML = repliesHtml + `<div class="reply-form" id="reply-form-${reviewId}">
-                    <input type="text" placeholder="Write a reply..." class="reply-input" data-id="${reviewId}">
-                    <button class="submit-reply" data-id="${reviewId}">Comment</button>
-                </div>`;
-
-                // reattach event
-                document.querySelector(`#reply-form-${reviewId} .submit-reply`).addEventListener('click', submitReply);
-                input.value = '';
-                // update comment count in the action button
-                const commentBtn = document.querySelector(`.comment-toggle[data-id="${reviewId}"] .comment-count`);
-                if (commentBtn) commentBtn.textContent = review.comments_count;
-            } catch (err) {
-                alert('Error posting reply');
-            } finally {
-                btn.disabled = false;
-            }
-        }
-
-        // ========== WRITE REVIEW FORM ==========
-        let selectedRating = 0;
-        const stars = document.querySelectorAll('#writeRating i');
-        stars.forEach(star => {
-            star.addEventListener('click', () => {
-                const rating = parseInt(star.dataset.rating);
-                selectedRating = rating;
-                stars.forEach((s, i) => {
-                    if (i < rating) s.className = 'fas fa-star';
-                    else s.className = 'far fa-star';
-                });
-            });
-        });
-
-        // Photo upload
-        const photoInput = document.getElementById('photoInput');
-        const uploadBtn = document.getElementById('uploadPhotosBtn');
-        const previewContainer = document.getElementById('photoPreview');
-        let selectedFiles = [];
-
-        uploadBtn.addEventListener('click', () => photoInput.click());
-        photoInput.addEventListener('change', (e) => {
-            const files = Array.from(e.target.files);
-            selectedFiles = selectedFiles.concat(files);
-            updatePreview();
-        });
-
-        function updatePreview() {
-            previewContainer.innerHTML = '';
-            selectedFiles.forEach((file, index) => {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const div = document.createElement('div');
-                    div.className = 'photo-preview';
-                    div.innerHTML = `<img src="${e.target.result}" alt="preview"><span class="remove-photo" data-index="${index}">&times;</span>`;
-                    previewContainer.appendChild(div);
-                    div.querySelector('.remove-photo').addEventListener('click', () => {
-                        selectedFiles.splice(index, 1);
-                        updatePreview();
-                    });
-                };
-                reader.readAsDataURL(file);
-            });
-        }
-
-        document.getElementById('submitReviewBtn').addEventListener('click', async () => {
-            const text = document.getElementById('reviewText').value.trim();
-            if (!selectedRating) {
-                alert('Please select a star rating');
-                return;
-            }
-            if (!text) {
-                alert('Please enter review text');
-                return;
-            }
-
-            let guestName = null;
-            if (!Auth.isLoggedIn()) {
-                guestName = prompt('You are not logged in. Enter your name to continue as guest:', 'Guest');
-                if (guestName === null) return;
-            }
-
-            const btn = document.getElementById('submitReviewBtn');
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Posting...';
-
-            // mock form data
-            const formData = new FormData();
-            formData.append('stars', selectedRating);
-            formData.append('text', text);
-            if (guestName) formData.append('guest_name', guestName);
-            selectedFiles.forEach(f => formData.append('files[]', f));
-
-            try {
-                await new Promise(r => setTimeout(r, 1000));
-                // create new review
-                const newReview = {
-                    id: Date.now(),
-                    full_name: guestName || Auth.getUser()?.name || 'You',
-                    stars: selectedRating,
-                    text: text,
-                    created_at: new Date().toISOString(),
-                    images: selectedFiles.map(f => ({ image_url: URL.createObjectURL(f) })),
-                    likes_count: 0,
-                    comments_count: 0,
-                    is_liked: false,
-                    comments: []
-                };
-                reviews.unshift(newReview);
-                localStorage.setItem('mockReviews', JSON.stringify(reviews));
-                loadReviews(1, false); // refresh feed
-                // reset form
-                document.getElementById('reviewText').value = '';
-                selectedRating = 0;
-                stars.forEach(s => s.className = 'far fa-star');
-                selectedFiles = [];
-                previewContainer.innerHTML = '';
-                showToast('Review posted successfully!', 'success');
-            } catch (err) {
-                showToast('Error posting review', 'error');
-            } finally {
-                btn.disabled = false;
-                btn.innerHTML = 'Post Review';
-            }
-        });
-
-        // ========== IMAGE MODAL GLOBAL ==========
-        window.openImageModal = function(src) {
-            modalImg.src = src;
-            imageModal.style.display = 'flex';
-        };
-
-        // ========== INITIAL LOAD & AUTO REFRESH ==========
-        loadReviews(1);
-        setInterval(() => {
-            // only refresh if on page 1
-            if (currentPage === 1) {
-                reviews = JSON.parse(localStorage.getItem('mockReviews')) || [];
-                loadReviews(1, false);
-            }
-        }, 60000);
-
-        // ========== PAGINATION ==========
-        document.getElementById('loadMoreBtn').addEventListener('click', () => {
-            if (hasMore) {
-                currentPage++;
-                loadReviews(currentPage, true);
-            } else {
-                alert('No more reviews');
-            }
-        });
-
-        // ========== MOBILE MENU OVERLAY POPULATION ==========
-        function updateMobileMenu() {
-            const dropdown = document.getElementById('headerDropdown');
-            const isLogged = Auth.isLoggedIn();
-            const user = Auth.getUser();
-            let authLinksHtml = '';
-            if (isLogged) {
-                authLinksHtml = `
-                    <div class="header-dropdown-item" id="mobileProfile"><i class="fas fa-user-circle"></i> Profile</div>
-                    <div class="header-dropdown-item" id="mobileLogout"><i class="fas fa-sign-out-alt"></i> Logout</div>
-                `;
-            } else {
-                authLinksHtml = `
-                    <div class="header-dropdown-item" id="mobileLogin"><i class="fas fa-sign-in-alt"></i> Login</div>
-                    <div class="header-dropdown-item" id="mobileSignup"><i class="fas fa-user-plus"></i> Sign Up</div>
-                `;
-            }
-            // add other nav links (keep existing)
-            const otherLinks = `
-                <div class="header-dropdown-item" data-section="homeSection"><i class="fas fa-home"></i> Home</div>
-                <div class="header-dropdown-item" data-section="commentsSection"><i class="fas fa-comments"></i> Comments</div>
-                <div class="header-dropdown-item" data-section="bookSection"><i class="fas fa-calendar-check"></i> Bookings</div>
-                <div class="header-dropdown-item" data-section="couponsSection"><i class="fas fa-tags"></i> Coupons</div>
-                <div class="header-dropdown-item" data-section="profileSection"><i class="fas fa-user-circle"></i> Profile</div>
-                <div class="header-dropdown-item" data-section="personalizedSection"><i class="fas fa-crown"></i> Personalized Plan</div>
-                <div class="header-dropdown-item" data-section="communitySection"><i class="fas fa-people-group"></i> Community</div>
-                <div class="header-dropdown-item" data-section="reserveSection"><i class="fas fa-shield-alt"></i> Reserve Program</div>
-                <div class="header-dropdown-item" data-section="supportSection"><i class="fas fa-headset"></i> Support</div>
-                <div class="header-dropdown-item" data-section="ordersSection"><i class="fas fa-clipboard-list"></i> Orders</div>
-                <div class="header-dropdown-item" data-section="rewardsSection"><i class="fas fa-gift"></i> Rewards</div>
-                <div class="header-dropdown-item" data-section="messagesSection"><i class="fas fa-comment-dots"></i> Messages</div>
-            `;
-            dropdown.innerHTML = authLinksHtml + otherLinks;
-
-            // attach events for auth
-            document.getElementById('mobileLogin')?.addEventListener('click', () => {
-                document.getElementById('enhancedAuthModal').classList.add('active');
-            });
-            document.getElementById('mobileSignup')?.addEventListener('click', () => {
-                document.getElementById('enhancedAuthModal').classList.add('active');
-                document.getElementById('loginForm').style.display = 'none';
-                document.getElementById('signupForm').style.display = 'block';
-            });
-            document.getElementById('mobileLogout')?.addEventListener('click', () => {
-                Auth.logout();
-            });
-            // reattach section navigation for new items
-            document.querySelectorAll('.header-dropdown-item[data-section]').forEach(el => {
-                el.addEventListener('click', () => {
-                    const sectionId = el.getAttribute('data-section');
-                    if (sectionId) {
-                        // use existing activateSection (from old script) but it's in closure; we'll define our own
-                        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-                        document.getElementById(sectionId)?.classList.add('active');
-                        document.querySelectorAll('.nav-item').forEach(item => {
-                            item.classList.toggle('active', item.dataset.section === sectionId);
-                        });
-                        dropdown.classList.remove('show');
-                    }
-                });
-            });
-        }
-
-        // ========== DESKTOP AUTH LINKS ==========
-        function updateDesktopAuth() {
-            const desktop = document.getElementById('desktopAuth');
-            const isLogged = Auth.isLoggedIn();
-            if (isLogged) {
-                desktop.innerHTML = `
-                    <span class="login-btn" id="desktopProfile">Profile</span>
-                    <span class="signup-btn" id="desktopLogout">Logout</span>
-                `;
-                document.getElementById('desktopProfile')?.addEventListener('click', () => {
-                    document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-                    document.getElementById('profileSection').classList.add('active');
-                    document.querySelectorAll('.nav-item').forEach(item => {
-                        item.classList.toggle('active', item.dataset.section === 'profileSection');
-                    });
-                });
-                document.getElementById('desktopLogout')?.addEventListener('click', Auth.logout);
-            } else {
-                desktop.innerHTML = `
-                    <span class="login-btn" id="desktopLogin">Login</span>
-                    <span class="signup-btn" id="desktopSignup">Sign Up</span>
-                `;
-                document.getElementById('desktopLogin')?.addEventListener('click', () => {
-                    document.getElementById('enhancedAuthModal').classList.add('active');
-                });
-                document.getElementById('desktopSignup')?.addEventListener('click', () => {
-                    document.getElementById('enhancedAuthModal').classList.add('active');
-                    document.getElementById('loginForm').style.display = 'none';
-                    document.getElementById('signupForm').style.display = 'block';
-                });
-            }
-        }
-
-        // ========== INIT ==========
-        updateMobileMenu();
-        updateDesktopAuth();
-
-        // also update on login/logout (simplified: reload page)
-        // override existing login/signup forms to update UI
-        const originalLoginSubmit = document.getElementById('loginForm').onsubmit;
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            // simulate login
-            const email = document.getElementById('loginEmail').value;
-            localStorage.setItem('currentUser', JSON.stringify({ name: email.split('@')[0], email: email }));
-            document.getElementById('enhancedAuthModal').classList.remove('active');
-            updateDesktopAuth();
-            updateMobileMenu();
-            window.location.reload(); // quick refresh to reload all state
-        });
-
-        document.getElementById('signupForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('signupFirstName').value + ' ' + document.getElementById('signupLastName').value;
-            localStorage.setItem('currentUser', JSON.stringify({ name: name, email: document.getElementById('signupEmail').value }));
-            document.getElementById('enhancedAuthModal').classList.remove('active');
-            updateDesktopAuth();
-            updateMobileMenu();
-            window.location.reload();
-        });
     })();
 </script>
 </body>
