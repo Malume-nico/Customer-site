@@ -7,7 +7,7 @@
     <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ---------- base reset (unchanged) ---------- */
+        /* ---------- base reset ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -96,7 +96,6 @@
             color: #3a2e1f;
             font-size: 0.65rem;
         }
-        /* header right menu (hamburger) */
         .header-menu {
             position: relative;
         }
@@ -154,7 +153,6 @@
         .content-section.active {
             display: flex;
         }
-        /* cards (original styles untouched) */
         .card {
             background: white;
             border-radius: 24px;
@@ -291,7 +289,7 @@
             padding: 0.5rem;
             background: white;
         }
-        /* ===== BOTTOM NAV (4 items: Home, Orders, Rewards, Message) ===== */
+        /* ===== BOTTOM NAV (5 items, with special review button) ===== */
         .bottom-nav {
             background: #fefcf7;
             border-top: 1px solid #e8dccd;
@@ -333,7 +331,20 @@
             color: #2c4532;
             background: #ede7dc;
         }
-        /* ---------- BRANDING ADDITIONS (unchanged) ---------- */
+        /* special review button container inside bottom nav */
+        .review-nav-item {
+            flex: 0 0 80px;        /* give fixed width to accommodate the glass circle */
+            padding: 0;
+            background: transparent;
+        }
+        .review-nav-item .review-btn-container {
+            margin-top: -15px;       /* pulls it upward to stand out, but less aggressive */
+        }
+        .review-nav-item .label {
+            color: #2c4532;           /* dark green for readability on light background */
+            font-weight: 600;
+        }
+        /* ---------- BRANDING ADDITIONS ---------- */
         .hero-brand {
             background: linear-gradient(145deg, #fff7e8, #fce8cf);
             border-left: 8px solid #c9a43b;
@@ -522,8 +533,7 @@
             font-weight: 600;
             display: inline-block;
         }
-
-        /* ===== NEW REWARDS & SERVICE STYLES ===== */
+        /* ===== REWARDS & SERVICE STYLES ===== */
         .rewards-header {
             background: linear-gradient(145deg, #fef3e0, #fae1b0);
             border-radius: 28px;
@@ -629,8 +639,7 @@
             pointer-events: none;
             z-index: 9999;
         }
-
-        /* ---------- NEW CART / CHECKOUT STYLES (glassmorphism, consistent) ---------- */
+        /* ---------- CART / CHECKOUT STYLES ---------- */
         .floating-cart {
             position: fixed;
             bottom: 70px;
@@ -847,8 +856,7 @@
         .social-login-button.google { background: #db4437; }
         .social-login-button.facebook { background: #4267B2; }
         .social-login-button.apple { background: #000; }
-
-        /* ===== NEW STYLES FOR COMMUNITY FESTIVE PLAN ===== */
+        /* ===== COMMUNITY FESTIVE PLAN ===== */
         .village-selector {
             background: #f2ebe0;
             border-radius: 20px;
@@ -913,8 +921,7 @@
             display: flex;
             justify-content: space-between;
         }
-
-        /* ---------- NEW STYLES FOR PERSONALIZED POULTRY PLAN (added) ---------- */
+        /* ---------- PERSONALIZED POULTRY PLAN ---------- */
         .tier-comparison {
             display: flex;
             gap: 0.8rem;
@@ -962,9 +969,7 @@
             padding: 0.8rem;
             text-align: center;
         }
-        /* Admin card removed as requested */
-
-        /* ---------- NEW STYLES FOR COMMUNITY RESERVE PROGRAM ---------- */
+        /* ---------- COMMUNITY RESERVE PROGRAM ---------- */
         .reserve-tier-cards {
             display: flex;
             gap: 1rem;
@@ -1007,8 +1012,7 @@
             background: #f8d7da;
             color: #b65151;
         }
-
-        /* ---------- NEW STYLES FOR REVIEWS SECTION ---------- */
+        /* ===== REVIEWS SECTION ===== */
         .reviews-feed {
             display: flex;
             flex-direction: column;
@@ -1079,7 +1083,7 @@
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border: 1px solid #2c4532; /* green housing */
+            border: 1px solid #2c4532;
             border-radius: 30px;
             padding: 0.4rem 1rem;
             font-size: 0.9rem;
@@ -1253,11 +1257,64 @@
         .api-integration {
             display: none;
         }
+
+        /* ---------- NEW STYLES FROM REVIEW BUTTON (glassmorphism) ---------- */
+        .review-btn-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: -30px; /* Pulls the button upward like the image */
+            z-index: 10;
+        }
+
+        .glass-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px) saturate(180%);
+            -webkit-backdrop-filter: blur(10px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.3), 
+                        0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .glowing-star {
+            font-size: 35px;
+            color: #FFD700; /* Gold color */
+            text-shadow: 0 0 10px #FFD700, 
+                         0 0 20px #FFA500;
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.1); filter: brightness(1.5); }
+        }
+
+        .label {
+            color: #fff;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* adjustment for bottom nav context */
+        .review-nav-item .review-btn-container {
+            margin-top: -15px; /* slightly less pull to avoid overlap */
+        }
+        .review-nav-item .label {
+            color: #2c4532; /* dark green for contrast on light background */
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
 <div class="app" id="appContainer">
-    <!-- fixed header with hamburger menu (Reserve Program added) -->
+    <!-- fixed header with hamburger menu (Reviews item removed) -->
     <div class="header">
         <h1>
             <i class="fas fa-feather main-feather"></i> The Golden Feather
@@ -1268,7 +1325,7 @@
                 <div class="header-dropdown-item" data-section="personalizedSection"><i class="fas fa-crown"></i> Personalized Plan</div>
                 <div class="header-dropdown-item" data-section="communitySection"><i class="fas fa-people-group"></i> Community</div>
                 <div class="header-dropdown-item" data-section="reserveSection"><i class="fas fa-shield-alt"></i> Reserve Program</div>
-                <div class="header-dropdown-item" data-section="reviewsSection"><i class="fas fa-star"></i> Reviews</div> <!-- NEW -->
+                <!-- Reviews item removed from header dropdown as it moves to bottom bar -->
                 <div class="header-dropdown-item" data-section="supportSection"><i class="fas fa-headset"></i> Support</div>
                 <div class="header-dropdown-item" data-section="bookSection"><i class="fas fa-book"></i> Book</div>
                 <div class="header-dropdown-item" data-section="profileSection"><i class="fas fa-user-circle"></i> Profile</div>
@@ -1276,11 +1333,11 @@
         </div>
     </div>
 
-    <!-- main content (sections) – all existing sections unchanged, then new reserveSection added, then new reviewsSection -->
+    <!-- main content (sections) – all existing sections unchanged -->
     <main class="main-content" id="mainContent">
-        <!-- HOME section (unchanged, full) -->
+        <!-- HOME section (unchanged) -->
         <section id="homeSection" class="content-section active">
-            <!-- all home content exactly as originally provided, including hero, cards, subscriptions, by‑products, etc. -->
+            <!-- full home content (kept as originally) -->
             <div class="card hero-brand">
                 <div class="hero-headline">Farm Fresh Chicken, Raised for Your Family</div>
                 <div class="hero-subheadline">Trusted Local Poultry Supplier</div>
@@ -1675,7 +1732,7 @@
             </div>
         </section>
 
-        <!-- COMMUNITY FESTIVE PLAN (still here, now accessible via top menu) -->
+        <!-- COMMUNITY FESTIVE PLAN (still here) -->
         <section id="communitySection" class="content-section">
             <div class="card hero-brand" style="background: linear-gradient(145deg, #e8f0e5, #d4e2d4); border-left-color: #2c4532;">
                 <div class="hero-headline">🎄 Community Festive Plan</div>
@@ -1785,7 +1842,7 @@
             </div>
         </section>
 
-        <!-- hidden sections: BOOK and PROFILE (unchanged, in header dropdown) -->
+        <!-- hidden sections: BOOK and PROFILE -->
         <section id="bookSection" class="content-section">
             <div class="card">
                 <div class="card-header"><span class="badge green"><i class="fas fa-seedling"></i> growing</span></div>
@@ -2103,11 +2160,20 @@
         </section>
     </main>
 
-    <!-- bottom nav: Home, Orders, Rewards, Message (unchanged) -->
+    <!-- bottom nav: Home, Orders, Rewards, Reviews (special), Message -->
     <nav class="bottom-nav">
         <div class="nav-item active" data-section="homeSection"><i class="fas fa-home"></i><span>Home</span></div>
         <div class="nav-item" data-section="ordersSection"><i class="fas fa-clipboard-list"></i><span>Orders</span></div>
         <div class="nav-item" data-section="rewardsSection"><i class="fas fa-gift"></i><span>Rewards</span></div>
+        <!-- special review button with glassmorphism -->
+        <div class="nav-item review-nav-item" data-section="reviewsSection">
+            <div class="review-btn-container">
+                <div class="glass-circle">
+                    <span class="glowing-star">★</span>
+                </div>
+                <span class="label">Reviews</span>
+            </div>
+        </div>
         <div class="nav-item" data-section="messagesSection"><i class="fas fa-comment-dots"></i><span>Message</span></div>
     </nav>
 
@@ -2269,7 +2335,7 @@
             profileSection: document.getElementById('profileSection'),
             personalizedSection: document.getElementById('personalizedSection'),
             reserveSection: document.getElementById('reserveSection'),
-            reviewsSection: document.getElementById('reviewsSection')   // new
+            reviewsSection: document.getElementById('reviewsSection')
         };
         const headerDropdown = document.getElementById('headerDropdown');
         const headerMenuIcon = document.getElementById('headerMenuIcon');
@@ -2291,7 +2357,7 @@
             });
         });
 
-        // Header dropdown items (now includes Reviews)
+        // Header dropdown items (Reviews removed)
         document.querySelectorAll('.header-dropdown-item').forEach(el => {
             el.addEventListener('click', () => {
                 const sectionId = el.getAttribute('data-section');
@@ -2310,7 +2376,7 @@
             }
         });
 
-        // ---------- rewards state & UI (from original, extended) ----------
+        // ---------- rewards state & UI (unchanged) ----------
         let oneTimePurchases = 3;
         let lifetimePurchases = 47;
         let weeklyStreak = 4;
