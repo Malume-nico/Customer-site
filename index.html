@@ -1007,6 +1007,252 @@
             background: #f8d7da;
             color: #b65151;
         }
+
+        /* ---------- NEW STYLES FOR REVIEWS SECTION ---------- */
+        .reviews-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .review-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1rem;
+            border: 1px solid #f0e7da;
+        }
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #c9a43b;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .review-name {
+            font-weight: 600;
+            color: #2c4532;
+        }
+        .review-time {
+            font-size: 0.75rem;
+            color: #7e6b4b;
+            margin-left: auto;
+        }
+        .review-stars {
+            color: #f5b342;
+            margin: 0.3rem 0;
+        }
+        .review-text {
+            font-size: 0.95rem;
+            margin: 0.5rem 0;
+            line-height: 1.4;
+        }
+        .review-photos {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin: 0.5rem 0;
+        }
+        .review-photo {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 1px solid #e0cfbb;
+        }
+        .review-actions {
+            display: flex;
+            gap: 1rem;
+            margin: 0.5rem 0;
+        }
+        .action-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid #2c4532; /* green housing */
+            border-radius: 30px;
+            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+            color: #2c4532;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .action-btn i {
+            font-size: 1rem;
+        }
+        .action-btn.liked i {
+            color: #e63946;
+        }
+        .action-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .replies-section {
+            margin-left: 1rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #e0cfbb;
+        }
+        .reply {
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+        }
+        .reply-name {
+            font-weight: 600;
+        }
+        .reply-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        .reply-input {
+            flex: 1;
+            padding: 0.5rem;
+            border-radius: 30px;
+            border: 1px solid #d4c0a3;
+        }
+        .rating-selector {
+            display: flex;
+            gap: 0.3rem;
+            margin: 0.5rem 0;
+        }
+        .star {
+            font-size: 2rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .star.selected {
+            color: #f5b342;
+        }
+        .photo-upload {
+            margin: 0.5rem 0;
+        }
+        .photo-previews {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+        .preview-item {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+        .preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        .remove-preview {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #b65151;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .loading-spinner {
+            text-align: center;
+            padding: 2rem;
+        }
+        .burger-loader {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+        .burger-loader div {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: #c9a43b;
+            border-radius: 50%;
+            animation: bounce 1.2s infinite;
+        }
+        .burger-loader div:nth-child(1) { left: 0; animation-delay: -0.3s; }
+        .burger-loader div:nth-child(2) { left: 20px; animation-delay: -0.15s; }
+        .burger-loader div:nth-child(3) { left: 40px; animation-delay: 0; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2c4532;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 3000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+        }
+        .toast.show {
+            transform: translateX(0);
+        }
+        .toast.success {
+            background: #2c4532;
+            border-left: 4px solid #c9a43b;
+        }
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+        }
+        .image-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .image-modal img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 12px;
+        }
+        .close-image-modal {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        .api-integration {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -1019,11 +1265,10 @@
         <div class="header-menu">
             <i class="fas fa-bars menu-icon" id="headerMenuIcon"></i>
             <div class="header-dropdown" id="headerDropdown">
-                <!-- new Personalized Plan item -->
                 <div class="header-dropdown-item" data-section="personalizedSection"><i class="fas fa-crown"></i> Personalized Plan</div>
                 <div class="header-dropdown-item" data-section="communitySection"><i class="fas fa-people-group"></i> Community</div>
-                <!-- NEW RESERVE PROGRAM -->
                 <div class="header-dropdown-item" data-section="reserveSection"><i class="fas fa-shield-alt"></i> Reserve Program</div>
+                <div class="header-dropdown-item" data-section="reviewsSection"><i class="fas fa-star"></i> Reviews</div> <!-- NEW -->
                 <div class="header-dropdown-item" data-section="supportSection"><i class="fas fa-headset"></i> Support</div>
                 <div class="header-dropdown-item" data-section="bookSection"><i class="fas fa-book"></i> Book</div>
                 <div class="header-dropdown-item" data-section="profileSection"><i class="fas fa-user-circle"></i> Profile</div>
@@ -1031,7 +1276,7 @@
         </div>
     </div>
 
-    <!-- main content (sections) – all existing sections unchanged, then new reserveSection added -->
+    <!-- main content (sections) – all existing sections unchanged, then new reserveSection added, then new reviewsSection -->
     <main class="main-content" id="mainContent">
         <!-- HOME section (unchanged, full) -->
         <section id="homeSection" class="content-section active">
@@ -1824,6 +2069,38 @@
                 <p><i class="fas fa-gem"></i> Loyalty credit stacks with your existing rewards. No cash payouts.</p>
             </div>
         </section>
+
+        <!-- NEW SECTION: REVIEWS (Customer Reviews System) -->
+        <section id="reviewsSection" class="content-section">
+            <div class="card">
+                <h2 class="card-title">⭐ Customer Reviews</h2>
+                <!-- Write Review Form -->
+                <div class="write-review">
+                    <div class="rating-selector" id="reviewRating">
+                        <span class="star" data-value="1">☆</span>
+                        <span class="star" data-value="2">☆</span>
+                        <span class="star" data-value="3">☆</span>
+                        <span class="star" data-value="4">☆</span>
+                        <span class="star" data-value="5">☆</span>
+                    </div>
+                    <textarea id="reviewText" placeholder="Write your review..." rows="3" style="width:100%; border-radius:20px; border:1px solid #d4c0a3; padding:0.8rem; margin:0.5rem 0;"></textarea>
+                    <div class="photo-upload">
+                        <button class="btn-outline upload-photos-btn" id="uploadPhotosBtn"><i class="fas fa-camera"></i> Upload Photos</button>
+                        <input type="file" id="photoInput" multiple accept="image/*" style="display: none;">
+                        <div class="photo-previews" id="photoPreviews"></div>
+                    </div>
+                    <button class="btn btn-gold" id="submitReviewBtn"><i class="fas fa-paper-plane"></i> Post Review</button>
+                </div>
+            </div>
+            <!-- Reviews Feed -->
+            <div class="reviews-feed" id="reviewsFeed">
+                <div class="loading-spinner" id="feedLoader">
+                    <div class="burger-loader"><div></div><div></div><div></div></div>
+                    <p>Loading reviews...</p>
+                </div>
+                <!-- review cards will be injected here -->
+            </div>
+        </section>
     </main>
 
     <!-- bottom nav: Home, Orders, Rewards, Message (unchanged) -->
@@ -1966,6 +2243,15 @@
 
     <!-- Confetti canvas -->
     <canvas id="confettiCanvas" class="confetti-canvas" style="display:none;"></canvas>
+
+    <!-- Toast for success messages -->
+    <div class="toast" id="successToast">Review posted!</div>
+
+    <!-- Image Modal for review photos -->
+    <div class="image-modal" id="imageModal">
+        <span class="close-image-modal" id="closeImageModal">&times;</span>
+        <img id="modalImage" src="" alt="">
+    </div>
 </div>
 
 <script>
@@ -1982,7 +2268,8 @@
             bookSection: document.getElementById('bookSection'),
             profileSection: document.getElementById('profileSection'),
             personalizedSection: document.getElementById('personalizedSection'),
-            reserveSection: document.getElementById('reserveSection')   // new
+            reserveSection: document.getElementById('reserveSection'),
+            reviewsSection: document.getElementById('reviewsSection')   // new
         };
         const headerDropdown = document.getElementById('headerDropdown');
         const headerMenuIcon = document.getElementById('headerMenuIcon');
@@ -2004,7 +2291,7 @@
             });
         });
 
-        // Header dropdown items (now includes Personalized and Reserve)
+        // Header dropdown items (now includes Reviews)
         document.querySelectorAll('.header-dropdown-item').forEach(el => {
             el.addEventListener('click', () => {
                 const sectionId = el.getAttribute('data-section');
@@ -2832,6 +3119,332 @@
 
         // Ensure reserve dashboard updates on page load
         updateReserveDashboard();
+
+        // ---------- REVIEWS SYSTEM (new) ----------
+        // Mock Auth object
+        const Auth = {
+            isLoggedIn: () => !!localStorage.getItem('currentUser'),
+            getToken: () => 'mock-token',
+            getUser: () => JSON.parse(localStorage.getItem('currentUser')) || { name: 'Guest' },
+            logout: () => {
+                localStorage.removeItem('currentUser');
+                alert('Logged out');
+                location.reload();
+            }
+        };
+
+        // API base URL
+        const API_BASE = (window.API_BASE_URL || (location.hostname === 'localhost' ? 'http://localhost:8000' : ''));
+
+        // Mock reviews data store
+        let reviews = JSON.parse(localStorage.getItem('mockReviews')) || [
+            {
+                id: '1',
+                full_name: 'Thabo M.',
+                stars: 5,
+                text: 'Best chicken in the village! So fresh and tasty.',
+                created_at: new Date(Date.now() - 3600000).toISOString(),
+                images: [],
+                likes_count: 3,
+                comments_count: 1,
+                is_liked: false,
+                comments: [
+                    { full_name: 'Farm', text: 'Thank you Thabo!', created_at: new Date(Date.now() - 1800000).toISOString() }
+                ]
+            },
+            {
+                id: '2',
+                full_name: 'Lerato',
+                stars: 4,
+                text: 'Great quality, but a bit pricey.',
+                created_at: new Date(Date.now() - 86400000).toISOString(),
+                images: [{ image_url: 'https://via.placeholder.com/150' }],
+                likes_count: 7,
+                comments_count: 0,
+                is_liked: false,
+                comments: []
+            }
+        ];
+
+        function saveReviews() {
+            localStorage.setItem('mockReviews', JSON.stringify(reviews));
+        }
+
+        // Helper: time ago
+        function timeAgo(dateStr) {
+            const d = new Date(dateStr);
+            const now = new Date();
+            const seconds = Math.floor((now - d) / 1000);
+            if (seconds < 60) return 'Just now';
+            const minutes = Math.floor(seconds / 60);
+            if (minutes < 60) return minutes + 'm ago';
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) return hours + 'h ago';
+            const days = Math.floor(hours / 24);
+            if (days < 7) return days + 'd ago';
+            return d.toLocaleDateString();
+        }
+
+        // Render one review
+        function renderReview(review) {
+            const starsHtml = Array(5).fill(0).map((_, i) => i < review.stars ? '★' : '☆').join('');
+            const photosHtml = review.images.map(img => `<img src="${img.image_url}" class="review-photo" onclick="openImageModal('${img.image_url}')">`).join('');
+            const repliesHtml = review.comments.map(c => `
+                <div class="reply">
+                    <span class="reply-name">${escapeHTML(c.full_name)}</span> <span class="review-time">${timeAgo(c.created_at)}</span><br>
+                    ${escapeHTML(c.text)}
+                </div>
+            `).join('');
+            return `
+                <div class="review-card" data-id="${review.id}">
+                    <div class="review-header">
+                        <div class="review-avatar">${review.full_name.charAt(0)}</div>
+                        <span class="review-name">${escapeHTML(review.full_name)}</span>
+                        <span class="review-time">${timeAgo(review.created_at)}</span>
+                    </div>
+                    <div class="review-stars">${starsHtml}</div>
+                    <div class="review-text">${escapeHTML(review.text)}</div>
+                    ${photosHtml ? `<div class="review-photos">${photosHtml}</div>` : ''}
+                    <div class="review-actions">
+                        <button class="action-btn like-btn ${review.is_liked ? 'liked' : ''}" data-id="${review.id}"><i class="fas fa-heart"></i> <span>${review.likes_count}</span></button>
+                        <button class="action-btn comment-toggle-btn" data-id="${review.id}"><i class="fas fa-comment"></i> <span>${review.comments_count}</span></button>
+                    </div>
+                    <div class="replies-section" id="replies-${review.id}" style="display: ${review.comments.length ? 'block' : 'none'};">
+                        ${repliesHtml}
+                    </div>
+                    <div class="reply-form" id="reply-form-${review.id}" style="display: none;">
+                        <input type="text" class="reply-input" placeholder="Write a reply..." id="reply-input-${review.id}">
+                        <button class="btn-small btn-outline reply-submit" data-id="${review.id}">Comment</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Escape HTML
+        function escapeHTML(str) {
+            return String(str).replace(/[&<>"]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                if (m === '"') return '&quot;';
+                return m;
+            });
+        }
+
+        // Load feed
+        async function loadReviews(page = 1) {
+            const feed = document.getElementById('reviewsFeed');
+            const loader = document.getElementById('feedLoader');
+            loader.style.display = 'block';
+            // Simulate API call
+            setTimeout(() => {
+                let html = '';
+                reviews.forEach(r => html += renderReview(r));
+                feed.innerHTML = html + '<div class="loading-spinner" style="display:none;" id="feedLoader"></div>';
+                loader.style.display = 'none';
+                attachReviewEvents();
+            }, 500);
+        }
+
+        // Attach event listeners to review actions
+        function attachReviewEvents() {
+            // Like buttons
+            document.querySelectorAll('.like-btn').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    const id = btn.dataset.id;
+                    if (!Auth.isLoggedIn()) {
+                        alert('Please log in to like reviews.');
+                        return;
+                    }
+                    btn.disabled = true;
+                    // Simulate API
+                    setTimeout(() => {
+                        const review = reviews.find(r => r.id === id);
+                        if (review) {
+                            review.is_liked = !review.is_liked;
+                            review.likes_count += review.is_liked ? 1 : -1;
+                            saveReviews();
+                            loadReviews(); // refresh
+                        }
+                    }, 300);
+                });
+            });
+
+            // Toggle comment form
+            document.querySelectorAll('.comment-toggle-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.dataset.id;
+                    const form = document.getElementById('reply-form-' + id);
+                    form.style.display = form.style.display === 'none' ? 'flex' : 'none';
+                });
+            });
+
+            // Submit reply
+            document.querySelectorAll('.reply-submit').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const id = btn.dataset.id;
+                    const input = document.getElementById('reply-input-' + id);
+                    const text = input.value.trim();
+                    if (!text) return;
+                    if (!Auth.isLoggedIn()) {
+                        const guestName = prompt('You are not logged in. Enter your name (or leave blank for "Guest"):') || 'Guest';
+                        // Simulate guest reply
+                        const review = reviews.find(r => r.id === id);
+                        if (review) {
+                            review.comments.push({
+                                full_name: guestName,
+                                text: text,
+                                created_at: new Date().toISOString()
+                            });
+                            review.comments_count++;
+                            saveReviews();
+                            loadReviews();
+                        }
+                    } else {
+                        const user = Auth.getUser();
+                        const review = reviews.find(r => r.id === id);
+                        if (review) {
+                            review.comments.push({
+                                full_name: user.name,
+                                text: text,
+                                created_at: new Date().toISOString()
+                            });
+                            review.comments_count++;
+                            saveReviews();
+                            loadReviews();
+                        }
+                    }
+                    input.value = '';
+                });
+            });
+        }
+
+        // Submit new review
+        document.getElementById('submitReviewBtn')?.addEventListener('click', async () => {
+            const ratingEls = document.querySelectorAll('#reviewRating .star');
+            let rating = 0;
+            ratingEls.forEach((s, i) => {
+                if (s.classList.contains('selected')) rating = i+1;
+            });
+            const text = document.getElementById('reviewText').value.trim();
+            if (rating === 0 || !text) {
+                alert('Please select a rating and write a review.');
+                return;
+            }
+            const btn = document.getElementById('submitReviewBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Posting...';
+
+            // Simulate file upload (just store placeholder URLs)
+            const files = window.selectedFiles || [];
+            const images = files.map(f => ({ image_url: URL.createObjectURL(f) }));
+
+            setTimeout(() => {
+                const newReview = {
+                    id: Date.now().toString(),
+                    full_name: Auth.isLoggedIn() ? Auth.getUser().name : 'Guest',
+                    stars: rating,
+                    text: text,
+                    created_at: new Date().toISOString(),
+                    images: images,
+                    likes_count: 0,
+                    comments_count: 0,
+                    is_liked: false,
+                    comments: []
+                };
+                reviews.unshift(newReview);
+                saveReviews();
+                loadReviews();
+                // Reset form
+                ratingEls.forEach(s => s.classList.remove('selected'));
+                document.getElementById('reviewText').value = '';
+                document.getElementById('photoPreviews').innerHTML = '';
+                window.selectedFiles = [];
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Post Review';
+                // Show toast
+                const toast = document.getElementById('successToast');
+                toast.textContent = 'Review posted!';
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 3000);
+            }, 1000);
+        });
+
+        // Star rating
+        document.querySelectorAll('#reviewRating .star').forEach(star => {
+            star.addEventListener('click', () => {
+                const val = star.dataset.value;
+                document.querySelectorAll('#reviewRating .star').forEach((s, i) => {
+                    if (i < val) s.classList.add('selected');
+                    else s.classList.remove('selected');
+                });
+            });
+        });
+
+        // Photo upload preview
+        const photoInput = document.getElementById('photoInput');
+        document.getElementById('uploadPhotosBtn').addEventListener('click', () => photoInput.click());
+        photoInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            window.selectedFiles = files;
+            const previews = document.getElementById('photoPreviews');
+            previews.innerHTML = '';
+            files.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const div = document.createElement('div');
+                    div.className = 'preview-item';
+                    div.innerHTML = `<img src="${e.target.result}"><span class="remove-preview" data-index="${index}">×</span>`;
+                    previews.appendChild(div);
+                    div.querySelector('.remove-preview').addEventListener('click', () => {
+                        window.selectedFiles.splice(index, 1);
+                        div.remove();
+                    });
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
+        // Image modal
+        window.openImageModal = function(src) {
+            const modal = document.getElementById('imageModal');
+            document.getElementById('modalImage').src = src;
+            modal.classList.add('active');
+        };
+        document.getElementById('closeImageModal').addEventListener('click', () => {
+            document.getElementById('imageModal').classList.remove('active');
+        });
+        document.getElementById('imageModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('imageModal')) {
+                document.getElementById('imageModal').classList.remove('active');
+            }
+        });
+
+        // Auto-refresh every 60 seconds
+        setInterval(() => {
+            if (sections.reviewsSection.classList.contains('active')) {
+                loadReviews();
+            }
+        }, 60000);
+
+        // Initial load when reviews section becomes active
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((m) => {
+                if (m.target === sections.reviewsSection && m.target.classList.contains('active')) {
+                    loadReviews();
+                }
+            });
+        });
+        observer.observe(sections.reviewsSection, { attributes: true, attributeFilter: ['class'] });
+
+        // If already active on page load (unlikely), load
+        if (sections.reviewsSection.classList.contains('active')) loadReviews();
+
+        // Hidden api-integration element (kept for future)
+        const apiDiv = document.createElement('div');
+        apiDiv.className = 'api-integration';
+        document.body.appendChild(apiDiv);
 
     })();
 </script>
