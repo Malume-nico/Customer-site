@@ -7,7 +7,6 @@
     <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* ---------- base reset ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -32,11 +31,8 @@
             position: relative;
             border-left: 1px solid #e8dccd;
             border-right: 1px solid #e8dccd;
-            border-bottom: none;
-            border-top: none;
             box-sizing: border-box;
         }
-        /* ===== HEADER fixed ===== */
         .header {
             padding: 0.5rem 1.2rem 0.6rem 1.2rem;
             background: #fefcf7;
@@ -51,8 +47,6 @@
             box-sizing: border-box;
             border-radius: 32px 32px 0 0;
             box-shadow: 0 6px 12px -6px rgba(90, 70, 40, 0.15);
-            border-left: none;
-            border-right: none;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -139,7 +133,6 @@
             align-items: center;
             gap: 10px;
         }
-        /* ===== MAIN CONTENT scrolls naturally ===== */
         .main-content {
             overflow: visible;
             display: block;
@@ -289,7 +282,6 @@
             padding: 0.5rem;
             background: white;
         }
-        /* ===== BOTTOM NAV (5 items, with special review button) ===== */
         .bottom-nav {
             background: #fefcf7;
             border-top: 1px solid #e8dccd;
@@ -307,8 +299,6 @@
             max-width: 420px;
             z-index: 1000;
             box-sizing: border-box;
-            border-left: none;
-            border-right: none;
         }
         .nav-item {
             flex: 1;
@@ -331,20 +321,18 @@
             color: #2c4532;
             background: #ede7dc;
         }
-        /* special review button container inside bottom nav */
         .review-nav-item {
-            flex: 0 0 80px;        /* give fixed width to accommodate the glass circle */
+            flex: 0 0 80px;
             padding: 0;
             background: transparent;
         }
         .review-nav-item .review-btn-container {
-            margin-top: -15px;       /* pulls it upward to stand out, but less aggressive */
+            margin-top: -15px;
         }
         .review-nav-item .label {
-            color: #2c4532;           /* dark green for readability on light background */
+            color: #2c4532;
             font-weight: 600;
         }
-        /* ---------- BRANDING ADDITIONS ---------- */
         .hero-brand {
             background: linear-gradient(145deg, #fff7e8, #fce8cf);
             border-left: 8px solid #c9a43b;
@@ -533,7 +521,6 @@
             font-weight: 600;
             display: inline-block;
         }
-        /* ===== REWARDS & SERVICE STYLES ===== */
         .rewards-header {
             background: linear-gradient(145deg, #fef3e0, #fae1b0);
             border-radius: 28px;
@@ -639,7 +626,6 @@
             pointer-events: none;
             z-index: 9999;
         }
-        /* ---------- CART / CHECKOUT STYLES ---------- */
         .floating-cart {
             position: fixed;
             bottom: 70px;
@@ -856,7 +842,6 @@
         .social-login-button.google { background: #db4437; }
         .social-login-button.facebook { background: #4267B2; }
         .social-login-button.apple { background: #000; }
-        /* ===== COMMUNITY FESTIVE PLAN ===== */
         .village-selector {
             background: #f2ebe0;
             border-radius: 20px;
@@ -921,7 +906,6 @@
             display: flex;
             justify-content: space-between;
         }
-        /* ---------- PERSONALIZED POULTRY PLAN ---------- */
         .tier-comparison {
             display: flex;
             gap: 0.8rem;
@@ -969,7 +953,6 @@
             padding: 0.8rem;
             text-align: center;
         }
-        /* ---------- COMMUNITY RESERVE PROGRAM ---------- */
         .reserve-tier-cards {
             display: flex;
             gap: 1rem;
@@ -1012,7 +995,6 @@
             background: #f8d7da;
             color: #b65151;
         }
-        /* ===== REVIEWS SECTION ===== */
         .reviews-feed {
             display: flex;
             flex-direction: column;
@@ -1257,17 +1239,14 @@
         .api-integration {
             display: none;
         }
-
-        /* ---------- NEW STYLES FROM REVIEW BUTTON (glassmorphism) ---------- */
         .review-btn-container {
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: -30px; /* Pulls the button upward like the image */
+            margin-top: -30px;
             z-index: 10;
         }
-
         .glass-circle {
             width: 70px;
             height: 70px;
@@ -1282,39 +1261,32 @@
             justify-content: center;
             align-items: center;
         }
-
         .glowing-star {
             font-size: 35px;
-            color: #FFD700; /* Gold color */
-            text-shadow: 0 0 10px #FFD700, 
-                         0 0 20px #FFA500;
+            color: #FFD700;
+            text-shadow: 0 0 5px #FFD700, 0 0 10px #FFA500;
             animation: pulse-glow 2s infinite ease-in-out;
         }
-
         @keyframes pulse-glow {
             0%, 100% { transform: scale(1); filter: brightness(1); }
-            50% { transform: scale(1.1); filter: brightness(1.5); }
+            50% { transform: scale(1.05); filter: brightness(1.2); }
         }
-
         .label {
             color: #fff;
             font-size: 12px;
             margin-top: 5px;
         }
-
-        /* adjustment for bottom nav context */
         .review-nav-item .review-btn-container {
-            margin-top: -15px; /* slightly less pull to avoid overlap */
+            margin-top: -15px;
         }
         .review-nav-item .label {
-            color: #2c4532; /* dark green for contrast on light background */
+            color: #2c4532;
             font-weight: 600;
         }
     </style>
 </head>
 <body>
 <div class="app" id="appContainer">
-    <!-- fixed header with hamburger menu (Reviews item removed) -->
     <div class="header">
         <h1>
             <i class="fas fa-feather main-feather"></i> The Golden Feather
@@ -1325,19 +1297,14 @@
                 <div class="header-dropdown-item" data-section="personalizedSection"><i class="fas fa-crown"></i> Personalized Plan</div>
                 <div class="header-dropdown-item" data-section="communitySection"><i class="fas fa-people-group"></i> Community</div>
                 <div class="header-dropdown-item" data-section="reserveSection"><i class="fas fa-shield-alt"></i> Reserve Program</div>
-                <!-- Reviews item removed from header dropdown as it moves to bottom bar -->
                 <div class="header-dropdown-item" data-section="supportSection"><i class="fas fa-headset"></i> Support</div>
                 <div class="header-dropdown-item" data-section="bookSection"><i class="fas fa-book"></i> Book</div>
                 <div class="header-dropdown-item" data-section="profileSection"><i class="fas fa-user-circle"></i> Profile</div>
             </div>
         </div>
     </div>
-
-    <!-- main content (sections) – all existing sections unchanged -->
     <main class="main-content" id="mainContent">
-        <!-- HOME section (unchanged) -->
         <section id="homeSection" class="content-section active">
-            <!-- full home content (kept as originally) -->
             <div class="card hero-brand">
                 <div class="hero-headline">Farm Fresh Chicken, Raised for Your Family</div>
                 <div class="hero-subheadline">Trusted Local Poultry Supplier</div>
@@ -1394,7 +1361,6 @@
                 </div>
                 <p style="font-size:0.9rem; margin-top:6px;"><i class="fas fa-info-circle"></i> Minimum 3 chickens per subscription · billed monthly · cancel or modify with one tap</p>
             </div>
-            <!-- TIER 1 BULK/BUNCH SUBSCRIPTION -->
             <div class="card" id="tier1BulkCard">
                 <div class="card-header">
                     <span class="badge" style="background:#2c4532; color:white;"><i class="fas fa-warehouse"></i> Tier 1 · Bulk/Bunch</span>
@@ -1431,7 +1397,6 @@
                 </div>
                 <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-redo-alt"></i> Next billing: 30 days · cancel/modify anytime · min. 3 per delivery</p>
             </div>
-            <!-- Live Chicken Subscription -->
             <div class="card" id="subLiveCard">
                 <div class="card-header">
                     <span class="badge"><i class="fas-regular fa-egg"></i> live · subscription</span>
@@ -1456,7 +1421,6 @@
                 <button class="btn btn-gold" onclick="handleSubscription()"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
                 <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-redo-alt"></i> Next billing: 30 days · easy cancellation</p>
             </div>
-            <!-- Standard Prep Subscription -->
             <div class="card" id="subStdCard">
                 <div class="card-header">
                     <span class="badge green"><i class="fas fa-kitchen-set"></i> standard prep · subscription</span>
@@ -1481,7 +1445,6 @@
                 <button class="btn btn-gold" onclick="handleSubscription()"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
                 <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-sliders-h"></i> Adjust quantity or cancel in one tap</p>
             </div>
-            <!-- Premium Subscription -->
             <div class="card" id="subPremCard">
                 <div class="card-header">
                     <span class="badge" style="background:#c9a43b; color:#1e2b1a;"><i class="fas fa-crown"></i> premium · subscription</span>
@@ -1505,7 +1468,6 @@
                 <button class="btn btn-gold" onclick="handleSubscription()"><i class="fas fa-calendar-plus"></i> subscribe monthly</button>
                 <p style="font-size:0.75rem; color:#7e6b4b;"><i class="fas fa-calendar-alt"></i> Billed monthly · upgrade/downgrade anytime</p>
             </div>
-            <!-- easy management card -->
             <div class="card" style="background:#faf3e8; border:2px dashed #c9a43b;">
                 <div class="card-header">
                     <span class="badge" style="background:#2c4532; color:white;"><i class="fas fa-credit-card"></i> your subscription</span>
@@ -1519,7 +1481,6 @@
                 </div>
                 <p style="font-size:0.8rem; margin-top:6px;"><i class="fas fa-clock"></i> Changes take effect next billing cycle.</p>
             </div>
-            <!-- Whole Live Chicken (one-time) -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge"><i class="fas fa-egg"></i> live bird</span>
@@ -1533,7 +1494,6 @@
                     <button class="btn btn-outline btn-small one-time-purchase" data-quantity="1" data-type="live"><i class="fas fa-redo-alt"></i> reorder</button>
                 </div>
             </div>
-            <!-- Standard Prepared Chicken (one-time) -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge green"><i class="fas fa-kitchen-set"></i> standard prep</span>
@@ -1550,7 +1510,6 @@
                     <button class="btn btn-outline btn-small one-time-purchase" data-quantity="1" data-type="standard"><i class="fas fa-redo-alt"></i> reorder</button>
                 </div>
             </div>
-            <!-- Premium Fully Prepared (one-time) -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge" style="background:#c9a43b; color:#1e2b1a;"><i class="fas fa-crown"></i> premium</span>
@@ -1563,7 +1522,6 @@
                     <button class="btn btn-outline btn-small one-time-purchase" data-quantity="1" data-type="premium"><i class="fas fa-redo-alt"></i> reorder</button>
                 </div>
             </div>
-            <!-- Bulk Buyer Option (min 10, R75 each) -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge green"><i class="fas fa-users"></i> bulk 10+</span>
@@ -1586,7 +1544,6 @@
                     <button class="btn btn-outline btn-small bulk-purchase" data-type="bulk"><i class="fas fa-redo-alt"></i> reorder</button>
                 </div>
             </div>
-            <!-- By‑products grid -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge" style="background:#3f6e4c; color:white;"><i class="fas fa-boxes-stacked"></i> farm by‑products</span>
@@ -1643,8 +1600,6 @@
                 <button class="btn-outline btn-small" style="width:100%;" onclick="alert('🔗 share referral link')"><i class="fas fa-share-alt"></i> invite & earn</button>
             </div>
         </section>
-
-        <!-- ORDERS section (unchanged) -->
         <section id="ordersSection" class="content-section">
             <div class="order-item">
                 <div><strong>#GC2341</strong> · 5 chickens <span style="float:right;">ready 4 May</span></div>
@@ -1660,10 +1615,7 @@
                 <div><i class="fas fa-star" style="color:gold;"></i> <button class="btn-small" onclick="promptRating(2250)">rate your purchase</button></div>
             </div>
         </section>
-
-        <!-- REWARDS section (unchanged) -->
         <section id="rewardsSection" class="content-section">
-            <!-- Customer account summary card -->
             <div class="card" style="background:#f3f0e6;">
                 <div class="row">
                     <i class="fas fa-user-circle" style="font-size:2.5rem; color:#2c4532;"></i>
@@ -1678,8 +1630,6 @@
                 </div>
                 <div>Claimed rewards: 2 vouchers, 1 free by‑product</div>
             </div>
-
-            <!-- 10-chicken challenge card -->
             <div class="card rewards-header">
                 <div class="gold-title">Golden Rewards</div>
                 <div style="font-size: 0.95rem; color: #6b4f2a;">Earn more every time you buy</div>
@@ -1694,8 +1644,6 @@
                     <button class="btn btn-gold" id="claimRewardBtn" style="width:100%;"><i class="fas fa-gift"></i> Claim 10% voucher</button>
                 </div>
             </div>
-
-            <!-- Tier Status (lifetime) -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge green">Lifetime Tier</span>
@@ -1710,8 +1658,6 @@
                     <div class="tier-card platinum">Platinum 100+</div>
                 </div>
             </div>
-
-            <!-- Weekly Streak & double reward days -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge"><i class="fas fa-fire"></i> Streak</span>
@@ -1723,16 +1669,12 @@
                 </div>
                 <p style="margin-top:6px;">⚡ Today: <span id="doubleRewardStatus">active (2x progress on by‑products)</span></p>
             </div>
-
-            <!-- Referral & Wallet -->
             <div class="card wallet-credit">
                 <div><i class="fas fa-user-plus"></i> Referral program</div>
                 <p>You've referred <span id="referralCount">3</span> friends · 5% credit in wallet: R<span id="walletCredit">12.50</span></p>
                 <button class="btn-small btn-outline" onclick="alert('Share your referral link')"><i class="fas fa-share"></i> invite</button>
             </div>
         </section>
-
-        <!-- COMMUNITY FESTIVE PLAN (still here) -->
         <section id="communitySection" class="content-section">
             <div class="card hero-brand" style="background: linear-gradient(145deg, #e8f0e5, #d4e2d4); border-left-color: #2c4532;">
                 <div class="hero-headline">🎄 Community Festive Plan</div>
@@ -1740,18 +1682,13 @@
                 <div class="hero-tagline">Save together, celebrate together</div>
                 <div class="hero-trust"><i class="fas fa-people-arrows"></i> Join your village group – get discounted chickens for Christmas & New Year</div>
             </div>
-
-            <!-- Plan selection cards (5,10,15 chickens) -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge green"><i class="fas fa-boxes"></i> Choose your festive pack</span>
                 </div>
                 <div class="plan-cards" id="planCardsContainer">
-                    <!-- dynamically filled by JS, but static fallback -->
                 </div>
             </div>
-
-            <!-- Village selection dropdown with live slots -->
             <div class="card village-selector">
                 <div class="card-title" style="font-size:1.1rem;">📍 Select your village</div>
                 <select id="villageSelect" style="width:100%; padding:0.8rem; border-radius:40px; border:1px solid #c0aa83; background:white; margin:0.5rem 0;">
@@ -1763,8 +1700,6 @@
                 <p id="groupAvailability" style="font-size:0.9rem;"><i class="fas fa-users"></i> <span id="slotsDisplay">12</span> spots open in this group</p>
                 <div id="groupFullMessage" style="color:#b65151; display:none;">⚠️ This group is full. Please select another village.</div>
             </div>
-
-            <!-- Contribution progress (logged-in) / guest preview -->
             <div class="card" id="contributionProgressCard">
                 <div class="card-header">
                     <span class="badge"><i class="fas fa-chart-line"></i> Your festive savings</span>
@@ -1786,15 +1721,11 @@
                     <p><i class="fas fa-lock"></i> <a href="#" id="loginToTrack">Log in</a> to track your festive progress and claim village discounts.</p>
                 </div>
             </div>
-
-            <!-- Info & terms -->
             <div class="card" style="background:#faf0e6;">
                 <p><i class="fas fa-info-circle"></i> Contribute throughout the year, lock in today’s low prices. Minimum 50% deposit required. Groups limited to 20 families per village.</p>
                 <p><i class="fas fa-gift"></i> Extra bonus: Each paid chicken earns double loyalty points!</p>
             </div>
         </section>
-
-        <!-- MESSAGES section (still here, now accessible via bottom nav) -->
         <section id="messagesSection" class="content-section">
             <div class="card">
                 <div class="card-header"><span class="badge green"><i class="fas fa-comments"></i> Live chat with farm</span></div>
@@ -1813,8 +1744,6 @@
                 <div class="badge">You reached 4‑week streak! 🎉</div>
             </div>
         </section>
-
-        <!-- SUPPORT section (unchanged) -->
         <section id="supportSection" class="content-section">
             <div class="card">
                 <div class="card-title">Submit a request</div>
@@ -1841,8 +1770,6 @@
                 <div><strong>#GC2250:</strong> ⭐⭐⭐⭐ <span class="badge">private: A bit late but good</span><br><small>Admin: Sorry for the delay, we've added extra points</small></div>
             </div>
         </section>
-
-        <!-- hidden sections: BOOK and PROFILE -->
         <section id="bookSection" class="content-section">
             <div class="card">
                 <div class="card-header"><span class="badge green"><i class="fas fa-seedling"></i> growing</span></div>
@@ -1880,18 +1807,13 @@
                 <p style="color:white;">🎁 10% off your next bulk order</p>
             </div>
         </section>
-
-        <!-- NEW SECTION: PERSONALIZED POULTRY PLAN -->
         <section id="personalizedSection" class="content-section">
-            <!-- Hero -->
             <div class="card hero-brand" style="background: linear-gradient(145deg, #fef5e7, #fae1b0); border-left-color: #c9a43b;">
                 <div class="hero-headline">🐓 Personalized Poultry Plan</div>
                 <div class="hero-subheadline">Your custom supply, your way</div>
                 <div class="hero-tagline">Lock in prices, priority access, exclusive perks</div>
                 <div class="hero-trust"><i class="fas fa-star"></i> Three tiers · choose what fits your lifestyle</div>
             </div>
-
-            <!-- Comparison Table (horizontal scroll) -->
             <div class="card">
                 <div class="card-header"><span class="badge green"><i class="fas fa-scale-balanced"></i> Tier comparison</span></div>
                 <div class="tier-comparison">
@@ -1932,8 +1854,6 @@
                 </div>
                 <div class="savings-highlight"><i class="fas fa-coins"></i> Lock in today's prices – you save up to 16% vs one‑time</div>
             </div>
-
-            <!-- Subscription selection UI -->
             <div class="card">
                 <div class="card-title">📝 Build your personalized plan</div>
                 <label>Tier</label>
@@ -1965,8 +1885,6 @@
                 <button class="btn btn-gold" id="subscribePersonalizedBtn"><i class="fas fa-calendar-plus"></i> Subscribe to Personalized Plan</button>
                 <p style="font-size:0.75rem;"><i class="fas fa-lock"></i> Prices locked for 12 months. Loyalty multipliers stack with your rewards.</p>
             </div>
-
-            <!-- Event Reservation Module (available to ALL) -->
             <div class="card event-reserve-card">
                 <div class="card-header">
                     <span class="badge"><i class="fas fa-calendar-check"></i> Event reservation</span>
@@ -1999,8 +1917,6 @@
                 <button class="btn btn-gold" id="reserveEventBtn"><i class="fas fa-hand-holding-heart"></i> Reserve with deposit</button>
                 <p class="card-desc"><i class="fas fa-info-circle"></i> Remaining balance can be paid in up to 3 installments before event.</p>
             </div>
-
-            <!-- Dashboard for logged-in users (simulated) -->
             <div class="card" id="personalizedDashboard">
                 <div class="card-header">
                     <span class="badge green"><i class="fas fa-user-check"></i> Your personalized dashboard</span>
@@ -2025,24 +1941,18 @@
                 </div>
             </div>
         </section>
-
-        <!-- NEW SECTION: COMMUNITY RESERVE PROGRAM -->
         <section id="reserveSection" class="content-section">
-            <!-- Hero with tagline -->
             <div class="card hero-brand" style="background: linear-gradient(145deg, #e6f0e8, #d0e0d0); border-left-color: #2c4532;">
                 <div class="hero-headline">🛡️ Community Reserve Program</div>
                 <div class="hero-subheadline">Prepared Together. Supplied Without Stress.</div>
                 <div class="hero-tagline">Not insurance — community preparedness</div>
                 <div class="hero-trust"><i class="fas fa-hand-holding-heart"></i> Members contribute monthly toward a secured poultry allocation. If a bereavement occurs, allocation is released immediately with priority fulfillment. If unused within 12 months, you receive loyalty value back.</div>
             </div>
-
-            <!-- Three reserve tiers -->
             <div class="card">
                 <div class="card-header">
                     <span class="badge green"><i class="fas fa-boxes"></i> Choose your reserve tier</span>
                 </div>
                 <div class="reserve-tier-cards">
-                    <!-- 20 chickens -->
                     <div class="reserve-tier-card" data-tier="20">
                         <span class="reserve-badge">20 chickens</span>
                         <div class="price" style="font-size:1.4rem;">R150 <small>/month</small></div>
@@ -2051,7 +1961,6 @@
                         <p><i class="fas fa-truck-fast"></i> Same-day dispatch</p>
                         <button class="btn btn-gold btn-small enroll-reserve" data-tier="20" data-monthly="150" data-chickens="20">Enroll now</button>
                     </div>
-                    <!-- 40 chickens -->
                     <div class="reserve-tier-card" data-tier="40">
                         <span class="reserve-badge">40 chickens</span>
                         <div class="price" style="font-size:1.4rem;">R300 <small>/month</small></div>
@@ -2060,7 +1969,6 @@
                         <p><i class="fas fa-truck-fast"></i> Same-day dispatch</p>
                         <button class="btn btn-gold btn-small enroll-reserve" data-tier="40" data-monthly="300" data-chickens="40">Enroll now</button>
                     </div>
-                    <!-- 60 chickens -->
                     <div class="reserve-tier-card" data-tier="60">
                         <span class="reserve-badge">60 chickens</span>
                         <div class="price" style="font-size:1.4rem;">R450 <small>/month</small></div>
@@ -2072,15 +1980,12 @@
                 </div>
                 <p style="font-size:0.85rem; margin-top:0.5rem;"><i class="fas fa-info-circle"></i> Monthly contributions build your secured allocation. Upon bereavement, full allocation released with priority. After 12 months unused, you receive 15‑20% loyalty credit.</p>
             </div>
-
-            <!-- Customer dashboard (logged-in) / guest preview -->
             <div class="card" id="reserveDashboardCard">
                 <div class="card-header">
                     <span class="badge green"><i class="fas fa-user-shield"></i> Your reserve dashboard</span>
                     <span id="reserveLoginBadge" class="badge">Logged in as Mpho</span>
                 </div>
                 <div id="loggedInReserve" style="display:block;">
-                    <!-- dynamic content filled by JS -->
                     <div id="noReserveMessage" style="display:block; text-align:center; padding:1rem;">
                         <p>You are not enrolled in any reserve program yet.</p>
                         <p>Choose a tier above to get started.</p>
@@ -2119,19 +2024,14 @@
                     <p><i class="fas fa-lock"></i> <a href="#" id="loginForReserve">Log in</a> to enroll and manage your reserve program.</p>
                 </div>
             </div>
-
-            <!-- Explanation and loyalty terms -->
             <div class="card" style="background:#f9f2e7;">
                 <p><i class="fas fa-info-circle"></i> <strong>How it works:</strong> You pay a fixed monthly contribution. If a bereavement occurs, your full allocation is released immediately — we flag it as priority, same-day dispatch. If you haven't used your allocation after 12 months, you automatically receive loyalty credit equal to 15–20% of your total annual contributions (credited as store credit / discount voucher / bonus allocation).</p>
                 <p><i class="fas fa-gem"></i> Loyalty credit stacks with your existing rewards. No cash payouts.</p>
             </div>
         </section>
-
-        <!-- NEW SECTION: REVIEWS (Customer Reviews System) -->
         <section id="reviewsSection" class="content-section">
             <div class="card">
                 <h2 class="card-title">⭐ Customer Reviews</h2>
-                <!-- Write Review Form -->
                 <div class="write-review">
                     <div class="rating-selector" id="reviewRating">
                         <span class="star" data-value="1">☆</span>
@@ -2149,23 +2049,18 @@
                     <button class="btn btn-gold" id="submitReviewBtn"><i class="fas fa-paper-plane"></i> Post Review</button>
                 </div>
             </div>
-            <!-- Reviews Feed -->
             <div class="reviews-feed" id="reviewsFeed">
                 <div class="loading-spinner" id="feedLoader">
                     <div class="burger-loader"><div></div><div></div><div></div></div>
                     <p>Loading reviews...</p>
                 </div>
-                <!-- review cards will be injected here -->
             </div>
         </section>
     </main>
-
-    <!-- bottom nav: Home, Orders, Rewards, Reviews (special), Message -->
     <nav class="bottom-nav">
         <div class="nav-item active" data-section="homeSection"><i class="fas fa-home"></i><span>Home</span></div>
         <div class="nav-item" data-section="ordersSection"><i class="fas fa-clipboard-list"></i><span>Orders</span></div>
         <div class="nav-item" data-section="rewardsSection"><i class="fas fa-gift"></i><span>Rewards</span></div>
-        <!-- special review button with glassmorphism -->
         <div class="nav-item review-nav-item" data-section="reviewsSection">
             <div class="review-btn-container">
                 <div class="glass-circle">
@@ -2176,16 +2071,12 @@
         </div>
         <div class="nav-item" data-section="messagesSection"><i class="fas fa-comment-dots"></i><span>Message</span></div>
     </nav>
-
-    <!-- Floating Cart Button (unchanged) -->
     <div class="floating-cart" id="floatingCart">
         <div class="floating-cart-container" id="cartIcon">
             <i class="fas fa-shopping-bag"></i>
             <div class="floating-cart-badge" id="cartBadge">0</div>
         </div>
     </div>
-
-    <!-- Cart Modal (unchanged) -->
     <div class="modal" id="cartModal">
         <div class="modal-content" style="position:relative;">
             <button class="close-button" id="closeCart">&times;</button>
@@ -2199,8 +2090,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Auth Choice Modal (unchanged) -->
     <div class="modal" id="authChoiceModal">
         <div class="modal-content" style="position:relative;">
             <button class="close-button" id="closeAuthChoice">&times;</button>
@@ -2224,8 +2113,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Enhanced Auth Modal (unchanged) -->
     <div class="modal" id="enhancedAuthModal">
         <div class="modal-content" style="position:relative;">
             <button class="close-button" id="closeEnhancedAuth">&times;</button>
@@ -2257,8 +2144,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Checkout Modal (unchanged) -->
     <div class="modal" id="checkoutModal">
         <div class="modal-content" style="position:relative;">
             <button class="close-button" id="closeCheckout">&times;</button>
@@ -2295,8 +2180,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Success Modal (unchanged) -->
     <div class="modal" id="successModal">
         <div class="modal-content" style="position:relative; text-align:center;">
             <button class="close-button" id="closeSuccess">&times;</button>
@@ -2306,23 +2189,15 @@
             <button class="btn btn-gold" id="continueShopping">Continue Shopping</button>
         </div>
     </div>
-
-    <!-- Confetti canvas -->
     <canvas id="confettiCanvas" class="confetti-canvas" style="display:none;"></canvas>
-
-    <!-- Toast for success messages -->
     <div class="toast" id="successToast">Review posted!</div>
-
-    <!-- Image Modal for review photos -->
     <div class="image-modal" id="imageModal">
         <span class="close-image-modal" id="closeImageModal">&times;</span>
         <img id="modalImage" src="" alt="">
     </div>
 </div>
-
 <script>
     (function() {
-        // ---------- navigation (updated with new bottom nav and header dropdown) ----------
         const navItems = document.querySelectorAll('.nav-item');
         const sections = {
             homeSection: document.getElementById('homeSection'),
@@ -2357,7 +2232,6 @@
             });
         });
 
-        // Header dropdown items (Reviews removed)
         document.querySelectorAll('.header-dropdown-item').forEach(el => {
             el.addEventListener('click', () => {
                 const sectionId = el.getAttribute('data-section');
@@ -2376,7 +2250,6 @@
             }
         });
 
-        // ---------- rewards state & UI (unchanged) ----------
         let oneTimePurchases = 3;
         let lifetimePurchases = 47;
         let weeklyStreak = 4;
@@ -2421,7 +2294,6 @@
         }
         updateRewardsUI();
 
-        // claim voucher
         document.getElementById('claimRewardBtn')?.addEventListener('click', () => {
             if (oneTimePurchases >= 10) {
                 alert('🎉 10% discount voucher claimed! Valid for 60 days.');
@@ -2437,7 +2309,6 @@
             updateRewardsUI();
         });
 
-        // ---------- CART FUNCTIONALITY (unchanged) ----------
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         let currentUser = JSON.parse(localStorage.getItem('currentUser')) || null;
 
@@ -2526,7 +2397,6 @@
             });
         }
 
-        // ---------- MODAL CONTROLS (unchanged) ----------
         const cartModal = document.getElementById('cartModal');
         const authChoiceModal = document.getElementById('authChoiceModal');
         const enhancedAuthModal = document.getElementById('enhancedAuthModal');
@@ -2651,7 +2521,6 @@
             successModal.classList.add('active');
         });
 
-        // ---------- HOOK PURCHASE BUTTONS TO CART (unchanged) ----------
         document.querySelectorAll('.one-time-purchase').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -2703,7 +2572,6 @@
             updateRewardsUI();
         });
 
-        // ---------- TIER1 CALCULATIONS ----------
         const tier1MonthlyQty = document.getElementById('tier1MonthlyQty');
         const tier1DailyQty = document.getElementById('tier1DailyQty');
         const tier1MonthlyPrice = document.getElementById('tier1MonthlyPrice');
@@ -2722,7 +2590,6 @@
         document.getElementById('tier1DailyInc')?.addEventListener('click', ()=>{ tier1DailyQty.value = Math.min(200, +tier1DailyQty.value+1); updateTier1(); });
         updateTier1();
 
-        // ---------- CONFETTI ----------
         function startConfetti() {
             const canvas = document.getElementById('confettiCanvas');
             canvas.style.display = 'block';
@@ -2742,7 +2609,6 @@
             setTimeout(() => { canvas.style.display = 'none'; }, 3000);
         }
 
-        // ---------- COMMUNITY FESTIVE PLAN LOGIC ----------
         const plans = [
             { name: '5 Chickens', chickens:5, normalPrice:500, discountedPrice:425, savings:75, slots:12, deadline:'30 Nov 2025', popular:false },
             { name: '10 Chickens', chickens:10, normalPrice:1000, discountedPrice:850, savings:150, slots:8, deadline:'30 Nov 2025', popular:true },
@@ -2755,7 +2621,6 @@
             kayalethu: { name:'Kayalethu', slots:3, full:false }
         };
 
-        // Render plan cards
         const planContainer = document.getElementById('planCardsContainer');
         function renderPlans() {
             planContainer.innerHTML = '';
@@ -2776,7 +2641,6 @@
         }
         renderPlans();
 
-        // Village select update
         const villageSelect = document.getElementById('villageSelect');
         const slotsDisplay = document.getElementById('slotsDisplay');
         const groupFullMessage = document.getElementById('groupFullMessage');
@@ -2796,7 +2660,6 @@
         villageSelect.addEventListener('change', updateVillageInfo);
         updateVillageInfo();
 
-        // Contribution progress (mock user data)
         let userContribution = { plan: null, contributed: 0, goal: 0, village: null };
         const contributedSpan = document.getElementById('contributedAmount');
         const goalSpan = document.getElementById('goalAmount');
@@ -2807,13 +2670,11 @@
         const guestDiv = document.getElementById('guestProgress');
         const progressLoginBadge = document.getElementById('progressLoginBadge');
 
-        // Simulate logged in user (Mpho)
-        const isLoggedIn = true; // for demo
+        const isLoggedIn = true;
         if (isLoggedIn) {
             guestDiv.style.display = 'none';
             loggedInDiv.style.display = 'block';
             progressLoginBadge.style.display = 'inline-block';
-            // load from localStorage if exists
             const saved = localStorage.getItem('communityPlan');
             if (saved) {
                 userContribution = JSON.parse(saved);
@@ -2832,11 +2693,10 @@
                 remainingSpan.textContent = remaining > 0 ? remaining : 0;
                 let percent = (userContribution.contributed / userContribution.goal) * 100;
                 progressFillContribution.style.width = Math.min(percent,100) + '%';
-                deliveryDateSpan.textContent = '15 Dec 2025'; // fixed
+                deliveryDateSpan.textContent = '15 Dec 2025';
             }
         }
 
-        // Join plan buttons
         document.querySelectorAll('.join-plan').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const plan = JSON.parse(e.target.dataset.plan);
@@ -2848,10 +2708,9 @@
                 }
                 if (!isLoggedIn) {
                     alert('Please log in to join a festive plan.');
-                    activateSection('profileSection'); // quick login simulation
+                    activateSection('profileSection');
                     return;
                 }
-                // reserve slot
                 village.slots -= 1;
                 updateVillageInfo();
                 userContribution.plan = plan;
@@ -2864,7 +2723,6 @@
             });
         });
 
-        // Payment buttons
         document.getElementById('makePaymentBtn').addEventListener('click', () => {
             if (!userContribution.plan) {
                 alert('Please select a plan first.');
@@ -2877,7 +2735,6 @@
                 if (userContribution.contributed > userContribution.goal) userContribution.contributed = userContribution.goal;
                 localStorage.setItem('communityPlan', JSON.stringify(userContribution));
                 updateContributionUI();
-                // also add to cart as a "Festive Contribution" item
                 addToCart({ id: Date.now(), name: 'Festive Plan Contribution', price: amount, quantity: 1, type: 'festive' });
                 alert('Payment recorded and added to cart. Please complete checkout.');
             }
@@ -2903,12 +2760,10 @@
         document.getElementById('loginToTrack')?.addEventListener('click', (e) => {
             e.preventDefault();
             alert('Demo: redirect to login. For now, assume you are logged in.');
-            // toggle for demo
             guestDiv.style.display = 'none';
             loggedInDiv.style.display = 'block';
         });
 
-        // padding fix
         const app = document.querySelector('.app');
         const header = document.querySelector('.header');
         const bottomNav = document.querySelector('.bottom-nav');
@@ -2933,7 +2788,6 @@
 
         updateCartBadge();
 
-        // ---------- NEW PERSONALIZED PLAN LOGIC ----------
         const tierSelect = document.getElementById('tierSelect');
         const personalizedQty = document.getElementById('personalizedQty');
         const personalizedMonthlyTotal = document.getElementById('personalizedMonthlyTotal');
@@ -2968,7 +2822,6 @@
         personalizedQty.addEventListener('input', updatePersonalizedPricing);
         updatePersonalizedPricing();
 
-        // Subscribe button
         document.getElementById('subscribePersonalizedBtn').addEventListener('click', () => {
             let tier = tierSelect.value;
             let qty = parseInt(personalizedQty.value);
@@ -2981,7 +2834,6 @@
             alert('Personalized plan added to cart. Please complete checkout.');
         });
 
-        // Event reservation
         const eventQty = document.getElementById('eventQty');
         const eventTotal = document.getElementById('eventTotal');
         const eventDeposit = document.getElementById('eventDeposit');
@@ -2991,7 +2843,7 @@
             let qty = parseInt(eventQty.value) || 1;
             if (qty < 1) qty = 1;
             eventQty.value = qty;
-            let total = qty * 84; // signature price
+            let total = qty * 84;
             let deposit = total * 0.3;
             let remaining = total - deposit;
             eventTotal.textContent = `R${total.toFixed(2)}`;
@@ -3021,15 +2873,12 @@
             alert('Deposit added to cart. Complete checkout to secure your event.');
         });
 
-        // Guest / login toggle for personalized dashboard
         const loggedInPersonalized = document.getElementById('loggedInPersonalized');
         const guestPersonalized = document.getElementById('guestPersonalized');
-        // Simulate logged in (same as community)
         if (isLoggedIn) {
             guestPersonalized.style.display = 'none';
             loggedInPersonalized.style.display = 'block';
-            // set active tier display
-            document.getElementById('personalizedActiveTier').textContent = 'Steady Supply'; // mock
+            document.getElementById('personalizedActiveTier').textContent = 'Steady Supply';
         } else {
             guestPersonalized.style.display = 'block';
             loggedInPersonalized.style.display = 'none';
@@ -3037,12 +2886,10 @@
         document.getElementById('loginForDashboard')?.addEventListener('click', (e) => {
             e.preventDefault();
             alert('Demo: login required. Redirect to login page.');
-            // toggle for demo
             guestPersonalized.style.display = 'none';
             loggedInPersonalized.style.display = 'block';
         });
 
-        // Upgrade/downgrade buttons
         document.getElementById('upgradeTierBtn')?.addEventListener('click', () => {
             alert('Upgrade to Celebration or Signature Reserve. New price applies next billing.');
         });
@@ -3050,9 +2897,7 @@
             alert('Downgrade to a lower tier. Changes take effect next cycle.');
         });
 
-        // ---------- NEW COMMUNITY RESERVE PROGRAM LOGIC ----------
-        // Reserve state stored in localStorage
-        let reserveState = JSON.parse(localStorage.getItem('reserveState')) || null; // { tier:20, monthly:150, chickens:20, startDate: timestamp, monthsPaid:1, status:'active', released:false }
+        let reserveState = JSON.parse(localStorage.getItem('reserveState')) || null;
 
         const noReserveMsg = document.getElementById('noReserveMessage');
         const activeReserveDash = document.getElementById('activeReserveDashboard');
@@ -3060,7 +2905,6 @@
         const guestReserve = document.getElementById('guestReserve');
         const reserveLoginBadge = document.getElementById('reserveLoginBadge');
 
-        // Simulate logged in user (same isLoggedIn flag)
         if (isLoggedIn) {
             guestReserve.style.display = 'none';
             loggedInReserve.style.display = 'block';
@@ -3071,7 +2915,6 @@
             loggedInReserve.style.display = 'none';
         }
 
-        // Helper to update dashboard UI
         function updateReserveDashboard() {
             if (!reserveState) {
                 noReserveMsg.style.display = 'block';
@@ -3089,7 +2932,6 @@
             document.getElementById('reserveMonthsLeft').textContent = monthsLeft;
             let progressPercent = ((reserveState.monthsPaid || 1) / 12) * 100;
             document.getElementById('reserveProgress').style.width = progressPercent + '%';
-            // loyalty value est. 15% of total contributions
             let totalContrib = (reserveState.monthsPaid || 1) * reserveState.monthly;
             let loyaltyEst = Math.round(totalContrib * 0.15);
             document.getElementById('reserveLoyaltyValue').textContent = loyaltyEst;
@@ -3106,7 +2948,6 @@
             }
         }
 
-        // Enroll buttons
         document.querySelectorAll('.enroll-reserve').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 if (!isLoggedIn) {
@@ -3126,19 +2967,17 @@
                     monthly: monthly,
                     chickens: chickens,
                     startDate: Date.now(),
-                    monthsPaid: 1, // first month paid
+                    monthsPaid: 1,
                     status: 'active',
                     released: false
                 };
                 localStorage.setItem('reserveState', JSON.stringify(reserveState));
                 updateReserveDashboard();
                 alert(`Enrolled in ${tier} chicken reserve. First monthly contribution added to cart.`);
-                // add first month to cart
                 addToCart({ id: Date.now(), name: `Reserve Program (${tier} chickens) - Month 1`, price: monthly, quantity: 1, type: 'reserve' });
             });
         });
 
-        // Release allocation button
         document.getElementById('releaseAllocationBtn')?.addEventListener('click', () => {
             if (!reserveState || reserveState.released) {
                 alert('No active allocation to release.');
@@ -3150,44 +2989,26 @@
             reserveState.status = 'released';
             localStorage.setItem('reserveState', JSON.stringify(reserveState));
 
-            // Add allocation to cart as zero-cost item (simulate release)
             addToCart({ id: Date.now(), name: `Bereavement Release - ${reserveState.chickens} chickens (Priority)`, price: 0, quantity: reserveState.chickens, type: 'bereavement' });
 
-            // Flag admin (simulate)
             console.log('ADMIN FLAG: Bereavement release for user Mpho, allocation ' + reserveState.chickens + ' chickens, same-day dispatch.');
 
             alert('Allocation released! Priority fulfillment activated. Your cycle will reset after this event.');
 
-            // Reset cycle: could set monthsPaid to 0 and start new cycle, but for demo we just mark released.
-            // Optionally reset after release (new cycle)
-            reserveState.monthsPaid = 0; // reset cycle
-            reserveState.released = false; // allow future releases? but we want only one per cycle. For demo, we'll keep released true to disable button.
-            // Actually we want to prevent multiple releases in same cycle, so we keep released = true.
-            // In a real scenario, after release the cycle ends and a new one can start. We'll simulate by allowing re-enroll after release.
-            // For simplicity, we'll keep released true and disable button.
+            reserveState.monthsPaid = 0;
+            reserveState.released = false;
             updateReserveDashboard();
         });
 
-        // Login for reserve (guest)
         document.getElementById('loginForReserve')?.addEventListener('click', (e) => {
             e.preventDefault();
             alert('Demo: login required. Redirect to login page.');
-            // toggle for demo
             guestReserve.style.display = 'none';
             loggedInReserve.style.display = 'block';
-            // we need to set isLoggedIn true for demo, but we already have flag. We'll just reload state.
         });
 
-        // Simulate monthly payment (could be triggered automatically, but we add a hidden button for testing)
-        // For completeness, we add a small hidden button in dashboard (optional) – not required for spec.
-        // We'll just assume months increment when user pays monthly via cart. In real, they'd pay each month.
-        // We'll add a hidden dev button to advance months (for testing) but not necessary for final.
-
-        // Ensure reserve dashboard updates on page load
         updateReserveDashboard();
 
-        // ---------- REVIEWS SYSTEM (new) ----------
-        // Mock Auth object
         const Auth = {
             isLoggedIn: () => !!localStorage.getItem('currentUser'),
             getToken: () => 'mock-token',
@@ -3199,10 +3020,8 @@
             }
         };
 
-        // API base URL
         const API_BASE = (window.API_BASE_URL || (location.hostname === 'localhost' ? 'http://localhost:8000' : ''));
 
-        // Mock reviews data store
         let reviews = JSON.parse(localStorage.getItem('mockReviews')) || [
             {
                 id: '1',
@@ -3236,7 +3055,6 @@
             localStorage.setItem('mockReviews', JSON.stringify(reviews));
         }
 
-        // Helper: time ago
         function timeAgo(dateStr) {
             const d = new Date(dateStr);
             const now = new Date();
@@ -3251,7 +3069,6 @@
             return d.toLocaleDateString();
         }
 
-        // Render one review
         function renderReview(review) {
             const starsHtml = Array(5).fill(0).map((_, i) => i < review.stars ? '★' : '☆').join('');
             const photosHtml = review.images.map(img => `<img src="${img.image_url}" class="review-photo" onclick="openImageModal('${img.image_url}')">`).join('');
@@ -3286,7 +3103,6 @@
             `;
         }
 
-        // Escape HTML
         function escapeHTML(str) {
             return String(str).replace(/[&<>"]/g, function(m) {
                 if (m === '&') return '&amp;';
@@ -3297,12 +3113,10 @@
             });
         }
 
-        // Load feed
         async function loadReviews(page = 1) {
             const feed = document.getElementById('reviewsFeed');
             const loader = document.getElementById('feedLoader');
             loader.style.display = 'block';
-            // Simulate API call
             setTimeout(() => {
                 let html = '';
                 reviews.forEach(r => html += renderReview(r));
@@ -3312,9 +3126,7 @@
             }, 500);
         }
 
-        // Attach event listeners to review actions
         function attachReviewEvents() {
-            // Like buttons
             document.querySelectorAll('.like-btn').forEach(btn => {
                 btn.addEventListener('click', async (e) => {
                     e.preventDefault();
@@ -3324,20 +3136,18 @@
                         return;
                     }
                     btn.disabled = true;
-                    // Simulate API
                     setTimeout(() => {
                         const review = reviews.find(r => r.id === id);
                         if (review) {
                             review.is_liked = !review.is_liked;
                             review.likes_count += review.is_liked ? 1 : -1;
                             saveReviews();
-                            loadReviews(); // refresh
+                            loadReviews();
                         }
                     }, 300);
                 });
             });
 
-            // Toggle comment form
             document.querySelectorAll('.comment-toggle-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const id = btn.dataset.id;
@@ -3346,7 +3156,6 @@
                 });
             });
 
-            // Submit reply
             document.querySelectorAll('.reply-submit').forEach(btn => {
                 btn.addEventListener('click', async () => {
                     const id = btn.dataset.id;
@@ -3355,7 +3164,6 @@
                     if (!text) return;
                     if (!Auth.isLoggedIn()) {
                         const guestName = prompt('You are not logged in. Enter your name (or leave blank for "Guest"):') || 'Guest';
-                        // Simulate guest reply
                         const review = reviews.find(r => r.id === id);
                         if (review) {
                             review.comments.push({
@@ -3386,7 +3194,6 @@
             });
         }
 
-        // Submit new review
         document.getElementById('submitReviewBtn')?.addEventListener('click', async () => {
             const ratingEls = document.querySelectorAll('#reviewRating .star');
             let rating = 0;
@@ -3402,7 +3209,6 @@
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Posting...';
 
-            // Simulate file upload (just store placeholder URLs)
             const files = window.selectedFiles || [];
             const images = files.map(f => ({ image_url: URL.createObjectURL(f) }));
 
@@ -3422,14 +3228,12 @@
                 reviews.unshift(newReview);
                 saveReviews();
                 loadReviews();
-                // Reset form
                 ratingEls.forEach(s => s.classList.remove('selected'));
                 document.getElementById('reviewText').value = '';
                 document.getElementById('photoPreviews').innerHTML = '';
                 window.selectedFiles = [];
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fas fa-paper-plane"></i> Post Review';
-                // Show toast
                 const toast = document.getElementById('successToast');
                 toast.textContent = 'Review posted!';
                 toast.classList.add('show');
@@ -3437,7 +3241,6 @@
             }, 1000);
         });
 
-        // Star rating
         document.querySelectorAll('#reviewRating .star').forEach(star => {
             star.addEventListener('click', () => {
                 const val = star.dataset.value;
@@ -3448,7 +3251,6 @@
             });
         });
 
-        // Photo upload preview
         const photoInput = document.getElementById('photoInput');
         document.getElementById('uploadPhotosBtn').addEventListener('click', () => photoInput.click());
         photoInput.addEventListener('change', (e) => {
@@ -3472,7 +3274,6 @@
             });
         });
 
-        // Image modal
         window.openImageModal = function(src) {
             const modal = document.getElementById('imageModal');
             document.getElementById('modalImage').src = src;
@@ -3487,14 +3288,12 @@
             }
         });
 
-        // Auto-refresh every 60 seconds
         setInterval(() => {
             if (sections.reviewsSection.classList.contains('active')) {
                 loadReviews();
             }
         }, 60000);
 
-        // Initial load when reviews section becomes active
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((m) => {
                 if (m.target === sections.reviewsSection && m.target.classList.contains('active')) {
@@ -3504,10 +3303,8 @@
         });
         observer.observe(sections.reviewsSection, { attributes: true, attributeFilter: ['class'] });
 
-        // If already active on page load (unlikely), load
         if (sections.reviewsSection.classList.contains('active')) loadReviews();
 
-        // Hidden api-integration element (kept for future)
         const apiDiv = document.createElement('div');
         apiDiv.className = 'api-integration';
         document.body.appendChild(apiDiv);
